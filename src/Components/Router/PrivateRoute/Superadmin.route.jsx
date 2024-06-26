@@ -13,6 +13,7 @@ import UsersList from "../../Pages/Superadmin/Users/UsersList";
 import PrivateRoute from "../PrivateRoute/index";
 import ErrorPage from "../../Pages/Auth/NotFound";
 import Add_Edit_User from "../../Pages/Superadmin/Users/Add_Edit_User";
+import SuperAdminProfile from "../../Pages/Superadmin/Profile/SuperAdminProfile";
 
 // Mock authentication status
 const isAuthenticated = "test"
@@ -34,6 +35,10 @@ const adminRoutes = [
       {
         path: "user/add",
         element: <PrivateRoute element={Add_Edit_User} isAuthenticated={isAuthenticated} />,
+      },
+      {
+        path: "user/profile",
+        element: <PrivateRoute element={SuperAdminProfile} isAuthenticated={isAuthenticated} />,
       },
     ],
   },
