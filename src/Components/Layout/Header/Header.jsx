@@ -1,6 +1,7 @@
 import React from "react";
 import { useMyContext } from "../../Hooks/Context/CreateSidebarContext";
 import ToggleDark from "./ToggleDark";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const { toggleSidebar } = useMyContext();
@@ -36,11 +37,11 @@ const Header = () => {
               </div>
               <div className="drop-down dropdown-profile animated fadeIn dropdown-menu">
                 <div className="dropdown-content-body">
-                  <ul>
+                  <ul> 
                     <li>
-                      <a href="app-profile.html">
+                      <Link to="/admin/user/profile">
                         <i className="icon-user" /> <span>Profile</span>
-                      </a>
+                      </Link>
                     </li>
                     <li>
                       <a href="javascript:void()">
