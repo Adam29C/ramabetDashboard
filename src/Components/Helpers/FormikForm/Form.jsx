@@ -8,16 +8,12 @@ const ReusableForm = ({
   formik,
   btn_name,
   title,
-  additional_field,
-  showButton,
   VerifyMobileN,
   button_Size,
   Disable_Button,
   after_password_field,
   after_submit_button,
-  before_text_field,
   after_text_field,
-  before_submit,
   btn_design,
   disabledSubmit,
   isLoading,
@@ -113,95 +109,80 @@ const ReusableForm = ({
                 </>
               ) : field.type === "checkbox" ? (
                 <>
-                  {field.options && field.options.length > 0 ? (
-                    <>
-                      {field.options &&
-                        field.options.map((option, index) => (
-                          <>
-                            <div
-                              className={`col-lg-${field.col_size}`}
-                              key={option.id}
-                            >
-                              <div className="row d-flex">
-                                <div className={`col-lg-${field.col_size}`}>
-                                  <div class="form-check custom-checkbox mb-2">
-                                    <input
-                                      type={field.type}
-                                      className="form-check-input"
-                                      id={option.label}
-                                      {...formik.getFieldProps(option.name)}
-                                    />
-                                    <label
-                                      className="form-check-label"
-                                      for={option.label}
-                                    >
-                                      {option.label}
-                                    </label>
-                                  </div>
-                                  {formik.errors[field.name] && (
-                                    <div className="error-text">
-                                      {formik.errors[field.name]}
-                                    </div>
-                                  )}
+                  <h5 className="my-3">permission</h5>
+
+                  {field.options &&
+                    field.options.map((option, index) => (
+                      <>
+                        <div
+                          className={`col-lg-${field.col_size}`}
+                          key={option.id}
+                        >
+                          <div className="row d-flex">
+                            <div className={`col-lg-${field.col_size}`}>
+                              <div class="form-check custom-checkbox mb-2">
+                                <input
+                                  type={field.type}
+                                  className="form-check-input"
+                                  id={option.label}
+                                  {...formik.getFieldProps(option.name)}
+                                  defaultChecked={option.checked}
+                                />
+                                <label
+                                  className="form-check-label"
+                                  for={option.label}
+                                >
+                                  {option.label}
+                                </label>
+                              </div>
+                              {formik.errors[field.name] && (
+                                <div className="error-text">
+                                  {formik.errors[field.name]}
                                 </div>
-                              </div>
+                              )}
                             </div>
-                          </>
-                        ))}
-                    </>
-                  ) : (
-                    <>
-                      <div className={`col-lg-${field.col_size}`}>
-                        <div className="row d-flex">
-                          <div
-                          //  className={`col-lg-${field.col_size}`}
-                          >
-                            <div class="form-check custom-checkbox mb-2">
-                              <input
-                                type={field.type}
-                                className="form-check-input"
-                                id={field.label}
-                                {...formik.getFieldProps(field.name)}
-                                checked={field.check_box_true}
-                              />
-                              <label
-                                className="form-check-label"
-                                for={field.label}
-                              >
-                                {field.label}
-                              </label>
-                            </div>
-                            {formik.errors[field.name] && (
-                              <div className="error-text">
-                                {formik.errors[field.name]}
-                              </div>
-                            )}
                           </div>
                         </div>
-                      </div>
-                    </>
-                  )}
+                      </>
+                    ))}
                 </>
               ) : field.type === "radio" ? (
                 <>
-                  <div className="col-lg-3">
-                    <div className="row d-flex">
-                      <div className="col-lg-12 ">
-                        <div class="form-check custom-checkbox mb-2">
-                          <input
-                            type={field.type}
-                            name={field.name}
-                            className="form-check-input"
-                            id={field.name}
-                            {...formik.getFieldProps(field.name)}
-                          />
-                          <label className="form-check-label" for={field.name}>
-                            {field.name}
-                          </label>
+                  <h5 className={`col-lg-${field.title_size}`}>permission</h5>
+                  {field.options &&
+                    field.options.map((option, index) => (
+                      <>
+                        <div
+                          className={`col-lg-${field.col_size}`}
+                          key={option.id}
+                        >
+                          <div className="row d-flex">
+                            <div className={`col-lg-${field.col_size}`}>
+                              <div class="form-check custom-checkbox mb-2">
+                                <input
+                                  type={field.type}
+                                  className="form-check-input"
+                                  id={option.label}
+                                  {...formik.getFieldProps(option.name)}
+                                  defaultChecked={option.checked}
+                                />
+                                <label
+                                  className="form-check-label"
+                                  for={option.label}
+                                >
+                                  {option.label}
+                                </label>
+                              </div>
+                              {formik.errors[field.name] && (
+                                <div className="error-text">
+                                  {formik.errors[field.name]}
+                                </div>
+                              )}
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                  </div>
+                      </>
+                    ))}
                 </>
               ) : field.type === "password" ? (
                 <>
@@ -260,10 +241,58 @@ const ReusableForm = ({
                 </>
               ) : field.type === "date" ? (
                 <>
-                  <div className="col-lg-3">
+                  <div className={`col-lg-${field.col_size}`}>
+                    <div className=" row flex-column">
+                      <label
+                        className={`col-lg-${field.label_size}`}
+                        htmlFor={field.name}
+                      >
+                        {field.label}
+                        <span className="text-danger">*</span>
+                      </label>
+                      <div className={`d-flex`}>
+                        <input
+                          type={field.type}
+                          name={field.name}
+                          className="form-control"
+                          id={field.name}
+                          {...formik.getFieldProps(field.name)}
+                          min={
+                            field.name === "todate"
+                              ? fromDate
+                              : getCurrentDate()
+                          }
+                        />
+                        {field.showButton ? (
+                          <button
+                            style={{ background: "#4e3897", width: "100px" }}
+                            className="btn border-0 btn-primary ms-3 col-4"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              VerifyMobileN();
+                            }}
+                            disabled={Disable_Button}
+                          >
+                            Send OTP
+                          </button>
+                        ) : (
+                          ""
+                        )}
+                        <div className="invalid-feedback">
+                          Please enter {field.label}
+                        </div>
+                      </div>
+                      {formik.errors[field.name] && (
+                        <div className="error-text">
+                          {formik.errors[field.name]}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  {/* <div className={`col-lg-${field.col_size}`}>
                     <div className="row d-flex">
                       <div className="col-lg-12 ">
-                        <div class="form-check custom-checkbox mb-2">
+                        <div class="form-check custom-checkbox">
                           <label className="col-lg-6 " for={field.name}>
                             {field.name}
                           </label>
@@ -287,7 +316,7 @@ const ReusableForm = ({
                         )}{" "}
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </>
               ) : field.type === "msgbox" ? (
                 <>
@@ -371,7 +400,6 @@ const ReusableForm = ({
                 </>
               ) : (
                 <>
-                  {before_text_field}
                   <div className={`col-lg-${field.col_size}`}>
                     <div className="mb-3 row flex-column">
                       <label
@@ -424,8 +452,7 @@ const ReusableForm = ({
               {field.showButton && after_text_field}
             </>
           ))}
-          {before_submit}
-          {additional_field}
+
           <div className="form-group mb-0">
             <button
               style={{ background: "#4e3897" }}

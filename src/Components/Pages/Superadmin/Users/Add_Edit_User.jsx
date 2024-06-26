@@ -63,7 +63,6 @@ const Users = () => {
         // domain: values.domain,
         // port: values.port,
         // key: values.key,
-      
       };
 
       // await dispatch(Add_Panel_data({ req: req, token: user_token }))
@@ -86,61 +85,110 @@ const Users = () => {
 
   const fields = [
     {
-      name: "panel_name",
-      label: "Panel Name",
+      name: "name",
+      label: "name",
       type: "text",
       label_size: 12,
       col_size: 6,
     },
+
     {
-      name: "panel_name",
-      label: "password Name",
+      name: "password",
+      label: "password",
       type: "password",
       label_size: 12,
       col_size: 6,
     },
     {
-      name: "panel_name",
-      label: "password Name",
+      name: "file",
+      label: "image",
       type: "password",
       label_size: 12,
       col_size: 6,
     },
-
-
-
-
-
-
-
-
-
-
-
-
+    {
+      name: "date",
+      label: "password Name",
+      type: "date",
+      label_size: 12,
+      col_size: 6,
+    },
+    {
+      name: "msg box",
+      label: "password Name",
+      type: "msgbox",
+      label_size: 12,
+      col_size: 6,
+    },
     {
       name: "Create_Strategy",
       label: "Create Strategy",
       type: "checkbox",
       label_size: 12,
-      col_size: 3,
-      check_box_true: formik.values.Create_Strategy ? true : false,
+      title_size : 6,
+      col_size: 1,
+      options: [
+        {
+          id: 1,
+          label: "check1",
+          checked: true,
+        },
+        {
+          id: 2,
+          label: "check2",
+          checked: true,
+        },
+        {
+          id: 3,
+          label: "check3",
+          checked: false,
+        },
+        {
+          id: 4,
+          label: "check4",
+          checked: true,
+        },
+        {
+          id: 5,
+          label: "check5",
+          checked: true,
+        },
+      ],
     },
     {
-      name: "Option_chain",
-      label: "Option Chain",
-      type: "checkbox",
+      name: "Create_Strategy",
+      label: "Create Strategy",
+      type: "radio",
       label_size: 12,
-      col_size: 3,
-      check_box_true: formik.values.Option_chain ? true : false,
-    },
-    {
-      name: "Strategy_plan",
-      label: "Strategy Plan",
-      type: "checkbox",
-      label_size: 12,
-      col_size: 3,
-      check_box_true: formik.values.Strategy_plan ? true : false,
+      title_size : 6,
+      col_size: 1,
+      options: [
+        {
+          id: 1,
+          label: "check1",
+          checked: true,
+        },
+        {
+          id: 2,
+          label: "check2",
+          checked: true,
+        },
+        {
+          id: 3,
+          label: "check3",
+          checked: false,
+        },
+        {
+          id: 4,
+          label: "check4",
+          checked: true,
+        },
+        {
+          id: 5,
+          label: "check5",
+          checked: true,
+        },
+      ],
     },
   ];
 
