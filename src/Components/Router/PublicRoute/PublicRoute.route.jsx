@@ -15,7 +15,7 @@ const isAuthenticated = "";
 const publicRoutes = [
   {
     path: "/",
-    // element: <PublicRoute element={Login} isAuthenticated={isAuthenticated} />,
+    element: <PublicRoute element={Login} isAuthenticated={isAuthenticated} />,
     errorElement: <ErrorPage />,
     children: [{
       path: "/login",

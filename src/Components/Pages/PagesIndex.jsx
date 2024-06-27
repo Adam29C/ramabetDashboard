@@ -11,7 +11,7 @@ import { useFormik } from "formik";
 import Main_Containt from "../Layout/Main/Auth_content";
 import Formikform from "../Helpers/FormikForm/Form";
 import Toast from "../Helpers/Toast";
-import { getGenerateToken } from "../redux/slice/CommonSlice";
+import { getGenerateToken } from "../Redux/slice/CommonSlice";
 import { Link } from "react-router-dom";
 import *as valid_err from '../Utils/Common_Msg'
 const PagesIndex = {
