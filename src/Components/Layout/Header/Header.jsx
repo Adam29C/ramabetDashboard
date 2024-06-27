@@ -1,11 +1,19 @@
 import React from "react";
 import { useMyContext } from "../../Hooks/Context/CreateSidebarContext";
 import ToggleDark from "./ToggleDark";
-import { Link } from "react-router-dom";
 
+import PagesIndex from "../../Pages/PagesIndex";
 const Header = () => {
   const { toggleSidebar } = useMyContext();
+const navigate = PagesIndex.useNavigate()
 
+  const handleLogout = ()=>{
+    localStorage.removeItem("token")
+    localStorage.removeItem("role")
+    localStorage.removeItem("userId")
+
+    navigate("/")
+  }
   return (
     <div className="header">
       <div className="header-content clearfix">
@@ -39,9 +47,9 @@ const Header = () => {
                 <div className="dropdown-content-body">
                   <ul> 
                     <li>
-                      <Link to="/admin/user/profile">
+                      <PagesIndex.Link to="/admin/user/profile">
                         <i className="icon-user" /> <span>Profile</span>
-                      </Link>
+                      </PagesIndex.Link>
                     </li>
                     <li>
                       <a href="javascript:void()">
@@ -58,9 +66,9 @@ const Header = () => {
                       </a>
                     </li>
                     <li>
-                      <a href="page-login.html">
+                      <PagesIndex.Link href="#" onClick={()=>handleLogout()}>
                         <i className="icon-key" /> <span>Logout</span>
-                      </a>
+                      </PagesIndex.Link>
                     </li>
                   </ul>
                 </div>

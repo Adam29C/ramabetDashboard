@@ -47,3 +47,8 @@ export const Image_Regexp = (value)=>{
   }
   
 }
+
+export const Remove_Special_Character = (values)=>{
+  const value = values.replace(/[^a-zA-Z0-9]/g, "")
+  return value
+}

@@ -17,9 +17,13 @@ import SuperAdminProfile from "../../Pages/Superadmin/Profile/SuperAdminProfile"
 import EmployeeList from "../../Pages/Superadmin/Employee/EmployeeList";
 import Add_Edit_Employee from "../../Pages/Superadmin/Employee/Add_Edit_Employee";
 import System from "../../Pages/Superadmin/PenalInfo/System";
+import PagesIndex from "../../Pages/PagesIndex";
 
-// Mock authentication status
-const isAuthenticated = ""
+
+
+
+
+
 
 const adminRoutes = [
   {
@@ -29,30 +33,30 @@ const adminRoutes = [
     children: [
       {
         path: "dashboard",
-        element: <PrivateRoute element={Dashboard} isAuthenticated={isAuthenticated} />,
+        element: <PrivateRoute element={Dashboard}  />,
       },
       {
         path: "users",
-        element: <PrivateRoute element={UsersList} isAuthenticated={isAuthenticated} />,
+        element: <PrivateRoute element={UsersList}  />,
       },
       {
         path: "user/add",
-        element: <PrivateRoute element={Add_Edit_User} isAuthenticated={isAuthenticated} />,
+        element: <PrivateRoute element={Add_Edit_User} />,
       },      {
         path: "employees",
-        element: <PrivateRoute element={EmployeeList} isAuthenticated={isAuthenticated} />,
+        element: <PrivateRoute element={EmployeeList} />,
       },
       {
         path: "employee/add",
-        element: <PrivateRoute element={Add_Edit_Employee} isAuthenticated={isAuthenticated} />,
+        element: <PrivateRoute element={Add_Edit_Employee}  />,
       },
       {
         path: "user/profile",
-        element: <PrivateRoute element={SuperAdminProfile} isAuthenticated={isAuthenticated} />,
+        element: <PrivateRoute element={SuperAdminProfile}  />,
       },
       {
         path: "system",
-        element: <PrivateRoute element={System} isAuthenticated={isAuthenticated} />,
+        element: <PrivateRoute element={System}/>,
       },
 
     ],
