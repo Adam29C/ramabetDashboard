@@ -19,7 +19,7 @@ import Add_Edit_Employee from "../../Pages/Superadmin/Employee/Add_Edit_Employee
 import System from "../../Pages/Superadmin/PenalInfo/System";
 
 // Mock authentication status
-const isAuthenticated = ""
+const isAuthenticated = "test"
 
 const adminRoutes = [
   {
