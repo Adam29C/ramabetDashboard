@@ -46,12 +46,6 @@ export const TERMS_AND_CONDTION = "Please check terms and condition";
 export const EMPTY_IMAGE_ERROR = "Please Select Image  ";
 export const UPLOAD_IMAGE_VALID ="Please enter valid file type (Jpeg,jpg,png file)"
 
-
-
-
-
-
-
 // export const PER_TRADE_INVALID_ERROR = 'Please Enter integer  Value ';
 export const QTY_ERROR = "Please Enter Per  QTY ";
 export const QTY_INVALID_ERROR = "Please Enter Invalid QTY ";

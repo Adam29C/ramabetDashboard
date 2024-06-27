@@ -4,7 +4,7 @@ import Formikform from "../../../Helpers/FormikForm/Form";
 // import * as valid_err from "../../../Utils/Common_Messages";
 import { useFormik } from "formik";
 
-const Users = () => {
+const Add_Edit_Employee = () => {
   const formik = useFormik({
     initialValues: {
       panel_name: "",
@@ -133,63 +133,10 @@ const Users = () => {
           label: "check1",
           checked: true,
         },
-        {
-          id: 2,
-          label: "check2",
-          checked: true,
-        },
-        {
-          id: 3,
-          label: "check3",
-          checked: false,
-        },
-        {
-          id: 4,
-          label: "check4",
-          checked: true,
-        },
-        {
-          id: 5,
-          label: "check5",
-          checked: true,
-        },
+        
       ],
     },
-    {
-      name: "Create_Strategy",
-      label: "Create Strategy",
-      type: "radio",
-      label_size: 12,
-      title_size : 6,
-      col_size: 3,
-      options: [
-        {
-          id: 1,
-          label: "check1",
-          checked: true,
-        },
-        {
-          id: 2,
-          label: "check2",
-          checked: true,
-        },
-        {
-          id: 3,
-          label: "check3",
-          checked: false,
-        },
-        {
-          id: 4,
-          label: "check4",
-          checked: true,
-        },
-        {
-          id: 5,
-          label: "check5",
-          checked: true,
-        },
-      ],
-    },
+
   ];
 
   return (
@@ -202,26 +149,7 @@ const Users = () => {
           additional_field={
             <>
               <h6>All Brokers</h6>
-              {/* {getGetAllBrokerName.map((broker) => (
-                <div className={`col-lg-2 mt-2`} key={broker.broker_id}>
-                  <div className="row ">
-                    <div className="col-lg-12 ">
-                      <div class="form-check custom-checkbox mb-3">
-                        <input
-                          type="checkbox"
-                          className="form-check-input"
-                          name={broker.title}
-                          value={broker.broker_id}
-                          onChange={(e) => handleSBrokerChange(e, broker)}
-                        />
-                        <label className="form-check-label" for={broker.title}>
-                          {broker.title}
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))} */}
+    
 
               {formik.errors.title && (
                 <div style={{ color: "red" }}>{formik.errors.title}</div>
@@ -234,4 +162,4 @@ const Users = () => {
   );
 };
 
-export default Users;
+export default Add_Edit_Employee;

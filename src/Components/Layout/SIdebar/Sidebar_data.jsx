@@ -9,7 +9,22 @@ export const admin_Sidebar = [
   },
   {
     id: 2,
-    route: "Dashboard",
+    // route: "Dashboard",
+    headerTitle: "Penal Info",
+    title: "Penal Info",
+    Icon: "icon-globe-alt",
+    NestedElement: [
+      {
+        id: 1,
+        title: "Systems",
+        route: "system",
+      }
+   
+    ],
+  },
+  {
+    id: 3,
+    // route: "Dashboard",
     headerTitle: "Users",
     title: "Users",
     Icon: "icon-globe-alt",
@@ -26,4 +41,24 @@ export const admin_Sidebar = [
       },
     ],
   },
+  {
+    id: 4,
+    // route: "Dashboard",
+    headerTitle: "Employee",
+    title: "Employee",
+    Icon: "icon-globe-alt",
+    NestedElement: [
+      {
+        id: 1,
+        title: "Add Employee",
+        route: "employee/add",
+      },
+      {
+        id: 2,
+        title: "Employee List",
+        route: "employees",
+      },
+    ],
+  },
+  
 ];

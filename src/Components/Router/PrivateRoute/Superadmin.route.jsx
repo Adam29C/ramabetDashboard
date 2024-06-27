@@ -14,6 +14,9 @@ import PrivateRoute from "../PrivateRoute/index";
 import ErrorPage from "../../Pages/Auth/NotFound";
 import Add_Edit_User from "../../Pages/Superadmin/Users/Add_Edit_User";
 import SuperAdminProfile from "../../Pages/Superadmin/Profile/SuperAdminProfile";
+import EmployeeList from "../../Pages/Superadmin/Employee/EmployeeList";
+import Add_Edit_Employee from "../../Pages/Superadmin/Employee/Add_Edit_Employee";
+import System from "../../Pages/Superadmin/PenalInfo/System";
 
 // Mock authentication status
 const isAuthenticated = "test"
@@ -35,11 +38,23 @@ const adminRoutes = [
       {
         path: "user/add",
         element: <PrivateRoute element={Add_Edit_User} isAuthenticated={isAuthenticated} />,
+      },      {
+        path: "employees",
+        element: <PrivateRoute element={EmployeeList} isAuthenticated={isAuthenticated} />,
+      },
+      {
+        path: "employee/add",
+        element: <PrivateRoute element={Add_Edit_Employee} isAuthenticated={isAuthenticated} />,
       },
       {
         path: "user/profile",
         element: <PrivateRoute element={SuperAdminProfile} isAuthenticated={isAuthenticated} />,
       },
+      {
+        path: "system",
+        element: <PrivateRoute element={System} isAuthenticated={isAuthenticated} />,
+      },
+
     ],
   },
 ];

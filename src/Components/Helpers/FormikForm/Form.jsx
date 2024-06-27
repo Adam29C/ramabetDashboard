@@ -109,50 +109,54 @@ const ReusableForm = ({
                 </>
               ) : field.type === "checkbox" ? (
                 <>
-                  <h5 className="my-3">permission</h5>
-
-                  {field.options &&
-                    field.options.map((option, index) => (
-                      <>
-                        <div
-                          className={`col-lg-${field.col_size}`}
-                          key={option.id}
-                        >
-                          <div className="row d-flex">
-                            <div className={`col-lg-${field.col_size}`}>
-                              <div class="form-check custom-checkbox mb-2">
-                                <input
-                                  type={field.type}
-                                  className="form-check-input"
-                                  id={option.label}
-                                  {...formik.getFieldProps(option.name)}
-                                  defaultChecked={option.checked}
-                                />
-                                <label
-                                  className="form-check-label"
-                                  for={option.label}
-                                >
-                                  {option.label}
-                                </label>
-                              </div>
-                              {formik.errors[field.name] && (
-                                <div className="error-text">
-                                  {formik.errors[field.name]}
-                                </div>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                      </>
-                    ))}
+            <div className={`col-lg-${field.title_size}`}>
+            <h5 className="m">permission</h5>
+            <div className="row">
+{field.options &&
+  field.options.map((option, index) => (
+    <>
+      <div className={`col-lg-${field.col_size}`}
+        key={option.id}
+      >
+        <div className="row d-flex">
+          <div className={`col-lg-${field.col_size}`}>
+            <div class="form-check custom-checkbox mb-2">
+              <input
+                type={field.type}
+                className="form-check-input"
+                id={option.label}
+                {...formik.getFieldProps(option.name)}
+                defaultChecked={option.checked}
+              />
+              <label
+                className="form-check-label"
+                for={option.label}
+              >
+                {option.label}
+              </label>
+            </div>
+            {formik.errors[field.name] && (
+              <div className="error-text">
+                {formik.errors[field.name]}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </>
+  ))}
+      </div>
+            </div>
                 </>
               ) : field.type === "radio" ? (
                 <>
-                  <h5 className={`col-lg-${field.title_size}`}>permission</h5>
+            <div className={`col-lg-${field.title_size}`}>      <h5 >permission</h5>
+            <div className="row">
                   {field.options &&
                     field.options.map((option, index) => (
                       <>
-                        <div
+               
+                   <div
                           className={`col-lg-${field.col_size}`}
                           key={option.id}
                         >
@@ -182,7 +186,8 @@ const ReusableForm = ({
                           </div>
                         </div>
                       </>
-                    ))}
+                    ))}</div>
+                    </div>
                 </>
               ) : field.type === "password" ? (
                 <>
