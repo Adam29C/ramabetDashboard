@@ -8,10 +8,10 @@ import Toggle from "../../../Helpers/Toggle";
 const EmployeeList = () => {
   const [loading, setLoading] = useState(false);
   const [data ,setData]=useState([])
-
+const userId = localStorage.getItem("userId")
   const getList = async()=>{
-   let id = "667a8f8fc735da40250abafe"
-    const res = await EMPLOYEE_GET_LIST(id)
+  
+    const res = await EMPLOYEE_GET_LIST(userId)
   
     setData(res?.data?.details)
   }
