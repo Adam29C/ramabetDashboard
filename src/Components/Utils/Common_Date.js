@@ -5,7 +5,7 @@ import { format, formatDistanceToNow } from "date-fns";
 // ----------------------------------------------------------------------
 
 export const show = (cell) => {
-  return moment(cell).format("DD MMM hh:mm A");
+  return moment(cell).format("DD MMM YYYY hh:mm A");
 };
 
 

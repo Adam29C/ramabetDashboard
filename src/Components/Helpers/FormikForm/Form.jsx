@@ -99,7 +99,7 @@ const ReusableForm = ({
                           ))}
                         </select>
                         {formik.errors[field.name] && (
-                          <div className="error-text" style={{ color: "red" }}>
+                          <div className="error-text">
                             {formik.errors[field.name]}
                           </div>
                         )}

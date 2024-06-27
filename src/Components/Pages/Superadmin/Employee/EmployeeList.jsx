@@ -2,14 +2,18 @@ import React, { useEffect, useState } from "react";
 import Main_Containt from "../../../Layout/Main/Main_Containt";
 import Data_Table from "../../../Helpers/Datatable";
 import { employee_get_list } from "../../../Services/Services";
-
+import { Get_Year_Only, show } from "../../../Utils/Common_Date";
+import Form from "react-bootstrap/Form";
+import Toggle from "../../../Helpers/Toggle";
 const EmployeeList = () => {
   const [loading, setLoading] = useState(false);
+  const [data ,setData]=useState([])
 
   const getList = async()=>{
    let id = "667a8f8fc735da40250abafe"
     const res = await employee_get_list(id)
-    console.log(res,"check response on api")
+    console.log(res?.data?.details,"check response on api")
+    setData(res?.data?.details)
   }
 
   useEffect(()=>{
@@ -19,43 +23,65 @@ const EmployeeList = () => {
   const columns = [
     {
       name: "Employee Name",
-      selector: (row) => row.name,
+      selector: (row) => row.employeeName ,
     },
+
     {
       name: "Designation",
-      selector: (row) => row.name,
+      selector: (row) => row.designation,
     }, {
       name: "Block",
-      selector: (row) => row.name,
+      selector: (row) => (
+        <>
+        <Toggle check={row.isBlock}/>
+      
+        </>
+      )
     },
+    // {
+    //   name: "Status",
+    //   selector: (row) => (
+    //     <>
+    //       <Form.Check
+    //         type="switch"
+    //         id="custom-switch"
+    //         defaultChecked={row?.status}
+    //         onChange={(e) => handleStatusUpdate(e.target.checked, row?._id)}
+    //         className="custom-switch"
+    //       />
+    //     </>
+    //   ),
+    // },
     {
       name: "User Name",
-      selector: (row) => row.name,
+      selector: (row) => row.username,
     },
+
+    
     {
       name: "created At",
-      selector: (row) => row.name,
+      selector: (row) => Get_Year_Only(row.createdAt),
     },
 
   ];
 
-  const data = [
-    {
-      id: 1,
-      name: "ttt",
-      mobileNumber: "000000000000",
-    },
-    {
-      id: 2,
-      name: "tsssstt",
-      mobileNumber: "000000000000",
-    },
-    {
-      id: 3,
-      name: "tttttt",
-      mobileNumber: "000000000000",
-    },
-  ];
+  // const data = [
+  //   {
+  //     id: 1,
+  //     name: "ttt",
+  //     mobileNumber: "000000000000",
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "tsssstt",
+  //     mobileNumber: "000000000000",
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "tttttt",
+  //     mobileNumber: "000000000000",
+  //   },
+  // ];
 
   return (
     <div>
