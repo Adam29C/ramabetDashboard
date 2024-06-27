@@ -5,7 +5,7 @@ import PublicRoute from "../PublicRoute/index";
 import ErrorPage from "../../Pages/Auth/NotFound";
 
 // Mock authentication status
-const isAuthenticated = "test"
+const isAuthenticated = ""
 
 const publicRoutes = [
   {

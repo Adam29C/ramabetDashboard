@@ -9,7 +9,7 @@ export const admin_Sidebar = [
   },
   {
     id: 2,
-    route: "Dashboard",
+    // route: "Dashboard",
     headerTitle: "Users",
     title: "Users",
     Icon: "icon-globe-alt",

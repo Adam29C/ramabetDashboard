@@ -20,7 +20,7 @@ export const Mobile_regex = (mobile) => {
   return MobileRegex.test(mobile);
 };
 export const Password_Rejex = (mobile) => {
-  const password = /^.{8,15}$/;
+  const password = /^.{4,8}$/;
   return password.test(mobile);
 };
 

@@ -57,7 +57,7 @@ const ReusableForm = ({
   };
 
   return (
-    // <Content Page_title="HelpCenter">
+
     <form onSubmit={formik.handleSubmit}>
       <div
         className="row"
@@ -97,12 +97,12 @@ const ReusableForm = ({
                               {option.label}
                             </option>
                           ))}
-                        </select>{" "}
+                        </select>
                         {formik.errors[field.name] && (
                           <div className="error-text" style={{ color: "red" }}>
                             {formik.errors[field.name]}
                           </div>
-                        )}{" "}
+                        )}
                       </div>
                     </div>
                   </div>
@@ -471,6 +471,7 @@ const ReusableForm = ({
         </div>
       </div>
     </form>
+    
   );
 };
 
