@@ -14,6 +14,13 @@ import Toast from "../Helpers/Toast";
 import { getGenerateToken } from "../Redux/slice/CommonSlice";
 import { Link } from "react-router-dom";
 import *as valid_err from '../Utils/Common_Msg'
+import { Get_Year_Only } from "../Utils/Common_Date";
+import * as apiService from "../Services/Services";
+import Data_Table from "../Helpers/Datatable";
+import Toggle_Button from "../Helpers/Toggle";
+
+
+
 const PagesIndex = {
     useDispatch,
     useState,
@@ -32,7 +39,11 @@ const PagesIndex = {
     useEffect,
     Link,
     valid_err,
-    Password_Rejex
+    Password_Rejex,
+    Get_Year_Only,
+    apiService,
+    Data_Table,
+    Toggle_Button
 }
 
 export default PagesIndex

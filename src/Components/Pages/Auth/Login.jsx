@@ -1,3 +1,4 @@
+import { replace } from "formik";
 import PagesIndex from "../PagesIndex";
 
 const Users = () => {
@@ -14,7 +15,6 @@ const Users = () => {
 
   PagesIndex.useEffect(() => {
     generateToken();
- 
   }, []);
 
   const formik = PagesIndex.useFormik({
@@ -24,9 +24,8 @@ const Users = () => {
     },
 
     validate: (values) => {
-    
       const errors = {};
-      if (!values.username ) {
+      if (!values.username) {
         errors.username = PagesIndex.valid_err.USERNAME_ERROR;
       }
       if (!values.password) {
@@ -34,11 +33,10 @@ const Users = () => {
       } else if (!PagesIndex.Password_Rejex(values.password)) {
         errors.password = PagesIndex.valid_err.PASSWORD__LENGTH_ERROR;
       }
-      console.log("errors" ,errors);
+      console.log("errors", errors);
       return errors;
     },
     onSubmit: async (values) => {
-      
       try {
         const req = {
           username: values.username,
@@ -46,15 +44,21 @@ const Users = () => {
         };
 
         const res = await PagesIndex.LOGIN_API(req, getGenrateTokenState);
-      
+
         if (res?.status === 200) {
           PagesIndex.toast.success(res?.message);
-         localStorage.setItem("token", res?.data?.token);
-          localStorage.setItem("role",res?.data?.roles)
-          localStorage.setItem("userId",res?.data?.id)
-          setTimeout(() => {
-            navigate("/admin/dashboard");
-          }, 1000);
+          localStorage.setItem("token", res?.data?.token);
+          localStorage.setItem("role", res?.data?.roles);
+          localStorage.setItem("userId", res?.data?.id);
+
+          if (res.data.isBlock) {
+            navigate("/blocked", { replace: true });
+          } else {
+            setTimeout(() => {
+              navigate("/admin/dashboard");
+            }, 1000);
+          }
+
         } else {
           PagesIndex.toast.error(res.message);
         }
