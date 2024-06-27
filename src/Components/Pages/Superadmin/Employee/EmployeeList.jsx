@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Main_Containt from "../../../Layout/Main/Main_Containt";
 import Data_Table from "../../../Helpers/Datatable";
-import { employee_get_list } from "../../../Services/Services";
-import { Get_Year_Only, show } from "../../../Utils/Common_Date";
-import Form from "react-bootstrap/Form";
+import { EMPLOYEE_GET_LIST} from "../../../Services/Services";
+import { Get_Year_Only } from "../../../Utils/Common_Date";
+
 import Toggle from "../../../Helpers/Toggle";
 const EmployeeList = () => {
   const [loading, setLoading] = useState(false);
@@ -11,8 +11,8 @@ const EmployeeList = () => {
 
   const getList = async()=>{
    let id = "667a8f8fc735da40250abafe"
-    const res = await employee_get_list(id)
-    console.log(res?.data?.details,"check response on api")
+    const res = await EMPLOYEE_GET_LIST(id)
+  
     setData(res?.data?.details)
   }
 

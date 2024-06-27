@@ -1,5 +1,5 @@
 // src/components/PrivateRoute.jsx
-import React from "react";
+import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
 
 const PrivateRoute = ({ element: Component, isAuthenticated, ...rest }) => {

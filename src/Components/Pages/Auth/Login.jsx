@@ -1,63 +1,72 @@
-import React from "react";
-import Main_Containt from "../../Layout/Main/Auth_content";
-import Formikform from "../../Helpers/FormikForm/Form";
-import * as valid_err from "../../Utils/Common_Msg";
-import { useFormik } from "formik";
-import Logo from "../../Layout/Logo/Logo_png";
-import { Name_regex , Password_Rejex } from "../../Utils/Valid_Rejex";
-// import { USERNAME_ERROR } from "../../Utils/Common_Msg";
+import PagesIndex from "../PagesIndex";
 
 const Users = () => {
-  const formik = useFormik({
+  const dispatch = PagesIndex.useDispatch();
+  const navigate = PagesIndex.useNavigate();
+  const { getGenrateTokenState } = PagesIndex.useSelector(
+    (state) => state.CommonSlice
+  );
+
+  const generateToken = async () => {
+    const val = PagesIndex.Remove_Special_Character(PagesIndex.v4());
+    dispatch(PagesIndex.getGenerateToken(val));
+  };
+
+  PagesIndex.useEffect(() => {
+    generateToken();
+ 
+  }, []);
+
+  const formik = PagesIndex.useFormik({
     initialValues: {
       username: "",
       password: "",
     },
 
     validate: (values) => {
+    
       const errors = {};
-
       if (!values.username ) {
-        errors.username = valid_err.USERNAME_ERROR;
+        errors.username = PagesIndex.valid_err.USERNAME_ERROR;
       }
-
       if (!values.password) {
-        errors.password = valid_err.DOMAIN_ERROR;
-      } else if (!Password_Rejex(values.password)) {
-        errors.password = valid_err.PASSWORD__LENGTH_ERROR;
+        errors.password = PagesIndex.valid_err.PASSWORD_ERROR;
+      } else if (!PagesIndex.Password_Rejex(values.password)) {
+        errors.password = PagesIndex.valid_err.PASSWORD__LENGTH_ERROR;
       }
-
-
       console.log("errors" ,errors);
       return errors;
     },
     onSubmit: async (values) => {
-      const req = {
-        // username: values.panel_name,
-        // password: values.domain,
-      };
+      
+      try {
+        const req = {
+          username: values.username,
+          password: values.password,
+        };
 
-      // await dispatch(Add_Panel_data({ req: req, token: user_token }))
-      //   .unwrap()
-      //   .then((response) => {
-      //     if (response.status === 409) {
-      //       toast.error(response.data.msg);
-      //     } else if (response.status) {
-      //       toast.success(response.msg);
-
-      //       setTimeout(() => {
-      //         navigate("/super/alladmins");
-      //       }, 1000);
-      //     } else if (!response.status) {
-      //       toast.error(response.msg);
-      //     }
-      //   });
+        const res = await PagesIndex.LOGIN_API(req, getGenrateTokenState);
+      
+        if (res?.status === 200) {
+          PagesIndex.toast.success(res?.message);
+         localStorage.setItem("token", res?.data?.token);
+          localStorage.setItem("role",res?.data?.roles)
+          localStorage.setItem("userId",res?.data?.id)
+          setTimeout(() => {
+            navigate("/admin/dashboard");
+          }, 1000);
+        } else {
+          PagesIndex.toast.error(res.message);
+        }
+      } catch (error) {
+        PagesIndex.toast.error(error);
+      }
     },
   });
 
   const fields = [
     {
-      name: "name",
+      name: "username",
       label: "User Name",
       type: "text",
       label_size: 12,
@@ -74,14 +83,15 @@ const Users = () => {
 
   return (
     <>
-      <Main_Containt title="" col_size={"col-md-6"}>
-        <Logo />
-        <Formikform
+      <PagesIndex.Main_Containt title="" col_size={"col-md-6"}>
+        <PagesIndex.Logo />
+        <PagesIndex.Formikform
           fieldtype={fields.filter((field) => !field.showWhen)}
           formik={formik}
           btn_name="Add Panel"
         />
-      </Main_Containt>
+        <PagesIndex.Toast />
+      </PagesIndex.Main_Containt>
     </>
   );
 };
