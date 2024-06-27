@@ -26,4 +26,24 @@ export const admin_Sidebar = [
       },
     ],
   },
+  {
+    id: 4,
+    // route: "Dashboard",
+    headerTitle: "Employee",
+    title: "Employee",
+    Icon: "icon-globe-alt",
+    NestedElement: [
+      {
+        id: 1,
+        title: "Add Employee",
+        route: "employee/add",
+      },
+      {
+        id: 2,
+        title: "Employee List",
+        route: "employees",
+      },
+    ],
+  },
+  
 ];

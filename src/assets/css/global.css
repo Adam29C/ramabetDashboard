@@ -1,0 +1,83 @@
+.page-not-found { 
+    height:100vh;
+    width:100%;
+    border:1px solid black;
+    background-image: url("https://images.unsplash.com/photo-1446669052213-5dcff53f1f3f?dpr=1&auto=format&fit=crop&w=767&h=510&q=80&cs=tinysrgb&crop=");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position:center center;
+    background-attachment:fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+  /* svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -250px;
+    margin-left: -400px;
+  } */
+  .message-box {
+    /* border: 1px solid pink; */
+    height: 300px;
+    width: 500px;
+    /* position: absolute;
+    top: 50%;
+    left: 50%; */
+    /* margin-top: -100px;
+    margin-left: 50px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+    font-family: Roboto;
+    font-weight: 300;
+  }
+  .message-box h1 {
+    font-size: 80px;
+    line-height: 64px;
+    margin-bottom: 40px;
+    background:-webkit-linear-gradient(0deg, rgba(78,56,151,1) 0%, rgba(75,177,185,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .buttons-con .action-link-wrap {
+    margin: 40px 0px 0px 20px;
+  }
+  .buttons-con .action-link-wrap a {
+    background: #26125A;
+    padding: 12px 25px;
+    border-radius: 4px;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all 0.3s linear;
+    cursor: pointer;
+    text-decoration: none;
+    margin-right: 10px
+  }
+  .buttons-con .action-link-wrap a:hover {
+    background: #5A5C6C;
+    color: #fff;
+  }
+  
+.message-box p{
+    font-size: 20px;
+  /* color:#26125A; */
+
+  background: -webkit-linear-gradient(90deg, rgba(131,58,180,1) 74%, rgba(69,186,252,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+.superadmin-preview-img{
+    height: 150px;
+    width: 100%;
+    object-fit: fill;
+    background-position: center;
+
+
+}

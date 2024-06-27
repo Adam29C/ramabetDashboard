@@ -21014,6 +21014,7 @@ html[dir="rtl"]
 }
 
 [data-theme-version="dark"] .card {
+
   background: #27394f;
   box-shadow: none;
 }
@@ -21159,6 +21160,19 @@ html[dir="rtl"]
 
 [data-theme-version="dark"] .sorting-buttons [type="radio"] + label {
   color: #abafb3;
+}
+
+[data-theme-version="dark"] .form-control{
+background-color: #27394f;
+/* color: #efefef; */
+}
+
+[data-theme-version="dark"] input[type="checkbox"]:after {
+  background: #27394f;
+}
+
+[data-theme-version="dark"] .form-check-input {
+  background-color: #27394f;
 }
 
 [data-theme-version="dark"] .sorting-buttons .hover-card,

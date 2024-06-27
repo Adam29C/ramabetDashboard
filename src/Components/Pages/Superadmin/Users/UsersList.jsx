@@ -37,7 +37,7 @@ const UsersList = () => {
 
   return (
     <div>
-      <Main_Containt add_button={true} route="/admin/user/add">
+      <Main_Containt add_button={false} route="/admin/user/add">
         <Data_Table isLoading={loading} columns={columns} data={data} />
       </Main_Containt>
     </div>
