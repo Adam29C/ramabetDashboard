@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { COMMON_GENERATE_TOKEN_API } from "../../Services/CommonServices";
-import dataservice from "../../Config/DataService";
+
 
 
 export const getGenerateToken = createAsyncThunk(
