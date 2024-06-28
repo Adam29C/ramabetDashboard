@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import Loader from "../Loader";
 // import Loader from "./Loader";
 
 const ReusableForm = ({
@@ -458,7 +459,7 @@ const ReusableForm = ({
             </>
           ))}
 
-          <div className="form-group mb-0">
+          <div className="form-group mb-0 button-main">
             <button
               style={{ background: "#4e3897" }}
               className={`btn btn-primary mt-2 ${button_Size} ${
@@ -469,6 +470,7 @@ const ReusableForm = ({
                 disabledSubmit ? disabledSubmit : isLoading ? isLoading : ""
               }
             >
+              {/* <Loader/> */}
               {btn_name}
             </button>
           </div>

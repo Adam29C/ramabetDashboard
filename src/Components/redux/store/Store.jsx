@@ -1,7 +1,8 @@
 import React from 'react'
 import { configureStore } from "@reduxjs/toolkit";
+import CommonSlice from '../slice/CommonSlice';
 
-import CommonSlice from "../slice/CommonSlice";
+
 
 
 

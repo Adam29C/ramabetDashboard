@@ -1,8 +1,10 @@
+import Loader from "../../Helpers/Loader";
 import PagesIndex from "../PagesIndex";
 
 const Users = () => {
   const dispatch = PagesIndex.useDispatch();
   const navigate = PagesIndex.useNavigate();
+  const [loding,setLoading] = PagesIndex.useState(false)
   const { getGenrateTokenState } = PagesIndex.useSelector(
     (state) => state.CommonSlice
   );
@@ -38,7 +40,7 @@ const Users = () => {
       return errors;
     },
     onSubmit: async (values) => {
-      
+      setLoading(true)
       try {
         const req = {
           username: values.username,
@@ -60,6 +62,8 @@ const Users = () => {
         }
       } catch (error) {
         PagesIndex.toast.error(error);
+      } finally{
+        setLoading(false)
       }
     },
   });
@@ -88,7 +92,8 @@ const Users = () => {
         <PagesIndex.Formikform
           fieldtype={fields.filter((field) => !field.showWhen)}
           formik={formik}
-          btn_name="Add Panel"
+          btn_name={loding ? <Loader text="Login"/> : "Login"}
+          button_Size={"w-100"}
         />
         <PagesIndex.Toast />
       </PagesIndex.Main_Containt>
