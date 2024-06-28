@@ -6,7 +6,7 @@ const Dashboard_Component = () => {
   return (
     <div>
 
-   <div className="content-body" style={{ minHeight: 798 }}>
+   <div className="content-body" >
   <div className="container-fluid mt-3">
     <div className="row">
       <div className="col-lg-3 col-sm-6">

@@ -251,3 +251,22 @@ input:checked + .slider:before {
   transform: translateX(17px);
 }
 
+#dynamic-background{
+  /* border: 1px solid red; */
+  height: auto;
+  /* background-image: url("../../../public/assets/images/0bc739968eeb709d8eebbdb132141cb8.jpeg"); */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  /* padding: 5px; */
+}
+
+.custom-card{
+  /* border: 1px solid black; */
+  backdrop-filter: blur(0px);
+  background-color: #ffffff73;
+}
+
+.custom-label{
+  color:var(--black);
+}

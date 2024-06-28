@@ -1,4 +1,3 @@
-import Loader from "../../Helpers/Loader";
 import PagesIndex from "../PagesIndex";
 
 const Users = () => {
@@ -11,12 +10,20 @@ const Users = () => {
 
   const generateToken = async () => {
     const val = PagesIndex.Remove_Special_Character(PagesIndex.v4());
-    dispatch(PagesIndex.getGenerateToken(val));
-  };
+    const res = await dispatch(PagesIndex.getGenerateToken(val)).unwrap();
+    const res1 = await PagesIndex.LIST_SYSTEM_INFO_API(res?.data?.token)
+    let image = res1?.data?.details?.[0]?.backgroundImage
+    let logo = res1?.data?.details?.[0]?.logo
+    let favIcon = res1?.data?.details?.[0]?.favIcon
+  
+   $("#dynamic-background").css("background-image", `url(${image && image})`);
+   $('#company-logo').attr('src', logo);
+   $('#favicon').attr('href', favIcon);
 
-  PagesIndex.useEffect(() => {
-    generateToken();
+  };
  
+ PagesIndex.useEffect(() => {
+     generateToken();
   }, []);
 
   const formik = PagesIndex.useFormik({
@@ -56,7 +63,7 @@ const Users = () => {
           localStorage.setItem("userId",res?.data?.id)
           setTimeout(() => {
             navigate("/admin/dashboard");
-          }, 1000);
+          }, 2000);
         } else {
           PagesIndex.toast.error(res.message);
         }
@@ -87,16 +94,17 @@ const Users = () => {
 
   return (
     <>
-      <PagesIndex.Main_Containt title="" col_size={"col-md-6"}>
+      <PagesIndex.Auth_Containt title="" col_size={"col-md-6"}>
         <PagesIndex.Logo />
         <PagesIndex.Formikform
           fieldtype={fields.filter((field) => !field.showWhen)}
           formik={formik}
-          btn_name={loding ? <Loader text="Login"/> : "Login"}
+          btn_name={loding ? <PagesIndex.Loader text="Login"/> : "Login"}
           button_Size={"w-100"}
         />
-        <PagesIndex.Toast />
-      </PagesIndex.Main_Containt>
+      
+      </PagesIndex.Auth_Containt>
+      <PagesIndex.Toast />
     </>
   );
 };

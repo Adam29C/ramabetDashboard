@@ -1,22 +1,75 @@
 import React from "react";
-import Main_Containt from "../../../Layout/Main/Main_Containt";
-import Formikform from "../../../Helpers/FormikForm/Form";
-// import * as valid_err from "../../../Utils/Common_Messages";
-import { useFormik } from "formik";
+import PagesIndex from "../../PagesIndex";
+
 const System = () => {
-  const formik = useFormik({
+  const userId = localStorage.getItem("userId");
+  const navigate = PagesIndex.useNavigate();
+  const [data, setData] = PagesIndex.useState(null);
+
+
+  const isValidImage = (value) => {
+    return PagesIndex.Image_Regexp(value);
+  };
+
+  const getSystemListInfo = async () => {
+    try {
+      const res = await PagesIndex.LIST_SYSTEM_INFO_API();
+      setData(res?.data?.details[0]);
+     
+    } catch (error) {}
+  };
+
+
+  PagesIndex.useEffect(() => {
+    getSystemListInfo();
+  }, []);
+
+  const formik = PagesIndex.useFormik({
     initialValues: {
-      title: "",
-      logo: "",
-      fav_icon: "",
-      login_background: "",
+      title: data?.title || "",
+      logo: data?.logo || "",
+      fav_icon: data?.favIcon || "",
+      login_background: data?.backgroundImage || "",
     },
+    enableReinitialize: true, 
     validate: (values) => {
       const errors = {};
+      if (!values.title) {
+        errors.title = PagesIndex.valid_err.TITLE_ERROR;
+      }
+      if (!values.fav_icon) {
+        errors.fav_icon = PagesIndex.valid_err.EMPTY_FAV_ICON;
+      } else if (!isValidImage(values.fav_icon)) {
+        errors.fav_icon = PagesIndex.valid_err.UPLOAD_IMAGE_VALID;
+      }
+      if (!values.logo) {
+        errors.logo = PagesIndex.valid_err.EMPTY_LOGO;
+      } else if (!isValidImage(values.logo)) {
+        errors.logo = PagesIndex.valid_err.UPLOAD_IMAGE_VALID;
+      }
       return errors;
     },
     onSubmit: async (values) => {
-     
+      try {
+        let formData = new FormData();
+        formData.append("adminId", userId);
+        formData.append("title", values.title);
+        formData.append("logo", values.logo);
+        formData.append("favIcon", values.fav_icon);
+        formData.append("backgroundImage", values.login_background);
+        formData.append("systemInfoId", data?._id);
+
+        const res =  await PagesIndex.UPDATE_SYSTEM_INFO_API(formData)
+          if (res?.status === 200) {
+          PagesIndex.toast.success(res?.message);
+          setTimeout(() => {
+            navigate("/admin/dashboard");
+          }, 1000);
+        }
+
+      } catch (error) {
+        PagesIndex.toast.error(error || error.message)
+      }
     },
   });
 
@@ -50,12 +103,15 @@ const System = () => {
       col_size: 6,
     },
   ];
+
+ 
+
   return (
-    <Main_Containt title="Add Users" col_size={12}>
-      <Formikform
+    <PagesIndex.Main_Containt title="Add Users" col_size={12}>
+      <PagesIndex.Formikform
         fieldtype={fields.filter((field) => !field.showWhen)}
         formik={formik}
-        btn_name="Add Panel"
+        btn_name="Add Info"
         additional_field={
           <>
             {formik.errors.title && (
@@ -64,7 +120,8 @@ const System = () => {
           </>
         }
       />
-    </Main_Containt>
+      <PagesIndex.Toast />
+    </PagesIndex.Main_Containt>
   );
 };
 
