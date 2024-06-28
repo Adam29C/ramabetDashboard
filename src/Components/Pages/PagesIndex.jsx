@@ -20,7 +20,7 @@ import { Get_Year_Only } from "../Utils/Common_Date";
 import * as apiService from "../Services/Services";
 import Data_Table from "../Helpers/Datatable";
 import Toggle_Button from "../Helpers/Toggle";
-import { getGenerateToken } from "../redux/slice/CommonSlice";
+import { getGenerateToken } from "../Redux/slice/CommonSlice";
 // import { Image_Regexp } from "../Utils/Valid_Rejex";
 import * as validRejex from "../Utils/Valid_Rejex";
 
