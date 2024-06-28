@@ -6,13 +6,35 @@ import PagesIndex from "../../Pages/PagesIndex";
 const Header = () => {
   const { toggleSidebar } = useMyContext();
 const navigate = PagesIndex.useNavigate()
+const dispatch = PagesIndex.useDispatch()
+
+const generateToken = async () => {
+  const val = PagesIndex.Remove_Special_Character(PagesIndex.v4());
+  const res = await dispatch(PagesIndex.getGenerateToken(val)).unwrap();
+  const res1 = await PagesIndex.LIST_SYSTEM_INFO_API(res?.data?.token)
+  let image = res1?.data?.details?.[0]?.backgroundImage
+  let logo = res1?.data?.details?.[0]?.logo
+  let favIcon = res1?.data?.details?.[0]?.favIcon
+
+ $("#dynamic-background").css("background-image", `url(${image && image})`);
+ $('#company-logo').attr('src', logo);
+ $('#favicon').attr('href', favIcon);
+
+};
+
+PagesIndex.useEffect(() => {
+   generateToken();
+}, []);
 
   const handleLogout = ()=>{
     localStorage.removeItem("token")
     localStorage.removeItem("role")
     localStorage.removeItem("userId")
-
+    PagesIndex.toast.success("Logged Out Successfully")
+   setTimeout(() => {
     navigate("/")
+    
+   }, 2000);
   }
   return (
     <div className="header">

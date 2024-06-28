@@ -88,6 +88,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 :root {
+  --black:#000;
   --blue: #324cdd;
   --indigo: #6610f2;
   --purple: #6f42c1;

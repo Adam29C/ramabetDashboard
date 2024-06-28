@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import Loader from "../Loader";
 // import Loader from "./Loader";
 
 const ReusableForm = ({
@@ -74,7 +75,7 @@ const ReusableForm = ({
                   <div className={`col-lg-${field.col_size}`}>
                     <div className="mb-1 row">
                       <label
-                        className={`col-lg-${field.col_size}`}
+                        className={`custom-label col-lg-${field.col_size}`}
                         htmlFor={field.name}
                       >
                         {field.label}
@@ -195,7 +196,7 @@ const ReusableForm = ({
                   <div className={`col-lg-${field.col_size}`}>
                     <div className="mb-3 row">
                       <label
-                        className={`col-lg-${field.label_size} col-form-label `}
+                        className={`custom-label col-lg-${field.label_size} col-form-label `}
                         htmlFor={field.name}
                       >
                         {field.label}
@@ -217,7 +218,7 @@ const ReusableForm = ({
                         />
                         <i
                           class={`fa-solid ${
-                            passwordVisible[field.name]
+                            !passwordVisible[field.name]
                               ? "fa-eye-slash"
                               : "fa-eye"
                           }`}
@@ -249,7 +250,7 @@ const ReusableForm = ({
                   <div className={`col-lg-${field.col_size}`}>
                     <div className=" row flex-column">
                       <label
-                        className={`col-lg-${field.label_size}`}
+                        className={`custom-label col-lg-${field.label_size}`}
                         htmlFor={field.name}
                       >
                         {field.label}
@@ -332,7 +333,7 @@ const ReusableForm = ({
                       >
                         <div class="mb-3">
                           <label
-                            className={`col-lg-${field.label_size}`}
+                            className={`custom-label col-lg-${field.label_size}`}
                             for={field.name}
                           >
                             {field.label}
@@ -364,7 +365,7 @@ const ReusableForm = ({
                       >
                         <div className="mb-3">
                           <label
-                            className={`col-form-label`}
+                            className={`custom-label col-form-label`}
                             htmlFor={field.name}
                           >
                             {field.label}
@@ -408,7 +409,7 @@ const ReusableForm = ({
                   <div className={`col-lg-${field.col_size}`}>
                     <div className="mb-3 row flex-column">
                       <label
-                        className={`col-lg-${field.label_size}`}
+                        className={`custom-label col-lg-${field.label_size}`}
                         htmlFor={field.name}
                       >
                         {field.label}
@@ -421,6 +422,7 @@ const ReusableForm = ({
                           className="form-control"
                           style={{ background: field.disable ? "#eeeeee" : "" }}
                           id={field.name}
+                       
                           placeholder={`Enter ${field.label}`}
                           {...formik.getFieldProps(field.name)}
                           // required=""
@@ -458,7 +460,7 @@ const ReusableForm = ({
             </>
           ))}
 
-          <div className="form-group mb-0">
+          <div className="form-group mb-0 button-main">
             <button
               style={{ background: "#4e3897" }}
               className={`btn btn-primary mt-2 ${button_Size} ${
@@ -469,6 +471,7 @@ const ReusableForm = ({
                 disabledSubmit ? disabledSubmit : isLoading ? isLoading : ""
               }
             >
+              {/* <Loader/> */}
               {btn_name}
             </button>
           </div>

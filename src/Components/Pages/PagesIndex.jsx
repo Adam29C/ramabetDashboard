@@ -8,18 +8,23 @@ import { Remove_Special_Character,Password_Rejex } from "../Utils/Valid_Rejex";
 import { LOGIN_API } from "../Services/AuthServices";
 import Logo from "../Layout/Logo/Logo_png";
 import { useFormik } from "formik";
-import Main_Containt from "../Layout/Main/Auth_content";
+import Auth_Containt from "../Layout/Main/Auth_content";
+import Main_Containt from "../Layout/Main/Main_Containt";
 import Formikform from "../Helpers/FormikForm/Form";
 import Toast from "../Helpers/Toast";
-import { getGenerateToken } from "../Redux/slice/CommonSlice";
+// import { getGenerateToken } from "../Redux/slice/CommonSlice";
 import { Link } from "react-router-dom";
 import *as valid_err from '../Utils/Common_Msg'
+
 import { Get_Year_Only } from "../Utils/Common_Date";
 import * as apiService from "../Services/Services";
 import Data_Table from "../Helpers/Datatable";
 import Toggle_Button from "../Helpers/Toggle";
+import { getGenerateToken } from "../redux/slice/CommonSlice";
+// import { Image_Regexp } from "../Utils/Valid_Rejex";
+import * as validRejex from "../Utils/Valid_Rejex";
 
-
+import Loader from "../Helpers/Loader";
 
 const PagesIndex = {
     useDispatch,
@@ -43,7 +48,10 @@ const PagesIndex = {
     Get_Year_Only,
     apiService,
     Data_Table,
-    Toggle_Button
+    Toggle_Button,
+    validRejex,
+    Auth_Containt,
+    Loader,
 }
 
 export default PagesIndex

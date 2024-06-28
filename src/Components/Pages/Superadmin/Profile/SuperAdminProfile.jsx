@@ -2,7 +2,7 @@ import React from 'react'
 
 const SuperAdminProfile = () => {
   return (
-    <div className="content-body" style={{ minHeight: 780 }}>
+    <div className="content-body" >
     <div className="row page-titles mx-0">
       <div className="col p-md-0">
         <ol className="breadcrumb">
