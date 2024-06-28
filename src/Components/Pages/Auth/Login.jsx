@@ -52,7 +52,7 @@ const Users = () => {
           localStorage.setItem("userId", res?.data?.id);
 
           if (res.data.isBlock) {
-            navigate("/blocked", { replace: true });
+            navigate("/admin/blocked", { replace: true });
           } else {
             setTimeout(() => {
               navigate("/admin/dashboard");
