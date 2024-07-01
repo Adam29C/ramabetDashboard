@@ -18,6 +18,7 @@ import *as valid_err from '../Utils/Common_Msg'
 
 import { Get_Year_Only } from "../Utils/Common_Date";
 import * as apiService from "../Services/Services";
+import * as apiCommonService from "../Services/CommonServices";
 import Data_Table from "../Helpers/Datatable";
 import Toggle_Button from "../Helpers/Toggle";
 import { getGenerateToken } from "../Redux/slice/CommonSlice";
@@ -52,6 +53,7 @@ const PagesIndex = {
     validRejex,
     Auth_Containt,
     Loader,
+    apiCommonService
 }
 
 export default PagesIndex

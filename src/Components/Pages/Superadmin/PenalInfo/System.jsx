@@ -13,7 +13,7 @@ const System = () => {
 
   const getSystemListInfo = async () => {
     try {
-      const res = await PagesIndex.apiService.LIST_SYSTEM_INFO_API();
+      const res = await PagesIndex.apiCommonService.LIST_SYSTEM_INFO_API();
       setData(res?.data?.details[0]);
      
     } catch (error) {}
@@ -59,7 +59,7 @@ const System = () => {
         formData.append("backgroundImage", values.login_background);
         formData.append("systemInfoId", data?._id);
 
-        const res =  await PagesIndex.apiService.UPDATE_SYSTEM_INFO_API(formData)
+        const res =  await PagesIndex.apiCommonService.UPDATE_SYSTEM_INFO_API(formData)
           if (res?.status === 200) {
           PagesIndex.toast.success(res?.message);
           setTimeout(() => {

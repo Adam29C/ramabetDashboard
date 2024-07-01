@@ -10,9 +10,11 @@ const Users = () => {
   );
 
   const generateToken = async () => {
-    const val = PagesIndex.Remove_Special_Character(PagesIndex.v4());
+    const val = PagesIndex.validRejex.Remove_Special_Character(PagesIndex.v4());
     const res = await dispatch(PagesIndex.getGenerateToken(val)).unwrap();
-    const res1 = await PagesIndex.LIST_SYSTEM_INFO_API(res?.data?.token)
+
+    const res1 = await PagesIndex.apiCommonService.LIST_SYSTEM_INFO_API(res?.data?.token)
+    console.log("res" ,res1);
     let image = res1?.data?.details?.[0]?.backgroundImage
     let logo = res1?.data?.details?.[0]?.logo
     let favIcon = res1?.data?.details?.[0]?.favIcon
@@ -47,8 +49,8 @@ const Users = () => {
       console.log("errors", errors);
       return errors;
     },
-    onSubmit: async (values) => {``
-      
+    onSubmit: async (values) => {
+      setLoading(true)
       try {
         const req = {
           username: values.username,
