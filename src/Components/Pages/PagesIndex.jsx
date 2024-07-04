@@ -12,10 +12,10 @@ import Auth_Containt from "../Layout/Main/Auth_content";
 import Main_Containt from "../Layout/Main/Main_Containt";
 import Formikform from "../Helpers/FormikForm/Form";
 import Toast from "../Helpers/Toast";
-// import { getGenerateToken } from "../Redux/slice/CommonSlice";
+import { getGenerateToken } from "../Redux/slice/CommonSlice";
 import { Link } from "react-router-dom";
 import *as valid_err from '../Utils/Common_Msg'
-import { getGenerateToken } from "../redux/slice/CommonSlice";
+// import { getGenerateToken } from "../redux/slice/CommonSlice";
 import { ADD_SYSTEM_INFO_API, LIST_SYSTEM_INFO_API, UPDATE_SYSTEM_INFO_API } from "../Services/CommonServices";
 import { Image_Regexp } from "../Utils/Valid_Rejex";
 import Loader from "../Helpers/Loader";
