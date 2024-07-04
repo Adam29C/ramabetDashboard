@@ -1,4 +1,3 @@
-import { replace } from "formik";
 import PagesIndex from "../PagesIndex";
 
 const Users = () => {
@@ -10,11 +9,9 @@ const Users = () => {
   );
 
   const generateToken = async () => {
-    const val = PagesIndex.validRejex.Remove_Special_Character(PagesIndex.v4());
+    const val = PagesIndex.Remove_Special_Character(PagesIndex.v4());
     const res = await dispatch(PagesIndex.getGenerateToken(val)).unwrap();
-
-    const res1 = await PagesIndex.apiCommonService.LIST_SYSTEM_INFO_API(res?.data?.token)
-    console.log("res" ,res1);
+    const res1 = await PagesIndex.LIST_SYSTEM_INFO_API(res?.data?.token)
     let image = res1?.data?.details?.[0]?.backgroundImage
     let logo = res1?.data?.details?.[0]?.logo
     let favIcon = res1?.data?.details?.[0]?.favIcon
@@ -24,10 +21,9 @@ const Users = () => {
    $('#favicon').attr('href', favIcon);
 
   };
-
-  PagesIndex.useEffect(() => {
-    generateToken();
  
+ PagesIndex.useEffect(() => {
+     generateToken();
   }, []);
 
   const formik = PagesIndex.useFormik({
@@ -37,8 +33,9 @@ const Users = () => {
     },
 
     validate: (values) => {
+    
       const errors = {};
-      if (!values.username) {
+      if (!values.username ) {
         errors.username = PagesIndex.valid_err.USERNAME_ERROR;
       }
       if (!values.password) {
@@ -46,7 +43,7 @@ const Users = () => {
       } else if (!PagesIndex.Password_Rejex(values.password)) {
         errors.password = PagesIndex.valid_err.PASSWORD__LENGTH_ERROR;
       }
-      console.log("errors", errors);
+      console.log("errors" ,errors);
       return errors;
     },
     onSubmit: async (values) => {
@@ -58,7 +55,7 @@ const Users = () => {
         };
 
         const res = await PagesIndex.LOGIN_API(req, getGenrateTokenState);
-
+      
         if (res?.status === 200) {
           PagesIndex.toast.success(res?.message);
          localStorage.setItem("token", res?.data?.token);
@@ -66,7 +63,7 @@ const Users = () => {
           localStorage.setItem("userId",res?.data?.id)
           setTimeout(() => {
             navigate("/admin/dashboard");
-          }, 1000);
+          }, 2000);
         } else {
           PagesIndex.toast.error(res.message);
         }

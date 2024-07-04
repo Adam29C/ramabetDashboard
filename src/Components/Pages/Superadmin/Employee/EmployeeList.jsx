@@ -1,40 +1,42 @@
+import React, { useEffect, useState } from "react";
 import Main_Containt from "../../../Layout/Main/Main_Containt";
-import PagesIndex from "../../PagesIndex";
+import Data_Table from "../../../Helpers/Datatable";
+import { EMPLOYEE_GET_LIST} from "../../../Services/Services";
+import { Get_Year_Only } from "../../../Utils/Common_Date";
 
+import Toggle from "../../../Helpers/Toggle";
 const EmployeeList = () => {
-  const [loading, setLoading] = PagesIndex.useState(false);
-  const [data, setData] = PagesIndex.useState([]);
+  const [loading, setLoading] = useState(false);
+  const [data ,setData]=useState([])
+const userId = localStorage.getItem("userId")
+  const getList = async()=>{
+  
+    const res = await EMPLOYEE_GET_LIST(userId)
+  
+    setData(res?.data?.details)
+  }
 
-  const userId = localStorage.getItem("userId");
-
-  // ---- GET EMPLOYEE LIST
-  const getList = async () => {
-    const res = await PagesIndex.apiService.EMPLOYEE_GET_LIST(userId);
-
-    setData(res?.data?.details);
-  };
-
-  PagesIndex.useEffect(() => {
-    getList();
-  }, []);
+  useEffect(()=>{
+    getList()
+  },[])
 
   const columns = [
     {
       name: "Employee Name",
-      selector: (row) => row.employeeName,
+      selector: (row) => row.employeeName ,
     },
 
     {
       name: "Designation",
       selector: (row) => row.designation,
-    },
-    {
+    }, {
       name: "Block",
       selector: (row) => (
         <>
-          <PagesIndex.Toggle_Button check={row.isBlock} />
+        <Toggle check={row.isBlock}/>
+      
         </>
-      ),
+      )
     },
     // {
     //   name: "Status",
@@ -55,20 +57,36 @@ const EmployeeList = () => {
       selector: (row) => row.username,
     },
 
+    
     {
       name: "created At",
-      selector: (row) => PagesIndex.Get_Year_Only(row.createdAt),
+      selector: (row) => Get_Year_Only(row.createdAt),
     },
+
   ];
+
+  // const data = [
+  //   {
+  //     id: 1,
+  //     name: "ttt",
+  //     mobileNumber: "000000000000",
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "tsssstt",
+  //     mobileNumber: "000000000000",
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "tttttt",
+  //     mobileNumber: "000000000000",
+  //   },
+  // ];
 
   return (
     <div>
       <Main_Containt add_button={false} route="/admin/employee/add">
-        <PagesIndex.Data_Table
-          isLoading={loading}
-          columns={columns}
-          data={data}
-        />
+        <Data_Table isLoading={loading} columns={columns} data={data} />
       </Main_Containt>
     </div>
   );

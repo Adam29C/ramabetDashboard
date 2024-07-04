@@ -15,18 +15,10 @@ import Toast from "../Helpers/Toast";
 // import { getGenerateToken } from "../Redux/slice/CommonSlice";
 import { Link } from "react-router-dom";
 import *as valid_err from '../Utils/Common_Msg'
-
-import { Get_Year_Only } from "../Utils/Common_Date";
-import * as apiService from "../Services/Services";
-import * as apiCommonService from "../Services/CommonServices";
-import Data_Table from "../Helpers/Datatable";
-import Toggle_Button from "../Helpers/Toggle";
-import { getGenerateToken } from "../Redux/slice/CommonSlice";
-// import { Image_Regexp } from "../Utils/Valid_Rejex";
-import * as validRejex from "../Utils/Valid_Rejex";
-
+import { getGenerateToken } from "../redux/slice/CommonSlice";
+import { ADD_SYSTEM_INFO_API, LIST_SYSTEM_INFO_API, UPDATE_SYSTEM_INFO_API } from "../Services/CommonServices";
+import { Image_Regexp } from "../Utils/Valid_Rejex";
 import Loader from "../Helpers/Loader";
-
 const PagesIndex = {
     useDispatch,
     useState,
@@ -46,14 +38,13 @@ const PagesIndex = {
     Link,
     valid_err,
     Password_Rejex,
-    Get_Year_Only,
-    apiService,
-    Data_Table,
-    Toggle_Button,
-    validRejex,
+    ADD_SYSTEM_INFO_API,
+    Image_Regexp,
     Auth_Containt,
+    LIST_SYSTEM_INFO_API,
     Loader,
-    apiCommonService
+    UPDATE_SYSTEM_INFO_API
+ 
 }
 
 export default PagesIndex
