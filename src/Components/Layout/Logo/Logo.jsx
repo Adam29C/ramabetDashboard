@@ -1,18 +1,29 @@
 import React from "react";
 
+
 const Logo = () => {
+
+
   return (
   <div className="nav-header">
         <div className="brand-logo">
           <a href="index.html">
             <b className="logo-abbr">
-              <img src="/assets/images/logo.png" alt="ddd" />
+              <span id="sidebar-logo-short"></span>
+              {/* <img 
+               id="sidebar-logo-short"
+              src=""
+               alt="ddd" /> */}
             </b>
-            <span className="logo-compact">
-              <img src="/assets/images/logo-compact.png" alt="dd" />
-            </span>
+            {/* <span  className="logo-compact"> */}
+            <span id="sidebar-logo-short"></span>
+            {/* </span> */}
             <span className="brand-title">
-              <img src="/assets/images/logo-text.png" alt="ddwww" />
+              <img 
+              className="sidebar-logo"
+              id="sidebar-logo"
+              src=""
+              alt="logo" />
             </span>
           </a>
         </div>

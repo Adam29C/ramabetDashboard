@@ -52,3 +52,14 @@ export const Remove_Special_Character = (values)=>{
   const value = values.replace(/[^a-zA-Z0-9]/g, "")
   return value
 }
+
+
+
+export const Remove_Space_Character = (values)=>{
+
+let modifiedString = values.replace(/\s+/g, '');
+let resultArray = modifiedString.split(''); 
+
+  return resultArray[0]
+}
+

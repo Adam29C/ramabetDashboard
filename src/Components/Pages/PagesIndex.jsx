@@ -15,10 +15,14 @@ import Toast from "../Helpers/Toast";
 import { getGenerateToken } from "../Redux/slice/CommonSlice";
 import { Link } from "react-router-dom";
 import *as valid_err from '../Utils/Common_Msg'
+import *as admin_services from "../Services/SuperAdminServices"
 // import { getGenerateToken } from "../redux/slice/CommonSlice";
 import { ADD_SYSTEM_INFO_API, LIST_SYSTEM_INFO_API, UPDATE_SYSTEM_INFO_API } from "../Services/CommonServices";
 import { Image_Regexp } from "../Utils/Valid_Rejex";
 import Loader from "../Helpers/Loader";
+import SuperAdminChangePassword from "./Superadmin/Profile/SuperAdminChangePassword";
+import profileLogo from "../../../public/assets/images/avatar/12b69c03188762a06008e9d7151832d4.png"
+
 const PagesIndex = {
     useDispatch,
     useState,
@@ -43,7 +47,10 @@ const PagesIndex = {
     Auth_Containt,
     LIST_SYSTEM_INFO_API,
     Loader,
-    UPDATE_SYSTEM_INFO_API
+    UPDATE_SYSTEM_INFO_API,
+    admin_services,
+    SuperAdminChangePassword,
+    profileLogo
  
 }
 

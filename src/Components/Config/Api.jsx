@@ -4,7 +4,9 @@ const Api = {
     LOGIN:"admin/adminLogin",
     ADD_SYSTEM_INFO:"admin/addSystemInfo",
     LIST_SYSTEM_INFO:"common/systemInforList",
-    UPDATE_SYSTEM_INFO:"admin/updateSystemInfo"
+    UPDATE_SYSTEM_INFO:"admin/updateSystemInfo",
+    ADMIN_PROFILE_GET:"admin/adminProfile",
+    ADMIN_CHANGE_PASSWORD:"admin/changePassword"
 }
 
 export {Api}

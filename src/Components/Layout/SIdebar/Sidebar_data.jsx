@@ -61,5 +61,62 @@ export const admin_Sidebar = [
       },
     ],
   },
+  {
+    id: 5,
+headerTitle: "Games",
+    title: "Available Games",
+    Icon: "fa-solid fa-gamepad",
+    NestedElement: [
+      {
+        id: 1,
+        title: "Game1",
+        route: "#",
+      },
+      {
+        id: 2,
+        title: "Game2",
+        route: "#",
+      },
+    ],
+    
+  },
+  {
+    id: 6,
+
+    title: "Starline",
+    Icon: "fa-regular fa-star",
+    NestedElement: [
+      {
+        id: 1,
+        title: "Game1",
+        route: "#",
+      },
+      {
+        id: 2,
+        title: "Game2",
+        route: "#",
+      },
+    ],
+    
+  },
+  {
+    id: 7,
+
+    title: "Jackpot",
+    Icon: "fa-regular fa-heart",
+    NestedElement: [
+      {
+        id: 1,
+        title: "Game1",
+        route: "#",
+      },
+      {
+        id: 2,
+        title: "Game2",
+        route: "#",
+      },
+    ],
+    
+  },
 
 ];

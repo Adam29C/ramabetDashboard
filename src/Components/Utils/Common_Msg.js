@@ -1,8 +1,11 @@
 export const EMPTY_EMAIL_ERROR = "Please Enter Email ";
 export const INVALID_EMAIL_ERROR = "please Enter A Valid Email ";
 export const PASSWORD_ERROR = "Please Enter Password ";
+export const CONFIRM_ERROR = "Please Enter Confirm Password ";
 export const PASSWORD__LENGTH_ERROR =
   "Password Length Should Be  Min 4 and Max 8 Charctor ";
+  export const CONFIRM_AND_NEW_PASSWORD_ERROR =  "New Password And Confirm Password Are Not Matched";
+
 export const USERNAME_ERROR = "Please Enter Username ";
 export const FULLNAME_ERROR = "Please Enter FullName ";
 export const INVALID_ERROR = "Number Not Allow ";

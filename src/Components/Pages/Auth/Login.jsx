@@ -20,6 +20,7 @@ const Users = () => {
    $('#company-logo').attr('src', logo);
    $('#favicon').attr('href', favIcon);
 
+
   };
  
  PagesIndex.useEffect(() => {

@@ -3,6 +3,7 @@ import { useMyContext } from "../../Hooks/Context/CreateSidebarContext";
 import ToggleDark from "./ToggleDark";
 
 import PagesIndex from "../../Pages/PagesIndex";
+import { Remove_Space_Character } from "../../Utils/Valid_Rejex";
 const Header = () => {
   const { toggleSidebar } = useMyContext();
 const navigate = PagesIndex.useNavigate()
@@ -15,10 +16,13 @@ const generateToken = async () => {
   let image = res1?.data?.details?.[0]?.backgroundImage
   let logo = res1?.data?.details?.[0]?.logo
   let favIcon = res1?.data?.details?.[0]?.favIcon
-
+  let shortIcon = Remove_Space_Character(res1?.data?.details?.[0]?.title)
+console.log(shortIcon)
  $("#dynamic-background").css("background-image", `url(${image && image})`);
  $('#company-logo').attr('src', logo);
  $('#favicon').attr('href', favIcon);
+ $('#sidebar-logo').attr('src', logo);
+ $('#sidebar-logo-short').html(shortIcon);
 
 };
 

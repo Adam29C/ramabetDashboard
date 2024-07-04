@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useMyContext } from "../../Hooks/Context/CreateSidebarContext";
 import { admin_Sidebar } from "./Sidebar_data";
 import { Link } from "react-router-dom";
+import PagesIndex from "../../Pages/PagesIndex";
 
 const SIdebar = () => {
   const [TabsToggle, setTabsToggle] = useState(false);
@@ -26,7 +27,7 @@ const SIdebar = () => {
       >
         <div
           className="nk-nav-scroll active"
-          style={{ overflow: "hidden", width: "auto", height: "100%" }}
+          style={{ overflowY: "auto", width: "auto", height: "100%" }}
         >
           <ul className="metismenu in" id="menu">
             {admin_Sidebar &&
@@ -34,7 +35,8 @@ const SIdebar = () => {
                 const isActive = expandedItem === index;
                 return (
                   <div key={`${item.headerTitle}_${index}`}>
-                    <li className="nav-label">{item.headerTitle}</li>
+                   {item.headerTitle &&   <li className="nav-label">{item.headerTitle}</li> } 
+                 
                     <li
                       className={`${isActive ? "active" : ""}`}
                       key={`${item.headerTitle}_${index}`}
@@ -102,7 +104,7 @@ const SIdebar = () => {
             <li className="nav-label">Apps</li> */}
           </ul>
         </div>
-        <div
+        {/* <div
           className="slimScrollBar"
           style={{
             background: "transparent",
@@ -116,7 +118,7 @@ const SIdebar = () => {
             right: 1,
             height: "3396.5px",
           }}
-        />
+        /> */}
         <div
           className="slimScrollRail"
           style={{
