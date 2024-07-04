@@ -1,7 +1,9 @@
 import axios from "axios"
 
 
-export const BASE_URL = "http://16.171.8.215:3000/api/v1/"
+// export const BASE_URL = "http://16.171.8.215:3000/api/v1/"
+export const BASE_URL = "http://13.60.24.80:3000/api/v1/"
+
 
 const dataservice = axios.create({
     baseURL : BASE_URL
