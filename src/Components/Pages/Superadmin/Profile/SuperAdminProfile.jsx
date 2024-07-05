@@ -31,7 +31,7 @@ PagesIndex.useEffect(()=>{
     </div>
     <div className="container-fluid">
       <div className="row">
-        <div className="col-lg-4 col-xl-5">
+        <div className="col-lg-6 col-xl-6">
           <div className="card">
             <div className="card-body">
               <div className="media align-items-center mb-4">
@@ -64,84 +64,12 @@ PagesIndex.useEffect(()=>{
             
             </div>
           </div>
+          <PagesIndex.SuperAdminChangePassword/>
         </div>
-        <div className="col-lg-8 col-xl-7">
-    <PagesIndex.SuperAdminChangePassword/>
-          <div className="card">
-            <div className="card-body">
-              
-              <div className="media media-reply">
-                <img
-                  className="mr-3 circle-rounded"
-                  src="images/avatar/2.jpg"
-                  width={50}
-                  height={50}
-                  alt="Generic placeholder image"
-                />
-                <div className="media-body">
-                  <div className="d-sm-flex justify-content-between mb-2">
-                    <h5 className="mb-sm-0">
-                      Milan Gbah{" "}
-                      <small className="text-muted ml-3">about 3 days ago</small>
-                    </h5>
-                    <div className="media-reply__link">
-                      <button className="btn btn-transparent p-0 mr-3">
-                        <i className="fa fa-thumbs-up" />
-                      </button>
-                      <button className="btn btn-transparent p-0 mr-3">
-                        <i className="fa fa-thumbs-down" />
-                      </button>
-                      <button className="btn btn-transparent p-0 ml-3 font-weight-bold">
-                        Reply
-                      </button>
-                    </div>
-                  </div>
-                  <p>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-                    scelerisque ante sollicitudin. Cras purus odio, vestibulum in
-                    vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
-                    nisi vulputate fringilla. Donec lacinia congue felis in
-                    faucibus.
-                  </p>
-                </div>
-              </div>
-              <div className="media media-reply">
-                <img
-                  className="mr-3 circle-rounded"
-                  src="images/avatar/2.jpg"
-                  width={50}
-                  height={50}
-                  alt="Generic placeholder image"
-                />
-                <div className="media-body">
-                  <div className="d-sm-flex justify-content-between mb-2">
-                    <h5 className="mb-sm-0">
-                      Milan Gbah{" "}
-                      <small className="text-muted ml-3">about 3 days ago</small>
-                    </h5>
-                    <div className="media-reply__link">
-                      <button className="btn btn-transparent p-0 mr-3">
-                        <i className="fa fa-thumbs-up" />
-                      </button>
-                      <button className="btn btn-transparent p-0 mr-3">
-                        <i className="fa fa-thumbs-down" />
-                      </button>
-                      <button className="btn btn-transparent p-0 ml-3 font-weight-bold">
-                        Reply
-                      </button>
-                    </div>
-                  </div>
-                  <p>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-                    scelerisque ante sollicitudin. Cras purus odio, vestibulum in
-                    vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
-                    nisi vulputate fringilla. Donec lacinia congue felis in
-                    faucibus.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="col-lg-6 col-xl-6">
+        <PagesIndex.TeamMets/>
+
+   
         </div>
       </div>
     </div>

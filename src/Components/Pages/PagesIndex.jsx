@@ -22,6 +22,9 @@ import { Image_Regexp } from "../Utils/Valid_Rejex";
 import Loader from "../Helpers/Loader";
 import SuperAdminChangePassword from "./Superadmin/Profile/SuperAdminChangePassword";
 import profileLogo from "../../../public/assets/images/avatar/12b69c03188762a06008e9d7151832d4.png"
+import empLogo from "../../../public/assets/images/avatar/emp-logo.png"
+import TeamMets from "./Superadmin/Profile/TeamMets";
+import { getEmployeeList } from "../Redux/slice/SuperAdminSlice";
 
 const PagesIndex = {
     useDispatch,
@@ -50,7 +53,11 @@ const PagesIndex = {
     UPDATE_SYSTEM_INFO_API,
     admin_services,
     SuperAdminChangePassword,
-    profileLogo
+    profileLogo,
+    TeamMets,
+    empLogo,
+    getEmployeeList
+
  
 }
 

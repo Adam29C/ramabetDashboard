@@ -40,7 +40,7 @@ return errors
               password:values.password
           }
                 const res = await PagesIndex.admin_services.ADMIN_CHANGE_PASSWORD_API(data)
-                console.log(res)
+   
                 if(res?.status === 200){
                   PagesIndex.toast.success(res?.message)
                   setTimeout(() => {

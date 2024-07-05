@@ -6,7 +6,8 @@ const Api = {
     LIST_SYSTEM_INFO:"common/systemInforList",
     UPDATE_SYSTEM_INFO:"admin/updateSystemInfo",
     ADMIN_PROFILE_GET:"admin/adminProfile",
-    ADMIN_CHANGE_PASSWORD:"admin/changePassword"
+    ADMIN_CHANGE_PASSWORD:"admin/changePassword",
+    BLOCK_EMPLOYEE:"admin/blockEmployee"
 }
 
 export {Api}

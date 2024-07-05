@@ -1,22 +1,21 @@
-import React, { useEffect, useState } from "react";
+
 import Main_Containt from "../../../Layout/Main/Main_Containt";
 import Data_Table from "../../../Helpers/Datatable";
-import { EMPLOYEE_GET_LIST} from "../../../Services/Services";
 import { Get_Year_Only } from "../../../Utils/Common_Date";
 
 import Toggle from "../../../Helpers/Toggle";
 const EmployeeList = () => {
-  const [loading, setLoading] = useState(false);
-  const [data ,setData]=useState([])
+  const [loading, setLoading] = PagesIndex.useState(false);
+  const [data ,setData]=PagesIndex.useState([])
 const userId = localStorage.getItem("userId")
   const getList = async()=>{
   
-    const res = await EMPLOYEE_GET_LIST(userId)
+    const res = await PagesIndex.admin_services.EMPLOYEE_GET_LIST_API(userId)
   
     setData(res?.data?.details)
   }
 
-  useEffect(()=>{
+  PagesIndex.useEffect(()=>{
     getList()
   },[])
 

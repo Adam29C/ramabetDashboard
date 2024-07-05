@@ -13858,26 +13858,15 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 
 .media-reply {
-  margin-bottom: 20px;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  /* border: 1px solid black; */
+gap: 70px;
+
 }
-.media-reply .media-body {
-  padding: 20px;
-  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
-}
-.media-reply .media-body .media-body {
-  box-shadow: none;
-}
-.media-reply__link button {
-  background: none;
-}
-.media-reply__link i,
-.media-reply__link span {
-  color: #afb4c5;
-}
-.media-reply__link i:hover,
-.media-reply__link span:hover {
-  color: #ff4d87;
-}
+
+
+
 
 .login-form__title {
   color: #515e75;

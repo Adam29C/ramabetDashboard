@@ -17,7 +17,7 @@ const generateToken = async () => {
   let logo = res1?.data?.details?.[0]?.logo
   let favIcon = res1?.data?.details?.[0]?.favIcon
   let shortIcon = Remove_Space_Character(res1?.data?.details?.[0]?.title)
-console.log(shortIcon)
+
  $("#dynamic-background").css("background-image", `url(${image && image})`);
  $('#company-logo').attr('src', logo);
  $('#favicon').attr('href', favIcon);
