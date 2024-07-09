@@ -19,11 +19,6 @@ import Add_Edit_Employee from "../../Pages/Superadmin/Employee/Add_Edit_Employee
 import System from "../../Pages/Superadmin/PenalInfo/System";
 import PagesIndex from "../../Pages/PagesIndex";
 
-
-
-
-
-
 // Mock authentication status
 
 const adminRoutes = [
@@ -34,32 +29,32 @@ const adminRoutes = [
     children: [
       {
         path: "dashboard",
-        element: <PrivateRoute element={Dashboard}  />,
+        element: <PrivateRoute element={Dashboard} />,
       },
       {
         path: "users",
-        element: <PrivateRoute element={UsersList}  />,
+        element: <PrivateRoute element={UsersList} />,
       },
       {
         path: "user/add",
         element: <PrivateRoute element={Add_Edit_User} />,
-      },      {
+      },
+      {
         path: "employees",
-        element: <PrivateRoute element={EmployeeList} />,
+        element: <PrivateRoute element={EmployeeList}  />,
       },
       {
         path: "employee/add",
-        element: <PrivateRoute element={Add_Edit_Employee}  />,
+        element: <PrivateRoute element={Add_Edit_Employee} />,
       },
       {
         path: "user/profile",
-        element: <PrivateRoute element={SuperAdminProfile}  />,
+        element: <PrivateRoute element={SuperAdminProfile} />,
       },
       {
         path: "system",
-        element: <PrivateRoute element={System}/>,
+        element: <PrivateRoute element={System} />,
       },
-
     ],
   },
 ];

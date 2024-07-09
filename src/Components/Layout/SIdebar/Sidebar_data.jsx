@@ -19,8 +19,7 @@ export const admin_Sidebar = [
         id: 1,
         title: "Systems",
         route: "system",
-      }
-
+      },
     ],
   },
   {
@@ -63,7 +62,7 @@ export const admin_Sidebar = [
   },
   {
     id: 5,
-headerTitle: "Games",
+    headerTitle: "Games",
     title: "Available Games",
     Icon: "fa-solid fa-gamepad",
     NestedElement: [
@@ -78,7 +77,6 @@ headerTitle: "Games",
         route: "#",
       },
     ],
-    
   },
   {
     id: 6,
@@ -97,7 +95,6 @@ headerTitle: "Games",
         route: "#",
       },
     ],
-    
   },
   {
     id: 7,
@@ -116,7 +113,5 @@ headerTitle: "Games",
         route: "#",
       },
     ],
-    
   },
-
 ];

@@ -18,6 +18,7 @@ const ReusableForm = ({
   btn_design,
   disabledSubmit,
   isLoading,
+  show_submit,
 }) => {
   const location = useLocation();
 
@@ -58,7 +59,6 @@ const ReusableForm = ({
   };
 
   return (
-
     <form onSubmit={formik.handleSubmit}>
       <div
         className="row"
@@ -110,85 +110,102 @@ const ReusableForm = ({
                 </>
               ) : field.type === "checkbox" ? (
                 <>
-            <div className={`col-lg-${field.title_size}`}>
-            <h5 className="m">permission</h5>
-            <div className="row">
-{field.options &&
-  field.options.map((option, index) => (
-    <>
-      <div className={`col-lg-${field.col_size}`}
-        key={option.id}
-      >
-        <div className="row d-flex">
-          <div className={`col-lg-${field.col_size}`}>
-            <div class="form-check custom-checkbox mb-2">
-              <input
-                type={field.type}
-                className="form-check-input"
-                id={option.label}
-                {...formik.getFieldProps(option.name)}
-                defaultChecked={option.checked}
-              />
-              <label
-                className="form-check-label"
-                for={option.label}
-              >
-                {option.label}
-              </label>
-            </div>
-            {formik.errors[field.name] && (
-              <div className="error-text">
-                {formik.errors[field.name]}
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </>
-  ))}
-      </div>
-            </div>
+                  {field.options &&
+                    field.options.map((option) => (
+                      <div
+                        className={`col-lg-${field.col_size}`}
+                        key={option.id}
+                      >
+                        <div className="form-check custom-checkbox mb-2 ">
+                          <input
+                            type={field.type}
+                            className="form-check-input"
+                            id={option.name}
+                            {...formik.getFieldProps(option.name)}
+                            defaultChecked={option.checked}
+                          />
+                          <label
+                            className="form-check-label fw-bolder "
+                            htmlFor={option.name}
+                          >
+                            {option.name}
+                          </label>
+                        </div>
+
+                        {/* Nested checkboxes */}
+                        {option.Nasted &&
+                          option.Nasted.map((subOption) => (
+                            <div className="row d-flex" key={subOption.id}>
+                              <div className={`col-lg-12`}>
+                                <div className="form-check custom-checkbox mb-2 ml-3">
+                                  <input
+                                    type={field.type}
+                                    className="form-check-input"
+                                    id={subOption.name}
+                                    {...formik.getFieldProps(subOption.name)}
+                                    defaultChecked={subOption.checked}
+                                  />
+                                  <label
+                                    className="form-check-label"
+                                    htmlFor={subOption.name}
+                                  >
+                                    {subOption.name}
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                      </div>
+                    ))}
+
+                  {formik.errors[field.name] && (
+                    <div className="error-text">
+                      {formik.errors[field.name]}
+                    </div>
+                  )}
                 </>
               ) : field.type === "radio" ? (
                 <>
-            <div className={`col-lg-${field.title_size}`}>      <h5 >permission</h5>
-            <div className="row">
-                  {field.options &&
-                    field.options.map((option, index) => (
-                      <>
-               
-                   <div
-                          className={`col-lg-${field.col_size}`}
-                          key={option.id}
-                        >
-                          <div className="row d-flex">
-                            <div className={`col-lg-${field.col_size}`}>
-                              <div class="form-check custom-checkbox mb-2">
-                                <input
-                                  type={field.type}
-                                  className="form-check-input"
-                                  id={option.label}
-                                  {...formik.getFieldProps(option.name)}
-                                  defaultChecked={option.checked}
-                                />
-                                <label
-                                  className="form-check-label"
-                                  for={option.label}
-                                >
-                                  {option.label}
-                                </label>
-                              </div>
-                              {formik.errors[field.name] && (
-                                <div className="error-text">
-                                  {formik.errors[field.name]}
+                  <div className={`col-lg-${field.title_size}`}>
+                    {" "}
+                    <h5>permission</h5>
+                    <div className="row">
+                      {field.options &&
+                        field.options.map((option, index) => (
+                          <>
+                            <div
+                              className={`col-lg-${field.col_size}`}
+                              key={option.id}
+                            >
+                              <div className="row d-flex">
+                                <div className={`col-lg-${field.col_size}`}>
+                                  <div class="form-check custom-checkbox mb-2">
+                                    <input
+                                      type={field.type}
+                                      className="form-check-input"
+                                      id={option.label}
+                                      {...formik.getFieldProps(option.name)}
+                                      defaultChecked={option.checked}
+                                    />
+                                    <label
+                                      className="form-check-label"
+                                      for={option.label}
+                                    >
+                                      {option.label}
+                                    </label>
+                                  </div>
+                                  {formik.errors[field.name] && (
+                                    <div className="error-text">
+                                      {formik.errors[field.name]}
+                                    </div>
+                                  )}
                                 </div>
-                              )}
+                              </div>
                             </div>
-                          </div>
-                        </div>
-                      </>
-                    ))}</div>
+                          </>
+                        ))}
                     </div>
+                  </div>
                 </>
               ) : field.type === "password" ? (
                 <>
@@ -422,7 +439,6 @@ const ReusableForm = ({
                           className="form-control"
                           style={{ background: field.disable ? "#eeeeee" : "" }}
                           id={field.name}
-                       
                           placeholder={`Enter ${field.label}`}
                           {...formik.getFieldProps(field.name)}
                           // required=""
@@ -461,25 +477,30 @@ const ReusableForm = ({
           ))}
 
           <div className="form-group mb-0 button-main">
-            <button
-              style={{ background: "#4e3897" }}
-              className={`btn btn-primary mt-2 ${button_Size} ${
-                location.pathname === "resetpassword" ? "col-md-11" : ""
-              } ${btn_design && "btn_design"}`}
-              type="submit"
-              disabled={
-                disabledSubmit ? disabledSubmit : isLoading ? isLoading : ""
-              }
-            >
-              {/* <Loader/> */}
-              {btn_name}
-            </button>
+            {show_submit ? (
+              <>
+                <button
+                  style={{ background: "#4e3897" }}
+                  className={`btn btn-primary mt-2 ${button_Size} ${
+                    location.pathname === "resetpassword" ? "col-md-11" : ""
+                  } ${btn_design && "btn_design"}`}
+                  type="submit"
+                  disabled={
+                    disabledSubmit ? disabledSubmit : isLoading ? isLoading : ""
+                  }
+                >
+                  {/* <Loader/> */}
+                  {btn_name}
+                </button>
+              </>
+            ) : (
+              ""
+            )}
           </div>
           {after_submit_button}
         </div>
       </div>
     </form>
-    
   );
 };
 
