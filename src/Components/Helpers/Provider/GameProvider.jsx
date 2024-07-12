@@ -15,15 +15,7 @@ const GameProvider = ({ data, path }) => {
   };
 
   const columns = [
-    {
-      name: "Game Name",
-      selector: (row) => row.game,
-    },
-
-    {
-      name: "Game Type",
-      selector: (row) => row.gameType,
-    },
+  
     {
       name: "Provider Name",
       selector: (row) => row.providerName,
