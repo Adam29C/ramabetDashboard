@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Loader from "../Loader";
 // import Loader from "./Loader";
-
+// col-form-label this class for input alignment apply on label
 const ReusableForm = ({
   fromDate,
   fieldtype,
@@ -75,7 +75,7 @@ const ReusableForm = ({
                   <div className={`col-lg-${field.col_size}`}>
                     <div className="mb-1 row">
                       <label
-                        className={`custom-label col-lg-${field.col_size}`}
+                        className={`custom-label  col-lg-${field.col_size}`}
                         htmlFor={field.name}
                       >
                         {field.label}
@@ -112,11 +112,20 @@ const ReusableForm = ({
                 <>
                   {field.options &&
                     field.options.map((option) => (
+                      
                       <div
                         className={`col-lg-${field.col_size}`}
                         key={option.id}
                       >
+                              <label
+                        className={`custom-label col-lg-${field.col_size}`}
+                        htmlFor={field.name}
+                      >
+                        {field.label}
+                        <span className="text-danger">*</span>
+                      </label>
                         <div className="form-check custom-checkbox mb-2 ">
+                  
                           <input
                             type={field.type}
                             className="form-check-input"

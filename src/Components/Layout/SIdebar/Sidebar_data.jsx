@@ -68,13 +68,33 @@ export const admin_Sidebar = [
     NestedElement: [
       {
         id: 1,
-        title: "Game1",
-        route: "#",
+        title: "Game Provider",
+        route: "games",
       },
       {
         id: 2,
-        title: "Game2",
-        route: "#",
+        title: "Games Setting",
+        route: "games",
+      },
+      {
+        id: 3,
+        title: "Game Rates",
+        route: "games",
+      },
+      {
+        id: 4,
+        title: "Game Result",
+        route: "games",
+      },
+      {
+        id: 5,
+        title: "Revert Result Payment",
+        route: "games",
+      },
+      {
+        id: 6,
+        title: "Refund User Points",
+        route: "games",
       },
     ],
   },
@@ -86,12 +106,32 @@ export const admin_Sidebar = [
     NestedElement: [
       {
         id: 1,
-        title: "Game1",
-        route: "#",
+        title: "Star Game Provider",
+        route: "game-provider",
       },
       {
         id: 2,
-        title: "Game2",
+        title: "Star Games Setting",
+        route: "#",
+      },
+      {
+        id: 3,
+        title: "Star Game Rates",
+        route: "game-rates",
+      },
+      {
+        id: 4,
+        title: "Star Game Result",
+        route: "#",
+      },
+      {
+        id: 5,
+        title: "Star Revert Result Payment",
+        route: "#",
+      },
+      {
+        id: 6,
+        title: "Refund User Points",
         route: "#",
       },
     ],
@@ -104,12 +144,32 @@ export const admin_Sidebar = [
     NestedElement: [
       {
         id: 1,
-        title: "Game1",
-        route: "#",
+        title: "Jackpot Game Provider",
+        route: "game-provider",
       },
       {
         id: 2,
-        title: "Game2",
+        title: "Jackpot Games Setting",
+        route: "#",
+      },
+      {
+        id: 3,
+        title: "Jackpot Game Rates",
+        route: "game-rates",
+      },
+      {
+        id: 4,
+        title: "Jackpot Game Result",
+        route: "#",
+      },
+      {
+        id: 5,
+        title: "Jackpot Revert Result Payment",
+        route: "#",
+      },
+      {
+        id: 6,
+        title: "Refund User Points",
         route: "#",
       },
     ],

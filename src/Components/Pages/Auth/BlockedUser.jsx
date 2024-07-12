@@ -6,8 +6,7 @@ const BlockedUser = () => {
       <div className="parent">
         <div className="txt1">ACCOUNT SUSPENDED</div>
         <div className="txt2">Your Account Has Been Suspended.</div>
-      
-        <div id="orbit-system">
+       <div id="orbit-system">
           <div className="system">
             <div className="satellite-orbit">
               <div className="satellite">SUSPENDED</div>

@@ -42,3 +42,7 @@ export const QTY_ERROR = "Please Enter Per  QTY ";
 export const QTY_INVALID_ERROR = "Please Enter Invalid QTY ";
 // export const SEGEMENTSELECT_ERROR = 'Please Select Segment Selection';
 // export const SEGEMENTSELECT_LEASTONE_ERROR = 'Please Select At Least One ';
+export const PROVIDER_NAME_ERROR = "Please Enter Provider Name";
+export const PROVIDER_RESULT_ERROR = "Please Enter Provider Result";
+export const RESULT_STATUS_ERROR = "Please Enter Result Status";
+export const ACTIVE_STATUS_ERROR = "Please Enter Active Status";

@@ -1,7 +1,7 @@
 // import { useDispatch } from "react-redux"
 import { useState,useEffect } from "react"
 import {useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { v4 } from "uuid";
 import { Remove_Special_Character,Password_Rejex } from "../Utils/Valid_Rejex";
@@ -25,7 +25,7 @@ import profileLogo from "../../../public/assets/images/avatar/12b69c03188762a060
 import empLogo from "../../../public/assets/images/avatar/emp-logo.png"
 import TeamMets from "./Superadmin/Profile/TeamMets";
 import { getEmployeeList } from "../Redux/slice/SuperAdminSlice";
-
+import Data_Table from "../Helpers/Datatable";
 const PagesIndex = {
     useDispatch,
     useState,
@@ -56,7 +56,9 @@ const PagesIndex = {
     profileLogo,
     TeamMets,
     empLogo,
-    getEmployeeList
+    getEmployeeList,
+    Data_Table,
+    useLocation
 
  
 }

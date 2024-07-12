@@ -12,7 +12,7 @@ const Main_Containt = ({ add_button ,col_size, route, children }) => {
               {add_button && (
                 <div className="d-flex mx-auto justify-content-end">
                   <Link to={route} type="button" className="btn btn-primary">
-                    add
+                    Add
                   </Link>
                 </div>
               )}

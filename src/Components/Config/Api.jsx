@@ -15,7 +15,11 @@ const Api = {
     CREATE_EMPLOYEE : "admin/createEmployee",
 
     EMPLOYEE_LIST : "admin/empList",
-    BLOCK_EMPLOYEE:"admin/blockEmployee"
+    BLOCK_EMPLOYEE:"admin/blockEmployee",
+
+    //GAME PROVIDER
+    ADMIN_GAME_PROVIDER:"admin/game/gameProvider",
+   
 }
 
 export {Api}

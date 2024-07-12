@@ -29,7 +29,8 @@ const userId = localStorage.getItem("userId")
     {
       name: "Designation",
       selector: (row) => row.designation,
-    }, {
+    }, 
+    {
       name: "Block",
       selector: (row) => (
         <>
