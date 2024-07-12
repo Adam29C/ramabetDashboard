@@ -8,7 +8,7 @@ const GameProviderAdd = () => {
   console.log(location?.state);
   const formik = PagesIndex.useFormik({
     initialValues: {
-      game: location?.state ? location?.state?.game : "",
+      // game: location?.state ? location?.state?.game : "",
       providerName: location?.state ? location?.state?.providerName : "",
       providerResult: location?.state ? location?.state?.providerResult : "",
       resultStatus: 0,
@@ -20,9 +20,9 @@ const GameProviderAdd = () => {
     },
     validate: (values) => {
       const errors = {};
-      if (!values.game) {
-        errors.game = PagesIndex.valid_err.GAME_NAME_ERROR;
-      }
+      // if (!values.game) {
+      //   errors.game = PagesIndex.valid_err.GAME_NAME_ERROR;
+      // }
 
       if (!values.providerName) {
         errors.providerName = PagesIndex.valid_err.PROVIDER_NAME_ERROR;
@@ -43,16 +43,18 @@ const GameProviderAdd = () => {
       try {
         let data = {
           adminId: userId,
-          game: values.game,
+          // game: values.game,
           providerName: values.providerName,
           providerResult: values.providerResult,
-          resultStatus: values.resultStatus,
+         
           activeStatus: values.activeStatus,
-          mobile: values.mobile,
+          mobile: values.mobile.toString(),
           activeStatus: values.activeStatus,
           ...(location?.state?._id ? { gameProviderId: location?.state?._id } : ""),
         };
-        console.log(data);
+        if (!location?.state?._id ) {
+          data.resultStatus = values.resultStatus;
+        }
 
         const res =location?.state?._id ?await PagesIndex.admin_services.GAME_PROVIDER_UPDATE_API(data) : await PagesIndex.admin_services.GAME_PROVIDER_ADD_API(data);
 
@@ -62,22 +64,24 @@ const GameProviderAdd = () => {
             navigate("/admin/games");
           }, 1000);
         } else {
-          PagesIndex.toast.error(res.message);
+        
+          PagesIndex.toast.error(res.response.data.message);
         }
       } catch (error) {
-        PagesIndex.toast.error(error);
+   
+        PagesIndex.toast.error(error );
       }
     },
   });
 
   const fields = [
-    {
-      name: "game",
-      label: "Game",
-      type: "text",
-      label_size: 6,
-      col_size: 6,
-    },
+    // {
+    //   name: "game",
+    //   label: "Game",
+    //   type: "text",
+    //   label_size: 6,
+    //   col_size: 6,
+    // },
     {
       name: "providerName",
       label: "Provider Name",
@@ -105,7 +109,7 @@ const GameProviderAdd = () => {
       label: "Mobile",
       type: "number",
       label_size: 6,
-      col_size: 6,
+      col_size: 12,
     },
 
     {
