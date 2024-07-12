@@ -8,6 +8,8 @@ export const PASSWORD__LENGTH_ERROR =
 
 export const USERNAME_ERROR = "Please Enter Username ";
 export const FULLNAME_ERROR = "Please Enter FullName ";
+export const DESIGNATION_ERROR = "Please Enter Designation ";
+
 export const INVALID_ERROR = "Number Not Allow ";
 export const CONTACT_ERROR = "Please Enter Contact Number ";
 export const INVALID_CONTACT_ERROR = "Please Enter Valid Contact Number ";

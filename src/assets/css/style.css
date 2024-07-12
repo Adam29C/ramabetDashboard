@@ -121,7 +121,18 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
+
+  --main-bg-color :  "#7571F9"
 }
+
+
+.btn-color {
+  background-color: var(--main-bg-color);
+}
+
+
+
+
 
 *,
 *::before,

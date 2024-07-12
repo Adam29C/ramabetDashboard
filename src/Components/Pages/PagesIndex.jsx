@@ -15,7 +15,7 @@ import Toast from "../Helpers/Toast";
 import { getGenerateToken } from "../Redux/slice/CommonSlice";
 import { Link } from "react-router-dom";
 import *as valid_err from '../Utils/Common_Msg'
-import *as admin_services from "../Services/SuperAdminServices"
+import * as admin_services from "../Services/SuperAdminServices"
 // import { getGenerateToken } from "../redux/slice/CommonSlice";
 import { ADD_SYSTEM_INFO_API, LIST_SYSTEM_INFO_API, UPDATE_SYSTEM_INFO_API } from "../Services/CommonServices";
 import { Image_Regexp } from "../Utils/Valid_Rejex";
@@ -25,6 +25,7 @@ import profileLogo from "../../../public/assets/images/avatar/12b69c03188762a060
 import empLogo from "../../../public/assets/images/avatar/emp-logo.png"
 import TeamMets from "./Superadmin/Profile/TeamMets";
 import { getEmployeeList } from "../Redux/slice/SuperAdminSlice";
+
 import Data_Table from "../Helpers/Datatable";
 const PagesIndex = {
     useDispatch,

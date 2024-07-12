@@ -21,9 +21,9 @@ export const ADMIN_CHANGE_PASSWORD_API = async (data) => {
 
 // --------------------------   Employee Crud ------------------------
 
-export const CREATE_EMPLOYEE = async (id) => {
+export const CREATE_EMPLOYEE = async (data) => {
   try {
-    const res = await dataservice.post(`${Api.CREATE_EMPLOYEE}`);
+    const res = await dataservice.post(Api.CREATE_EMPLOYEE, data);
     return res?.data;
   } catch (error) {
     return error;
@@ -51,12 +51,13 @@ export const BLOCK_EMPLOYEE_API = async (data) => {
 
 // --------------------------   Employee Crud ------------------------
 
-
 // --------------------------  game provider api ------------------------
 
 export const GAME_PROVIDER_GET_LIST_API = async (id) => {
   try {
-    const res = await dataservice.get(`${Api.ADMIN_GAME_PROVIDER}?adminId=${id}`);
+    const res = await dataservice.get(
+      `${Api.ADMIN_GAME_PROVIDER}?adminId=${id}`
+    );
     return res?.data;
   } catch (error) {
     return error;
@@ -64,7 +65,6 @@ export const GAME_PROVIDER_GET_LIST_API = async (id) => {
 };
 
 export const GAME_PROVIDER_ADD_API = async (data) => {
-
   try {
     const res = await dataservice.post(Api.ADMIN_GAME_PROVIDER, data);
     return res?.data;
@@ -74,9 +74,9 @@ export const GAME_PROVIDER_ADD_API = async (data) => {
 };
 
 export const GAME_PROVIDER_DELETE_API = async (data) => {
-console.log(data)
+  console.log(data);
   try {
-    const res = await dataservice.delete(Api.ADMIN_GAME_PROVIDER, {data});
+    const res = await dataservice.delete(Api.ADMIN_GAME_PROVIDER, { data });
     return res?.data;
   } catch (error) {
     return error;
@@ -84,7 +84,6 @@ console.log(data)
 };
 
 export const GAME_PROVIDER_UPDATE_API = async (data) => {
-
   try {
     const res = await dataservice.put(Api.ADMIN_GAME_PROVIDER, data);
     return res?.data;
@@ -94,4 +93,3 @@ export const GAME_PROVIDER_UPDATE_API = async (data) => {
 };
 
 // --------------------------   super admin provider api ------------------------
-
