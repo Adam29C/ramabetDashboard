@@ -12,7 +12,7 @@ const GameProviderAdd = () => {
       providerResult: location?.state ? location?.state?.providerResult : "",
       resultStatus: 0,
       mobile: location?.state ? location?.state?.mobile : "",
-      activeStatus: location?.state.activeStatus
+      activeStatus: location?.state ? location?.state?.activeStatus : null
        
     },
     validate: (values) => {

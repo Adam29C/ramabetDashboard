@@ -64,7 +64,7 @@ const adminRoutes = [
         element: <PrivateRoute element={Games} />,
       },
       {
-        path: "game-provider-add",
+        path: "game/add",
         element: <PrivateRoute element={GameProviderAdd} />,
       },
       // {

@@ -16,7 +16,7 @@ const GameProvider = ({ data, path,getGameProviderList }) => {
 
     const confirmResult = await Swal.fire({
       title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      text: "You want to delete this!",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
@@ -32,10 +32,10 @@ const GameProvider = ({ data, path,getGameProviderList }) => {
         const res = await GAME_PROVIDER_DELETE_API(data);
         console.log(res, "check delete api response");
         getGameProviderList()
-        if (res.success) { 
+        if (res.status===200) { 
           Swal.fire({
             title: "Deleted!",
-            text: "Your file has been deleted.",
+            text: res?.message,
             // icon: "success"
           });
         } else {

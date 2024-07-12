@@ -47,7 +47,7 @@ getGameProviderList()
     <div>
     
       
-        <GameProvider data={data} path={"/admin/game-provider-add"} getGameProviderList={getGameProviderList}/>
+        <GameProvider data={data} path={"/admin/game/add"} getGameProviderList={getGameProviderList}/>
    
     </div>
   )
