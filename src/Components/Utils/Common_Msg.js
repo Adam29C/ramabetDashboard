@@ -46,3 +46,4 @@ export const PROVIDER_NAME_ERROR = "Please Enter Provider Name";
 export const PROVIDER_RESULT_ERROR = "Please Enter Provider Result";
 export const RESULT_STATUS_ERROR = "Please Enter Result Status";
 export const ACTIVE_STATUS_ERROR = "Please Enter Active Status";
+export const GAME_PRICE_ERROR = "Please Enter Game Price";

@@ -3,60 +3,14 @@ import { Link } from "react-router-dom";
 import { Get_Year_Only } from "../../Utils/Common_Date";
 import Toggle from "../../Helpers/Toggle";
 import Swal from "sweetalert2";
-import DeleteSweetAlert from "../DeleteSweetAlert";
 import { GAME_PROVIDER_DELETE_API } from "../../Services/SuperAdminServices";
-const GameProvider = ({ data, path,getGameProviderList }) => {
-  const userId = localStorage.getItem("userId")
+import DeleteSweetAlert from "../DeleteSweetAlert";
+const GameProvider = ({ data, path, getGameProviderList,title }) => {
+  const userId = localStorage.getItem("userId");
   const navigate = PagesIndex.useNavigate();
 
 
 
-  const handleDelete = async(id) => {
-
-
-    const confirmResult = await Swal.fire({
-      title: "Are you sure?",
-      text: "You want to delete this!",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
-    });
-  
-    if (confirmResult.isConfirmed) {
-      try {
-        let data = {
-          adminId: userId,
-          gameProviderId: id
-        };
-        const res = await GAME_PROVIDER_DELETE_API(data);
-        console.log(res, "check delete api response");
-        getGameProviderList()
-        if (res.status===200) { 
-          Swal.fire({
-            title: "Deleted!",
-            text: res?.message,
-            // icon: "success"
-          });
-        } else {
-          Swal.fire({
-            title: "Error!",
-            text: "There was an issue deleting your file.",
-            // icon: "error"
-          });
-        }
-      } catch (error) {
-        console.error("Error deleting file:", error);
-        Swal.fire({
-          title: "Error!",
-          text: "There was an issue deleting your file.",
-          // icon: "error"
-        });
-      }
-    }
-  };
-
-  
   const columns = [
     {
       name: "Provider Name",
@@ -89,7 +43,10 @@ const GameProvider = ({ data, path,getGameProviderList }) => {
               </span>
             </Link>
 
-            <Link href="#" onClick={() => handleDelete(cell?._id)}>
+            <Link href="#" 
+            // onClick={() => handleDelete(cell?._id)}
+            onClick={() => DeleteSweetAlert(PagesIndex.admin_services.GAME_PROVIDER_DELETE_API, cell?._id, userId, getGameProviderList)}
+            >
               <span data-toggle="tooltip" data-placement="top" title="Delete">
                 <i class="ti-trash fs-5 mx-1 "></i>
               </span>
@@ -103,8 +60,10 @@ const GameProvider = ({ data, path,getGameProviderList }) => {
   return (
     <div>
       <PagesIndex.Main_Containt add_button={true} route={path}>
+      <h1 className="list-title">{title}</h1>
         <PagesIndex.Data_Table columns={columns} data={data} />
       </PagesIndex.Main_Containt>
+    
     </div>
   );
 };

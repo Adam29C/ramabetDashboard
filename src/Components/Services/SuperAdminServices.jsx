@@ -93,5 +93,47 @@ export const GAME_PROVIDER_UPDATE_API = async (data) => {
   }
 };
 
+//GAME RATES API
+export const GAME_RATES_GET_LIST_API = async (id) => {
+  try {
+    const res = await dataservice.get(`${Api.ADMIN_GAME_RATES}?adminId=${id}`);
+    return res?.data;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const GAME_RATES_ADD_API = async (data) => {
+
+  try {
+    const res = await dataservice.post(Api.ADMIN_GAME_RATES, data);
+    return res?.data;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const GAME_RATES_UPDATE_API = async (data) => {
+
+  try {
+    const res = await dataservice.put(Api.ADMIN_GAME_RATES, data);
+    return res?.data;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const GAME_RATES_DELETE_API = async (data) => {
+
+    try {
+      const res = await dataservice.delete(Api.ADMIN_GAME_RATES, {data});
+      return res?.data;
+    } catch (error) {
+      return error;
+    }
+  };
+  
+
+// --------------------------  game provider api ------------------------
 // --------------------------   super admin provider api ------------------------
 
