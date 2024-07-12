@@ -74,9 +74,9 @@ export const GAME_PROVIDER_ADD_API = async (data) => {
 };
 
 export const GAME_PROVIDER_DELETE_API = async (data) => {
-
+console.log(data)
   try {
-    const res = await dataservice.delete(Api.ADMIN_GAME_PROVIDER, data);
+    const res = await dataservice.delete(Api.ADMIN_GAME_PROVIDER, {data});
     return res?.data;
   } catch (error) {
     return error;
