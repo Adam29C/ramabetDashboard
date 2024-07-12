@@ -21773,3 +21773,8 @@ a:hover {
   padding: 1rem;
   text-align: center;
 }
+
+.list-title{
+  font-size: 24px;
+  margin: 0px 0px 20px 20px;
+}

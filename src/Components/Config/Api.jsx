@@ -19,6 +19,9 @@ const Api = {
 
     //GAME PROVIDER
     ADMIN_GAME_PROVIDER:"admin/game/gameProvider",
+
+    //GAME RATES
+    ADMIN_GAME_RATES:"admin/game/gameRate"
    
 }
 

@@ -6,7 +6,7 @@ import PagesIndex from '../../../PagesIndex'
 
 const Games = () => {
   const userId = localStorage.getItem("userId")
-  // const [loading, setLoading] = PagesIndex.useState(false);
+
 const [data,getData]=PagesIndex.useState([])
   const getGameProviderList = async()=>{
     const res = await PagesIndex.admin_services.GAME_PROVIDER_GET_LIST_API(userId)
@@ -18,28 +18,7 @@ const [data,getData]=PagesIndex.useState([])
 getGameProviderList()
   },[])
   
-  // const data = [
-  //   {
-  //     id: 1,
-  //     name: "ttt",
-  //     mobileNumber: "000000000000",
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "tsssstt",
-  //     mobileNumber: "000000000000",
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "tttttt",
-  //     mobileNumber: "000000000000",
-  //   },
-  //   {
-  //     id: 4,
-  //     name: "Edit",
-  //     mobileNumber: "000000000000",
-  //   },
-  // ];
+
 
   
 
@@ -47,7 +26,7 @@ getGameProviderList()
     <div>
     
       
-        <GameProvider data={data} path={"/admin/game-provider-add"} getGameProviderList={getGameProviderList}/>
+        <GameProvider data={data} path={"/admin/game/add"} getGameProviderList={getGameProviderList} title="Game Provider"/>
    
     </div>
   )

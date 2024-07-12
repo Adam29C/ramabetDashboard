@@ -19,9 +19,10 @@ import Add_Edit_Employee from "../../Pages/Superadmin/Employee/Add_Edit_Employee
 import System from "../../Pages/Superadmin/PenalInfo/System";
 import PagesIndex from "../../Pages/PagesIndex";
 import GameProvider from "../../Helpers/Provider/GameProvider";
-import GameRates from "../../Helpers/Provider/GameRates";
 import Games from "../../Pages/Superadmin/Games/AvailableGames/Games";
 import GameProviderAdd from "../../Helpers/Provider/GameProviderAdd";
+import GameRates from "../../Pages/Superadmin/Games/AvailableGames/GameRates";
+import GameRatesAdd from "../../Helpers/Provider/GameRatesAdd";
 
 // Mock authentication status
 
@@ -64,8 +65,16 @@ const adminRoutes = [
         element: <PrivateRoute element={Games} />,
       },
       {
-        path: "game-provider-add",
+        path: "game/add",
         element: <PrivateRoute element={GameProviderAdd} />,
+      },
+        {
+        path: "game/rates",
+        element: <PrivateRoute element={GameRates} />,
+      },
+      {
+        path: "game/rates/add",
+        element: <PrivateRoute element={GameRatesAdd} />,
       },
       // {
       //   path: "game-rates",

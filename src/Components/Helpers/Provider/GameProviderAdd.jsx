@@ -12,7 +12,7 @@ const GameProviderAdd = () => {
       providerResult: location?.state ? location?.state?.providerResult : "",
       resultStatus: 0,
       mobile: location?.state ? location?.state?.mobile : "",
-      activeStatus: location?.state.activeStatus
+      activeStatus: location?.state ? location?.state?.activeStatus : null
        
     },
     validate: (values) => {
@@ -122,10 +122,7 @@ const GameProviderAdd = () => {
     },
   ];
 
-  console.log("fields", fields);
-  console.log("formik", formik.initialValues);
 
-  console.log("formik.values.activeStatus", formik.values.activeStatus);
 
   return (
     <PagesIndex.Main_Containt add_button={false} route="">
@@ -133,7 +130,7 @@ const GameProviderAdd = () => {
         fieldtype={fields.filter((field) => !field.showWhen)}
         formik={formik}
         //   btn_name={loding ? <PagesIndex.Loader text="Submit"/> : "Login"}
-        btn_name={"Add"}
+        btn_name={location?.state ? "Update" : "Add"}
         button_Size={"w-10"}
         show_submit={true}
       />

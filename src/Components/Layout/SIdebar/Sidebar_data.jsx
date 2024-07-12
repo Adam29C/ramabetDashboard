@@ -74,27 +74,27 @@ export const admin_Sidebar = [
       {
         id: 2,
         title: "Games Setting",
-        route: "games",
+        route: "#",
       },
       {
         id: 3,
         title: "Game Rates",
-        route: "games",
+        route: "game/rates",
       },
       {
         id: 4,
         title: "Game Result",
-        route: "games",
+        route: "#",
       },
       {
         id: 5,
         title: "Revert Result Payment",
-        route: "games",
+        route: "#",
       },
       {
         id: 6,
         title: "Refund User Points",
-        route: "games",
+        route: "#",
       },
     ],
   },
@@ -107,7 +107,7 @@ export const admin_Sidebar = [
       {
         id: 1,
         title: "Star Game Provider",
-        route: "game-provider",
+        route: "#",
       },
       {
         id: 2,
@@ -117,7 +117,7 @@ export const admin_Sidebar = [
       {
         id: 3,
         title: "Star Game Rates",
-        route: "game-rates",
+        route: "#",
       },
       {
         id: 4,
@@ -145,7 +145,7 @@ export const admin_Sidebar = [
       {
         id: 1,
         title: "Jackpot Game Provider",
-        route: "game-provider",
+        route:"#",
       },
       {
         id: 2,
@@ -155,7 +155,7 @@ export const admin_Sidebar = [
       {
         id: 3,
         title: "Jackpot Game Rates",
-        route: "game-rates",
+        route: "#",
       },
       {
         id: 4,
