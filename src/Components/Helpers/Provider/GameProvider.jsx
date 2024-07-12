@@ -6,6 +6,9 @@ import Swal from "sweetalert2";
 import DeleteSweetAlert from "../DeleteSweetAlert";
 const GameProvider = ({ data, path }) => {
   const navigate = PagesIndex.useNavigate();
+
+
+  
   const handleDelete = () => {
     <DeleteSweetAlert
       title="Are you sure you want to delete this item?"
@@ -15,7 +18,6 @@ const GameProvider = ({ data, path }) => {
   };
 
   const columns = [
-  
     {
       name: "Provider Name",
       selector: (row) => row.providerName,
@@ -24,17 +26,6 @@ const GameProvider = ({ data, path }) => {
       name: "Provider Result",
       selector: (row) => row.providerResult,
     },
-
-    {
-      name: "Result Status",
-      selector: (row) => row.resultStatus,
-    },
-
-    {
-      name: "Mobile",
-      selector: (row) => row.mobile,
-    },
-
     {
       name: "Active Status",
       selector: (row) => (
@@ -47,7 +38,6 @@ const GameProvider = ({ data, path }) => {
       name: "created At",
       selector: (row) => Get_Year_Only(row.createdAt),
     },
-
     {
       name: "actions",
       selector: (cell, row) => (

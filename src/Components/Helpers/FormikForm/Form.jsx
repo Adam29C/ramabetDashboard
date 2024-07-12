@@ -112,20 +112,18 @@ const ReusableForm = ({
                 <>
                   {field.options &&
                     field.options.map((option) => (
-                      
                       <div
                         className={`col-lg-${field.col_size}`}
                         key={option.id}
                       >
-                              <label
-                        className={`custom-label col-lg-${field.col_size}`}
-                        htmlFor={field.name}
-                      >
-                        {field.label}
-                        <span className="text-danger">*</span>
-                      </label>
+                        {/* <label
+                          className={`custom-label col-lg-12`}
+                          htmlFor={field.name}
+                        >
+                          {field.label}
+                          <span className="text-danger">*</span>
+                        </label> */}
                         <div className="form-check custom-checkbox mb-2 ">
-                  
                           <input
                             type={field.type}
                             className="form-check-input"
@@ -140,7 +138,6 @@ const ReusableForm = ({
                             {option.name}
                           </label>
                         </div>
-
                         {/* Nested checkboxes */}
                         {option.Nasted &&
                           option.Nasted.map((subOption) => (

@@ -5,18 +5,15 @@ const GameProviderAdd = () => {
   const userId = localStorage.getItem("userId");
   const navigate = PagesIndex.useNavigate();
   const location = PagesIndex.useLocation();
-  console.log(location?.state);
   const formik = PagesIndex.useFormik({
     initialValues: {
       // game: location?.state ? location?.state?.game : "",
       providerName: location?.state ? location?.state?.providerName : "",
       providerResult: location?.state ? location?.state?.providerResult : "",
       resultStatus: 0,
-
       mobile: location?.state ? location?.state?.mobile : "",
-      activeStatus: location?.activeStatus
-        ? location?.state?.activeStatus
-        : false,
+      activeStatus: location?.state.activeStatus
+       
     },
     validate: (values) => {
       const errors = {};
@@ -46,17 +43,21 @@ const GameProviderAdd = () => {
           // game: values.game,
           providerName: values.providerName,
           providerResult: values.providerResult,
-         
+
           activeStatus: values.activeStatus,
           mobile: values.mobile.toString(),
           activeStatus: values.activeStatus,
-          ...(location?.state?._id ? { gameProviderId: location?.state?._id } : ""),
+          ...(location?.state?._id
+            ? { gameProviderId: location?.state?._id }
+            : ""),
         };
-        if (!location?.state?._id ) {
+        if (!location?.state?._id) {
           data.resultStatus = values.resultStatus;
         }
 
-        const res =location?.state?._id ?await PagesIndex.admin_services.GAME_PROVIDER_UPDATE_API(data) : await PagesIndex.admin_services.GAME_PROVIDER_ADD_API(data);
+        const res = location?.state?._id
+          ? await PagesIndex.admin_services.GAME_PROVIDER_UPDATE_API(data)
+          : await PagesIndex.admin_services.GAME_PROVIDER_ADD_API(data);
 
         if (res?.status === 200) {
           PagesIndex.toast.success(res?.message);
@@ -64,12 +65,10 @@ const GameProviderAdd = () => {
             navigate("/admin/games");
           }, 1000);
         } else {
-        
           PagesIndex.toast.error(res.response.data.message);
         }
       } catch (error) {
-   
-        PagesIndex.toast.error(error );
+        PagesIndex.toast.error(error);
       }
     },
   });
@@ -96,38 +95,38 @@ const GameProviderAdd = () => {
       label_size: 6,
       col_size: 6,
     },
-    //   {
-    //     name:"resultStatus",
-    //     label:"Result Status",
-    //     type:"text",
-    //     label_size:6,
-    //     col_size:6
-    // },
-
     {
       name: "mobile",
       label: "Mobile",
       type: "number",
       label_size: 6,
-      col_size: 12,
+      col_size: 6,
     },
 
     {
       name: "activeStatus",
-      label: "Active Status",
-      type: "checkbox",
-
+      label: "Disable Provider",
+      type: "select",
       title_size: 6,
-
+      col_size: 6,
       options: [
         {
-          id: 1,
-          label: "activeStatus",
-          checked: formik.values.activeStatus,
+          label: "Active",
+          value: true,
+        },
+        {
+          label: "In-Active",
+          value: false,
         },
       ],
     },
   ];
+
+  console.log("fields", fields);
+  console.log("formik", formik.initialValues);
+
+  console.log("formik.values.activeStatus", formik.values.activeStatus);
+
   return (
     <PagesIndex.Main_Containt add_button={false} route="">
       <PagesIndex.Formikform
