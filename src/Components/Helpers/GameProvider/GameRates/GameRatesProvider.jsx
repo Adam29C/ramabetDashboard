@@ -78,7 +78,9 @@ const GameRatesProvider = ({ data, path, getGameRatesList,title }) => {
             <Link href="#" 
             // onClick={() => 
             //   handleDelete(cell?._id)}
-            onClick={() => DeleteSweetAlert(PagesIndex.admin_services.GAME_RATES_DELETE_API, cell?._id, userId, getGameRatesList)}
+            onClick={() =>
+               DeleteSweetAlert(PagesIndex.admin_services.GAME_RATES_DELETE_API, cell?._id, userId, getGameRatesList)
+              }
               >
               <span data-toggle="tooltip" data-placement="top" title="Delete">
                 <i class="ti-trash fs-5 mx-1 "></i>

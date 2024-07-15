@@ -14,6 +14,7 @@ const Main_Containt = ({ add_button ,col_size, route, children }) => {
                   <Link to={route} type="button" className="btn btn-primary">
                     Add
                   </Link>
+          
                 </div>
               )}
               {children}
