@@ -84,7 +84,7 @@ export const GAME_PROVIDER_ADD_API = async (data) => {
 export const GAME_PROVIDER_DELETE_API = async (data) => {
 
   try {
-    console.log(data)
+
     let apiData ={
       adminId:data.adminId,
       gameProviderId:data.deleteId

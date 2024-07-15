@@ -2,7 +2,7 @@ import React from 'react'
 import GameProvider from '../../../../Helpers/Provider/GameProvider'
 import PagesIndex from '../../../PagesIndex'
 import GameRatesProvider from '../../../../Helpers/Provider/GameRatesProvider'
-import Modal from '../../../../Helpers/Modal'
+// import Modal from '../../../../Helpers/Modal'
 
 const GameRates = () => {
     
