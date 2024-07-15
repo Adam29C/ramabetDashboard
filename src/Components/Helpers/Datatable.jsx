@@ -68,6 +68,7 @@ const Data_Table = ({ columns, data, tableStyle, isLoading, showFilter }) => {
       width: "70px",
     },
     ...columns,
+    
   ];
 
   return (

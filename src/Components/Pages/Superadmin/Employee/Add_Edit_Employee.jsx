@@ -11,13 +11,14 @@ function AddEmployee() {
   const location = PagesIndex.useLocation();
   const userData = location.state;
 
-  // console.log("location" ,location.state);
+  console.log("location" ,location.state);
   const formik = PagesIndex.useFormik({
     initialValues: {
       employeeName: userData?.employeeName || "",
       username: userData?.username || "",
       password: userData?.password || "",
       designation: userData?.designation || "",
+      loginPermission: userData?.loginPermission || "",
     },
 
     validate: (values) => {
@@ -82,9 +83,9 @@ function AddEmployee() {
       label_size: 12,
       col_size: 6,
       options: [
-        { label: "Both", values: 0 },
-        { label: "Dashboard", values: 1 },
-        { label: "Application", values: 2 },
+        { label: "Both", value: 0 },
+        { label: "Dashboard", value: 1 },
+        { label: "Application", value: 2 },
       ],
     },
   ];

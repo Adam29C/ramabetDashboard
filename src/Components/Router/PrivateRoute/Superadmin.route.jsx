@@ -17,12 +17,10 @@ import SuperAdminProfile from "../../Pages/Superadmin/Profile/SuperAdminProfile"
 import EmployeeList from "../../Pages/Superadmin/Employee/EmployeeList";
 import Add_Edit_Employee from "../../Pages/Superadmin/Employee/Add_Edit_Employee";
 import System from "../../Pages/Superadmin/PenalInfo/System";
-import PagesIndex from "../../Pages/PagesIndex";
-import GameProvider from "../../Helpers/Provider/GameProvider";
 import Games from "../../Pages/Superadmin/Games/AvailableGames/Games";
-import GameProviderAdd from "../../Helpers/Provider/GameProviderAdd";
-import GameRates from "../../Pages/Superadmin/Games/AvailableGames/GameRates";
-import GameRatesAdd from "../../Helpers/Provider/GameRatesAdd";
+import GameProviderAdd from "../../Helpers/GameProvider/GameCrud/GameProviderAdd";
+import GameRates from "../../Pages/Superadmin/Games/AvailableGames/Games";
+import GameRatesAdd from "../../Helpers/GameProvider/GameRates/GameRatesAdd";
 
 // Mock authentication status
 

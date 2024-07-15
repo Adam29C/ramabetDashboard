@@ -1,5 +1,5 @@
 import React from "react";
-import PagesIndex from "../../Pages/PagesIndex";
+import PagesIndex from "../../../Pages/PagesIndex";
 
 const GameProviderAdd = () => {
   const userId = localStorage.getItem("userId");

@@ -1,10 +1,10 @@
-import PagesIndex from "../../Pages/PagesIndex";
+import PagesIndex from "../../../Pages/PagesIndex";
 import { Link } from "react-router-dom";
-import { Get_Year_Only } from "../../Utils/Common_Date";
-import Toggle from "../../Helpers/Toggle";
+import { Get_Year_Only } from "../../../Utils/Common_Date";
+import Toggle from "../../Toggle";
 import Swal from "sweetalert2";
-import DeleteSweetAlert from "../DeleteSweetAlert";
-import { GAME_PROVIDER_DELETE_API } from "../../Services/SuperAdminServices";
+import DeleteSweetAlert from "../../DeleteSweetAlert";
+import { GAME_PROVIDER_DELETE_API } from "../../../Services/SuperAdminServices";
 const GameRatesProvider = ({ data, path, getGameRatesList,title }) => {
   const userId = localStorage.getItem("userId");
   const navigate = PagesIndex.useNavigate();
