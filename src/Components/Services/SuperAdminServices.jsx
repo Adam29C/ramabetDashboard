@@ -82,9 +82,15 @@ export const GAME_PROVIDER_ADD_API = async (data) => {
 };
 
 export const GAME_PROVIDER_DELETE_API = async (data) => {
-  console.log(data);
+
   try {
-    const res = await dataservice.delete(Api.ADMIN_GAME_PROVIDER, { data });
+    console.log(data)
+    let apiData ={
+      adminId:data.adminId,
+      gameProviderId:data.deleteId
+    }
+
+    const res = await dataservice.delete(Api.ADMIN_GAME_PROVIDER, { data:apiData });
     return res?.data;
   } catch (error) {
     return error;
@@ -129,13 +135,21 @@ export const GAME_RATES_UPDATE_API = async (data) => {
 };
 
 export const GAME_RATES_DELETE_API = async (data) => {
-  try {
-    const res = await dataservice.delete(Api.ADMIN_GAME_RATES, { data });
-    return res?.data;
-  } catch (error) {
-    return error;
-  }
-};
+
+    try {
+      let apiData ={
+        adminId:data.adminId,
+        gameRateId:data.deleteId
+      }
+
+ 
+      const res = await dataservice.delete(Api.ADMIN_GAME_RATES, {data:apiData});
+      return res?.data;
+    } catch (error) {
+      return error;
+    }
+  };
+  
 
 // --------------------------  game provider api ------------------------
 // --------------------------   super admin provider api ------------------------

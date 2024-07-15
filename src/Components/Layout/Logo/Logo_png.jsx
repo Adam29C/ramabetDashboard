@@ -7,7 +7,7 @@ const Logo_png = () => {
         <img
          id="company-logo"
           // src="http://ramabets.com/images/0000.png"
-          alt="company logo"
+          alt="logo"
           className="w-50"
         />
       </div>

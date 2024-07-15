@@ -8,7 +8,7 @@ import { GAME_PROVIDER_DELETE_API } from "../../Services/SuperAdminServices";
 const GameRatesProvider = ({ data, path, getGameRatesList,title }) => {
   const userId = localStorage.getItem("userId");
   const navigate = PagesIndex.useNavigate();
-console.log(title)
+
 //   const handleDelete = async (id) => {
 //     const confirmResult = await Swal.fire({
 //       title: "Are you sure?",

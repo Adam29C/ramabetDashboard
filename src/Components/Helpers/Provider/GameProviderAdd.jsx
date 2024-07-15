@@ -7,7 +7,6 @@ const GameProviderAdd = () => {
   const location = PagesIndex.useLocation();
   const formik = PagesIndex.useFormik({
     initialValues: {
-      // game: location?.state ? location?.state?.game : "",
       providerName: location?.state ? location?.state?.providerName : "",
       providerResult: location?.state ? location?.state?.providerResult : "",
       resultStatus: 0,
@@ -17,9 +16,7 @@ const GameProviderAdd = () => {
     },
     validate: (values) => {
       const errors = {};
-      // if (!values.game) {
-      //   errors.game = PagesIndex.valid_err.GAME_NAME_ERROR;
-      // }
+
 
       if (!values.providerName) {
         errors.providerName = PagesIndex.valid_err.PROVIDER_NAME_ERROR;
@@ -40,7 +37,7 @@ const GameProviderAdd = () => {
       try {
         let data = {
           adminId: userId,
-          // game: values.game,
+       
           providerName: values.providerName,
           providerResult: values.providerResult,
 
@@ -74,13 +71,7 @@ const GameProviderAdd = () => {
   });
 
   const fields = [
-    // {
-    //   name: "game",
-    //   label: "Game",
-    //   type: "text",
-    //   label_size: 6,
-    //   col_size: 6,
-    // },
+
     {
       name: "providerName",
       label: "Provider Name",
