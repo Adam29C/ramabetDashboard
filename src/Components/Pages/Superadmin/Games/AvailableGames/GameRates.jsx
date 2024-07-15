@@ -21,7 +21,8 @@ const GameRates = () => {
   return (
     <>
     <GameRatesProvider data={data} path={"/admin/game/rates/add"} getGameRatesList={getGameRatesList} title="Game Rates"/>
-    <Modal/></>
+    {/* <Modal/> */}
+    </>
 
   )
 }
