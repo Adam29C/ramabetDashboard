@@ -1,4 +1,3 @@
-// utils/deleteUtil.js
 import Swal from "sweetalert2";
 
 const DeleteSweetAlert = async (deleteApi, id, userId, getGameProviderList) => {
@@ -15,7 +14,7 @@ const DeleteSweetAlert = async (deleteApi, id, userId, getGameProviderList) => {
     try {
       let data = {
         adminId: userId,
-        gameProviderId: id,
+        deleteId: id,
       };
       const res = await deleteApi(data);
 

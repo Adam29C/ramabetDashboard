@@ -10,7 +10,6 @@ const Games = () => {
 const [data,getData]=PagesIndex.useState([])
   const getGameProviderList = async()=>{
     const res = await PagesIndex.admin_services.GAME_PROVIDER_GET_LIST_API(userId)
-    console.log(res,"check get data in response")
     getData(res?.data?.details)
   }
 

@@ -44,7 +44,6 @@ const Users = () => {
       } else if (!PagesIndex.Password_Rejex(values.password)) {
         errors.password = PagesIndex.valid_err.PASSWORD__LENGTH_ERROR;
       }
-      console.log("errors" ,errors);
       return errors;
     },
     onSubmit: async (values) => {
