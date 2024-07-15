@@ -1,28 +1,27 @@
 const Api = {
-    COMMON_GENERATE_TOKEN:"common/generate-token",
-    // AUTH MODULE 
-    LOGIN:"admin/adminLogin",
-    ADMIN_CHANGE_PASSWORD:"admin/changePassword",
+  COMMON_GENERATE_TOKEN: "common/generate-token",
+  // AUTH MODULE
+  LOGIN: "admin/adminLogin",
+  ADMIN_CHANGE_PASSWORD: "admin/changePassword",
 
-    // SYSTEM MODULE 
-    ADD_SYSTEM_INFO:"admin/addSystemInfo",
-    LIST_SYSTEM_INFO:"common/systemInforList",
-    UPDATE_SYSTEM_INFO:"admin/updateSystemInfo",
-    ADMIN_PROFILE_GET:"admin/adminProfile",
+  // SYSTEM MODULE
+  ADD_SYSTEM_INFO: "admin/addSystemInfo",
+  LIST_SYSTEM_INFO: "common/systemInforList",
+  UPDATE_SYSTEM_INFO: "admin/updateSystemInfo",
+  ADMIN_PROFILE_GET: "admin/adminProfile",
 
+  // EMPLOYEE MODULE
+  CREATE_EMPLOYEE: "admin/createEmployee",
+  UPDATE_EMPLOYEE: "admin/updateEmployeeInformition",
 
-    // EMPLOYEE MODULE 
-    CREATE_EMPLOYEE : "admin/createEmployee",
+  EMPLOYEE_LIST: "admin/empList",
+  BLOCK_EMPLOYEE: "admin/blockEmployee",
 
-    EMPLOYEE_LIST : "admin/empList",
-    BLOCK_EMPLOYEE:"admin/blockEmployee",
+  //GAME PROVIDER
+  ADMIN_GAME_PROVIDER: "admin/game/gameProvider",
 
-    //GAME PROVIDER
-    ADMIN_GAME_PROVIDER:"admin/game/gameProvider",
+  //GAME RATES
+  ADMIN_GAME_RATES: "admin/game/gameRate",
+};
 
-    //GAME RATES
-    ADMIN_GAME_RATES:"admin/game/gameRate"
-   
-}
-
-export {Api}
+export { Api };

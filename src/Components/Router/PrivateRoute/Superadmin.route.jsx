@@ -53,6 +53,10 @@ const adminRoutes = [
         element: <PrivateRoute element={Add_Edit_Employee} />,
       },
       {
+        path: "employee/edit",
+        element: <PrivateRoute element={Add_Edit_Employee} />,
+      },
+      {
         path: "user/profile",
         element: <PrivateRoute element={SuperAdminProfile} />,
       },

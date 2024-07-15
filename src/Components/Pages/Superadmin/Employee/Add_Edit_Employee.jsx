@@ -8,13 +8,16 @@ function AddEmployee() {
   const userId = localStorage.getItem("userId");
 
   const navigate = PagesIndex.useNavigate();
+  const location = PagesIndex.useLocation();
+  const userData = location.state;
 
+  // console.log("location" ,location.state);
   const formik = PagesIndex.useFormik({
     initialValues: {
-      employeeName: "",
-      username: "",
-      password: "",
-      designation: "",
+      employeeName: userData?.employeeName || "",
+      username: userData?.username || "",
+      password: userData?.password || "",
+      designation: userData?.designation || "",
     },
 
     validate: (values) => {
@@ -54,6 +57,7 @@ function AddEmployee() {
       type: "text",
       label_size: 12,
       col_size: 6,
+      disable: userData ? true : "",
     },
     {
       name: "password",
@@ -61,6 +65,7 @@ function AddEmployee() {
       type: "text",
       label_size: 12,
       col_size: 6,
+      disable: userData ? true : "",
     },
     {
       name: "designation",
@@ -68,6 +73,19 @@ function AddEmployee() {
       type: "text",
       label_size: 12,
       col_size: 6,
+      disable: userData ? true : "",
+    },
+    {
+      name: "loginPermission",
+      label: "Dashboard/App Permission",
+      type: "select",
+      label_size: 12,
+      col_size: 6,
+      options: [
+        { label: "Both", values: 0 },
+        { label: "Dashboard", values: 1 },
+        { label: "Application", values: 2 },
+      ],
     },
   ];
 
@@ -79,6 +97,105 @@ function AddEmployee() {
     },
     onSubmit: async (values) => {},
   });
+  function updateCheckedStatus(array1, array2) {
+    const permissions = array2[0];
+
+    const keyMap = {
+      Dashboard: "isDashboard",
+      Users: "isUsers",
+      Games: "isGames",
+      "Games Provider": "isGamesProvider",
+      "Games Setting": "isGamesSetting",
+      "Games Rates": "isGamesRates",
+      "Games Result": "isGamesResult",
+      "Games Revert": "isGamesRevert",
+      "Games Refund": "isGamesRefund",
+      Starline: "isStarline",
+      "Starline Provider": "isStarlineProvider",
+      "Starline Setting": "isStarlineSetting",
+      "Starline Rates": "isStarlineRates",
+      "Starline Result": "isStarlineResult",
+      "Starline Revert": "isStarlineRevert",
+      "Starline Refund": "isStarlineRefund",
+      "Andar Bahar": "isAndarBahar",
+      "Andar Bahar Provider": "isAndarBaharProvider",
+      "Andar Bahar Setting": "isAndarBaharSetting",
+      "Andar Bahar Rates": "isAndarBaharRates",
+      "Andar Bahar Result": "isAndarBaharResult",
+      "Andar Bahar Revert": "isAndarBaharRevert",
+      "Andar Bahar Refund": "isAndarBaharRefund",
+      "Cutting Group": "isCuttingGroup",
+      "Bookie Corner": "isBookieCorner",
+      "OC Cutting Group": "isOCCuttingGroup",
+      "Final Cutting Group": "isFinalCuttingGroup",
+      Wallet: "isWallet",
+      "Fund Request": "isFundRequest",
+      ExportDebitReport: "isExportDebitReport",
+      "View Wallet": "isViewWallet",
+      "Request ON/OFF": "isRequestON/OFF",
+      "Credit Request": "isCreditRequest",
+      "Approved Debit Page": "isApprovedDebitPage",
+      "Paytm Request": "isPaytmRequest",
+      "Bank Account Request": "isBankAccountRequest",
+      "Pending Debit Request": "isPendingDebitRequest",
+      "Pending Bank Request": "isPendingBankRequest",
+      "Pending Paytm Request": "isPendingPaytmRequest",
+      "Declined Request": "isDeclinedRequest",
+      Notification: "isNotification",
+      News: "isNews",
+      "Delete User": "isDeleteUser",
+      "App Settings": "isAppSettings",
+      "How To Play": "isHowToPlay",
+      "Withdraw Screen": "isWithdrawScreen",
+      "Notice Board": "isNoticeBoard",
+      "Wallet Contact": "isWalletContact",
+      "App Version": "isAppVersion",
+      Masters: "isMasters",
+      "Upi Id": "isUpiId",
+      "Add Fund Mode": "isAddFundMode",
+      "Manage Employee": "isManageEmployee",
+      "Create Employee": "isCreateEmployee",
+      Reports: "isReports",
+      "Jodi All": "isJodiAll",
+      "Sales Report": "isSalesReport",
+      "Andar Bahar Sales Report": "isAndarBaharSalesReport",
+      "Andar Bahar Total Bids": "isAndarBaharTotalBids",
+      "Starline Sales Report": "isStarlineSalesReport",
+      "Fund Report": "isFundReport",
+      "Total Bids": "isTotalBids",
+      "Ajay Sir Report": "isAjaySirReport",
+      "Credit Debit Report": "isCreditDebitReport",
+      "Daily Report": "isDailyReport",
+      "Bidding Report": "isBiddingReport",
+      "Customer Balance": "isCustomerBalance",
+      "All User Bids": "isAllUserBids",
+      "Deleted Users": "isDeletedUsers",
+      "Upi Fund Report": "isUpiFundReport",
+    };
+
+    function updateNested(array, parentKey) {
+      array.forEach((item) => {
+        const key = keyMap[item.name];
+        if (key !== undefined && permissions[key] !== undefined) {
+          item.checked = permissions[key];
+        }
+        if (item.Nasted && item.Nasted.length > 0) {
+          updateNested(item.Nasted);
+        }
+      });
+    }
+
+    updateNested(array1);
+    return array1;
+  }
+
+  var updatedArray1 = PagesIndex.useEffect(() => {
+    if (location?.state?.permission) {
+      updatedArray1 = updateCheckedStatus(makePermissions, [
+        location?.state?.permission,
+      ]);
+    }
+  }, []);
 
   const fields1 = [
     {
@@ -88,7 +205,7 @@ function AddEmployee() {
       label_size: 12,
       title_size: 12,
       col_size: 4,
-      options: makePermissions,
+      options: updatedArray1 || makePermissions,
     },
   ];
 
@@ -101,15 +218,30 @@ function AddEmployee() {
 
     const req = {
       adminId: userId,
-      employeeName: formik.values.employeeName,
       username: formik.values.username,
-      password: formik.values.password,
-      designation: formik.values.designation,
-      loginPermission: 1,
+      // password: formik.values.password,
+      // designation: formik.values.designation,
+      loginPermission: formik.values.loginPermission,
       permission: updatedABC,
+      ...(location?.state ? { empId: location?.state?._id } : ""),
     };
+    let res;
+    if (location?.state) {
+      res = await PagesIndex.admin_services.UPDATE_EMPLOYEE(req);
+    } else {
+      const req = {
+        adminId: userId,
+        employeeName: formik.values.employeeName,
+        username: formik.values.username,
+        password: formik.values.password,
+        designation: formik.values.designation,
+        loginPermission: formik.values.loginPermission,
 
-    const res = await PagesIndex.admin_services.CREATE_EMPLOYEE(req);
+        loginPermission: 1,
+        permission: updatedABC,
+      };
+      res = await PagesIndex.admin_services.CREATE_EMPLOYEE(req);
+    }
 
     if (res.status == 200) {
       toast.success(res.message);
@@ -147,13 +279,12 @@ function AddEmployee() {
     },
   ];
 
-
   return (
     <Main_Containt title="Add Users" col_size={12}>
       <FormWizardComponent
         shape="circle"
         color="green"
-         stepSize="sm"
+        stepSize="sm"
         onComplete={handleComplete}
         tabs={tabs}
       />
@@ -245,3 +376,9 @@ export const InitialValues = {
   "Upi Fund Report": false,
   Invoices: false,
 };
+
+/**
+ * 0-for both,
+ * 1-for dashboad
+ * 2-for chat panel
+ */

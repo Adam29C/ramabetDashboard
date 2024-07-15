@@ -58,6 +58,8 @@ const ReusableForm = ({
     return `${year}-${month}-${day}`;
   };
 
+
+  
   return (
     <form onSubmit={formik.handleSubmit}>
       <div
@@ -110,6 +112,7 @@ const ReusableForm = ({
                 </>
               ) : field.type === "checkbox" ? (
                 <>
+                
                   {field.options &&
                     field.options.map((option) => (
                       <div

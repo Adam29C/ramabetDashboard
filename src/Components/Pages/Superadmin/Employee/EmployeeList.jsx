@@ -50,7 +50,7 @@ const EmployeeList = () => {
         <div style={{ width: "120px" }}>
           <div>
             <PagesIndex.Link 
-            // to={path} state={cell}
+            to={"/admin/employee/edit"} state={cell}
             >
               <span data-toggle="tooltip" data-placement="top" title="Edit">
                 <i class="ti-marker-alt fs-5 mx-1 "></i>
