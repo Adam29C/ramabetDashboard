@@ -22,6 +22,9 @@ const Api = {
 
   //GAME RATES
   ADMIN_GAME_RATES: "admin/game/gameRate",
+
+  //GAME PROVIDER
+  ADMIN_GAME_SETTING: "/admin/game/gameSetting",
 };
 
 export { Api };

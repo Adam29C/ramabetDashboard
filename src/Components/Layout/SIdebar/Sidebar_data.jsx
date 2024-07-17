@@ -74,7 +74,8 @@ export const admin_Sidebar = [
       {
         id: 2,
         title: "Games Setting",
-        route: "#",
+        route: "game/settings",
+
       },
       {
         id: 3,

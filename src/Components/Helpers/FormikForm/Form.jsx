@@ -271,7 +271,7 @@ const ReusableForm = ({
                     </div>
                   </div>
                 </>
-              ) : field.type === "date" ? (
+              ) : field.type === "time" ? (
                 <>
                   <div className={`col-lg-${field.col_size}`}>
                     <div className=" row flex-column">
