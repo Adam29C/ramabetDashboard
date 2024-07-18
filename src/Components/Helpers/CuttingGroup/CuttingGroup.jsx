@@ -11,44 +11,12 @@ const CuttingGroup = () => {
       confirmPassword: "",
     },
     validate: (values) => {
-      const errors = {};
-      if (!values.password) {
-        errors.password = PagesIndex.valid_err.PASSWORD_ERROR;
-      } else if (!PagesIndex.Password_Rejex(values.password)) {
-        errors.password = PagesIndex.valid_err.PASSWORD__LENGTH_ERROR;
-      }
+ 
 
-      if (!values.confirmPassword) {
-        errors.confirmPassword = PagesIndex.valid_err.CONFIRM_ERROR;
-      } else if (values.confirmPassword !== values.password) {
-        errors.confirmPassword =
-          PagesIndex.valid_err.CONFIRM_AND_NEW_PASSWORD_ERROR;
-      }
-
-      return errors;
     },
 
     onSubmit: async (values) => {
-      try {
-        let data = {
-          id: userId,
-          password: values.password,
-        };
-        const res = await PagesIndex.admin_services.ADMIN_CHANGE_PASSWORD_API(
-          data
-        );
-
-        if (res?.status === 200) {
-          PagesIndex.toast.success(res?.message);
-          setTimeout(() => {
-            navigate("/admin/dashboard");
-          }, 1000);
-        } else {
-          PagesIndex.toast.error(res.message);
-        }
-      } catch (error) {
-        PagesIndex.toast.error(error);
-      }
+  
     },
   });
 
