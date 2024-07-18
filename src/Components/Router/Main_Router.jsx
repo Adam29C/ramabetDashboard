@@ -7,10 +7,10 @@ import ErrorPage from "../Pages/Auth/NotFound";
 const router = createBrowserRouter([
   ...publicRoutes,
   ...adminRoutes,
-  // {
-  //   path: "*",
-  // //  element: <ErrorPage />,
-  // },
+  {
+    path: "*",
+    element: <ErrorPage />,
+  },
 ]);
 
 export default router;
