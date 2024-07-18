@@ -21,6 +21,7 @@ const ReusableForm = ({
   disabledSubmit,
   isLoading,
   show_submit,
+  label_size
 }) => {
   const location = useLocation();
 
@@ -79,7 +80,7 @@ const ReusableForm = ({
                   <div className={`col-lg-${field.col_size}`}>
                     <div className="mb-1 row">
                       <label
-                        className={`custom-label  col-lg-${field.col_size}`}
+                        className={`custom-label  col-lg-${field.label_size}`}
                         htmlFor={field.name}
                       >
                         {field.label}

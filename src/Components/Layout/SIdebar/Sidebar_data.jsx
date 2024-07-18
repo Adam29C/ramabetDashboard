@@ -175,4 +175,13 @@ export const admin_Sidebar = [
       },
     ],
   },
+  
+  {
+    id: 1,
+    headerTitle: "Cutting Group",
+    title: "Cutting Group",
+    route: "cuttinggroup",
+    Icon: "icon-speedometer",
+    NestedElement: [],
+  },
 ];
