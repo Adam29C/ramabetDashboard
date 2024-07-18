@@ -1,17 +1,13 @@
 import React from "react";
 import { useMyContext } from "../../Hooks/Context/CreateSidebarContext";
 import ToggleDark from "./ToggleDark";
+
 import PagesIndex from "../../Pages/PagesIndex";
 import { Remove_Space_Character } from "../../Utils/Valid_Rejex";
-import { GetExpired } from "../../Utils/UserExpired";
 const Header = () => {
   const { toggleSidebar } = useMyContext();
 const navigate = PagesIndex.useNavigate()
 const dispatch = PagesIndex.useDispatch()
-
-const token = localStorage.getItem("token");
-
-
 
 const generateToken = async () => {
   const val = PagesIndex.Remove_Special_Character(PagesIndex.v4());
@@ -44,17 +40,6 @@ PagesIndex.useEffect(() => {
     
    }, 2000);
   }
-
-  PagesIndex.useEffect(() => {
-    const checkTokenExpiry = () => {
-      GetExpired(token, navigate);
-    };
-    const interval = setInterval(checkTokenExpiry, 5000);
-    return () => clearInterval(interval);
-  }, [navigate]);
-
-
-
   return (
     <div className="header">
       <div className="header-content clearfix">

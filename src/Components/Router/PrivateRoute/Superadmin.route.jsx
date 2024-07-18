@@ -23,7 +23,7 @@ import GameRates from "../../Pages/Superadmin/Games/AvailableGames/Games";
 import GameRatesAdd from "../../Helpers/GameProvider/GameRates/GameRatesAdd";
 import GameSetting from "../../Pages/Superadmin/Games/AvailableGames/GameSettingList";
 import GameSettingAdd from "../../Helpers/GameProvider/GameSetting/GameSettingAdd";
-import CuttingGroup from "../../Pages/Superadmin/CuttingGroup/CuttingGroup";
+import CuttingGroup from "../../Helpers/CuttingGroup/CuttingGroup";
 
 // Mock authentication status
 

@@ -177,7 +177,7 @@ export const admin_Sidebar = [
   },
   
   {
-    id: 1,
+    id: 8,
     headerTitle: "Cutting Group",
     title: "Cutting Group",
     route: "cuttinggroup",

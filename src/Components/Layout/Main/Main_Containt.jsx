@@ -1,49 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { get_year_and_month_only } from "../../Utils/Common_Date";
-import { Icon } from "@iconify/react";
-const Main_Containt = ({
-  add_button,
-  show_Back_button,
-  title,
-  col_size,
-  btnTitle,
-  route,
-  children,
-}) => {
+const Main_Containt = ({ add_button ,col_size, route, children }) => {
+
   return (
     <div className="content-body">
       <div className="container-fluid mt-3">
         <div className="row">
           <div className={`card col-${col_size} `}>
-            <div className="d-flex align-items-center justify-content-between">
-              <h4 className="m-0 p-3">{title}</h4>
-              {add_button ? (
-                <Link className="submitBtn btn btn-primary " to={route}>
-                  {btnTitle === "Add" ? (
-                    <>
-                      <Icon icon="line-md:plus" className="fw-bold" style={{ fontSize: "20px" }} />
-                      &nbsp; Add 
-                    </>
-                  ) : (
-                    <>
-                      <Icon
-                        icon="line-md:arrow-left"
-                        style={{ fontSize: "20px" }}
-                      />
-                      &nbsp; Back
-                    </>
-                  )}
-                </Link>
-              ) : (
-                ""
-              )}
-            </div>
-          </div>
-
-          <div className={`card col-${col_size} `}>
             <div className="card-body">
-             
+              {add_button && (
+                <div className="d-flex mx-auto justify-content-end">
+                  <Link to={route} type="button" className="btn btn-primary">
+                    Add
+                  </Link>
+          
+                </div>
+              )}
               {children}
             </div>
           </div>

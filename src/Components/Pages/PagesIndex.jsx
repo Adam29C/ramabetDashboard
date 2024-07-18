@@ -6,8 +6,6 @@ import { toast } from "react-toastify";
 import { v4 } from "uuid";
 import { Remove_Special_Character,Password_Rejex } from "../Utils/Valid_Rejex";
 import { LOGIN_API } from "../Services/AuthServices";
-import { Icon } from "@iconify/react/dist/iconify.js";
-
 import Logo from "../Layout/Logo/Logo_png";
 import { useFormik } from "formik";
 import Auth_Containt from "../Layout/Main/Auth_content";
@@ -16,7 +14,7 @@ import Formikform from "../Helpers/FormikForm/Form";
 import Toast from "../Helpers/Toast";
 import { getGenerateToken } from "../Redux/slice/CommonSlice";
 import { Link } from "react-router-dom";
-import * as valid_err from '../Utils/Common_Msg'
+import *as valid_err from '../Utils/Common_Msg'
 import * as admin_services from "../Services/SuperAdminServices"
 // import { getGenerateToken } from "../redux/slice/CommonSlice";
 import { ADD_SYSTEM_INFO_API, LIST_SYSTEM_INFO_API, UPDATE_SYSTEM_INFO_API } from "../Services/CommonServices";
@@ -27,8 +25,6 @@ import profileLogo from "../../../public/assets/images/avatar/12b69c03188762a060
 import empLogo from "../../../public/assets/images/avatar/emp-logo.png"
 import TeamMets from "./Superadmin/Profile/TeamMets";
 import { getEmployeeList } from "../Redux/slice/SuperAdminSlice";
-import * as commonSlice from "../Redux/slice/CommonSlice";
-
 
 import Data_Table from "../Helpers/Datatable";
 const PagesIndex = {
@@ -63,9 +59,8 @@ const PagesIndex = {
     empLogo,
     getEmployeeList,
     Data_Table,
-    useLocation,
-    commonSlice,
-    Icon
+    useLocation
+
  
 }
 
