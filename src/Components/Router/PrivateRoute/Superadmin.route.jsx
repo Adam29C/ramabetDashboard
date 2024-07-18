@@ -1,6 +1,5 @@
 // src/routes/AdminRoutes.jsx
 import React from "react";
-import { createBrowserRouter } from "react-router-dom";
 import Superadmin_Wraper from "../../Layout/Wraper/Wraper";
 
 // Dashboard
@@ -23,6 +22,7 @@ import GameRates from "../../Pages/Superadmin/Games/AvailableGames/Games";
 import GameRatesAdd from "../../Helpers/GameProvider/GameRates/GameRatesAdd";
 import GameSetting from "../../Pages/Superadmin/Games/AvailableGames/GameSettingList";
 import GameSettingAdd from "../../Helpers/GameProvider/GameSetting/GameSettingAdd";
+
 import CuttingGroup from "../../Pages/Superadmin/CuttingGroup/CuttingGroup";
 
 // Mock authentication status
@@ -87,6 +87,10 @@ const adminRoutes = [
       },
       {
         path: "game/setting/add",
+        element: <PrivateRoute element={GameSettingAdd} />,
+      },
+      {
+        path: "game/setting/edit",
         element: <PrivateRoute element={GameSettingAdd} />,
       },
       // {

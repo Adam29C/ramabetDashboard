@@ -5,160 +5,363 @@ import Toggle from "../../Toggle";
 import Swal from "sweetalert2";
 import { GAME_PROVIDER_DELETE_API } from "../../../Services/SuperAdminServices";
 import DeleteSweetAlert from "../../DeleteSweetAlert";
+
 const GameProvider = ({ data, path, getGameProviderList, title }) => {
   const userId = localStorage.getItem("userId");
   const navigate = PagesIndex.useNavigate();
 
   const updateStatusApi = () => {};
 
-
-  console.log("data" ,data);
-
   const columns = [
     {
       name: "Game Name",
-      selector: (row) => (
+      selector: (row, cell) => (
         <>
-          <div className="break-text">{row.providerName}</div>
+          <div className="break-text py-">{row.providerName}</div>
+          <PagesIndex.Link 
+            to={"/admin/game/setting/edit"}
+            // state={{ row: row, rowData: rowData }}
+            className="update-button"
+          >
+            update
+          </PagesIndex.Link>
         </>
       ),
     },
     {
       name: "Monday",
-      selector: (row) => (
-        <>
-          <div className="my-1">
-            <p className="game-setting-font">OBT : 10:25 AM</p>
-            <p className="game-setting-font">CBT : 10:25 AM</p>
-            <p className="game-setting-font">OBRT : 10:25 AM</p>
-            <p className="game-setting-font">CBRT : 10:25 AM</p>
-            <p className="game-setting-font">IsClosed : Open</p>
-            <button className="update-button">update</button>
+      selector: (row) => {
+        const rowData = row.gameSatingInfo && row.gameSatingInfo[0];
+        return (
+          <div className="py-2">
+            {rowData ? (
+              <>
+                <p className="game-setting-font">
+                  <span className="fw-bold"> OBT</span> :
+                  {rowData ? rowData.OBT : "N/A"}
+                </p>
+                <p className="game-setting-font">
+                  <span className="fw-bold"> CBT</span> :
+                  {rowData ? rowData.CBT : "N/A"}
+                </p>
+                <p className="game-setting-font">
+                  <span className="fw-bold"> OBRT</span> :
+                  {rowData ? rowData.OBRT : "N/A"}
+                </p>
+                <p className="game-setting-font">
+                  <span className="fw-bold"> CBRT</span> :
+                  {rowData ? rowData.CBRT : "N/A"}
+                </p>
+                <p className="game-setting-font">
+                  <span className="fw-bold">
+                    IsClosed :
+                    {rowData ? (rowData.isClosed ? "Closed" : "Open") : "N/A"}
+                  </span>
+                </p>
+
+                <PagesIndex.Link
+                  to={"/admin/game/setting/edit"}
+                  state={{ row: row, rowData: rowData }}
+                  className="update-button"
+                >
+                  update
+                </PagesIndex.Link>
+              </>
+            ) : (
+              " No Record"
+            )}
           </div>
-        </>
-      ),
+        );
+      },
     },
     {
       name: "Tuesday",
-      selector: (row) => (
-        <>
-          <div className="my-1">
-            <p className="game-setting-font">OBT : 10:25 AM</p>
-            <p className="game-setting-font">CBT : 10:25 AM</p>
-            <p className="game-setting-font">OBRT : 10:25 AM</p>
-            <p className="game-setting-font">CBRT : 10:25 AM</p>
-            <p className="game-setting-font">IsClosed : Open</p>
-            <button className="update-button">update</button>
+      selector: (row) => {
+        const rowData = row.gameSatingInfo && row.gameSatingInfo[1];
+        return (
+          <div className="py-2">
+            <div className="py-2">
+              {rowData ? (
+                <>
+                  <p className="game-setting-font">
+                    <span className="fw-bold"> OBT</span> :
+                    {rowData ? rowData.OBT : "N/A"}
+                  </p>
+                  <p className="game-setting-font">
+                    <span className="fw-bold"> CBT</span> :
+                    {rowData ? rowData.CBT : "N/A"}
+                  </p>
+                  <p className="game-setting-font">
+                    <span className="fw-bold"> OBRT</span> :
+                    {rowData ? rowData.OBRT : "N/A"}
+                  </p>
+                  <p className="game-setting-font">
+                    <span className="fw-bold"> CBRT</span> :
+                    {rowData ? rowData.CBRT : "N/A"}
+                  </p>
+                  <p className="game-setting-font">
+                    <span className="fw-bold">
+                      IsClosed :
+                      {rowData ? (rowData.isClosed ? "Closed" : "Open") : "N/A"}
+                    </span>
+                  </p>
+
+                  <PagesIndex.Link
+                    to={"/admin/game/setting/edit"}
+                    state={{ row: row, rowData: rowData }}
+                    className="update-button"
+                  >
+                    update
+                  </PagesIndex.Link>
+                </>
+              ) : (
+                " No Record"
+              )}
+            </div>
           </div>
-        </>
-      ),
+        );
+      },
     },
     {
       name: "Wednesday",
-      selector: (row) => (
-        <>
-          <div className="my-1">
-            <p className="game-setting-font">OBT : 10:25 AM</p>
-            <p className="game-setting-font">CBT : 10:25 AM</p>
-            <p className="game-setting-font">OBRT : 10:25 AM</p>
-            <p className="game-setting-font">CBRT : 10:25 AM</p>
-            <p className="game-setting-font">IsClosed : Open</p>
-            <button className="update-button">update</button>
+      selector: (row) => {
+        const rowData = row.gameSatingInfo && row.gameSatingInfo[2];
+        return (
+          <div className="py-2">
+            <div className="py-2">
+              {rowData ? (
+                <>
+                  <p className="game-setting-font">
+                    <span className="fw-bold"> OBT</span> :
+                    {rowData ? rowData.OBT : "N/A"}
+                  </p>
+                  <p className="game-setting-font">
+                    <span className="fw-bold"> CBT</span> :
+                    {rowData ? rowData.CBT : "N/A"}
+                  </p>
+                  <p className="game-setting-font">
+                    <span className="fw-bold"> OBRT</span> :
+                    {rowData ? rowData.OBRT : "N/A"}
+                  </p>
+                  <p className="game-setting-font">
+                    <span className="fw-bold"> CBRT</span> :
+                    {rowData ? rowData.CBRT : "N/A"}
+                  </p>
+                  <p className="game-setting-font">
+                    <span className="fw-bold">
+                      IsClosed :
+                      {rowData ? (rowData.isClosed ? "Closed" : "Open") : "N/A"}
+                    </span>
+                  </p>
+
+                  <PagesIndex.Link
+                    to={"/admin/game/setting/edit"}
+                    state={{ row: row, rowData: rowData }}
+                    className="update-button"
+                  >
+                    update
+                  </PagesIndex.Link>
+                </>
+              ) : (
+                " No Record"
+              )}
+            </div>
           </div>
-        </>
-      ),
+        );
+      },
     },
     {
       name: "Thursday",
-      selector: (row) => (
-        <>
-          <div className="my-1">
-            <p className="game-setting-font">OBT : 10:25 AM</p>
-            <p className="game-setting-font">CBT : 10:25 AM</p>
-            <p className="game-setting-font">OBRT : 10:25 AM</p>
-            <p className="game-setting-font">CBRT : 10:25 AM</p>
-            <p className="game-setting-font">IsClosed : Open</p>
-            <button className="update-button">update</button>
+      selector: (row) => {
+        const rowData = row.gameSatingInfo && row.gameSatingInfo[3];
+        return (
+          <div className="py-2">
+            <div className="py-2">
+              {rowData ? (
+                <>
+                  <p className="game-setting-font">
+                    <span className="fw-bold"> OBT</span> :
+                    {rowData ? rowData.OBT : "N/A"}
+                  </p>
+                  <p className="game-setting-font">
+                    <span className="fw-bold"> CBT</span> :
+                    {rowData ? rowData.CBT : "N/A"}
+                  </p>
+                  <p className="game-setting-font">
+                    <span className="fw-bold"> OBRT</span> :
+                    {rowData ? rowData.OBRT : "N/A"}
+                  </p>
+                  <p className="game-setting-font">
+                    <span className="fw-bold"> CBRT</span> :
+                    {rowData ? rowData.CBRT : "N/A"}
+                  </p>
+                  <p className="game-setting-font">
+                    <span className="fw-bold">
+                      IsClosed :
+                      {rowData ? (rowData.isClosed ? "Closed" : "Open") : "N/A"}
+                    </span>
+                  </p>
+
+                  <PagesIndex.Link
+                    to={"/admin/game/setting/edit"}
+                    state={{ row: row, rowData: rowData }}
+                    className="update-button"
+                  >
+                    update
+                  </PagesIndex.Link>
+                </>
+              ) : (
+                " No Record"
+              )}
+            </div>
           </div>
-        </>
-      ),
+        );
+      },
     },
     {
       name: "Friday",
-      selector: (row) => (
-        <>
-          <div className="my-1">
-            <p className="game-setting-font">OBT : 10:25 AM</p>
-            <p className="game-setting-font">CBT : 10:25 AM</p>
-            <p className="game-setting-font">OBRT : 10:25 AM</p>
-            <p className="game-setting-font">CBRT : 10:25 AM</p>
-            <p className="game-setting-font">IsClosed : Open</p>
-            <button className="update-button">update</button>
+      selector: (row) => {
+        const rowData = row.gameSatingInfo && row.gameSatingInfo[4];
+        return (
+          <div className="py-2">
+            <div className="py-2">
+              {rowData ? (
+                <>
+                  <p className="game-setting-font">
+                    <span className="fw-bold"> OBT</span> :
+                    {rowData ? rowData.OBT : "N/A"}
+                  </p>
+                  <p className="game-setting-font">
+                    <span className="fw-bold"> CBT</span> :
+                    {rowData ? rowData.CBT : "N/A"}
+                  </p>
+                  <p className="game-setting-font">
+                    <span className="fw-bold"> OBRT</span> :
+                    {rowData ? rowData.OBRT : "N/A"}
+                  </p>
+                  <p className="game-setting-font">
+                    <span className="fw-bold"> CBRT</span> :
+                    {rowData ? rowData.CBRT : "N/A"}
+                  </p>
+                  <p className="game-setting-font">
+                    <span className="fw-bold">
+                      IsClosed :
+                      {rowData ? (rowData.isClosed ? "Closed" : "Open") : "N/A"}
+                    </span>
+                  </p>
+
+                  <PagesIndex.Link
+                    to={"/admin/game/setting/edit"}
+                    state={{ row: row, rowData: rowData }}
+                    className="update-button"
+                  >
+                    update
+                  </PagesIndex.Link>
+                </>
+              ) : (
+                " No Record"
+              )}
+            </div>
           </div>
-        </>
-      ),
+        );
+      },
     },
     {
-      name: "Seturday",
-      selector: (row) => (
-        <>
-          <div className="my-1">
-            <p className="game-setting-font">OBT : 10:25 AM</p>
-            <p className="game-setting-font">CBT : 10:25 AM</p>
-            <p className="game-setting-font">OBRT : 10:25 AM</p>
-            <p className="game-setting-font">CBRT : 10:25 AM</p>
-            <p className="game-setting-font">IsClosed : Open</p>
-            <button className="update-button">update</button>
+      name: "Saturday",
+      selector: (row) => {
+        const rowData = row.gameSatingInfo && row.gameSatingInfo[5];
+        return (
+          <div className="py-2">
+            <div className="py-2">
+              {rowData ? (
+                <>
+                  <p className="game-setting-font">
+                    <span className="fw-bold"> OBT</span> :
+                    {rowData ? rowData.OBT : "N/A"}
+                  </p>
+                  <p className="game-setting-font">
+                    <span className="fw-bold"> CBT</span> :
+                    {rowData ? rowData.CBT : "N/A"}
+                  </p>
+                  <p className="game-setting-font">
+                    <span className="fw-bold"> OBRT</span> :
+                    {rowData ? rowData.OBRT : "N/A"}
+                  </p>
+                  <p className="game-setting-font">
+                    <span className="fw-bold"> CBRT</span> :
+                    {rowData ? rowData.CBRT : "N/A"}
+                  </p>
+                  <p className="game-setting-font">
+                    <span className="fw-bold">
+                      IsClosed :
+                      {rowData ? (rowData.isClosed ? "Closed" : "Open") : "N/A"}
+                    </span>
+                  </p>
+
+                  <PagesIndex.Link
+                    to={"/admin/game/setting/edit"}
+                    state={{ row: row, rowData: rowData }}
+                    className="update-button"
+                  >
+                    update
+                  </PagesIndex.Link>
+                </>
+              ) : (
+                " No Record"
+              )}
+            </div>
           </div>
-        </>
-      ),
+        );
+      },
     },
     {
       name: "Sunday",
-      selector: (row) => (
-        <>
-          <div className="my-1">
-            <p className="game-setting-font">OBT : 10:25 AM</p>
-            <p className="game-setting-font">CBT : 10:25 AM</p>
-            <p className="game-setting-font">OBRT : 10:25 AM</p>
-            <p className="game-setting-font">CBRT : 10:25 AM</p>
-            <p className="game-setting-font">IsClosed : Open</p>
-            <button className="update-button">update</button>
+      selector: (row) => {
+        const rowData = row.gameSatingInfo && row.gameSatingInfo[6];
+        return (
+          <div className="py-2">
+            <div className="py-2">
+              {rowData ? (
+                <>
+                  <p className="game-setting-font">
+                    <span className="fw-bold"> OBT</span> :
+                    {rowData ? rowData.OBT : "N/A"}
+                  </p>
+                  <p className="game-setting-font">
+                    <span className="fw-bold"> CBT</span> :
+                    {rowData ? rowData.CBT : "N/A"}
+                  </p>
+                  <p className="game-setting-font">
+                    <span className="fw-bold"> OBRT</span> :
+                    {rowData ? rowData.OBRT : "N/A"}
+                  </p>
+                  <p className="game-setting-font">
+                    <span className="fw-bold"> CBRT</span> :
+                    {rowData ? rowData.CBRT : "N/A"}
+                  </p>
+                  <p className="game-setting-font">
+                    <span className="fw-bold">
+                      IsClosed :
+                      {rowData ? (rowData.isClosed ? "Closed" : "Open") : "N/A"}
+                    </span>
+                  </p>
+
+                  <PagesIndex.Link
+                    to={"/admin/game/setting/edit"}
+                    state={{ row: row, rowData: rowData }}
+                    className="update-button"
+                  >
+                    update
+                  </PagesIndex.Link>
+                </>
+              ) : (
+                " No Record"
+              )}
+            </div>
           </div>
-        </>
-      ),
+        );
+      },
     },
-
-    // {
-    //   name: "actions",
-    //   selector: (cell, row) => (
-    //     <div style={{ width: "120px" }}>
-    //       <div>
-    //         <Link to={path} state={cell}>
-    //           <span data-toggle="tooltip" data-placement="top" title="Edit">
-    //             <i class="ti-marker-alt fs-5 mx-1 "></i>
-    //           </span>
-    //         </Link>
-
-    //         <Link
-    //           href="#"
-    //           onClick={() =>
-    //             DeleteSweetAlert(
-    //               PagesIndex.admin_services.GAME_PROVIDER_DELETE_API,
-    //               cell?._id,
-    //               userId,
-    //               getGameProviderList
-    //             )
-    //           }
-    //         >
-    //           <span data-toggle="tooltip" data-placement="top" title="Delete">
-    //             <i class="ti-trash fs-5 mx-1 "></i>
-    //           </span>
-    //         </Link>
-    //       </div>
-    //     </div>
-    //   ),
-    // },
   ];
 
   return (

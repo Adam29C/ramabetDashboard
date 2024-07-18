@@ -8,28 +8,26 @@ const GameProviderAdd = () => {
   const dispatch = PagesIndex.useDispatch();
 
   const getGameRatesList = async () => {
-    
     const res = await dispatch(
       PagesIndex.commonSlice.Games_Provider_List(userId)
     );
-
-    console.log("res" , res);
-    // getData(res?.data.details);
   };
 
   PagesIndex.useEffect(() => {
     getGameRatesList();
   }, []);
 
+
+  console.log("location", location.state);
   const formik = PagesIndex.useFormik({
     initialValues: {
-      providerName: location?.state ? location?.state?.providerName : "",
-      gameDay: location?.state ? location?.state?.gameDay : "",
-      OBT: location?.state ? location?.state?.OBT : "",
-      CBT: location?.state ? location?.state?.CBT : "",
-      OBRT: location?.state ? location?.state?.OBRT : "",
-      CBRT: location?.state ? location?.state?.OBRT : "",
-      isClosed: location?.state ? location?.state?.isClosed : "1",
+      providerName: location?.state ? location?.state?.row.providerName : "",
+      gameDay: location?.state?.rowData ? location?.state?.rowData.gameDay : "",
+      OBT: location?.state?.rowData ? location?.state?.rowData.OBT  : "",
+      CBT: location?.state?.rowData ? location?.state?.rowData.CBT : "",
+      OBRT: location?.state?.rowData ? location?.state?.rowData.OBRT : "",
+      CBRT: location?.state?.rowData ? location?.state?.rowData.CBRT : "",
+      isClosed: location?.state?.rowData ? location?.state?.rowData.isClosed : "1",
     },
     validate: (values) => {
       const errors = {};
@@ -101,6 +99,7 @@ const GameProviderAdd = () => {
       label_size: 6,
       col_size: 6,
       options: [
+        { label: "Sunday", value: "Sunday" },
         { label: "Monday", value: "Monday" },
         { label: "Tuesday", value: "Tuesday" },
         { label: "Wednesday", value: "Wednesday" },
@@ -113,7 +112,6 @@ const GameProviderAdd = () => {
       name: "OBT",
       label: "Open Bid Time",
       type: "time",
-
       label_size: 6,
       col_size: 6,
     },
@@ -122,7 +120,6 @@ const GameProviderAdd = () => {
       name: "CBT",
       label: "Close Bid Time",
       type: "time",
-
       title_size: 6,
       col_size: 6,
     },
@@ -130,7 +127,6 @@ const GameProviderAdd = () => {
       name: "OBRT",
       label: "Open Bid Result Time",
       type: "time",
-
       label_size: 6,
       col_size: 6,
     },

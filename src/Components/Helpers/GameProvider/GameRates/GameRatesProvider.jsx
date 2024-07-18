@@ -9,47 +9,7 @@ const GameRatesProvider = ({ data, path, getGameRatesList,title }) => {
   const userId = localStorage.getItem("userId");
   const navigate = PagesIndex.useNavigate();
 
-  
-//   const handleDelete = async (id) => {
-//     const confirmResult = await Swal.fire({
-//       title: "Are you sure?",
-//       text: "You want to delete this!",
-//       showCancelButton: true,
-//       confirmButtonColor: "#3085d6",
-//       cancelButtonColor: "#d33",
-//       confirmButtonText: "Yes, delete it!",
-//     });
 
-//     if (confirmResult.isConfirmed) {
-//       try {
-//         let data = {
-//           adminId: userId,
-//           gameProviderId: id,
-//         };
-//         const res = await PagesIndex.admin_services.GAME_PROVIDER_DELETE_API(
-//           data
-//         );
-
-//         getGameProviderList();
-//         if (res.status === 200) {
-//           Swal.fire({
-//             title: "Deleted!",
-//             text: res?.message,
-//           });
-//         } else {
-//           Swal.fire({
-//             title: "Error!",
-//             text: "There was an issue deleting your file.",
-//           });
-//         }
-//       } catch (error) {
-//         Swal.fire({
-//           title: "Error!",
-//           text: "There was an issue deleting your file.",
-//         });
-//       }
-//     }
-//   };
 
   const columns = [
     {
@@ -77,8 +37,7 @@ const GameRatesProvider = ({ data, path, getGameRatesList,title }) => {
             </Link>
 
             <Link href="#" 
-            // onClick={() => 
-            //   handleDelete(cell?._id)}
+ 
             onClick={() =>
                DeleteSweetAlert(PagesIndex.admin_services.GAME_RATES_DELETE_API, cell?._id, userId, getGameRatesList)
               }
