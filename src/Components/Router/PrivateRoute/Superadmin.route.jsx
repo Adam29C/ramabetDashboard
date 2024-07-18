@@ -21,6 +21,7 @@ import Games from "../../Pages/Superadmin/Games/AvailableGames/Games";
 import GameProviderAdd from "../../Helpers/GameProvider/GameCrud/GameProviderAdd";
 import GameRates from "../../Pages/Superadmin/Games/AvailableGames/Games";
 import GameRatesAdd from "../../Helpers/GameProvider/GameRates/GameRatesAdd";
+import CuttingGroup from "../../Pages/Superadmin/CuttingGroup/CuttingGroup";
 
 // Mock authentication status
 
@@ -78,10 +79,10 @@ const adminRoutes = [
         path: "game/rates/add",
         element: <PrivateRoute element={GameRatesAdd} />,
       },
-      // {
-      //   path: "game-rates",
-      //   element: <PrivateRoute element={GameRates} />,
-      // },
+      {
+        path: "cuttinggroup",
+        element: <PrivateRoute element={CuttingGroup} />,
+      },
     ],
   },
 ];

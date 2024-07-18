@@ -21789,3 +21789,62 @@ a:hover {
   background-color: #000;
   opacity: 0.5;
 }
+
+.border-bottom-text{
+  border-bottom: 1px solid #ced4da;
+  padding-bottom: 10px;
+  width: 92%;
+}
+
+
+
+.modal-container {
+  max-height: 80vh; 
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* border: 5px solid black; */
+}
+/* Hide the scrollbar */
+.modal-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
+
+.modal-container {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* For customizing scrollbar appearance */
+.modal-container::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+}
+
+.modal-container::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Background of the scrollbar track */
+  border-radius: 10px;
+}
+
+.modal-container::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the scrollbar thumb */
+  border-radius: 10px;
+}
+
+.modal-container::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Hover color for the scrollbar thumb */
+}
+
+.modal-header {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 10;
+  /* border-bottom: 1px solid #ddd; */
+  padding: 10px 0;
+  background-color: white;
+  width: 100%;
+}
+
+.close-btn {
+  font-size: 1.2em;
+  text-decoration: none;
+}

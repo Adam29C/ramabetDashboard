@@ -284,7 +284,7 @@ function AddEmployee() {
     <Main_Containt title="Add Users" col_size={12}>
       <FormWizardComponent
         shape="circle"
-        color="green"
+        color="#7571f9"
         stepSize="sm"
         onComplete={handleComplete}
         tabs={tabs}

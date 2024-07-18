@@ -77,6 +77,10 @@ const GameRatesAdd = () => {
         button_Size={"w-10"}
         show_submit={true}
       />
+
+
+
+      
       <PagesIndex.Toast />
     </PagesIndex.Main_Containt>
   );

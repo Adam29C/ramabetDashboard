@@ -52,6 +52,7 @@ const GameProvider = ({ data, path, getGameProviderList, title }) => {
                   userId,
                   getGameProviderList
                 )
+   
               }
             >
               <span data-toggle="tooltip" data-placement="top" title="Delete">
@@ -65,12 +66,15 @@ const GameProvider = ({ data, path, getGameProviderList, title }) => {
   ];
 
   return (
-    <div>
+<>
+<div>
       <PagesIndex.Main_Containt add_button={true} route={path}>
         <h1 className="list-title">{title}</h1>
+       
         <PagesIndex.Data_Table columns={columns} data={data} />
       </PagesIndex.Main_Containt>
     </div>
+    </>
   );
 };
 
