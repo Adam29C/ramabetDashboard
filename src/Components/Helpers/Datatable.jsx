@@ -20,7 +20,7 @@ const Data_Table = ({ columns, data, tableStyle, isLoading, showFilter }) => {
     },
     headCells: {
       style: {
-        // background: "#4E3896",
+        background: "#4E3896",
         color: "#fffff",
         backgroundColor: "#27394F",
         fontSize: "15px",
@@ -35,24 +35,6 @@ const Data_Table = ({ columns, data, tableStyle, isLoading, showFilter }) => {
         color: "black",
       },
     },
-  };
-
-  const userStyles = {
-    // rows: {
-    //   style: {
-    //     // minHeight: "72px",
-    //   },
-    // },
-    // headCells: {
-    //   style: {
-    //     background: "#4E3896",
-    //     color: "#fff",
-    //   },
-    // },
-    // cells: {
-    //   background: "#4E3896",
-    //   color: "#fff",
-    // },
   };
 
   const TooltipCell = ({ value }) => (
@@ -86,7 +68,7 @@ const Data_Table = ({ columns, data, tableStyle, isLoading, showFilter }) => {
           defaultSortAsc={false}
           pagination
           highlightOnHover
-        //   customStyles={color === "dark" ? adminStyles : ""}
+          customStyles={color === "dark" ? adminStyles : ""}
           noDataComponent={
             isLoading ? (
               <div className="user-loading-main">

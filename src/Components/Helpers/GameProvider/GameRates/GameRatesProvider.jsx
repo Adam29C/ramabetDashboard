@@ -9,6 +9,7 @@ const GameRatesProvider = ({ data, path, getGameRatesList,title }) => {
   const userId = localStorage.getItem("userId");
   const navigate = PagesIndex.useNavigate();
 
+  
 //   const handleDelete = async (id) => {
 //     const confirmResult = await Swal.fire({
 //       title: "Are you sure?",

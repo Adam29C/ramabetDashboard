@@ -62,6 +62,7 @@ export const BLOCK_EMPLOYEE_API = async (data) => {
 // --------------------------  game provider api ------------------------
 
 export const GAME_PROVIDER_GET_LIST_API = async (id) => {
+  
   try {
     const res = await dataservice.get(
       `${Api.ADMIN_GAME_PROVIDER}?adminId=${id}`

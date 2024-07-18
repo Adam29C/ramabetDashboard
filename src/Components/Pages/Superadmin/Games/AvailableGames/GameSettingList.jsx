@@ -9,7 +9,9 @@ const GameSettingList = () => {
   const [data, getData] = PagesIndex.useState([]);
   const getGameRatesList = async () => {
     const res = await PagesIndex.admin_services.GAME_SEETING_LIST_API(userId);
-    getData(res?.data.details);
+  console.log("data" ,res);
+
+    getData(res?.data);
   };
 
   PagesIndex.useEffect(() => {

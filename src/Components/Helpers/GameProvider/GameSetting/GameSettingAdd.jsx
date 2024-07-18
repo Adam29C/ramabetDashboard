@@ -5,13 +5,31 @@ const GameProviderAdd = () => {
   const userId = localStorage.getItem("userId");
   const navigate = PagesIndex.useNavigate();
   const location = PagesIndex.useLocation();
+  const dispatch = PagesIndex.useDispatch();
+
+  const getGameRatesList = async () => {
+    
+    const res = await dispatch(
+      PagesIndex.commonSlice.Games_Provider_List(userId)
+    );
+
+    console.log("res" , res);
+    // getData(res?.data.details);
+  };
+
+  PagesIndex.useEffect(() => {
+    getGameRatesList();
+  }, []);
+
   const formik = PagesIndex.useFormik({
     initialValues: {
       providerName: location?.state ? location?.state?.providerName : "",
-      providerResult: location?.state ? location?.state?.providerResult : "",
-      resultStatus: 0,
-      mobile: location?.state ? location?.state?.mobile : "",
-      activeStatus: location?.state ? location?.state?.activeStatus : null,
+      gameDay: location?.state ? location?.state?.gameDay : "",
+      OBT: location?.state ? location?.state?.OBT : "",
+      CBT: location?.state ? location?.state?.CBT : "",
+      OBRT: location?.state ? location?.state?.OBRT : "",
+      CBRT: location?.state ? location?.state?.OBRT : "",
+      isClosed: location?.state ? location?.state?.isClosed : "1",
     },
     validate: (values) => {
       const errors = {};
@@ -94,7 +112,8 @@ const GameProviderAdd = () => {
     {
       name: "OBT",
       label: "Open Bid Time",
-      type: "date",
+      type: "time",
+
       label_size: 6,
       col_size: 6,
     },
@@ -102,14 +121,16 @@ const GameProviderAdd = () => {
     {
       name: "CBT",
       label: "Close Bid Time",
-      type: "date",
+      type: "time",
+
       title_size: 6,
       col_size: 6,
     },
     {
       name: "OBRT",
       label: "Open Bid Result Time",
-      type: "date",
+      type: "time",
+
       label_size: 6,
       col_size: 6,
     },
@@ -117,7 +138,7 @@ const GameProviderAdd = () => {
     {
       name: "CBRT",
       label: "Close Bid Result Time",
-      type: "date",
+      type: "time",
       title_size: 6,
       col_size: 6,
     },
@@ -128,15 +149,18 @@ const GameProviderAdd = () => {
       label_size: 6,
       col_size: 6,
       options: [
-        { label: "Open", value: '1' },
-        { label: "Close", value: '0' },
-        
+        { label: "Open", value: "1" },
+        { label: "Close", value: "0" },
       ],
     },
   ];
 
   return (
-    <PagesIndex.Main_Containt add_button={false} route="">
+    <PagesIndex.Main_Containt
+      add_button={true}
+      route="/admin/game/settings"
+      title="Game Setting Add"
+    >
       <PagesIndex.Formikform
         fieldtype={fields.filter((field) => !field.showWhen)}
         formik={formik}

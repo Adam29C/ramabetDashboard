@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Loader from "../Loader";
 // import Loader from "./Loader";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 // col-form-label this class for input alignment apply on label
 const ReusableForm = ({
   fromDate,
@@ -23,7 +25,9 @@ const ReusableForm = ({
   const location = useLocation();
 
   const [passwordVisible, setPasswordVisible] = useState({});
+  const [startDate, setStartDate] = useState(new Date());
 
+  
   const [previews, setPreviews] = useState([]);
   const handleFileChange = (event, index, name) => {
     const file = event.target.files[0];
@@ -58,8 +62,6 @@ const ReusableForm = ({
     return `${year}-${month}-${day}`;
   };
 
-
-  
   return (
     <form onSubmit={formik.handleSubmit}>
       <div
@@ -92,7 +94,12 @@ const ReusableForm = ({
                           {...formik.getFieldProps(field.name)}
                           disabled={field.disable}
                         >
-                          <option value="" selected disable={field.disable}>
+                          <option
+                            value=""
+                            selected
+                            //  disable={field.disable}
+                            disabled
+                          >
                             Please Select {field.label}
                           </option>
                           {field.options.map((option) => (
@@ -112,7 +119,6 @@ const ReusableForm = ({
                 </>
               ) : field.type === "checkbox" ? (
                 <>
-                
                   {field.options &&
                     field.options.map((option) => (
                       <div
@@ -271,7 +277,7 @@ const ReusableForm = ({
                     </div>
                   </div>
                 </>
-              ) : field.type === "time" ? (
+              ) : field.type === "date" ? (
                 <>
                   <div className={`col-lg-${field.col_size}`}>
                     <div className=" row flex-column">
@@ -295,21 +301,6 @@ const ReusableForm = ({
                               : getCurrentDate()
                           }
                         />
-                        {field.showButton ? (
-                          <button
-                            style={{ background: "#4e3897", width: "100px" }}
-                            className="btn border-0 btn-primary ms-3 col-4"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              VerifyMobileN();
-                            }}
-                            disabled={Disable_Button}
-                          >
-                            Send OTP
-                          </button>
-                        ) : (
-                          ""
-                        )}
                         <div className="invalid-feedback">
                           Please enter {field.label}
                         </div>
@@ -349,6 +340,55 @@ const ReusableForm = ({
                       </div>
                     </div>
                   </div> */}
+                </>
+              ) : field.type === "time" ? (
+                <>
+                  <div className={`col-lg-${field.col_size}`}>
+                    <div className=" row flex-column">
+                      <label
+                        className={`custom-label col-lg-${field.label_size}`}
+                        htmlFor={field.name}
+                      >
+                        {field.label}
+                        <span className="text-danger">*</span>
+                      </label>
+                      <div className={`d-flex`}>
+                        <DatePicker
+                          className={`col-lg-${field.col_size} form-control Date-picker-control`}
+                          name={field.name}
+                          selected={startDate}
+                          onChange={(date) => setStartDate(date)}
+                         // {...formik.getFieldProps(field.name)}
+                          showTimeSelect
+                          showTimeSelectOnly
+                          timeIntervals={5}
+                          timeCaption="Time"
+                          dateFormat="h:mm aa"
+                        />
+                        {/* <input
+                          type={field.type}
+                          name={field.name}
+                          className="form-control"
+                          id={field.name}
+                          {...formik.getFieldProps(field.name)}
+                          min={
+                            field.name === "todate"
+                              ? fromDate
+                              : getCurrentDate()
+                          }
+                        /> */}
+
+                        <div className="invalid-feedback">
+                          Please enter {field.label}
+                        </div>
+                      </div>
+                      {formik.errors[field.name] && (
+                        <div className="error-text">
+                          {formik.errors[field.name]}
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </>
               ) : field.type === "msgbox" ? (
                 <>
@@ -489,8 +529,8 @@ const ReusableForm = ({
             {show_submit ? (
               <>
                 <button
-                  style={{ background: "#4e3897" }}
-                  className={`btn btn-primary mt-2 ${button_Size} ${
+                  // style={{ background: "#4e3897" }}
+                  className={`btn  submitBtn btn-primary mt-2 ${button_Size} ${
                     location.pathname === "resetpassword" ? "col-md-11" : ""
                   } ${btn_design && "btn_design"}`}
                   type="submit"

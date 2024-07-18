@@ -11,63 +11,164 @@ const GameProvider = ({ data, path, getGameProviderList, title }) => {
 
   const updateStatusApi = () => {};
 
+
+  console.log("data" ,data);
+
   const columns = [
     {
-      name: "Provider Name",
-      selector: (row) => row.providerName,
-    },
-    {
-      name: "Provider Result",
-      selector: (row) => row.providerResult,
-    },
-    {
-      name: "Active Status",
+      name: "Game Name",
       selector: (row) => (
         <>
-          <Toggle check={row.activeStatus} updateStatusApi={updateStatusApi} />
+          <div className="break-text">{row.providerName}</div>
         </>
       ),
     },
     {
-      name: "created At",
-      // selector: (row) => Get_Year_Only(row.createdAt),
-    },
-    {
-      name: "actions",
-      selector: (cell, row) => (
-        <div style={{ width: "120px" }}>
-          <div>
-            <Link to={path} state={cell}>
-              <span data-toggle="tooltip" data-placement="top" title="Edit">
-                <i class="ti-marker-alt fs-5 mx-1 "></i>
-              </span>
-            </Link>
-
-            <Link
-              href="#"
-              onClick={() =>
-                DeleteSweetAlert(
-                  PagesIndex.admin_services.GAME_PROVIDER_DELETE_API,
-                  cell?._id,
-                  userId,
-                  getGameProviderList
-                )
-              }
-            >
-              <span data-toggle="tooltip" data-placement="top" title="Delete">
-                <i class="ti-trash fs-5 mx-1 "></i>
-              </span>
-            </Link>
+      name: "Monday",
+      selector: (row) => (
+        <>
+          <div className="my-1">
+            <p className="game-setting-font">OBT : 10:25 AM</p>
+            <p className="game-setting-font">CBT : 10:25 AM</p>
+            <p className="game-setting-font">OBRT : 10:25 AM</p>
+            <p className="game-setting-font">CBRT : 10:25 AM</p>
+            <p className="game-setting-font">IsClosed : Open</p>
+            <button className="update-button">update</button>
           </div>
-        </div>
+        </>
       ),
     },
+    {
+      name: "Tuesday",
+      selector: (row) => (
+        <>
+          <div className="my-1">
+            <p className="game-setting-font">OBT : 10:25 AM</p>
+            <p className="game-setting-font">CBT : 10:25 AM</p>
+            <p className="game-setting-font">OBRT : 10:25 AM</p>
+            <p className="game-setting-font">CBRT : 10:25 AM</p>
+            <p className="game-setting-font">IsClosed : Open</p>
+            <button className="update-button">update</button>
+          </div>
+        </>
+      ),
+    },
+    {
+      name: "Wednesday",
+      selector: (row) => (
+        <>
+          <div className="my-1">
+            <p className="game-setting-font">OBT : 10:25 AM</p>
+            <p className="game-setting-font">CBT : 10:25 AM</p>
+            <p className="game-setting-font">OBRT : 10:25 AM</p>
+            <p className="game-setting-font">CBRT : 10:25 AM</p>
+            <p className="game-setting-font">IsClosed : Open</p>
+            <button className="update-button">update</button>
+          </div>
+        </>
+      ),
+    },
+    {
+      name: "Thursday",
+      selector: (row) => (
+        <>
+          <div className="my-1">
+            <p className="game-setting-font">OBT : 10:25 AM</p>
+            <p className="game-setting-font">CBT : 10:25 AM</p>
+            <p className="game-setting-font">OBRT : 10:25 AM</p>
+            <p className="game-setting-font">CBRT : 10:25 AM</p>
+            <p className="game-setting-font">IsClosed : Open</p>
+            <button className="update-button">update</button>
+          </div>
+        </>
+      ),
+    },
+    {
+      name: "Friday",
+      selector: (row) => (
+        <>
+          <div className="my-1">
+            <p className="game-setting-font">OBT : 10:25 AM</p>
+            <p className="game-setting-font">CBT : 10:25 AM</p>
+            <p className="game-setting-font">OBRT : 10:25 AM</p>
+            <p className="game-setting-font">CBRT : 10:25 AM</p>
+            <p className="game-setting-font">IsClosed : Open</p>
+            <button className="update-button">update</button>
+          </div>
+        </>
+      ),
+    },
+    {
+      name: "Seturday",
+      selector: (row) => (
+        <>
+          <div className="my-1">
+            <p className="game-setting-font">OBT : 10:25 AM</p>
+            <p className="game-setting-font">CBT : 10:25 AM</p>
+            <p className="game-setting-font">OBRT : 10:25 AM</p>
+            <p className="game-setting-font">CBRT : 10:25 AM</p>
+            <p className="game-setting-font">IsClosed : Open</p>
+            <button className="update-button">update</button>
+          </div>
+        </>
+      ),
+    },
+    {
+      name: "Sunday",
+      selector: (row) => (
+        <>
+          <div className="my-1">
+            <p className="game-setting-font">OBT : 10:25 AM</p>
+            <p className="game-setting-font">CBT : 10:25 AM</p>
+            <p className="game-setting-font">OBRT : 10:25 AM</p>
+            <p className="game-setting-font">CBRT : 10:25 AM</p>
+            <p className="game-setting-font">IsClosed : Open</p>
+            <button className="update-button">update</button>
+          </div>
+        </>
+      ),
+    },
+
+    // {
+    //   name: "actions",
+    //   selector: (cell, row) => (
+    //     <div style={{ width: "120px" }}>
+    //       <div>
+    //         <Link to={path} state={cell}>
+    //           <span data-toggle="tooltip" data-placement="top" title="Edit">
+    //             <i class="ti-marker-alt fs-5 mx-1 "></i>
+    //           </span>
+    //         </Link>
+
+    //         <Link
+    //           href="#"
+    //           onClick={() =>
+    //             DeleteSweetAlert(
+    //               PagesIndex.admin_services.GAME_PROVIDER_DELETE_API,
+    //               cell?._id,
+    //               userId,
+    //               getGameProviderList
+    //             )
+    //           }
+    //         >
+    //           <span data-toggle="tooltip" data-placement="top" title="Delete">
+    //             <i class="ti-trash fs-5 mx-1 "></i>
+    //           </span>
+    //         </Link>
+    //       </div>
+    //     </div>
+    //   ),
+    // },
   ];
 
   return (
     <div>
-      <PagesIndex.Main_Containt add_button={true} route={path}>
-        <h1 className="list-title">{title}</h1>
+      <PagesIndex.Main_Containt
+        add_button={true}
+        route={path}
+        title={title}
+        btnTitle="Add"
+      >
         <PagesIndex.Data_Table columns={columns} data={data} />
       </PagesIndex.Main_Containt>
     </div>
