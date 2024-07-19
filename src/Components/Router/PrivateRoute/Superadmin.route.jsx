@@ -24,6 +24,7 @@ import GameSetting from "../../Pages/Superadmin/Games/AvailableGames/GameSetting
 import GameSettingAdd from "../../Helpers/GameProvider/GameSetting/GameSettingAdd";
 
 import CuttingGroup from "../../Pages/Superadmin/CuttingGroup/CuttingGroup";
+import MultiTabs from "../../Helpers/MultiTabs";
 
 // Mock authentication status
 
@@ -100,6 +101,10 @@ const adminRoutes = [
       {
         path: "cuttinggroup",
         element: <PrivateRoute element={CuttingGroup} />,
+      },
+      {
+        path: "tabs",
+        element: <PrivateRoute element={MultiTabs} />,
       },
     ],
   },
