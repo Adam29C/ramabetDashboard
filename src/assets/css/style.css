@@ -88,7 +88,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 :root {
-  --black:#000;
+  --black: #000;
   --blue: #324cdd;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -122,17 +122,12 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
 
-  --main-bg-color :  "#7571F9"
+  --main-bg-color: "#7571F9";
 }
-
 
 .btn-color {
   background-color: var(--main-bg-color);
 }
-
-
-
-
 
 *,
 *::before,
@@ -367,7 +362,7 @@ textarea {
   line-height: inherit;
 }
 
-.fw-600{
+.fw-600 {
   font-weight: 600;
 }
 button,
@@ -5099,7 +5094,7 @@ input[type="button"].btn-block {
 
 .media-body {
   /* flex: 1; */
-  
+
   /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
@@ -13823,7 +13818,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 .card-profile__info li strong {
   max-width: 100px;
 }
-.about-title-text{
+.about-title-text {
   font-size: 0.9rem;
 }
 
@@ -13872,12 +13867,8 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   margin-bottom: 0px;
   padding-top: 0px;
   /* border: 1px solid black; */
-gap: 70px;
-
+  gap: 70px;
 }
-
-
-
 
 .login-form__title {
   color: #515e75;
@@ -21450,20 +21441,20 @@ html[dir="rtl"]
 }
 
 .nk-nav-scroll::-webkit-scrollbar-thumb {
-  background-color: #888; 
-  border-radius: 10px; 
-  border: 2px solid #fff; 
+  background-color: #888;
+  border-radius: 10px;
+  border: 2px solid #fff;
 }
 
 .nk-nav-scroll::-webkit-scrollbar-track {
-  background-color: #f1f1f1; 
+  background-color: #f1f1f1;
   border-radius: 10px;
 }
 
 /* For Firefox */
 .nk-nav-scroll {
-  scrollbar-color: var(--indigo) #f1f1f1; 
-  scrollbar-width: thin; 
+  scrollbar-color: var(--indigo) #f1f1f1;
+  scrollbar-width: thin;
 }
 
 /*# sourceMappingURL=style.css.map */
@@ -21534,9 +21525,6 @@ html[dir="rtl"]
   transform: translateX(24px);
 }
 
-
-
-
 /* -----------   Blocked Pages */
 
 * {
@@ -21547,9 +21535,7 @@ body {
   font-family: sans-serif;
   background-image: url("bgimage.jpg");
   repeat: no-repeat;
-  
 }
-
 
 .parent {
   height: 100vh;
@@ -21752,29 +21738,29 @@ a:hover {
   }
 }
 
-
-.brand-title .sidebar-logo{
+.brand-title .sidebar-logo {
   width: 150px;
   height: 40px;
   object-fit: contain;
-
 }
 
-
-#sidebar-logo-short{
-
+#sidebar-logo-short {
   color: white;
   font-weight: 600;
   font-size: 30px;
   text-align: center;
 }
 
-[data-sidebar-style="full"][data-layout="vertical"] .menu-toggle .nav-header .brand-logo a {
+[data-sidebar-style="full"][data-layout="vertical"]
+  .menu-toggle
+  .nav-header
+  .brand-logo
+  a {
   padding: 1rem;
   text-align: center;
 }
 
-.list-title{
+.list-title {
   font-size: 24px;
   margin: 0px 0px 20px 20px;
 }
@@ -21790,16 +21776,18 @@ a:hover {
   opacity: 0.5;
 }
 
-.border-bottom-text{
+.submitBtn {
+  background: #4e3897;
+}
+
+.border-bottom-text {
   border-bottom: 1px solid #ced4da;
   padding-bottom: 10px;
   width: 92%;
 }
 
-
-
 .modal-container {
-  max-height: 80vh; 
+  max-height: 80vh;
   overflow-y: auto;
   overflow-x: hidden;
   /* border: 5px solid black; */
@@ -21810,8 +21798,8 @@ a:hover {
 }
 
 .modal-container {
-  -ms-overflow-style: none;  /* Internet Explorer 10+ */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
 }
 
 /* For customizing scrollbar appearance */

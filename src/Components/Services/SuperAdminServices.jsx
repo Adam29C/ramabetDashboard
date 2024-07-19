@@ -62,6 +62,7 @@ export const BLOCK_EMPLOYEE_API = async (data) => {
 // --------------------------  game provider api ------------------------
 
 export const GAME_PROVIDER_GET_LIST_API = async (id) => {
+  
   try {
     const res = await dataservice.get(
       `${Api.ADMIN_GAME_PROVIDER}?adminId=${id}`
@@ -82,15 +83,15 @@ export const GAME_PROVIDER_ADD_API = async (data) => {
 };
 
 export const GAME_PROVIDER_DELETE_API = async (data) => {
-
   try {
+    let apiData = {
+      adminId: data.adminId,
+      gameProviderId: data.deleteId,
+    };
 
-    let apiData ={
-      adminId:data.adminId,
-      gameProviderId:data.deleteId
-    }
-
-    const res = await dataservice.delete(Api.ADMIN_GAME_PROVIDER, { data:apiData });
+    const res = await dataservice.delete(Api.ADMIN_GAME_PROVIDER, {
+      data: apiData,
+    });
     return res?.data;
   } catch (error) {
     return error;
@@ -135,21 +136,31 @@ export const GAME_RATES_UPDATE_API = async (data) => {
 };
 
 export const GAME_RATES_DELETE_API = async (data) => {
+  try {
+    let apiData = {
+      adminId: data.adminId,
+      gameRateId: data.deleteId,
+    };
 
-    try {
-      let apiData ={
-        adminId:data.adminId,
-        gameRateId:data.deleteId
-      }
+    const res = await dataservice.delete(Api.ADMIN_GAME_RATES, {
+      data: apiData,
+    });
+    return res?.data;
+  } catch (error) {
+    return error;
+  }
+};
 
- 
-      const res = await dataservice.delete(Api.ADMIN_GAME_RATES, {data:apiData});
-      return res?.data;
-    } catch (error) {
-      return error;
-    }
-  };
-  
+export const GAME_SEETING_LIST_API = async (id) => {
+  try {
+    const res = await dataservice.get(
+      `${Api.ADMIN_GAME_SETTING}?adminId=${id}`
+    );
+    return res?.data;
+  } catch (error) {
+    return error;
+  }
+};
 
 // --------------------------  game provider api ------------------------
 // --------------------------   super admin provider api ------------------------

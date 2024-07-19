@@ -5,11 +5,11 @@ const ToggleDark = () => {
 
   useEffect(() => {
     if (changeDark === "dark") {
+      localStorage.setItem("theme_Color", changeDark);
       document.body.setAttribute("data-theme-version", "dark");
-     
     } else {
+      localStorage.setItem("theme_Color", changeDark);
       document.body.setAttribute("data-theme-version", "light");
-    
     }
   }, [changeDark]);
 

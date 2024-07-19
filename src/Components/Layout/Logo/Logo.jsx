@@ -7,7 +7,7 @@ const Logo = () => {
   return (
   <div className="nav-header">
         <div className="brand-logo">
-          <a href="#">
+          <a href="index.html">
             <b className="logo-abbr">
               <span id="sidebar-logo-short"></span>
               {/* <img 

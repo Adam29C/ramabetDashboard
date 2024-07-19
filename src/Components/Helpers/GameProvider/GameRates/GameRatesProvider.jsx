@@ -11,7 +11,6 @@ const GameRatesProvider = ({ data, path, getGameRatesList,title }) => {
 
 
 
-
   const columns = [
     {
       name: "Game Name",

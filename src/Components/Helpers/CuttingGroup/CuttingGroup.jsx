@@ -92,7 +92,6 @@ const CuttingGroup = () => {
   return (
     <>
       <div className="content-body">
-   
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg-8 col-xl-8">
@@ -113,7 +112,7 @@ const CuttingGroup = () => {
                 <div className="card-body p-0">
                   <table class="table ">
                     <thead>
-                      <tr className="table-active">
+                      <tr className="table-secondary">
                         <th scope="col">Type</th>
                         <th scope="col">Bids</th>
                         <th scope="col">Amount</th>
