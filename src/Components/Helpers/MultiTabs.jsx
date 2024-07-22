@@ -1,26 +1,22 @@
-import React from 'react'
-import PagesIndex from '../Pages/PagesIndex'
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
+import React from "react";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
 
-const MultiTabs = () => {
+const MultiTabs = ({ tabs }) => {
   return (
-   <PagesIndex.Main_Containt>
-  <Tabs>
-    <TabList>
-      <Tab>Title 1gggggg</Tab>
-      <Tab>Title 2gggggggg</Tab>
-    </TabList>
+    <div className="mt-3 mb-2">
+      <Tabs>
+        <TabList >
+          {tabs.map((tab, index) => (
+            <Tab  key={index}>{tab.title}</Tab>
+          ))}
+        </TabList>
+        {tabs.map((tab, index) => (
+          <TabPanel key={index}>{tab.content}</TabPanel>
+        ))}
+      </Tabs>
+    </div>
+  );
+};
 
-    <TabPanel>
-      <h2>Any content 1</h2>
-    </TabPanel>
-    <TabPanel>
-      <h2>Any content 2</h2>
-    </TabPanel>
-  </Tabs>
-   </PagesIndex.Main_Containt>
-  )
-}
-
-export default MultiTabs
+export default MultiTabs;

@@ -23,8 +23,15 @@ import GameRatesAdd from "../../Helpers/GameProvider/GameRates/GameRatesAdd";
 import GameSetting from "../../Pages/Superadmin/Games/AvailableGames/GameSettingList";
 import GameSettingAdd from "../../Helpers/GameProvider/GameSetting/GameSettingAdd";
 
-import CuttingGroup from "../../Pages/Superadmin/CuttingGroup/CuttingGroup";
 import MultiTabs from "../../Helpers/MultiTabs";
+import CuttingGroup from "../../Pages/Superadmin/CuttingGroup/CuttingGroup";
+import OcCuttingGroup from "../../Pages/Superadmin/BookieCorner/OcCuttingGroup";
+import FinalOcCuttingGroup from "../../Pages/Superadmin/BookieCorner/FinalOcCuttingGroup";
+import ManualRequest from "../../Pages/Superadmin/Wallet/ManualRequest";
+import ExportDebitReport from "../../Pages/Superadmin/Wallet/ExportDebitReport";
+import DownloadDebitReport from "../../Pages/Superadmin/Wallet/DownloadDebitReport";
+import SearchAccount from "../../Pages/Superadmin/Wallet/SearchAccount";
+import Invoices from "../../Pages/Superadmin/Wallet/Invoices";
 
 // Mock authentication status
 
@@ -94,18 +101,41 @@ const adminRoutes = [
         path: "game/setting/edit",
         element: <PrivateRoute element={GameSettingAdd} />,
       },
-      // {
-      //   path: "game-rates",
-      //   element: <PrivateRoute element={GameRates} />,
-      // },
+
       {
         path: "cuttinggroup",
         element: <PrivateRoute element={CuttingGroup} />,
       },
       {
-        path: "tabs",
-        element: <PrivateRoute element={MultiTabs} />,
+        path: "OCGroup",
+        element: <PrivateRoute element={OcCuttingGroup} />,
       },
+      {
+        path: "finalOCGroup",
+        element: <PrivateRoute element={FinalOcCuttingGroup} />,
+      },
+      {
+        path: "wallet/manualrequest",
+        element: <PrivateRoute element={ManualRequest} />,
+      },
+      
+      {
+        path: "wallet/debitreport",
+        element: <PrivateRoute element={ExportDebitReport} />,
+      },
+      {
+        path: "wallet/moneycheck",
+        element: <PrivateRoute element={DownloadDebitReport} />,
+      },
+      {
+        path: "wallet/searchaccount",
+        element: <PrivateRoute element={SearchAccount} />,
+      },
+      {
+        path: "wallet/invoices",
+        element: <PrivateRoute element={Invoices} />,
+      },
+      
     ],
   },
 ];

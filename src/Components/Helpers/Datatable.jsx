@@ -98,6 +98,7 @@ const Data_Table = ({ columns, data, tableStyle, isLoading, showFilter }) => {
       ))}
     </div>
   );
+  
   return (
     <>
       <DataTableExtensions

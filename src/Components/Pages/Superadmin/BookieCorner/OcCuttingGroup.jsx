@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 import PagesIndex from "../../PagesIndex";
 
-const CuttingGroup = () => {
+const OcCuttingGroup = () => {
   const tableHeaders = ["Type", "Bids", "Amount"];
 
   const tableRows = [
@@ -102,10 +102,10 @@ const CuttingGroup = () => {
         data={data}
         fields={fields}
         formik={formik}
-        title={"Cutting Group"}
+        title={"OC Cutting Group"}
       />
     </div>
   );
 };
 
-export default CuttingGroup;
+export default OcCuttingGroup;

@@ -31,6 +31,9 @@ import * as commonSlice from "../Redux/slice/CommonSlice";
 
 
 import Data_Table from "../Helpers/Datatable";
+import CuttingGroupMain from "../Helpers/CuttingGroup/CuttingGroup";
+import MultiTabs from "../Helpers/MultiTabs";
+import WalletMain from "../Helpers/Wallet/WalletMain";
 const PagesIndex = {
     useDispatch,
     useState,
@@ -65,7 +68,10 @@ const PagesIndex = {
     Data_Table,
     useLocation,
     commonSlice,
-    Icon
+    Icon,
+    CuttingGroupMain,
+    MultiTabs,
+    WalletMain
  
 }
 

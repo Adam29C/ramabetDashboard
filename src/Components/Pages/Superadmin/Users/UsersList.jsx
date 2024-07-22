@@ -3,6 +3,7 @@ import Main_Containt from "../../../Layout/Main/Main_Containt";
 import Data_Table from "../../../Helpers/Datatable";
 import ModalComponent from "../../../Helpers/ModalComponent";
 
+
 const UsersList = () => {
   const [loading, setLoading] = useState(false);
 
@@ -38,15 +39,12 @@ const UsersList = () => {
 
   return (
     <>
-    <div>
-      <Main_Containt add_button={false} route="/admin/user/add">
-      <ModalComponent/>
-        <Data_Table isLoading={loading} columns={columns} data={data} />
-        
-      </Main_Containt>
-      
-    </div>
-
+      <div>
+        <Main_Containt add_button={false} route="/admin/user/add">
+          <ModalComponent/>
+          <Data_Table isLoading={loading} columns={columns} data={data} />
+        </Main_Containt>
+      </div>
     </>
   );
 };
