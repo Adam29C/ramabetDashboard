@@ -10,7 +10,6 @@ export const admin_Sidebar = [
   {
     id: 2,
     route: "Dashboard",
-    // route: "Dashboard",
     headerTitle: "Penal Info",
     title: "Penal Info",
     Icon: "icon-globe-alt",
@@ -43,7 +42,7 @@ export const admin_Sidebar = [
   },
   {
     id: 4,
-    // route: "Dashboard",
+    route: "employee/add",
     headerTitle: "Employee",
     title: "Employee",
     Icon: "icon-globe-alt",
@@ -75,7 +74,6 @@ export const admin_Sidebar = [
         id: 2,
         title: "Games Setting",
         route: "game/settings",
-
       },
       {
         id: 3,
@@ -85,7 +83,7 @@ export const admin_Sidebar = [
       {
         id: 4,
         title: "Game Result",
-        route: "#",
+        route: "game/results",
       },
       {
         id: 5,
@@ -139,14 +137,13 @@ export const admin_Sidebar = [
   },
   {
     id: 7,
-
     title: "Jackpot",
     Icon: "fa-regular fa-heart",
     NestedElement: [
       {
         id: 1,
         title: "Jackpot Game Provider",
-        route:"#",
+        route: "#",
       },
       {
         id: 2,
@@ -175,7 +172,7 @@ export const admin_Sidebar = [
       },
     ],
   },
-  
+
   {
     id: 8,
     headerTitle: "Cutting Group",

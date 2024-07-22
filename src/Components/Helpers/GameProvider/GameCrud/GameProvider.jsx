@@ -37,7 +37,7 @@ const GameProvider = ({ data, path, getGameProviderList, title }) => {
       selector: (cell, row) => (
         <div style={{ width: "120px" }}>
           <div>
-            <Link to={path} state={cell}>
+            <Link to={"/admin/game/edit"} state={cell}>
               <span data-toggle="tooltip" data-placement="top" title="Edit">
                 <i class="ti-marker-alt fs-5 mx-1 "></i>
               </span>
@@ -52,7 +52,6 @@ const GameProvider = ({ data, path, getGameProviderList, title }) => {
                   userId,
                   getGameProviderList
                 )
-   
               }
             >
               <span data-toggle="tooltip" data-placement="top" title="Delete">
@@ -66,14 +65,17 @@ const GameProvider = ({ data, path, getGameProviderList, title }) => {
   ];
 
   return (
-<>
-<div>
-      <PagesIndex.Main_Containt add_button={true} route={path}>
-        <h1 className="list-title">{title}</h1>
-       
-        <PagesIndex.Data_Table columns={columns} data={data} />
-      </PagesIndex.Main_Containt>
-    </div>
+    <>
+      <div>
+        <PagesIndex.Main_Containt
+          add_button={true}
+          route={"/admin/game/add"}
+          title={"Games"}
+          btnTitle="Add"
+        >
+          <PagesIndex.Data_Table columns={columns} data={data} />
+        </PagesIndex.Main_Containt>
+      </div>
     </>
   );
 };

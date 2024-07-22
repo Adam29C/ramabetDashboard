@@ -21,15 +21,18 @@ const ReusableForm = ({
   disabledSubmit,
   isLoading,
   show_submit,
-  label_size
+  label_size,
 }) => {
   const location = useLocation();
 
   const [passwordVisible, setPasswordVisible] = useState({});
-  const [startDate, setStartDate] = useState(new Date());
+let a = new Date()
+  const [dateStates, setDateStates] = useState(a.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }));
 
-  
+
+
   const [previews, setPreviews] = useState([]);
+
   const handleFileChange = (event, index, name) => {
     const file = event.target.files[0];
     if (file) {
@@ -63,6 +66,16 @@ const ReusableForm = ({
     return `${year}-${month}-${day}`;
   };
 
+  const handleDateChange = (date, name) => {
+    const formattedTime = date
+      ? date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+      : "";
+    setDateStates((prevStates) => ({
+      ...prevStates,
+      [name]: formattedTime,
+    }));
+    formik.setFieldValue(name, formattedTime);
+  };
   return (
     <form onSubmit={formik.handleSubmit}>
       <div
@@ -357,9 +370,13 @@ const ReusableForm = ({
                         <DatePicker
                           className={`col-lg-${field.col_size} form-control Date-picker-control`}
                           name={field.name}
-                          selected={startDate}
-                          onChange={(date) => setStartDate(date)}
-                         // {...formik.getFieldProps(field.name)}
+                          selected={dateStates[field.name]}
+                          onChange={(date) =>
+                            handleDateChange(date, field.name)
+                          }
+                          {...formik.getFieldProps(field.name)}
+
+                       //   value={dateStates[field.name]}
                           showTimeSelect
                           showTimeSelectOnly
                           timeIntervals={5}

@@ -5,11 +5,9 @@ import Toggle from "../../Toggle";
 import Swal from "sweetalert2";
 import DeleteSweetAlert from "../../DeleteSweetAlert";
 import { GAME_PROVIDER_DELETE_API } from "../../../Services/SuperAdminServices";
-const GameRatesProvider = ({ data, path, getGameRatesList,title }) => {
+const GameRatesProvider = ({ data, path, getGameRatesList, title }) => {
   const userId = localStorage.getItem("userId");
   const navigate = PagesIndex.useNavigate();
-
-
 
   const columns = [
     {
@@ -20,7 +18,7 @@ const GameRatesProvider = ({ data, path, getGameRatesList,title }) => {
       name: "Game Price",
       selector: (row) => row.gamePrice,
     },
-    
+
     {
       name: "Created At",
       selector: (row) => Get_Year_Only(row.createdAt),
@@ -30,18 +28,23 @@ const GameRatesProvider = ({ data, path, getGameRatesList,title }) => {
       selector: (cell, row) => (
         <div style={{ width: "120px" }}>
           <div>
-            <Link to={path} state={cell}>
+            <Link to={`${path}/edit`} state={cell}>
               <span data-toggle="tooltip" data-placement="top" title="Edit">
                 <i class="ti-marker-alt fs-5 mx-1 "></i>
               </span>
             </Link>
 
-            <Link href="#" 
- 
-            onClick={() =>
-               DeleteSweetAlert(PagesIndex.admin_services.GAME_RATES_DELETE_API, cell?._id, userId, getGameRatesList)
+            <Link
+              href="#"
+              onClick={() =>
+                DeleteSweetAlert(
+                  PagesIndex.admin_services.GAME_RATES_DELETE_API,
+                  cell?._id,
+                  userId,
+                  getGameRatesList
+                )
               }
-              >
+            >
               <span data-toggle="tooltip" data-placement="top" title="Delete">
                 <i class="ti-trash fs-5 mx-1 "></i>
               </span>
@@ -54,8 +57,12 @@ const GameRatesProvider = ({ data, path, getGameRatesList,title }) => {
 
   return (
     <div>
-      <PagesIndex.Main_Containt add_button={true} route={path}>
-        <h1 className="list-title">{title}</h1>
+      <PagesIndex.Main_Containt
+        add_button={true}
+        route={`${path}/add`}
+        title={title}
+        btnTitle="Add"
+      >
         <PagesIndex.Data_Table columns={columns} data={data} />
       </PagesIndex.Main_Containt>
     </div>

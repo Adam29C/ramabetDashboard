@@ -1,20 +1,27 @@
 import React, { useState, useEffect } from "react";
 
 const ToggleDark = () => {
-  const [changeDark, setChangeDark] = useState("light");
+  const getColor = localStorage.getItem("theme_Color");
+  const status = localStorage.getItem("theme_status");
+
+  const [changeDark, setChangeDark] = useState(getColor);
+  const [Checkbox, setCheckbox] = useState(status);
 
   useEffect(() => {
     if (changeDark === "dark") {
       localStorage.setItem("theme_Color", changeDark);
+      localStorage.setItem("theme_status", true);
       document.body.setAttribute("data-theme-version", "dark");
     } else {
       localStorage.setItem("theme_Color", changeDark);
+      localStorage.setItem("theme_status", false);
       document.body.setAttribute("data-theme-version", "light");
     }
-  }, [changeDark]);
+  }, [changeDark , status]);
 
   const handleToggle = () => {
     setChangeDark(changeDark === "light" ? "dark" : "light");
+    setCheckbox(!Checkbox);
   };
 
   return (
@@ -24,6 +31,7 @@ const ToggleDark = () => {
         class="checkbox"
         id="checkbox"
         onChange={() => handleToggle("dark")}
+        defaultChecked={Checkbox}
       />
       <label for="checkbox" class="checkbox-label">
         <i class="fas fa-sun"></i>

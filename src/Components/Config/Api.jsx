@@ -1,3 +1,4 @@
+
 const Api = {
   COMMON_GENERATE_TOKEN: "common/generate-token",
   // AUTH MODULE
@@ -16,6 +17,7 @@ const Api = {
 
   EMPLOYEE_LIST: "admin/empList",
   BLOCK_EMPLOYEE: "admin/blockEmployee",
+  DELETE_EMPLOYEE: "admin/deleteEmployee",
 
   //GAME PROVIDER
   ADMIN_GAME_PROVIDER: "admin/game/gameProvider",
@@ -23,8 +25,13 @@ const Api = {
   //GAME RATES
   ADMIN_GAME_RATES: "admin/game/gameRate",
 
-  //GAME PROVIDER
+  //GAME SETTING
   ADMIN_GAME_SETTING: "/admin/game/gameSetting",
+  
+
+  //GAME SETTING
+  USERS_LIST: "/admin/users",
+  
 };
 
 export { Api };

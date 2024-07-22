@@ -1,7 +1,6 @@
 import React from 'react'
-import GameProvider from '../../../../Helpers/Provider/GameProvider'
 import PagesIndex from '../../../PagesIndex'
-import GameRatesProvider from '../../../../Helpers/Provider/GameRatesProvider'
+import GameRatesProvider from '../../../../Helpers/GameProvider/GameRates/GameRatesProvider'
 
 const GameRates = () => {
     
@@ -19,7 +18,7 @@ const GameRates = () => {
   
   return (
     <>
-    <GameRatesProvider data={data} path={"/admin/game/rates/add"} getGameRatesList={getGameRatesList} title="Game Rates"/>
+    <GameRatesProvider data={data} path={"/admin/game/rate"} getGameRatesList={getGameRatesList} title="Game Rates"/>
     {/* <Modal/> */}
     </>
 

@@ -68,7 +68,12 @@ const GameRatesAdd = () => {
   ];
 
   return (
-    <PagesIndex.Main_Containt add_button={false} route="">
+    <PagesIndex.Main_Containt
+      add_button={true}
+      route={"/admin/game/rates"}
+      title={location?.state ? "Edit Game Rate" : "Add     Game Rate"}
+      btnTitle="Back"
+    >
       <PagesIndex.Formikform
         fieldtype={fields.filter((field) => !field.showWhen)}
         formik={formik}
@@ -78,9 +83,6 @@ const GameRatesAdd = () => {
         show_submit={true}
       />
 
-
-
-      
       <PagesIndex.Toast />
     </PagesIndex.Main_Containt>
   );

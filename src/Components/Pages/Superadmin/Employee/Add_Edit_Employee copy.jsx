@@ -6,9 +6,12 @@ import { makePermissions, InitialValues } from "./permissions";
 
 function AddEmployee() {
   const userId = localStorage.getItem("userId");
+
   const navigate = PagesIndex.useNavigate();
   const location = PagesIndex.useLocation();
   const userData = location.state;
+
+  console.log("location", location.state);
 
   const formik = PagesIndex.useFormik({
     initialValues: {
@@ -20,17 +23,21 @@ function AddEmployee() {
     },
     validate: (values) => {
       const errors = {};
-      const requiredFields = [
-        "employeeName",
-        "username",
-        "password",
-        "designation",
-      ];
-      requiredFields.forEach((field) => {
-        if (!values[field]) {
-          errors[field] = PagesIndex.valid_err[`${field.toUpperCase()}_ERROR`];
-        }
-      });
+
+      if (!values.employeeName) {
+        errors.domain = PagesIndex.valid_err.FULLNAME_ERROR;
+      }
+
+      if (!values.username) {
+        errors.username = PagesIndex.valid_err.USERNAME_ERROR;
+      }
+      if (!values.password) {
+        errors.password = PagesIndex.valid_err.PASSWORD_ERROR;
+      }
+      if (!values.designation) {
+        errors.designation = PagesIndex.valid_err.DESIGNATION_ERROR;
+      }
+
       return errors;
     },
     onSubmit: async (values) => {},
@@ -50,7 +57,7 @@ function AddEmployee() {
       type: "text",
       label_size: 12,
       col_size: 6,
-      disable: !!userData,
+      disable: userData ? true : "",
     },
     {
       name: "password",
@@ -58,7 +65,7 @@ function AddEmployee() {
       type: "text",
       label_size: 12,
       col_size: 6,
-      disable: !!userData,
+      disable: userData ? true : "",
     },
     {
       name: "designation",
@@ -66,7 +73,7 @@ function AddEmployee() {
       type: "text",
       label_size: 12,
       col_size: 6,
-      disable: !!userData,
+      disable: userData ? true : "",
     },
     {
       name: "loginPermission",
@@ -86,14 +93,20 @@ function AddEmployee() {
     ? fields.filter((field) => field.name !== "password")
     : fields;
 
+
+    
   const formik1 = PagesIndex.useFormik({
-    initialValues: InitialValues,
-    validate: () => ({}),
+    initialValues: location.state ? InitialValues,
+    validate: (values) => {
+      const errors = {};
+      return errors;
+    },
     onSubmit: async (values) => {},
   });
 
-  function updateCheckedStatus(array1, makePermissions) {
-    const permissions = array1[0];
+  function updateCheckedStatus(array1, array2) {
+    const permissions = array2[0];
+
     const keyMap = {
       Dashboard: "isDashboard",
       Users: "isUsers",
@@ -179,13 +192,15 @@ function AddEmployee() {
       });
     }
 
-    updateNested(makePermissions);
-    return makePermissions;
+    updateNested(array1);
+    return array1;
   }
 
+
+  console.log("updateCheckedStatus(makePermissions, [location?.state?.permission])" ,updateCheckedStatus(makePermissions, [location?.state?.permission]));
   useEffect(() => {
     if (location?.state?.permission) {
-      updateCheckedStatus([location.state.permission], makePermissions);
+      updateCheckedStatus(makePermissions, [location?.state?.permission]);
     }
   }, [location]);
 
@@ -201,64 +216,52 @@ function AddEmployee() {
     },
   ];
 
+
+
+
   const handleComplete = async () => {
     let updatedABC = {};
     for (let key in formik1.values) {
-      updatedABC["is" + key.replace(/\s+/g, "")] = formik1.values[key];
+      let newKey = "is" + key.replace(/\s+/g, "");
+      updatedABC[newKey] = formik1.values[key];
     }
 
-    // const combineObjects = (obj1, obj2) => {
-    //   let combinedObject = {};
-    //   for (let key in obj1) {
-    //     combinedObject[key] = obj1.hasOwnProperty(key) ? obj1[key] : obj2[key];
-    //   }
-    //   return combinedObject;
-    // };
-
-    // const combinedObject = combineObjects(
-    //   updatedABC,
-    //   location.state.permission
-    // );
-
-    const combineObjects = (obj1, obj2) => {
-      const result = {};
-      for (const key in obj1) {
-        // If obj1's value is true, use true
-        if (obj1[key] === true) {
-            result[key] = true;
-        } else {
-            // Otherwise, use obj2's value or default to obj1's value
-            result[key] = obj2[key] !== undefined ? obj2[key] : obj1[key];
-        }
-    }
-
-    return result;
-    };
-
-    const combinedObject = combineObjects(
-      updatedABC,
-      location.state.permission
-    );
 
 
+
+    console.log('====================================' , formik1.values);
+    console.log("updatedABCupdatedABC" ,updatedABC);
+    console.log('====================================');
 
     const req = {
       adminId: userId,
       username: formik.values.username,
       employeeName: formik.values.employeeName,
       loginPermission: formik.values.loginPermission,
-      permission: combinedObject,
+      permission: updatedABC,
       ...(location?.state ? { empId: location?.state?._id } : {}),
     };
 
-    const res = location?.state
-      ? await PagesIndex.admin_services.UPDATE_EMPLOYEE(req)
-      : await PagesIndex.admin_services.CREATE_EMPLOYEE({
-          ...req,
-          password: formik.values.password,
-          designation: formik.values.designation,
-          loginPermission: 1,
-        });
+    console.log("reqreqreqreqreq" ,req);
+
+return
+
+    let res;
+    if (location?.state) {
+      res = await PagesIndex.admin_services.UPDATE_EMPLOYEE(req);
+    } else {
+      const req = {
+        adminId: userId,
+        employeeName: formik.values.employeeName,
+        username: formik.values.username,
+        password: formik.values.password,
+        designation: formik.values.designation,
+        loginPermission: formik.values.loginPermission,
+        loginPermission: 1,
+        permission: updatedABC,
+      };
+      res = await PagesIndex.admin_services.CREATE_EMPLOYEE(req);
+    }
 
     if (res.status === 200) {
       toast.success(res.message);
@@ -298,7 +301,7 @@ function AddEmployee() {
 
   return (
     <Main_Containt
-      title={location.state ? "Edit Employee" :"Add Employee"}
+      title="Add Employee"
       col_size={12}
       add_button={true}
       route="/admin/employees"
@@ -316,3 +319,92 @@ function AddEmployee() {
 }
 
 export default AddEmployee;
+
+/**
+ * 0-for both,
+ * 1-for dashboad
+ * 2-for chat panel
+ */
+
+// export const InitialValues = {
+//   Dashboard: false,
+//   Users: false,
+//   Games: false,
+//   "Games Provider": false,
+//   "Games Setting": false,
+//   "Games Rates": false,
+//   "Games Result": false,
+//   "Games Revert": false,
+//   "Games Refund": false,
+//   Starline: false,
+//   "Starline Provider": false,
+//   "Starline Setting": false,
+//   "Starline Rates": false,
+//   "Starline Result": false,
+//   "Starline Revert": false,
+//   "Starline Refund": false,
+//   "Starline Profit Loss": false,
+//   "Andar Bahar": false,
+//   "Andar Bahar Provider": false,
+//   "Andar Bahar Setting": false,
+//   "Andar Bahar Rates": false,
+//   "Andar Bahar Result": false,
+//   "Andar Bahar Revert": false,
+//   "Andar Bahar Refund": false,
+//   "AB Provider": false,
+//   "AB Setting": false,
+//   "AB Rates": false,
+//   "AB Profit Loss": false,
+//   "AB Result": false,
+//   "AB Revert": false,
+//   "AB Refund": false,
+//   "Cutting Group": false,
+//   "Bookie Corner": false,
+//   "OC Cutting Group": false,
+//   "Final Cutting Group": false,
+//   Wallet: false,
+//   "Fund Request": false,
+//   ExportDebitReport: false,
+//   "View Wallet": false,
+//   "Request ON/OFF": false,
+//   "Credit Request": false,
+//   "Approved Debit Page": false,
+//   "Paytm Request": false,
+//   "Bank Account Request": false,
+//   "Pending Debit Request": false,
+//   "Pending Bank Request": false,
+//   "Pending Paytm Request": false,
+//   "Declined Request": false,
+//   Notification: false,
+//   News: false,
+//   "Delete User": false,
+//   "App Settings": false,
+//   "How To Play": false,
+//   "Withdraw Screen": false,
+//   "Notice Board": false,
+//   "Profile Note": false,
+//   "Wallet Contact": false,
+//   "App Version": false,
+//   Masters: false,
+//   "Upi Id": false,
+//   "Add Fund Mode": false,
+//   "Manage Employee": false,
+//   "Create Employee": false,
+//   Reports: false,
+//   "Jodi All": false,
+//   "Sales Report": false,
+//   "Andar Bahar Sales Report": false,
+//   "Andar Bahar Total Bids": false,
+//   "Starline Sales Report": false,
+//   "Fund Report": false,
+//   "Total Bids": false,
+//   "Ajay Sir Report": false,
+//   "Credit Debit Report": false,
+//   "Daily Report": false,
+//   "Bidding Report": false,
+//   "Customer Balance": false,
+//   "All User Bids": false,
+//   "Deleted Users": false,
+//   "Upi Fund Report": false,
+//   Invoices: false,
+// };

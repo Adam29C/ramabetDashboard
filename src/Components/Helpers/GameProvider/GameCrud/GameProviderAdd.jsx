@@ -11,12 +11,10 @@ const GameProviderAdd = () => {
       providerResult: location?.state ? location?.state?.providerResult : "",
       resultStatus: 0,
       mobile: location?.state ? location?.state?.mobile : "",
-      activeStatus: location?.state ? location?.state?.activeStatus : null
-       
+      activeStatus: location?.state ? location?.state?.activeStatus : null,
     },
     validate: (values) => {
       const errors = {};
-
 
       if (!values.providerName) {
         errors.providerName = PagesIndex.valid_err.PROVIDER_NAME_ERROR;
@@ -37,7 +35,7 @@ const GameProviderAdd = () => {
       try {
         let data = {
           adminId: userId,
-       
+
           providerName: values.providerName,
           providerResult: values.providerResult,
 
@@ -71,7 +69,6 @@ const GameProviderAdd = () => {
   });
 
   const fields = [
-
     {
       name: "providerName",
       label: "Provider Name",
@@ -113,10 +110,13 @@ const GameProviderAdd = () => {
     },
   ];
 
-
-
   return (
-    <PagesIndex.Main_Containt add_button={false} route="">
+    <PagesIndex.Main_Containt
+      add_button={true}
+      route={"/admin/games"}
+      title={location?.state ? "Edit Game" : "Add Game"}
+      btnTitle="Back"
+    >
       <PagesIndex.Formikform
         fieldtype={fields.filter((field) => !field.showWhen)}
         formik={formik}

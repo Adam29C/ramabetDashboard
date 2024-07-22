@@ -18,12 +18,12 @@ import Add_Edit_Employee from "../../Pages/Superadmin/Employee/Add_Edit_Employee
 import System from "../../Pages/Superadmin/PenalInfo/System";
 import Games from "../../Pages/Superadmin/Games/AvailableGames/Games";
 import GameProviderAdd from "../../Helpers/GameProvider/GameCrud/GameProviderAdd";
-import GameRates from "../../Pages/Superadmin/Games/AvailableGames/Games";
+import GameRates from "../../Pages/Superadmin/Games/AvailableGames/GameRates";
 import GameRatesAdd from "../../Helpers/GameProvider/GameRates/GameRatesAdd";
 import GameSetting from "../../Pages/Superadmin/Games/AvailableGames/GameSettingList";
 import GameSettingAdd from "../../Helpers/GameProvider/GameSetting/GameSettingAdd";
-
 import CuttingGroup from "../../Pages/Superadmin/CuttingGroup/CuttingGroup";
+import GameResult from "../../Pages/Superadmin/Games/AvailableGames/GameRasult";
 
 // Mock authentication status
 
@@ -74,11 +74,19 @@ const adminRoutes = [
         element: <PrivateRoute element={GameProviderAdd} />,
       },
       {
+        path: "game/edit",
+        element: <PrivateRoute element={GameProviderAdd} />,
+      },
+      {
         path: "game/rates",
         element: <PrivateRoute element={GameRates} />,
       },
       {
-        path: "game/rates/add",
+        path: "game/rate/add",
+        element: <PrivateRoute element={GameRatesAdd} />,
+      },
+      {
+        path: "game/rate/edit",
         element: <PrivateRoute element={GameRatesAdd} />,
       },
       {
@@ -93,10 +101,14 @@ const adminRoutes = [
         path: "game/setting/edit",
         element: <PrivateRoute element={GameSettingAdd} />,
       },
-      // {
-      //   path: "game-rates",
-      //   element: <PrivateRoute element={GameRates} />,
-      // },
+      {
+        path: "game-rates",
+        element: <PrivateRoute element={GameRates} />,
+      },
+      {
+        path: "game/results",
+        element: <PrivateRoute element={GameResult} />,
+      },
       {
         path: "cuttinggroup",
         element: <PrivateRoute element={CuttingGroup} />,

@@ -11,7 +11,7 @@
         const themeDirectionSelect = $('#theme_direction');
 
         function applySettings() {
-            $('body').attr('data-theme-version', versionSelect.val());
+         //   $('body').attr('data-theme-version', versionSelect.val());
             $('body').attr('data-sidebar-position', 'fixed'); // Or sidebarPositionSelect.val()
             $('body').attr('data-header-position', 'fixed'); // Or headerPositionSelect.val()
             $('html').attr('dir', themeDirectionSelect.val());

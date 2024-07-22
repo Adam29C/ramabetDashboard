@@ -9,21 +9,26 @@ const Main_Containt = ({
   col_size,
   btnTitle,
   route,
+
   children,
 }) => {
   return (
     <div className="content-body">
       <div className="container-fluid mt-3">
         <div className="row">
-          <div className={`card col-${col_size} `}>
+          <div className={`card`}>
             <div className="d-flex align-items-center justify-content-between">
               <h4 className="m-0 p-3">{title}</h4>
               {add_button ? (
                 <Link className="submitBtn btn btn-primary " to={route}>
                   {btnTitle === "Add" ? (
                     <>
-                      <Icon icon="line-md:plus" className="fw-bold" style={{ fontSize: "20px" }} />
-                      &nbsp; Add 
+                      <Icon
+                        icon="line-md:plus"
+                        className="fw-bold"
+                        style={{ fontSize: "20px" }}
+                      />
+                      &nbsp; Add
                     </>
                   ) : (
                     <>
@@ -42,10 +47,7 @@ const Main_Containt = ({
           </div>
 
           <div className={`card col-${col_size} `}>
-            <div className="card-body">
-             
-              {children}
-            </div>
+            <div className="card-body">{children}</div>
           </div>
         </div>
       </div>

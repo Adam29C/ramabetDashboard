@@ -1,53 +1,123 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Main_Containt from "../../../Layout/Main/Main_Containt";
-import Data_Table from "../../../Helpers/Datatable";
 import ModalComponent from "../../../Helpers/ModalComponent";
+import PagesIndex from "../../PagesIndex";
+import { DELETE_USER } from "../../../Services/SuperAdminServices";
+import DeleteSweetAlert from "../../../Helpers/DeleteSweetAlert";
 
 const UsersList = () => {
   const [loading, setLoading] = useState(false);
+  const [data, setData] = useState([]);
+
+  const userId = localStorage.getItem("userId");
+
+  const getList = async () => {
+    setLoading(true);
+    try {
+      const res = await PagesIndex.admin_services.USERS_LIST(userId);
+      setData(res?.data || []);
+    } catch (error) {
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getList();
+  }, []);
 
   const columns = [
     {
       name: "Name",
       selector: (row) => row.name,
     },
+    {
+      name: "User Name",
+      selector: (row) => row.username,
+    },
+    {
+      name: "Mobile No.",
+      selector: (row) => row.mobile,
+    },
+    {
+      name: "Device",
+      selector: (row) => row.deviceName,
+    },
+    {
+      name: "isActive",
+      selector: (row) => (
+        <span
+          className={`badge fw-bold ${
+            row.isActive ? "bg-primary" : "bg-danger"
+          }`}
+        >
+          {row.isActive ? "Active" : "In-Active"}
+        </span>
+      ),
+    },
+    {
+      name: "isBlock",
+      selector: (row) => (
+        <PagesIndex.ChangeStatus
+          apiRoute={PagesIndex.admin_services.BLOCK_USER}
+          req={{ userId: row._id, isBlock: row.isBlock }}
+          checkboxStatus={row.isBlock}
+          rowData={row}
+        />
+      ),
+    },
+    {
+      name: "isLogin",
+      selector: (row) => (
+        <span
+          className={`badge fw-bold ${
+            row.isLogin ? "bg-primary" : "bg-danger"
+          }`}
+        >
+          {row.isLogin ? "Login" : "Log-Out"}
+        </span>
+      ),
+    },
+    {
+      name: "actions",
+      selector: (cell, row) => (
+        <div style={{ width: "120px" }}>
+          <div>
+            <PagesIndex.Link to={"/admin/employee/edit"} state={cell}>
+              <span data-toggle="tooltip" data-placement="top" title="Edit">
+                <i class="ti-marker-alt fs-5 mx-1 "></i>
+              </span>
+            </PagesIndex.Link>
 
-    {
-      name: "Mobile Number",
-      selector: (row) => row.mobileNumber,
-    },
-  ];
-
-  const data = [
-    {
-      id: 1,
-      name: "ttt",
-      mobileNumber: "000000000000",
-    },
-    {
-      id: 2,
-      name: "tsssstt",
-      mobileNumber: "000000000000",
-    },
-    {
-      id: 3,
-      name: "tttttt",
-      mobileNumber: "000000000000",
+            <PagesIndex.Link
+              href="#"
+              onClick={() =>
+                DeleteSweetAlert(
+                  PagesIndex.admin_services.DELETE_USER,
+                  cell?._id,
+                  getList
+                )
+              }
+            >
+              <span data-toggle="tooltip" data-placement="top" title="Delete">
+                <i class="ti-trash fs-5 mx-1 "></i>
+              </span>
+            </PagesIndex.Link>
+          </div>
+        </div>
+      ),
     },
   ];
 
   return (
-    <>
-    <div>
-      <Main_Containt add_button={false} route="/admin/user/add">
-      <ModalComponent/>
-        <Data_Table isLoading={loading} columns={columns} data={data} />
-        
-      </Main_Containt>
-      
-    </div>
-
-    </>
+    <Main_Containt add_button={false} route="/admin/user/add">
+      {/* <ModalComponent /> */}
+      <PagesIndex.Data_Table
+        isLoading={loading}
+        columns={columns}
+        data={data}
+      />
+    </Main_Containt>
   );
 };
 

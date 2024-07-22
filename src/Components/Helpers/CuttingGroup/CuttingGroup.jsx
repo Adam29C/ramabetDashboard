@@ -105,7 +105,7 @@ const CuttingGroup = () => {
                     show_submit={true}
                   />
                 </div>
-              </div>{" "}
+              </div>
             </div>
             <div className="col-lg-4 col-xl-4">
               <div className="card ">

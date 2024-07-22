@@ -50,19 +50,30 @@ export const EMPLOYEE_GET_LIST_API = async (id) => {
 export const BLOCK_EMPLOYEE_API = async (data) => {
   console.log(data);
   try {
-    const res = await dataservice.post(Api.BLOCK_EMPLOYEE, data);
+    const res = await dataservice.patch(Api.BLOCK_EMPLOYEE, data);
     return res?.data;
   } catch (error) {
     return error;
   }
 };
 
+export const DELETE_EMPLOYEE = async (ID) => {
+  let apiData = {
+    adminId: ID.adminId,
+    empId: ID.deleteId,
+  };
+  try {
+    const res = await dataservice.delete(Api.DELETE_EMPLOYEE, { data: apiData });
+    return res?.data;
+  } catch (error) {
+    return error;
+  }
+};
 // --------------------------   Employee Crud ------------------------
 
 // --------------------------  game provider api ------------------------
 
 export const GAME_PROVIDER_GET_LIST_API = async (id) => {
-  
   try {
     const res = await dataservice.get(
       `${Api.ADMIN_GAME_PROVIDER}?adminId=${id}`
@@ -151,6 +162,11 @@ export const GAME_RATES_DELETE_API = async (data) => {
   }
 };
 
+// --------------------------  game provider api ------------------------
+// --------------------------   super admin provider api ------------------------
+
+// --------------------------   GAME SETTING CRUD ------------------------
+
 export const GAME_SEETING_LIST_API = async (id) => {
   try {
     const res = await dataservice.get(
@@ -162,5 +178,46 @@ export const GAME_SEETING_LIST_API = async (id) => {
   }
 };
 
-// --------------------------  game provider api ------------------------
-// --------------------------   super admin provider api ------------------------
+export const GAME_SETTING_ADD = async (id) => {
+  try {
+    const res = await dataservice.post(`${Api.ADMIN_GAME_SETTING}`);
+    return res?.data;
+  } catch (error) {
+    return error;
+  }
+};
+
+// --------------------------   GAME SETTING CRUD ------------------------
+
+// --------------------------   USERS CRUD ------------------------
+
+export const USERS_LIST = async (id) => {
+  try {
+    const res = await dataservice.get(`${Api.USERS_LIST}/${id}`);
+    return res?.data;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const BLOCK_USER = async (ID) => {
+  try {
+    const res = await dataservice.put(Api.USERS_LIST, ID);
+    return res?.data;
+  } catch (error) {
+    return error;
+  }
+};
+export const DELETE_USER = async (ID) => {
+  let apiData = {
+    adminId: ID.adminId,
+    userId: ID.deleteId,
+  };
+  try {
+    const res = await dataservice.delete(Api.USERS_LIST, { data: apiData });
+    return res?.data;
+  } catch (error) {
+    return error;
+  }
+};
+// --------------------------   USERS CRUD ------------------------

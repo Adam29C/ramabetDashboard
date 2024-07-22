@@ -18,31 +18,30 @@ const GameProviderAdd = () => {
   }, []);
 
 
-  console.log("location", location.state);
+
+  
   const formik = PagesIndex.useFormik({
     initialValues: {
-      providerName: location?.state ? location?.state?.row.providerName : "",
+      providerName: location?.state?.row ? location?.state?.row.providerName : "",
       gameDay: location?.state?.rowData ? location?.state?.rowData.gameDay : "",
-      OBT: location?.state?.rowData ? location?.state?.rowData.OBT  : "",
+      OBT: location?.state?.rowData ? location?.state?.rowData.OBT : "",
       CBT: location?.state?.rowData ? location?.state?.rowData.CBT : "",
       OBRT: location?.state?.rowData ? location?.state?.rowData.OBRT : "",
       CBRT: location?.state?.rowData ? location?.state?.rowData.CBRT : "",
-      isClosed: location?.state?.rowData ? location?.state?.rowData.isClosed : "1",
+      isClosed: location?.state?.rowData
+        ? location?.state?.rowData.isClosed
+        : "1",
     },
     validate: (values) => {
       const errors = {};
 
-      if (!values.providerName) {
-        errors.providerName = PagesIndex.valid_err.PROVIDER_NAME_ERROR;
-      }
+      // if (!values.providerName) {
+      //   errors.providerName = PagesIndex.valid_err.PROVIDER_NAME_ERROR;
+      // }
 
-      if (!values.providerResult) {
-        errors.providerResult = PagesIndex.valid_err.PROVIDER_RESULT_ERROR;
-      }
-
-      if (!values.mobile) {
-        errors.mobile = PagesIndex.valid_err.CONTACT_ERROR;
-      }
+      // if (!values.providerResult) {
+      //   errors.providerResult = PagesIndex.valid_err.PROVIDER_RESULT_ERROR;
+      // }
 
       return errors;
     },
@@ -51,7 +50,6 @@ const GameProviderAdd = () => {
       try {
         let data = {
           adminId: userId,
-
           providerName: values.providerName,
           providerResult: values.providerResult,
 
@@ -62,13 +60,14 @@ const GameProviderAdd = () => {
             ? { gameProviderId: location?.state?._id }
             : ""),
         };
-        if (!location?.state?._id) {
-          data.resultStatus = values.resultStatus;
-        }
+        // if (!location?.state?._id) {
+        //   data.resultStatus = values.resultStatus;
+        // }
 
-        const res = location?.state?._id
-          ? await PagesIndex.admin_services.GAME_PROVIDER_UPDATE_API(data)
-          : await PagesIndex.admin_services.GAME_PROVIDER_ADD_API(data);
+        // const res = location?.state?._id
+        //   ? await PagesIndex.admin_services.GAME_PROVIDER_UPDATE_API(data)
+        //   :
+        await PagesIndex.admin_services.GAME_SETTING_ADD(data);
 
         if (res?.status === 200) {
           PagesIndex.toast.success(res?.message);
@@ -83,6 +82,9 @@ const GameProviderAdd = () => {
       }
     },
   });
+
+
+  console.log("location?.state?.row" ,formik.values);
 
   const fields = [
     {
@@ -99,6 +101,7 @@ const GameProviderAdd = () => {
       label_size: 6,
       col_size: 6,
       options: [
+        { label: "Full Week", value: "all" },
         { label: "Sunday", value: "Sunday" },
         { label: "Monday", value: "Monday" },
         { label: "Tuesday", value: "Tuesday" },

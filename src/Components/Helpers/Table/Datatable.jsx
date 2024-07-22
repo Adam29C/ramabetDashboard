@@ -52,23 +52,6 @@ const Data_Table = ({ columns, data, tableStyle, isLoading, showFilter }) => {
     },
   };
 
-  const userStyles = {
-    // rows: {
-    //   style: {
-    //     // minHeight: "72px",
-    //   },
-    // },
-    // headCells: {
-    //   style: {
-    //     background: "#4E3896",
-    //     color: "#fff",
-    //   },
-    // },
-    // cells: {
-    //   background: "#4E3896",
-    //   color: "#fff",
-    // },
-  };
 
   const TooltipCell = ({ value }) => (
     <OverlayTrigger placement="top" overlay={<Tooltip>{value}</Tooltip>}>
