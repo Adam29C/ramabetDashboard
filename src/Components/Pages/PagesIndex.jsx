@@ -32,9 +32,7 @@ import empLogo from "../../../public/assets/images/avatar/emp-logo.png";
 import TeamMets from "./Superadmin/Profile/TeamMets";
 import { getEmployeeList } from "../Redux/slice/SuperAdminSlice";
 import * as commonSlice from "../Redux/slice/CommonSlice";
-
 import DeleteSweetAlert from "../Helpers/DeleteSweetAlert";
-
 import Data_Table from "../Helpers/Datatable";
 import CuttingGroupMain from "../Helpers/CuttingGroup/CuttingGroup";
 import MultiTabs from "../Helpers/MultiTabs";
