@@ -21836,3 +21836,35 @@ a:hover {
   font-size: 1.2em;
   text-decoration: none;
 }
+
+/* multi tabs css start */
+/* MultiTabs.css */
+
+/* multi tabs css end */
+
+
+.report-btn{
+  background-color: #7571f9;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  padding: 10px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+}
+
+.approve-btn{
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-weight: 500;
+  display: inline-block;
+  font-size: 13px;
+  border: none;
+  background: #bbb9b9;
+  margin: 20px;
+  color: #000;
+  text-decoration: none;
+  text-align: center;
+}

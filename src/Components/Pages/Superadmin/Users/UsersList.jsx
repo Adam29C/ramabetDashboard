@@ -5,6 +5,7 @@ import PagesIndex from "../../PagesIndex";
 import { DELETE_USER } from "../../../Services/SuperAdminServices";
 import DeleteSweetAlert from "../../../Helpers/DeleteSweetAlert";
 
+
 const UsersList = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);

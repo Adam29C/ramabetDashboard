@@ -181,4 +181,69 @@ export const admin_Sidebar = [
     Icon: "icon-speedometer",
     NestedElement: [],
   },
+  {
+    id: 9,
+    headerTitle: "Bookie Corner",
+    title: "Bookie Corner",
+    Icon: "fa-solid fa-wallet",
+    NestedElement: [
+      {
+        id: 1,
+        title: "OC Cutting Group",
+        route:"OCGroup",
+      },
+      {
+        id: 2,
+        title: "Final OC Cutting Group",
+        route: "finalOCGroup",
+      },
+     
+    ],
+  },
+  {
+    id: 10,
+    headerTitle: "Wallet",
+    title: "Wallet",
+    Icon: "fa-solid fa-wallet",
+    NestedElement: [
+      {
+        id: 1,
+        title: "Manual Request",
+        route:"wallet/manualrequest",
+       
+      },
+      {
+        id: 2,
+        title: "Export Debit Report",
+        route: "wallet/debitreport",
+      },
+      {
+        id: 3,
+        title: "Download Debit Report",
+        route: "wallet/moneycheck",
+      },
+      {
+        id: 4,
+        title: "Search Account",
+        route: "wallet/searchaccount",
+      },
+      {
+        id: 5,
+        title: "Invoices",
+        route: "wallet/invoices",
+      },
+
+      {
+        id: 6,
+        title: "View Wallet",
+        route: "wallet/customerbalance",
+      },
+      {
+        id: 7,
+        title: "Requests On/Off",
+        route: "#",
+      },
+     
+    ],
+  },
 ];

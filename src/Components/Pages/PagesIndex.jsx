@@ -32,48 +32,52 @@ import empLogo from "../../../public/assets/images/avatar/emp-logo.png";
 import TeamMets from "./Superadmin/Profile/TeamMets";
 import { getEmployeeList } from "../Redux/slice/SuperAdminSlice";
 import * as commonSlice from "../Redux/slice/CommonSlice";
-import ChangeStatus from "../Helpers/Table/ChangeStatus";
 
 import DeleteSweetAlert from "../Helpers/DeleteSweetAlert";
 
-import Data_Table from "../Helpers/Table/Datatable";
+import Data_Table from "../Helpers/Datatable";
+import CuttingGroupMain from "../Helpers/CuttingGroup/CuttingGroup";
+import MultiTabs from "../Helpers/MultiTabs";
+import WalletMain from "../Helpers/Wallet/WalletMain";
 const PagesIndex = {
-  useDispatch,
-  useState,
-  useSelector,
-  useNavigate,
-  toast,
-  v4,
-  Remove_Special_Character,
-  LOGIN_API,
-  Logo,
-  useFormik,
-  Main_Containt,
-  Formikform,
-  Toast,
-  getGenerateToken,
-  useEffect,
-  Link,
-  valid_err,
-  Password_Rejex,
-  ADD_SYSTEM_INFO_API,
-  Image_Regexp,
-  Auth_Containt,
-  LIST_SYSTEM_INFO_API,
-  Loader,
-  UPDATE_SYSTEM_INFO_API,
-  admin_services,
-  SuperAdminChangePassword,
-  profileLogo,
-  TeamMets,
-  empLogo,
-  getEmployeeList,
-  Data_Table,
-  useLocation,
-  commonSlice,
-  Icon,
-  ChangeStatus,
-  DeleteSweetAlert,
-};
+    useDispatch,
+    useState,
+    useSelector,
+    useNavigate,
+    toast,
+    v4,
+    Remove_Special_Character,
+    LOGIN_API,
+    Logo,
+    useFormik,
+    Main_Containt,
+    Formikform,
+    Toast,
+    getGenerateToken,
+    useEffect,
+    Link,
+    valid_err,
+    Password_Rejex,
+    ADD_SYSTEM_INFO_API,
+    Image_Regexp,
+    Auth_Containt,
+    LIST_SYSTEM_INFO_API,
+    Loader,
+    UPDATE_SYSTEM_INFO_API,
+    admin_services,
+    SuperAdminChangePassword,
+    profileLogo,
+    TeamMets,
+    empLogo,
+    getEmployeeList,
+    Data_Table,
+    useLocation,
+    commonSlice,
+    Icon,
+    CuttingGroupMain,
+    MultiTabs,
+    WalletMain
+ 
+}
 
 export default PagesIndex;
