@@ -32,6 +32,7 @@ import ExportDebitReport from "../../Pages/Superadmin/Wallet/ExportDebitReport";
 import DownloadDebitReport from "../../Pages/Superadmin/Wallet/DownloadDebitReport";
 import SearchAccount from "../../Pages/Superadmin/Wallet/SearchAccount";
 import Invoices from "../../Pages/Superadmin/Wallet/Invoices";
+import ViewWallet from "../../Pages/Superadmin/Wallet/ViewWallet";
 
 // Mock authentication status
 
@@ -135,6 +136,11 @@ const adminRoutes = [
         path: "wallet/invoices",
         element: <PrivateRoute element={Invoices} />,
       },
+      {
+        path: "wallet/customerbalance",
+        element: <PrivateRoute element={ViewWallet} />,
+      },
+      
       
     ],
   },

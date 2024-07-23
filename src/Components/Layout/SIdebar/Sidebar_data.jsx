@@ -239,7 +239,7 @@ export const admin_Sidebar = [
       {
         id: 6,
         title: "View Wallet",
-        route: "#",
+        route: "wallet/customerbalance",
       },
       {
         id: 7,
