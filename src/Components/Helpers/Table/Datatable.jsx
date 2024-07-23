@@ -69,7 +69,7 @@ const Data_Table = ({ columns, data, tableStyle, isLoading, showFilter }) => {
     
   ];
   const ExpandedComponent = ({ data, columns }) => (
-    <div>
+    <div className="short-datatable-main">
       {console.log(columns)}
       {/* {columns?.map(column => (
         <p key={column.selector}>
@@ -77,7 +77,7 @@ const Data_Table = ({ columns, data, tableStyle, isLoading, showFilter }) => {
         </p>
       ))} */}
        {Object.keys(data).map(key => (
-        <p key={key}><strong>{key}:</strong> {data[key]}</p>
+        <p  className="short-datatable-data" key={key}><strong>{key}:</strong>{" "} {data[key]}</p>
       ))}
     </div>
   );

@@ -36,7 +36,7 @@ const TeamMets = () => {
   return (
     <div className="card">
       <div className="card-body">
-        <h3 className="mb-5 text-center">RamaBets Games Team Members</h3>
+        <h3 className="card-title-text text-center">RamaBets Games Team Members</h3>
         {getEmployeeListState &&
           getEmployeeListState?.map((row) => (
             <div>

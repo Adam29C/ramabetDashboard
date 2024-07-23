@@ -182,7 +182,7 @@ const ExamplePage = () => {
     {
       size: 9,
       body: (
-        <div>
+        <div >
           <PagesIndex.Formikform
             fieldtype={fields.filter((field) => !field.showWhen)}
             formik={formik}
@@ -194,15 +194,15 @@ const ExamplePage = () => {
     {
       size: 3,
       body: (
-        <div>
-          <div>
+        <div >
+          <div >
             <PagesIndex.Formikform
               fieldtype={fields1.filter((field) => !field.showWhen)}
               formik={formik1}
               btn_name="Add Panel"
             />
           </div>
-          <button className="btn-primary">click</button>
+          <button className="btn-primary click-btn-game-result">click</button>
         </div>
       ),
     },

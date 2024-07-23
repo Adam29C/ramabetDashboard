@@ -27,6 +27,7 @@ const generateToken = async () => {
  $('#favicon').attr('href', favIcon);
  $('#sidebar-logo').attr('src', logo);
  $('#sidebar-logo-short').html(shortIcon);
+ 
 
 };
 

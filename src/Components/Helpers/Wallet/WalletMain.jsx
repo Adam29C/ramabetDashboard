@@ -12,7 +12,7 @@ const WalletMain = ({
   showsubmitbtn,
   showForm
 }) => {
-  console.log(showForm)
+
   return (
     <PagesIndex.Main_Containt title={title}>
       <div className="row">
