@@ -68,6 +68,70 @@ const ExamplePage = () => {
     },
   });
 
+  const formik1 = PagesIndex.useFormik({
+    initialValues: {
+      panel_name: "",
+      domain: "",
+    },
+
+    validate: (values) => {
+      const errors = {};
+
+      // if (!values.panel_name && formik.touched.panel_name) {
+      //   errors.panel_name = valid_err.PANEL_NAME_ERROR;
+      // }
+
+      // if (!values.domain) {
+      //   errors.domain = valid_err.DOMAIN_ERROR;
+      // }
+
+      // if (!values.port) {
+      //   errors.port = valid_err.PORT_ERROR;
+      // }
+
+      // if (!values.key) {
+      //   errors.key = valid_err.KEY_ERROR;
+      // }
+
+      // if (!values.db_url) {
+      //   errors.db_url = valid_err.DBURL_ERROR;
+      // }
+
+      // if (!values.db_name) {
+      //   errors.db_name = valid_err.DBNAME_ERROR;
+      // }
+
+      // if (!values.backend_rul) {
+      //   errors.backend_rul = valid_err.DBNAME_ERROR;
+      // }
+
+      return errors;
+    },
+    onSubmit: async (values) => {
+      const req = {
+        // panel_name: values.panel_name,
+        // domain: values.domain,
+        // port: values.port,
+        // key: values.key,
+      };
+
+      // await dispatch(Add_Panel_data({ req: req, token: user_token }))
+      //   .unwrap()
+      //   .then((response) => {
+      //     if (response.status === 409) {
+      //       toast.error(response.data.msg);
+      //     } else if (response.status) {
+      //       toast.success(response.msg);
+
+      //       setTimeout(() => {
+      //         navigate("/super/alladmins");
+      //       }, 1000);
+      //     } else if (!response.status) {
+      //       toast.error(response.msg);
+      //     }
+      //   });
+    },
+  });
   const fields = [
     {
       name: "providerId",
@@ -104,6 +168,16 @@ const ExamplePage = () => {
     },
   ];
 
+  const fields1 = [
+    {
+      name: "resultDate",
+      label: "Result Date",
+      type: "date",
+      label_size: 12,
+      col_size: 12,
+    },
+  ];
+
   const cardLayouts = [
     {
       size: 9,
@@ -113,22 +187,24 @@ const ExamplePage = () => {
             fieldtype={fields.filter((field) => !field.showWhen)}
             formik={formik}
             btn_name="Add Panel"
-            additional_field={
-              <>
-                <h6>All Brokers</h6>
-
-                {formik.errors.title && (
-                  <div style={{ color: "red" }}>{formik.errors.title}</div>
-                )}
-              </>
-            }
           />
         </div>
       ),
     },
     {
       size: 3,
-      body: <div>Card 2 Body</div>,
+      body: (
+        <div>
+          <div>
+            <PagesIndex.Formikform
+              fieldtype={fields1.filter((field) => !field.showWhen)}
+              formik={formik1}
+              btn_name="Add Panel"
+            />
+          </div>
+          <button className="btn-primary">click</button>
+        </div>
+      ),
     },
   ];
 
