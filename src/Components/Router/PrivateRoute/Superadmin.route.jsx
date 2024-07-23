@@ -28,7 +28,6 @@ import GameResult from "../../Pages/Superadmin/Games/AvailableGames/GameRasult";
 
 
 import MultiTabs from "../../Helpers/MultiTabs";
-import CuttingGroup from "../../Pages/Superadmin/CuttingGroup/CuttingGroup";
 import OcCuttingGroup from "../../Pages/Superadmin/BookieCorner/OcCuttingGroup";
 import FinalOcCuttingGroup from "../../Pages/Superadmin/BookieCorner/FinalOcCuttingGroup";
 import ManualRequest from "../../Pages/Superadmin/Wallet/ManualRequest";
