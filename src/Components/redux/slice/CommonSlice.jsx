@@ -32,8 +32,7 @@ const CommonSlice = createSlice({
   name: "CommonSlice",
   initialState: {
     getGenrateTokenState: "",
-    gameProviders: "",
-
+    gameProviders: [],
     isLoading: false,
   },
   reducers: {},
@@ -43,22 +42,18 @@ const CommonSlice = createSlice({
         return {
           ...state,
           getGenrateTokenState: [],
-
-          // isLoading: true,
         };
       })
       .addCase(getGenerateToken.fulfilled, (state, action) => {
         return {
           ...state,
           getGenrateTokenState: action.payload?.data?.token,
-          // isLoading: false,
         };
       })
       .addCase(getGenerateToken.rejected, (state, action) => {
         return {
           ...state,
           getGenrateTokenState: [],
-          // isLoading: false,
         };
       })
       .addCase(Games_Provider_List.pending, (state, action) => {
@@ -71,7 +66,7 @@ const CommonSlice = createSlice({
       .addCase(Games_Provider_List.fulfilled, (state, action) => {
         return {
           ...state,
-          gameProviders: action.payload?.data?.token,
+          gameProviders: action.payload.data.details,
           isLoading: false,
         };
       })

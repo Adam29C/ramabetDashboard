@@ -1,14 +1,12 @@
 import moment from "moment";
 // import Holidays from "date-holidays"
-import dateTime from "node-datetime"
+import dateTime from "node-datetime";
 import { format, formatDistanceToNow } from "date-fns";
 // ----------------------------------------------------------------------
 
 export const show = (cell) => {
   return moment(cell).format("DD MMM YYYY hh:mm A");
 };
-
-
 
 export function Get_Year_Only(date) {
   return format(new Date(date), "dd MMMM yyyy");
@@ -34,7 +32,7 @@ export function Get_Year_Month_with_String(date) {
 }
 
 export function get_year_and_month_only(date) {
-   // like - 2024-06
+  // like - 2024-06
   return format(new Date(date), "yyyy-MM");
 }
 
@@ -62,7 +60,7 @@ export const today = () => {
   let month = abc.getMonth() + 1;
   let date = abc.getDate();
   let year = abc.getFullYear();
-  let full = `${year}-${month}-${date}`;
+  let full = `${parseInt(month) < 10 ? "0" + month : month}/${parseInt(date) < 10 ? "0" + date : date}/${year}`;
   return full;
 };
 

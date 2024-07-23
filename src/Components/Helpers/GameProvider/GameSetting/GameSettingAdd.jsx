@@ -7,6 +7,11 @@ const GameProviderAdd = () => {
   const location = PagesIndex.useLocation();
   const dispatch = PagesIndex.useDispatch();
 
+  
+
+
+
+
   const getGameRatesList = async () => {
     const res = await dispatch(
       PagesIndex.commonSlice.Games_Provider_List(userId)

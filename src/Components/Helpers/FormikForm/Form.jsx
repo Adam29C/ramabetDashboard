@@ -4,6 +4,8 @@ import Loader from "../Loader";
 // import Loader from "./Loader";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { today, getActualDateFormate } from "../../Utils/Common_Date";
+
 // col-form-label this class for input alignment apply on label
 const ReusableForm = ({
   fromDate,
@@ -26,10 +28,10 @@ const ReusableForm = ({
   const location = useLocation();
 
   const [passwordVisible, setPasswordVisible] = useState({});
-let a = new Date()
-  const [dateStates, setDateStates] = useState(a.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }));
-
-
+  let a = new Date();
+  const [dateStates, setDateStates] = useState(
+    a.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+  );
 
   const [previews, setPreviews] = useState([]);
 
@@ -303,7 +305,14 @@ let a = new Date()
                         <span className="text-danger">*</span>
                       </label>
                       <div className={`d-flex`}>
-                        <input
+                        <DatePicker
+                          className="form-control"
+                          selected={new Date()}
+                          name={field.name}
+                          id={field.name}
+                       //   {...formik.getFieldProps(field.name)}
+                        />
+                        {/* <input
                           type={field.type}
                           name={field.name}
                           className="form-control"
@@ -312,9 +321,11 @@ let a = new Date()
                           min={
                             field.name === "todate"
                               ? fromDate
-                              : getCurrentDate()
+                              : today()
                           }
-                        />
+                          defaultValue={today()}
+                          
+                        /> */}
                         <div className="invalid-feedback">
                           Please enter {field.label}
                         </div>
@@ -326,34 +337,6 @@ let a = new Date()
                       )}
                     </div>
                   </div>
-                  {/* <div className={`col-lg-${field.col_size}`}>
-                    <div className="row d-flex">
-                      <div className="col-lg-12 ">
-                        <div class="form-check custom-checkbox">
-                          <label className="col-lg-6 " for={field.name}>
-                            {field.name}
-                          </label>
-                          <input
-                            type={field.type}
-                            name={field.name}
-                            className="form-control"
-                            id={field.name}
-                            {...formik.getFieldProps(field.name)}
-                            min={
-                              field.name === "todate"
-                                ? fromDate
-                                : getCurrentDate()
-                            }
-                          />
-                        </div>{" "}
-                        {formik.errors[field.name] && (
-                          <div className="error-text" style={{ color: "red" }}>
-                            {formik.errors[field.name]}
-                          </div>
-                        )}{" "}
-                      </div>
-                    </div>
-                  </div> */}
                 </>
               ) : field.type === "time" ? (
                 <>
@@ -375,8 +358,7 @@ let a = new Date()
                             handleDateChange(date, field.name)
                           }
                           {...formik.getFieldProps(field.name)}
-
-                       //   value={dateStates[field.name]}
+                          //   value={dateStates[field.name]}
                           showTimeSelect
                           showTimeSelectOnly
                           timeIntervals={5}

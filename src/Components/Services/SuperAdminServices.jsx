@@ -63,7 +63,9 @@ export const DELETE_EMPLOYEE = async (ID) => {
     empId: ID.deleteId,
   };
   try {
-    const res = await dataservice.delete(Api.DELETE_EMPLOYEE, { data: apiData });
+    const res = await dataservice.delete(Api.DELETE_EMPLOYEE, {
+      data: apiData,
+    });
     return res?.data;
   } catch (error) {
     return error;
@@ -186,6 +188,23 @@ export const GAME_SETTING_ADD = async (id) => {
     return error;
   }
 };
+
+// --------------------------   GAME SETTING CRUD ------------------------
+
+// --------------------------   GAME SETTING CRUD ------------------------
+
+
+export const GAME_RESULT = async (id) => {
+  console.log();
+  try {
+    const res = await dataservice.get(`${Api.ADMIN_GAME_RESULT}?date=${id}`);
+    return res?.data;
+  } catch (error) {
+    return error;
+  }
+};
+
+
 
 // --------------------------   GAME SETTING CRUD ------------------------
 

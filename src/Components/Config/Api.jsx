@@ -1,4 +1,3 @@
-
 const Api = {
   COMMON_GENERATE_TOKEN: "common/generate-token",
   // AUTH MODULE
@@ -27,11 +26,12 @@ const Api = {
 
   //GAME SETTING
   ADMIN_GAME_SETTING: "/admin/game/gameSetting",
-  
+
+  // GAME RESULT
+  ADMIN_GAME_RESULT: "/admin/game/gameResult",
 
   //GAME SETTING
   USERS_LIST: "/admin/users",
-  
 };
 
 export { Api };

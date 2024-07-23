@@ -16,7 +16,9 @@ const UsersList = () => {
     setLoading(true);
     try {
       const res = await PagesIndex.admin_services.USERS_LIST(userId);
-      setData(res?.data || []);
+// console.log("res?.data" ,res?.data);
+
+      setData(res?.data);
     } catch (error) {
     } finally {
       setLoading(false);
