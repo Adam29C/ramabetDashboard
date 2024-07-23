@@ -32,19 +32,19 @@ const UsersList = () => {
   const columns = [
     {
       name: "Name",
-      selector: (row) => row.name,
+      selector: (row) => row?.name,
     },
     {
       name: "User Name",
-      selector: (row) => row.username,
+      selector: (row) => row?.username,
     },
     {
       name: "Mobile No.",
-      selector: (row) => row.mobile,
+      selector: (row) => row?.mobile,
     },
     {
       name: "Device",
-      selector: (row) => row.deviceName,
+      selector: (row) => row?.deviceName,
     },
     {
       name: "isActive",
@@ -63,8 +63,8 @@ const UsersList = () => {
       selector: (row) => (
         <PagesIndex.ChangeStatus
           apiRoute={PagesIndex.admin_services.BLOCK_USER}
-          req={{ userId: row._id, isBlock: row.isBlock }}
-          checkboxStatus={row.isBlock}
+          req={{ userId: row?._id, isBlock: row?.isBlock }}
+          checkboxStatus={row?.isBlock}
           rowData={row}
         />
       ),
