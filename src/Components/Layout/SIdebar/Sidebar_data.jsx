@@ -190,60 +190,303 @@ export const admin_Sidebar = [
       {
         id: 1,
         title: "OC Cutting Group",
-        route:"OCGroup",
+        route: "OCGroup",
       },
       {
         id: 2,
         title: "Final OC Cutting Group",
         route: "finalOCGroup",
       },
-     
     ],
   },
-  {
-    id: 10,
-    headerTitle: "Wallet",
-    title: "Wallet",
-    Icon: "fa-solid fa-wallet",
-    NestedElement: [
-      {
-        id: 1,
-        title: "Manual Request",
-        route:"wallet/manualrequest",
-       
-      },
-      {
-        id: 2,
-        title: "Export Debit Report",
-        route: "wallet/debitreport",
-      },
-      {
-        id: 3,
-        title: "Download Debit Report",
-        route: "wallet/moneycheck",
-      },
-      {
-        id: 4,
-        title: "Search Account",
-        route: "wallet/searchaccount",
-      },
-      {
-        id: 5,
-        title: "Invoices",
-        route: "wallet/invoices",
-      },
+  // {
+  //   id: 10,
+  //   headerTitle: "Wallet",
+  //   title: "Wallet",
+  //   Icon: "fa-solid fa-wallet",
+  //   NestedElement: [
+  //     {
+  //       id: 1,
+  //       title: "Manual Request",
+  //       route: "wallet/manualrequest",
+  //     },
+  //     {
+  //       id: 2,
+  //       title: "Export Debit Report",
+  //       route: "wallet/debitreport",
+  //     },
+  //     {
+  //       id: 3,
+  //       title: "Download Debit Report",
+  //       route: "wallet/moneycheck",
+  //     },
+  //     {
+  //       id: 4,
+  //       title: "Search Account",
+  //       route: "wallet/searchaccount",
+  //     },
+  //     {
+  //       id: 5,
+  //       title: "Invoices",
+  //       route: "wallet/invoices",
+  //     },
 
-      {
-        id: 6,
-        title: "View Wallet",
-        route: "wallet/customerbalance",
-      },
-      {
-        id: 7,
-        title: "Requests On/Off",
-        route: "#",
-      },
-     
-    ],
-  },
+  //     {
+  //       id: 6,
+  //       title: "View Wallet",
+  //       route: "wallet/customerbalance",
+  //     },
+  //     {
+  //       id: 7,
+  //       title: "Requests On/Off",
+  //       route: "wallet/reqOnOff",
+  //     },
+  //   ],
+  // },
+  // {
+  //   id: 11,
+  //   headerTitle: "Credit Request (UPI)",
+  //   title: "Credit Request (UPI)",
+  //   route: "creditUPI",
+  //   Icon: "fa-solid fa-check",
+  //   NestedElement: [],
+  // },
+  // {
+  //   id: 12,
+  //   headerTitle: "Approved Requests",
+  //   title: "Approved Debit Requests",
+  //   Icon: "fa-solid fa-check",
+  //   NestedElement: [
+  //     {
+  //       id: 1,
+  //       title: "Bank Account(Export)",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 2,
+  //       title: "Bank Account(Manual)",
+  //       route: "#",
+  //     },
+  //   ],
+  // },
+  // {
+  //   id: 13,
+  //   headerTitle: "Pending Requests",
+  //   title: "Pending Debit Requests",
+  //   Icon: "fa-regular fa-clock",
+  //   NestedElement: [
+  //     {
+  //       id: 1,
+  //       title: "Pending Bank Requests",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 2,
+  //       title: "Pending Paytm Requests",
+  //       route: "#",
+  //     },
+  //   ],
+  // },
+  // {
+  //   id: 14,
+  //   headerTitle: "Declined Request",
+  //   title: "Declined Request",
+  //   route: "#",
+  //   Icon: "fa-solid fa-times",
+  //   NestedElement: [],
+  // },
+
+  // {
+  //   id: 15,
+  //   headerTitle: "Reports",
+  //   title: "Reports",
+  //   Icon: "ti-agenda",
+  //   NestedElement: [
+  //     {
+  //       id: 1,
+  //       title: "Sales Report",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 2,
+  //       title: "Starline Sales Report",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 3,
+  //       title: "Andar Bahar Sales Report",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 4,
+  //       title: "Andar Bahar Total Bids",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 5,
+  //       title: "Fund Report",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 6,
+  //       title: "UPI Fund Report",
+  //       route: "#",
+  //     },
+
+  //     {
+  //       id: 7,
+  //       title: "Trak Pay Fund Report",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 8,
+  //       title: "RazorPay Fund Report",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 9,
+  //       title: "Total Bids",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 10,
+  //       title: "Credit/Debit Report",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 11,
+  //       title: "Daily Report",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 12,
+  //       title: "Bidding Report",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 13,
+  //       title: "User Analysis",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 14,
+  //       title: "Customer Balance",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 15,
+  //       title: "All User Bids",
+  //       route: "#",
+  //     },
+  //   ],
+  // },
+  // {
+  //   id: 16,
+  //   headerTitle: "Notification",
+  //   title: "Notification",
+  //   route: "#",
+  //   Icon: "fa-regular fa-bell",
+  //   NestedElement: [],
+  // },
+  // {
+  //   id: 17,
+  //   headerTitle: "User Idea's",
+  //   title: "User Idea's",
+  //   route: "#",
+  //   Icon: "fa-regular fa-bell",
+  //   NestedElement: [],
+  // },
+  // {
+  //   id: 18,
+  //   headerTitle: "News",
+  //   title: "News",
+  //   route: "#",
+  //   Icon: "fa-solid fa-television",
+  //   NestedElement: [],
+  // },
+  
+  // {
+  //   id: 19,
+  //   headerTitle: "Deleted User",
+  //   title: "Deleted User",
+  //   route: "#",
+  //   Icon: "fa-solid fa-television",
+  //   NestedElement: [],
+  // },
+  // {
+  //   id: 20,
+  //   headerTitle: "App Settings",
+  //   title: "App Settings",
+  //   Icon: "fa-solid fa-cog",
+  //   NestedElement: [
+  //     {
+  //       id: 1,
+  //       title: "How To Play",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 2,
+  //       title: "Withdraw Screen",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 3,
+  //       title: "Notice Board",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 4,
+  //       title: "Profile Note",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 5,
+  //       title: "Wallet Contact",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 6,
+  //       title: "App Version",
+  //       route: "#",
+  //     },
+  //   ],
+  // },
+  // {
+  //   id: 21,
+  //   headerTitle: "Masters",
+  //   title: "Masters",
+  //   Icon: "ti-money",
+  //   NestedElement: [
+  //     {
+  //       id: 1,
+  //       title: "Bank",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 2,
+  //       title: "UPI Id",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 3,
+  //       title: "Add Fund Mode",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 4,
+  //       title: "Manage Employee",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 5,
+  //       title: "Wallet Contact",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 6,
+  //       title: "Register New Employee",
+  //       route: "#",
+  //     },
+  //   ],
+  // },
 ];

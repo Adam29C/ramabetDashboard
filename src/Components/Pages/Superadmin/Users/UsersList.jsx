@@ -112,6 +112,8 @@ const UsersList = () => {
     },
   ];
 
+
+
   return (
     <Main_Containt add_button={false} route="/admin/user/add">
       {/* <ModalComponent /> */}
@@ -119,6 +121,7 @@ const UsersList = () => {
         isLoading={loading}
         columns={columns}
         data={data}
+
       />
     </Main_Containt>
   );

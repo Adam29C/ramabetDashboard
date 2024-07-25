@@ -5,12 +5,10 @@ import GameSettings from "../../../../Helpers/GameProvider/GameSetting/GameSetti
 
 const GameSettingList = () => {
   const userId = localStorage.getItem("userId");
-
   const [data, getData] = PagesIndex.useState([]);
+
   const getGameRatesList = async () => {
     const res = await PagesIndex.admin_services.GAME_SEETING_LIST_API(userId);
-  console.log("data" ,res);
-
     getData(res?.data);
   };
 

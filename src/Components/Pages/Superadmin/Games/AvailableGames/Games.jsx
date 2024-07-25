@@ -5,11 +5,16 @@ const List = () => {
   const userId = localStorage.getItem("userId");
 
   const [data, getData] = PagesIndex.useState([]);
+
+
   const getGameProviderList = async () => {
+
     const res = await PagesIndex.admin_services.GAME_PROVIDER_GET_LIST_API(
       userId
     );
+
     getData(res?.data?.details);
+    
   };
 
   PagesIndex.useEffect(() => {

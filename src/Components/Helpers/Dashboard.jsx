@@ -7,7 +7,7 @@ const Dashboard = ({ title, icon, count, size }) => {
           <div className="row">
             <div className={size}>
               <div className="card gradient-1">
-                <div className="card-body">
+                <div className="card-body ">
                   <h3 className="card-title text-white">{title}</h3>
                   <div className="d-inline-block">
                     <h2 className="text-white">{count}</h2>

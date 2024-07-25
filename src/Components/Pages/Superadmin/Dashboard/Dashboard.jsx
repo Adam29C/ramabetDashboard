@@ -10,7 +10,7 @@ const Dashboard_Component = () => {
           <div className="row">
             <div className="col-lg-3 col-sm-6">
               <div className="card gradient-1">
-                <div className="card-body">
+                <div className="card-body custom-card-body">
                   <h3 className="card-title text-white">Products Sold</h3>
                   <div className="d-inline-block">
                     <h2 className="text-white">4565</h2>
@@ -24,7 +24,7 @@ const Dashboard_Component = () => {
             </div>
             <div className="col-lg-3 col-sm-6">
               <div className="card gradient-2">
-                <div className="card-body">
+                <div className="card-body  custom-card-body">
                   <h3 className="card-title text-white">Net Profit</h3>
                   <div className="d-inline-block">
                     <h2 className="text-white">$ 8541</h2>
@@ -38,7 +38,7 @@ const Dashboard_Component = () => {
             </div>
             <div className="col-lg-3 col-sm-6">
               <div className="card gradient-3">
-                <div className="card-body">
+                <div className="card-body  custom-card-body">
                   <h3 className="card-title text-white">New Customers</h3>
                   <div className="d-inline-block">
                     <h2 className="text-white">4565</h2>
@@ -52,7 +52,7 @@ const Dashboard_Component = () => {
             </div>
             <div className="col-lg-3 col-sm-6">
               <div className="card gradient-4">
-                <div className="card-body">
+                <div className="card-body  custom-card-body">
                   <h3 className="card-title text-white">
                     Customer Satisfaction
                   </h3>
