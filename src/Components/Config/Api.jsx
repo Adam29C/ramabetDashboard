@@ -31,7 +31,10 @@ const Api = {
   ADMIN_GAME_RESULT: "/admin/game/gameResult",
 
   //GAME SETTING
+  //users
   USERS_LIST: "/admin/users",
+  DELETED_USERS:"/admin/getDeleteUser",
+  USERS_IDEAS:"/admin/UserIdea"
 };
 
 export { Api };

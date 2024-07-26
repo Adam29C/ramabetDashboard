@@ -38,6 +38,16 @@ export const admin_Sidebar = [
         title: "Users List",
         route: "users",
       },
+      {
+        id: 3,
+        title: "Users Idea's",
+        route: "users/ideas",
+      },
+      {
+        id: 4,
+        title: "Deleted Users",
+        route: "users/deleted",
+      },
     ],
   },
   {

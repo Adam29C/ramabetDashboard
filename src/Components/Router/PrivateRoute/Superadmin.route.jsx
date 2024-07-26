@@ -38,6 +38,8 @@ import Invoices from "../../Pages/Superadmin/Wallet/Invoices";
 import ViewWallet from "../../Pages/Superadmin/Wallet/ViewWallet";
 import WithdrawRequest from "../../Pages/Superadmin/Wallet/WithdrawRequest";
 import CreditRequest from "../../Pages/Superadmin/CreditRequest/CreditRequest";
+import UsersIdeas from "../../Pages/Superadmin/Users/UsersIdeas";
+import DeleteUsers from "../../Pages/Superadmin/Users/DeleteUsers";
 
 
 // Mock authentication status
@@ -59,6 +61,14 @@ const adminRoutes = [
       {
         path: "user/add",
         element: <PrivateRoute element={Add_Edit_User} />,
+      },
+      {
+        path: "users/ideas",
+        element: <PrivateRoute element={UsersIdeas} />,
+      },
+      {
+        path: "users/deleted",
+        element: <PrivateRoute element={DeleteUsers} />,
       },
       {
         path: "employees",

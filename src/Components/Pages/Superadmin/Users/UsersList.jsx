@@ -11,13 +11,12 @@ const UsersList = () => {
   const [data, setData] = useState([]);
 
   const userId = localStorage.getItem("userId");
-
+let userDeleteReason = true
   const getList = async () => {
     setLoading(true);
     try {
       const res = await PagesIndex.admin_services.USERS_LIST(userId);
 // console.log("res?.data" ,res?.data);
-
       setData(res?.data);
     } catch (error) {
     } finally {
@@ -98,7 +97,8 @@ const UsersList = () => {
                 DeleteSweetAlert(
                   PagesIndex.admin_services.DELETE_USER,
                   cell?._id,
-                  getList
+                  getList,
+                  userDeleteReason
                 )
               }
             >
@@ -115,7 +115,7 @@ const UsersList = () => {
 
 
   return (
-    <Main_Containt add_button={false} route="/admin/user/add">
+    <Main_Containt add_button={false} route="/admin/user/add" title="All Users">
       {/* <ModalComponent /> */}
       <PagesIndex.Data_Table
         isLoading={loading}

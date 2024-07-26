@@ -9,9 +9,33 @@ const Data_Table = ({ columns, data, tableStyle, isLoading, showFilter }) => {
   const [getClass, setgetClass] = useState(
     document.body.getAttribute("data-theme-version")
   );
+
   const [deviceType, setDeviceType] = useState("desktop");
   const [visibleColumns, setVisibleColumns] = useState(columns);
-
+  const customStyles = {
+    rows: {
+      style: {
+        // minHeight: '72px', // override the row height
+        // border:"1px solid black"
+      },
+    },
+    headCells: {
+      style: {
+        // paddingLeft: '8px', // override the cell padding for head cells
+        // paddingRight: '8px',
+          // border:"1px solid red"
+          backgroundColor:"#dcdbff"
+      },
+    },
+    cells: {
+      style: {
+        // paddingLeft: '8px', // override the cell padding for data cells
+        // paddingRight: '8px',
+          // border:"1px solid yellow"
+      },
+    },
+  };
+  
   useEffect(() => {
     const handleResize = () => {
       let newVisibleColumns;
@@ -85,6 +109,7 @@ const Data_Table = ({ columns, data, tableStyle, isLoading, showFilter }) => {
           defaultSortAsc={false}
           pagination
           highlightOnHover
+          customStyles={customStyles}
           noDataComponent={
             isLoading ? (
               <div className="user-loading-main">
