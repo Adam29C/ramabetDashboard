@@ -28,11 +28,11 @@ export const admin_Sidebar = [
     title: "Users",
     Icon: "icon-globe-alt",
     NestedElement: [
-      {
-        id: 1,
-        title: "Add Users",
-        route: "user/add",
-      },
+      // {
+      //   id: 1,
+      //   title: "Add Users",
+      //   route: "user/add",
+      // },
       {
         id: 2,
         title: "Users List",

@@ -1,11 +1,14 @@
-import React from "react";
+import React,{useState} from "react";
 import Split_Main_Containt from "../../../../Layout/Main/Split_Main_Content";
 import PagesIndex from "../../../PagesIndex";
 import { today } from "../../../../Utils/Common_Date";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 const ExamplePage = () => {
   const userId = localStorage.getItem("userId");
-
+  const [startDate, setStartDate] = useState(new Date());
   const [Data, setData] = PagesIndex.useState([]);
 
   const dispatch = PagesIndex.useDispatch();
@@ -202,15 +205,14 @@ const ExamplePage = () => {
     },
   ];
 
-  console.log("form ", formik1.values);
 
   const GetResult = async () => {
     const req = "07/11/2024";
     const res = await PagesIndex.admin_services.GAME_RESULT(req);
     console.log("setData", res);
 
-    if(res.status === 200){
-      setData()
+    if (res.status === 200) {
+      setData(res.data);
     }
   };
 
@@ -218,6 +220,55 @@ const ExamplePage = () => {
     GetResult();
   }, []);
 
+  const columns = [
+    {
+      name: "Game Name",
+      selector: (row) => row?.providerName,
+    },
+    {
+      name: "Game Session",
+      selector: (row) => row?.session,
+    },
+    {
+      name: "Result Date",
+      selector: (row) => row?.resultDate,
+    },
+    {
+      name: "winning Digit",
+      selector: (row) => row?.winningDigit,
+    },
+
+    {
+      name: "actions",
+      selector: (cell, row) => (
+        <div style={{ width: "120px" }}>
+          <div>
+            <PagesIndex.Link to={"/admin/employee/edit"} state={cell}>
+              <span data-toggle="tooltip" data-placement="top" title="Winners List">
+              <i class="icon-user-follow icon-size"></i>
+              </span>
+            </PagesIndex.Link>
+
+            <PagesIndex.Link
+              href="#"
+              onClick={() =>
+                DeleteSweetAlert(
+                  PagesIndex.admin_services.DELETE_USER,
+                  cell?._id,
+                  getList
+                )
+              }
+            >
+              <span data-toggle="tooltip" data-placement="top" title="Delete">
+                <i class="ti-trash fs-5 mx-1 "></i>
+                {/* <PagesIndex.Icon icon="line-md:account-delete" width="24" height="24" /> */}
+              </span>
+            </PagesIndex.Link>
+          </div>
+        </div>
+      ),
+    },
+  ];
   const cardLayouts = [
     {
       size: 9,
@@ -250,19 +301,21 @@ const ExamplePage = () => {
       size: 12,
       body: (
         <div>
-          <div>
-            <PagesIndex.Formikform
-              fieldtype={fields1.filter((field) => !field.showWhen)}
-              formik={formik1}
-              btn_name="Add Panel"
-            />
-          </div>
+          <PagesIndex.Data_Table
+            // isLoading={loading}
+            columns={columns}
+            data={Data.gameResult}
+          />
+     <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+
         </div>
       ),
     },
   ];
 
+  console.log("Data", Data);
   return (
+    <>
     <Split_Main_Containt
       title="Game Results"
       add_button={false}
@@ -270,6 +323,9 @@ const ExamplePage = () => {
       route="/add"
       cardLayouts={cardLayouts}
     />
+
+    </>
+
   );
 };
 

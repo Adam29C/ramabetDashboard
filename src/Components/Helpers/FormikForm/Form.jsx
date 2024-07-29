@@ -5,6 +5,7 @@ import Loader from "../Loader";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { today, getActualDateFormate } from "../../Utils/Common_Date";
+import CustomDatePicker from "./DatePickers";
 
 // col-form-label this class for input alignment apply on label
 const ReusableForm = ({
@@ -29,9 +30,7 @@ const ReusableForm = ({
 
   const [passwordVisible, setPasswordVisible] = useState({});
   let a = new Date();
-  const [dateStates, setDateStates] = useState(
-    a.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
-  );
+  const [dateStates, setDateStates] = useState({});
 
   const [previews, setPreviews] = useState([]);
 
@@ -78,6 +77,7 @@ const ReusableForm = ({
     }));
     formik.setFieldValue(name, formattedTime);
   };
+
   return (
     <form onSubmit={formik.handleSubmit}>
       <div
@@ -295,48 +295,12 @@ const ReusableForm = ({
                 </>
               ) : field.type === "date" ? (
                 <>
-                  <div className={`col-lg-${field.col_size}`}>
-                    <div className=" row flex-column">
-                      <label
-                        className={`custom-label col-lg-${field.label_size}`}
-                        htmlFor={field.name}
-                      >
-                        {field.label}
-                        <span className="text-danger">*</span>
-                      </label>
-                      <div className={`d-flex`}>
-                        <DatePicker
-                          className="form-control"
-                          selected={new Date()}
-                          name={field.name}
-                          id={field.name}
-                       //   {...formik.getFieldProps(field.name)}
-                        />
-                        {/* <input
-                          type={field.type}
-                          name={field.name}
-                          className="form-control"
-                          id={field.name}
-                          {...formik.getFieldProps(field.name)}
-                          min={
-                            field.name === "todate"
-                              ? fromDate
-                              : today()
-                          }
-                          defaultValue={today()}
-                          
-                        /> */}
-                        <div className="invalid-feedback">
-                          Please enter {field.label}
-                        </div>
-                      </div>
-                      {formik.errors[field.name] && (
-                        <div className="error-text">
-                          {formik.errors[field.name]}
-                        </div>
-                      )}
-                    </div>
-                  </div>
+                  <CustomDatePicker
+                    field={field}
+                    formik={formik}
+                    setDateStates={setDateStates}
+                    dateStates={dateStates}
+                  />
                 </>
               ) : field.type === "time" ? (
                 <>
