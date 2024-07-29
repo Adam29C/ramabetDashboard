@@ -1,23 +1,46 @@
 import Swal from "sweetalert2";
 
-const DeleteSweetAlert = async (deleteApi, id, getGameProviderList, data) => {
+const DeleteSweetAlert = async (
+  deleteApi,
+  id,
+  getGameProviderList,
+  userDeleteReason
+) => {
+  console.log(userDeleteReason);
   const userId = localStorage.getItem("userId");
-
-  const confirmResult = await Swal.fire({
-    title: "Are you sure?",
-    text: "You want to delete this!",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, delete it!",
-  });
+  const swailConfig = userDeleteReason
+    ? {
+        icon: "warning",
+        text: "Give Reason why are you delete this user ?",
+        input: "text",
+        inputPlaceholder: "Enter your reason",
+        inputValidator: (value) => {
+          if (!value) {
+            return "Reason is required";
+          }
+        },
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it !",
+      }
+    : {
+        title: "Are you sure?",
+        text: "You want to delete this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it !",
+      };
+  const confirmResult = await Swal.fire(swailConfig);
 
   if (confirmResult.isConfirmed) {
     try {
       const data = {
         adminId: userId,
         deleteId: id,
+        ...(userDeleteReason && { reason: confirmResult.value }),
       };
 
       const res = await deleteApi(data);

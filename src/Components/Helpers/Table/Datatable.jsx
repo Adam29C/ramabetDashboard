@@ -9,49 +9,58 @@ const Data_Table = ({ columns, data, tableStyle, isLoading, showFilter }) => {
   const [getClass, setgetClass] = useState(
     document.body.getAttribute("data-theme-version")
   );
-  const [deviceType, setDeviceType] = useState('desktop');
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth <= 768) {
-        setDeviceType('mobile');
-      } else {
-        setDeviceType('desktop');
-      }
-    };
-
-    handleResize(); // Initialize on mount
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  let color = localStorage.getItem("theme_Color");
-
-
-  const adminStyles = {
+  const [deviceType, setDeviceType] = useState("desktop");
+  const [visibleColumns, setVisibleColumns] = useState(columns);
+  const customStyles = {
     rows: {
-      background: "#27394F",
-      // color: "#fff",
+      style: {
+        // minHeight: '72px', // override the row height
+        // border:"1px solid black"
+      },
     },
     headCells: {
       style: {
-        // background: "#4E3896",
-        color: "#fffff",
-        backgroundColor: "#27394F",
-        fontSize: "15px",
-        fontWeight: "600",
+        // paddingLeft: '8px', // override the cell padding for head cells
+        // paddingRight: '8px',
+          // border:"1px solid red"
+          backgroundColor:"#dcdbff"
       },
     },
     cells: {
       style: {
-        fontSize: "14px",
-        fontWeight: "500",
-        backgroundColor: "#27394F",
-        color: "black",
+        // paddingLeft: '8px', // override the cell padding for data cells
+        // paddingRight: '8px',
+          // border:"1px solid yellow"
       },
     },
   };
+  
+  useEffect(() => {
+    const handleResize = () => {
+      let newVisibleColumns;
+      if (window.innerWidth <= 320) {
+        newVisibleColumns = columns.slice(0, 1);
+        setDeviceType("mobile");
+      } else if (window.innerWidth <= 425) {
+        newVisibleColumns = columns.slice(0, 2);
+        setDeviceType("mobile");
+      } else if (window.innerWidth <= 768) {
+        newVisibleColumns = columns.slice(0, 4);
+        setDeviceType("tablet");
+      } else {
+        newVisibleColumns = columns;
+        setDeviceType("desktop");
+      }
+      setVisibleColumns(newVisibleColumns);
+    };
 
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [columns]);
+
+  let color = localStorage.getItem("theme_Color");
 
   const TooltipCell = ({ value }) => (
     <OverlayTrigger placement="top" overlay={<Tooltip>{value}</Tooltip>}>
@@ -65,23 +74,28 @@ const Data_Table = ({ columns, data, tableStyle, isLoading, showFilter }) => {
       selector: (row, index) => index + 1,
       width: "70px",
     },
-    ...columns,
-    
+    ...visibleColumns,
   ];
-  const ExpandedComponent = ({ data, columns }) => (
-    <div className="short-datatable-main">
-      {console.log(columns)}
-      {/* {columns?.map(column => (
-        <p key={column.selector}>
-          <strong>{column.name}:</strong> {data[column.selector]}
-        </p>
-      ))} */}
-       {Object.keys(data).map(key => (
-        <p  className="short-datatable-data" key={key}><strong>{key}:</strong>{" "} {data[key]}</p>
-      ))}
-    </div>
-  );
-  
+
+  const ExpandedComponent = ({ data }) => {
+    const hiddenColumns = columns.filter(
+      (col) => !visibleColumns.includes(col)
+    );
+
+    return (
+      <div className="short-datatable-main">
+        {hiddenColumns.map((col, index) => {
+          const key = col.selector ? col.selector(data) : data[col.name];
+          return (
+            <p className="short-datatable-data" key={index}>
+              <strong>{col.name}:</strong> {key}
+            </p>
+          );
+        })}
+      </div>
+    );
+  };
+
   return (
     <>
       <DataTableExtensions
@@ -92,12 +106,10 @@ const Data_Table = ({ columns, data, tableStyle, isLoading, showFilter }) => {
         filter={showFilter}
       >
         <DataTable
-        //   noHeader
-
           defaultSortAsc={false}
           pagination
           highlightOnHover
-        //   customStyles={color === "dark" ? adminStyles : ""}
+          customStyles={customStyles}
           noDataComponent={
             isLoading ? (
               <div className="user-loading-main">
@@ -107,7 +119,7 @@ const Data_Table = ({ columns, data, tableStyle, isLoading, showFilter }) => {
               "There are no records to display"
             )
           }
-          expandableRows={deviceType === 'mobile'}
+          expandableRows={deviceType === "mobile" || deviceType === "tablet"}
           expandableRowsComponent={ExpandedComponent}
           responsive
         />

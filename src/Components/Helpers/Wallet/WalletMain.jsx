@@ -10,7 +10,8 @@ const WalletMain = ({
   approvebtn,
   totalAmount,
   showsubmitbtn,
-  showForm
+  showForm,
+  amount
 }) => {
 
   return (
@@ -23,8 +24,8 @@ const WalletMain = ({
               <PagesIndex.Formikform
                 fieldtype={fields.filter((field) => !field.showWhen)}
                 formik={formik}
-                btn_name={"Get Details"}
-                button_Size={"w-25"}
+                btn_name={"Submit"}
+                button_Size={"w-15"}
                 show_submit={showsubmitbtn ? true : false}
               />
               {!showsubmitbtn ? (
@@ -51,7 +52,7 @@ const WalletMain = ({
               )}
               <PagesIndex.Data_Table columns={columns} data={data} />
               {totalAmount ? (
-                <h3 className="ml-3 mb-3 fw-bold">Total Amount : 0/-</h3>
+                <h3 className="ml-3 mb-3 fw-bold">Total Amount {amount}/-</h3>
               ) : (
                 ""
               )}

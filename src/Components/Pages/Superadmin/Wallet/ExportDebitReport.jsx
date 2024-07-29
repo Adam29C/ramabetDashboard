@@ -6,7 +6,7 @@ const ExportDebitReport = () => {
 
   const columns = [
     {
-      name: "Action",
+      name: "name",
       selector: (row) => row.title,
     },
     {
@@ -130,10 +130,10 @@ const ExportDebitReport = () => {
       col_size: 4,
     },
   ];
-
+let amount = ": 0"
   return (
     <>
-  <PagesIndex.WalletMain title="Withdraw Report" columns={columns} data={data} fields={fields} formik={formik} approvebtn={true} totalAmount={true} showsubmitbtn={false}/>
+  <PagesIndex.WalletMain title="Withdraw Report" columns={columns} data={data} fields={fields} formik={formik} approvebtn={true} totalAmount={true} showsubmitbtn={false} amount={amount}/>
     </>
   );
 };
