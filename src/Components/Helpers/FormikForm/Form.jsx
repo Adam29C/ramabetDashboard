@@ -25,6 +25,7 @@ const ReusableForm = ({
   isLoading,
   show_submit,
   label_size,
+  show_preview,
 }) => {
   const location = useLocation();
 
@@ -62,115 +63,116 @@ const ReusableForm = ({
   };
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <div
-        className="row"
-        style={{
-          height: `${title === "addgroup" ? "65vh" : ""}`,
-          overflowY: `${title === "addgroup" ? "scroll" : ""}`,
-        }}
-      >
-        <div className={`row`}>
-          {fieldtype.map((field, index) => (
-            <>
-              {field.type === "select" ? (
-                <>
-                  <div className={`col-lg-${field.col_size}`}>
-                    <div className="mb-1 row">
-                      <label
-                        className={`custom-label  col-lg-${field.label_size}`}
-                        htmlFor={field.name}
-                      >
-                        {field.label}
-                        <span className="text-danger">*</span>
-                      </label>
-                      <div
-                        className={`col-lg-${title === "addgroup" ? 12 : 12}`}
-                      >
-                        <select
-                          className="default-select wide form-control"
-                          id={field.name}
-                          {...formik.getFieldProps(field.name)}
-                          disabled={field.disable}
+    <>
+      <form onSubmit={formik.handleSubmit}>
+        <div
+          className="row"
+          style={{
+            height: `${title === "addgroup" ? "65vh" : ""}`,
+            overflowY: `${title === "addgroup" ? "scroll" : ""}`,
+          }}
+        >
+          <div className={`row`}>
+            {fieldtype.map((field, index) => (
+              <>
+                {field.type === "select" ? (
+                  <>
+                    <div className={`col-lg-${field.col_size}`}>
+                      <div className="mb-1 row">
+                        <label
+                          className={`custom-label  col-lg-${field.label_size}`}
+                          htmlFor={field.name}
                         >
-                          <option
-                            value=""
-                            selected
-                            //  disable={field.disable}
-                            disabled
+                          {field.label}
+                          <span className="text-danger">*</span>
+                        </label>
+                        <div
+                          className={`col-lg-${title === "addgroup" ? 12 : 12}`}
+                        >
+                          <select
+                            className="default-select wide form-control"
+                            id={field.name}
+                            {...formik.getFieldProps(field.name)}
+                            disabled={field.disable}
                           >
-                            Please Select {field.label}
-                          </option>
-                          {field.options.map((option) => (
-                            <option key={option.value} value={option.value}>
-                              {option.label}
+                            <option
+                              value=""
+                              selected
+                              //  disable={field.disable}
+                              disabled
+                            >
+                              Please Select {field.label}
                             </option>
-                          ))}
-                        </select>
-                        {formik.errors[field.name] && (
-                          <div className="error-text">
-                            {formik.errors[field.name]}
-                          </div>
-                        )}
+                            {field.options.map((option) => (
+                              <option key={option.value} value={option.value}>
+                                {option.label}
+                              </option>
+                            ))}
+                          </select>
+                          {formik.errors[field.name] && (
+                            <div className="error-text">
+                              {formik.errors[field.name]}
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </>
-              ) : field.type === "checkbox" ? (
-                <>
-                  {field.options &&
-                    field.options.map((option) => (
-                      <div
-                        className={`col-lg-${field.col_size}`}
-                        key={option.id}
-                      >
-                        {/* <label
+                  </>
+                ) : field.type === "checkbox" ? (
+                  <>
+                    {field.options &&
+                      field.options.map((option) => (
+                        <div
+                          className={`col-lg-${field.col_size}`}
+                          key={option.id}
+                        >
+                          {/* <label
                           className={`custom-label col-lg-12`}
                           htmlFor={field.name}
                         >
                           {field.label}
                           <span className="text-danger">*</span>
                         </label> */}
-                        <div className="form-check custom-checkbox mb-2 ">
-                          <input
-                            type={field.type}
-                            className="form-check-input"
-                            id={option.name}
-                            {...formik.getFieldProps(option.name)}
-                            defaultChecked={option.checked}
-                          />
-                          <label
-                            className="form-check-label fw-bolder "
-                            htmlFor={option.name}
-                          >
-                            {option.name}
-                          </label>
-                        </div>
-                        {/* Nested checkboxes */}
-                        {option.Nasted &&
-                          option.Nasted.map((subOption) => (
-                            <div className="row d-flex" key={subOption.id}>
-                              <div className={`col-lg-12`}>
-                                <div className="form-check custom-checkbox mb-2 ml-3">
-                                  <input
-                                    type={field.type}
-                                    className="form-check-input"
-                                    id={subOption.name}
-                                    {...formik.getFieldProps(subOption.name)}
-                                    defaultChecked={subOption.checked}
-                                  />
-                                  <label
-                                    className="form-check-label"
-                                    htmlFor={subOption.name}
-                                  >
-                                    {subOption.name}
-                                  </label>
+                          <div className="form-check custom-checkbox mb-2 ">
+                            <input
+                              type={field.type}
+                              className="form-check-input"
+                              id={option.name}
+                              {...formik.getFieldProps(option.name)}
+                              defaultChecked={option.checked}
+                            />
+                            <label
+                              className="form-check-label fw-bolder "
+                              htmlFor={option.name}
+                            >
+                              {option.name}
+                            </label>
+                          </div>
+                          {/* Nested checkboxes */}
+                          {option.Nasted &&
+                            option.Nasted.map((subOption) => (
+                              <div className="row d-flex" key={subOption.id}>
+                                <div className={`col-lg-12`}>
+                                  <div className="form-check custom-checkbox mb-2 ml-3">
+                                    <input
+                                      type={field.type}
+                                      className="form-check-input"
+                                      id={subOption.name}
+                                      {...formik.getFieldProps(subOption.name)}
+                                      defaultChecked={subOption.checked}
+                                    />
+                                    <label
+                                      className="form-check-label"
+                                      htmlFor={subOption.name}
+                                    >
+                                      {subOption.name}
+                                    </label>
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          ))}
-                      </div>
-                    ))}
+                            ))}
+                        </div>
+                      ))}
 
                   {formik.errors[field.name] && (
                     <div className="error-text">
@@ -277,51 +279,17 @@ const ReusableForm = ({
                   </div>
                 </>
               ) : field.type === "date" ? (
-                <div className={`col-lg-${field.col_size} mb-3`}>
-               
-
-                  <label
-                    className={`custom-label col-lg-${field.label_size}`}
-                    htmlFor={field.name}
-                  >
-                    {field.label}
-                    <span className="text-danger">*</span>
-                  </label>
-                  <input
-                    type={field.type}
-                    name={field.name}
-                    className="form-control"
-                    value={getActualDateFormate(field.name)}
-                    id={field.name}
-                    {...formik.getFieldProps(field.name)}
-                    min={field.min && field.min.actual_date_formet}
-                    max={field.max && field.max.actual_date_formet}
+                <>
+                  <CustomDatePicker
+                    field={field}
+                    formik={formik}
+                    setDateStates={setDateStates}
+                    dateStates={dateStates}
                   />
-                </div>
+                </>
               ) : field.type === "time" ? (
                 <>
-                 <div className={`col-lg-${field.col_size} mb-3`}>
-               
-
-               <label
-                 className={`custom-label col-lg-${field.label_size}`}
-                 htmlFor={field.name}
-               >
-                 {field.label}
-                 <span className="text-danger">*</span>
-               </label>
-               <input
-                 type={field.type}
-                 name={field.name}
-                 className="form-control"
-                 value={getActualDateFormate(field.name)}
-                 id={field.name}
-                 {...formik.getFieldProps(field.name)}
-                 min={field.min && field.min.actual_date_formet}
-                 max={field.max && field.max.actual_date_formet}
-               />
-             </div>
-                  {/* <div className={`col-lg-${field.col_size}`}>
+                  <div className={`col-lg-${field.col_size}`}>
                     <div className=" row flex-column">
                       <label
                         className={`custom-label col-lg-${field.label_size}`}
@@ -346,6 +314,19 @@ const ReusableForm = ({
                           timeCaption="Time"
                           dateFormat="h:mm aa"
                         />
+                        {/* <input
+                          type={field.type}
+                          name={field.name}
+                          className="form-control"
+                          id={field.name}
+                          {...formik.getFieldProps(field.name)}
+                          min={
+                            field.name === "todate"
+                              ? fromDate
+                              : getCurrentDate()
+                          }
+                        /> */}
+
                         <div className="invalid-feedback">
                           Please enter {field.label}
                         </div>
@@ -356,7 +337,7 @@ const ReusableForm = ({
                         </div>
                       )}
                     </div>
-                  </div> */}
+                  </div>
                 </>
               ) : field.type === "msgbox" ? (
                 <>
@@ -414,110 +395,124 @@ const ReusableForm = ({
                             className={`form-control`}
                           />
                         </div>
-                      </div>
-                      {formik.errors[field.name] && (
-                        <div className="error-text">
-                          {formik.errors[field.name]}
-                        </div>
-                      )}
-                      {formik.getFieldProps(`${field?.name}_base64`)?.value ||
-                      formik.getFieldProps(field?.name)?.value ? (
-                        <img
-                          src={
-                            formik.getFieldProps(`${field.name}_base64`)
-                              .value || formik.getFieldProps(field.name).value
-                          }
-                          name={field.name}
-                          id={field.name}
-                          alt={`Preview ${index}`}
-                          className="superadmin-preview-img"
-                        />
-                      ) : (
-                        ""
-                      )}
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className={`col-lg-${field.col_size}`}>
-                    <div className="mb-3 row flex-column">
-                      <label
-                        className={`custom-label col-lg-${field.label_size}`}
-                        htmlFor={field.name}
-                      >
-                        {field.label}
-                        <span className="text-danger">*</span>
-                      </label>
-                      <div className={`d-flex`}>
-                        <input
-                          type="text"
-                          autocomplete="off"
-                          className="form-control"
-                          style={{ background: field.disable ? "#eeeeee" : "" }}
-                          id={field.name}
-                          placeholder={`Enter ${field.label}`}
-                          {...formik.getFieldProps(field.name)}
-                          // required=""
-                          readOnly={field.disable}
-                        />
-                        {field.showButton ? (
-                          <button
-                            style={{ background: "#4e3897", width: "100px" }}
-                            className="btn border-0 btn-primary ms-3 col-4"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              VerifyMobileN();
-                            }}
-                            disabled={Disable_Button}
-                          >
-                            Send OTP
-                          </button>
+
+                        {formik.errors[field.name] && (
+                          <div className="error-text">
+                            {formik.errors[field.name]}
+                          </div>
+                        )}
+
+                        {show_preview !== true ||
+                        formik.getFieldProps(`${field?.name}_base64`)?.value ||
+                        formik.getFieldProps(field?.name)?.value ? (
+                          <img
+                            src={
+                              show_preview
+                                ? ""
+                                : formik.getFieldProps(`${field.name}_base64`)
+                                    .value ||
+                                  formik.getFieldProps(field.name).value
+                            }
+                            name={field.name}
+                            id={field.name}
+                            alt={show_preview ? "" : `Preview ${index}`}
+                            className={
+                              show_preview ? "" : "superadmin-preview-img"
+                            }
+                          />
                         ) : (
                           ""
                         )}
-                        <div className="invalid-feedback">
-                          Please enter {field.label}
-                        </div>
                       </div>
-                      {formik.errors[field.name] && (
-                        <div className="error-text">
-                          {formik.errors[field.name]}
-                        </div>
-                      )}
                     </div>
-                  </div>
-                </>
-              )}
-              {field.showButton && after_text_field}
-            </>
-          ))}
-
-          <div className="form-group mb-0 button-main">
-            {show_submit ? (
-              <>
-                <button
-                  // style={{ background: "#4e3897" }}
-                  className={`btn  submitBtn btn-primary mt-2 ${button_Size} ${
-                    location.pathname === "resetpassword" ? "col-md-11" : ""
-                  } ${btn_design && "btn_design"}`}
-                  type="submit"
-                  disabled={
-                    disabledSubmit ? disabledSubmit : isLoading ? isLoading : ""
-                  }
-                >
-                  {/* <Loader/> */}
-                  {btn_name}
-                </button>
+                  </>
+                ) : (
+                  <>
+                    <div className={`col-lg-${field.col_size}`}>
+                      <div className="mb-3 row flex-column">
+                        <label
+                          className={`custom-label col-lg-${field.label_size}`}
+                          htmlFor={field.name}
+                        >
+                          {field.label}
+                          <span className="text-danger">*</span>
+                        </label>
+                        <div className={`d-flex`}>
+                          <input
+                            type="text"
+                            autocomplete="off"
+                            className="form-control"
+                            style={{
+                              background: field.disable ? "#eeeeee" : "",
+                            }}
+                            id={field.name}
+                            placeholder={`Enter ${field.label}`}
+                            {...formik.getFieldProps(field.name)}
+                            // required=""
+                            readOnly={field.disable}
+                          />
+                          {field.showButton ? (
+                            <button
+                              style={{ background: "#4e3897", width: "100px" }}
+                              className="btn border-0 btn-primary ms-3 col-4"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                VerifyMobileN();
+                              }}
+                              disabled={Disable_Button}
+                            >
+                              Send OTP
+                            </button>
+                          ) : (
+                            ""
+                          )}
+                          <div className="invalid-feedback">
+                            Please enter {field.label}
+                          </div>
+                        </div>
+                        {formik.errors[field.name] && (
+                          <div className="error-text">
+                            {formik.errors[field.name]}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </>
+                )}
+                {field.showButton && after_text_field}
               </>
-            ) : (
-              ""
-            )}
+            ))}
+
+            <div className="form-group mb-0 button-main">
+              {show_submit ? (
+                <>
+                  <button
+                    // style={{ background: "#4e3897" }}
+                    className={`btn  submitBtn btn-primary mt-2 ${button_Size} ${
+                      location.pathname === "resetpassword" ? "col-md-11" : ""
+                    } ${btn_design && "btn_design"}`}
+                    type="submit"
+                    disabled={
+                      disabledSubmit
+                        ? disabledSubmit
+                        : isLoading
+                        ? isLoading
+                        : ""
+                    }
+                  >
+                    {/* <Loader/> */}
+                    {btn_name}
+                  </button>
+                </>
+              ) : (
+                ""
+              )}
+            </div>
           </div>
-          {after_submit_button}
         </div>
-      </div>
-    </form>
+      </form>
+      <div className="row">{after_submit_button}</div>
+    </>
   );
 };
 

@@ -201,7 +201,11 @@ export const GAME_SETTING_UPDATE_API = async (data) => {
 
 // --------------------------   GAME SETTING CRUD ------------------------
 
+
 // --------------------------   GAME RESULT CRUD ------------------------
+
+// --------------------------   GAME SETTING CRUD ------------------------
+
 
 export const GAME_RESULT = async (id) => {
   try {
@@ -211,6 +215,7 @@ export const GAME_RESULT = async (id) => {
     return error;
   }
 };
+
 
 export const ADD_GAME_RESULT = async (data) => {
 
@@ -223,6 +228,8 @@ export const ADD_GAME_RESULT = async (data) => {
 };
 
 // --------------------------   GAME RESULT CRUD ------------------------
+
+// --------------------------   GAME SETTING CRUD ------------------------
 
 // --------------------------   USERS CRUD ------------------------
 
@@ -275,3 +282,39 @@ export const GET_USERS_IDEAS = async (id) => {
   }
 };
 // --------------------------   USERS CRUD ------------------------
+
+// -------------------------- VERSION CONTROL  ------------------------
+
+export const GET_VERSION_API = async (id) => {
+  try {
+    const res = await dataservice.get(`${Api.GET_VERSION}?adminId=${id}`);
+    return res?.data
+  } catch (error) {
+    return error
+  }
+};
+
+export const UPDATE_VERSION_API = async(data)=>{
+  try {
+    const res = await dataservice.put(Api.UPDATE_VERSION,data);
+    return res?.data
+  } catch (error) {
+    return error
+  }
+}
+// -------------------------- VERSION CONTROL ------------------------
+
+// -------------------------- DASHBOARD_COUNT ------------------------
+
+// GET_DASHBOARD_COUNT
+
+export const GET_DASHBOARD_COUNT_API = async (id) => {
+  try {
+    const res = await dataservice.get(`${Api.GET_DASHBOARD_COUNT}${id}`);
+    return res?.data
+  } catch (error) {
+    return error
+  }
+};
+
+// -------------------------- DASHBOARD_COUNT ------------------------
