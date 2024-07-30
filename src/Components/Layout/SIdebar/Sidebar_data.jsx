@@ -183,32 +183,32 @@ export const admin_Sidebar = [
     ],
   },
 
-  {
-    id: 8,
-    headerTitle: "Cutting Group",
-    title: "Cutting Group",
-    route: "cuttinggroup",
-    Icon: "icon-speedometer",
-    NestedElement: [],
-  },
-  {
-    id: 9,
-    headerTitle: "Bookie Corner",
-    title: "Bookie Corner",
-    Icon: "fa-solid fa-wallet",
-    NestedElement: [
-      {
-        id: 1,
-        title: "OC Cutting Group",
-        route: "OCGroup",
-      },
-      {
-        id: 2,
-        title: "Final OC Cutting Group",
-        route: "finalOCGroup",
-      },
-    ],
-  },
+  // {
+  //   id: 8,
+  //   headerTitle: "Cutting Group",
+  //   title: "Cutting Group",
+  //   route: "cuttinggroup",
+  //   Icon: "icon-speedometer",
+  //   NestedElement: [],
+  // },
+  // {
+  //   id: 9,
+  //   headerTitle: "Bookie Corner",
+  //   title: "Bookie Corner",
+  //   Icon: "fa-solid fa-wallet",
+  //   NestedElement: [
+  //     {
+  //       id: 1,
+  //       title: "OC Cutting Group",
+  //       route: "OCGroup",
+  //     },
+  //     {
+  //       id: 2,
+  //       title: "Final OC Cutting Group",
+  //       route: "finalOCGroup",
+  //     },
+  //   ],
+  // },
   // {
   //   id: 10,
   //   headerTitle: "Wallet",
@@ -423,44 +423,44 @@ export const admin_Sidebar = [
   //   Icon: "fa-solid fa-television",
   //   NestedElement: [],
   // },
-  // {
-  //   id: 20,
-  //   headerTitle: "App Settings",
-  //   title: "App Settings",
-  //   Icon: "fa-solid fa-cog",
-  //   NestedElement: [
-  //     {
-  //       id: 1,
-  //       title: "How To Play",
-  //       route: "#",
-  //     },
-  //     {
-  //       id: 2,
-  //       title: "Withdraw Screen",
-  //       route: "#",
-  //     },
-  //     {
-  //       id: 3,
-  //       title: "Notice Board",
-  //       route: "#",
-  //     },
-  //     {
-  //       id: 4,
-  //       title: "Profile Note",
-  //       route: "#",
-  //     },
-  //     {
-  //       id: 5,
-  //       title: "Wallet Contact",
-  //       route: "#",
-  //     },
-  //     {
-  //       id: 6,
-  //       title: "App Version",
-  //       route: "#",
-  //     },
-  //   ],
-  // },
+  {
+    id: 20,
+    headerTitle: "Masters",
+    title: "App Settings",
+    Icon: "fa-solid fa-cog",
+    NestedElement: [
+      // {
+      //   id: 1,
+      //   title: "How To Play",
+      //   route: "#",
+      // },
+      // {
+      //   id: 2,
+      //   title: "Withdraw Screen",
+      //   route: "#",
+      // },
+      // {
+      //   id: 3,
+      //   title: "Notice Board",
+      //   route: "#",
+      // },
+      // {
+      //   id: 4,
+      //   title: "Profile Note",
+      //   route: "#",
+      // },
+      // {
+      //   id: 5,
+      //   title: "Wallet Contact",
+      //   route: "#",
+      // },
+      {
+        id: 1,
+        title: "App Version",
+        route: "appSettings/versionSetting",
+      },
+    ],
+  },
   // {
   //   id: 21,
   //   headerTitle: "Masters",

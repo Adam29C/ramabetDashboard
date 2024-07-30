@@ -49,3 +49,9 @@ export const PROVIDER_RESULT_ERROR = "Please Enter Provider Result";
 export const RESULT_STATUS_ERROR = "Please Enter Result Status";
 export const ACTIVE_STATUS_ERROR = "Please Enter Active Status";
 export const GAME_PRICE_ERROR = "Please Enter Game Price";
+export const PLEASE_ENTER_APK_FILE="Please Enter Apk File"
+export const APK_FILE_VALID="Please Enter Valid Apk File";
+export const VERSION_VALIDATION="Entered Version cannot be Less than Current Version."
+export const PLEASER_ENTER_VERSION = "Please Enter Version"
+
+

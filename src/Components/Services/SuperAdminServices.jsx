@@ -193,7 +193,6 @@ export const GAME_SETTING_ADD = async (id) => {
 
 // --------------------------   GAME SETTING CRUD ------------------------
 
-
 export const GAME_RESULT = async (id) => {
   console.log();
   try {
@@ -203,8 +202,6 @@ export const GAME_RESULT = async (id) => {
     return error;
   }
 };
-
-
 
 // --------------------------   GAME SETTING CRUD ------------------------
 
@@ -228,11 +225,11 @@ export const BLOCK_USER = async (ID) => {
   }
 };
 export const DELETE_USER = async (ID) => {
-  console.log(ID,"check")
+  console.log(ID, "check");
   let apiData = {
     adminId: ID.adminId,
     userId: ID.deleteId,
-    reason: ID.reason
+    reason: ID.reason,
   };
   try {
     const res = await dataservice.delete(Api.USERS_LIST, { data: apiData });
@@ -240,23 +237,58 @@ export const DELETE_USER = async (ID) => {
   } catch (error) {
     return error;
   }
-
 };
 
-export const GET_DELETED_USERS = async(id)=>{
+export const GET_DELETED_USERS = async (id) => {
   try {
-    const res = await dataservice.get(`${Api.DELETED_USERS}?adminId=${id}`)
-    return res?.data
+    const res = await dataservice.get(`${Api.DELETED_USERS}?adminId=${id}`);
+    return res?.data;
   } catch (error) {
-    return error
+    return error;
   }
-}
-export const GET_USERS_IDEAS  = async(id)=>{
+};
+export const GET_USERS_IDEAS = async (id) => {
   try {
-    const res = await dataservice.get(`${Api.USERS_IDEAS}?adminId=${id}`)
-    return res?.data
+    const res = await dataservice.get(`${Api.USERS_IDEAS}?adminId=${id}`);
+    return res?.data;
   } catch (error) {
-    return error
+    return error;
   }
-}
+};
 // --------------------------   USERS CRUD ------------------------
+
+// -------------------------- VERSION CONTROL  ------------------------
+
+export const GET_VERSION_API = async (id) => {
+  try {
+    const res = await dataservice.get(`${Api.GET_VERSION}?adminId=${id}`);
+    return res?.data
+  } catch (error) {
+    return error
+  }
+};
+
+export const UPDATE_VERSION_API = async(data)=>{
+  try {
+    const res = await dataservice.put(Api.UPDATE_VERSION,data);
+    return res?.data
+  } catch (error) {
+    return error
+  }
+}
+// -------------------------- VERSION CONTROL ------------------------
+
+// -------------------------- DASHBOARD_COUNT ------------------------
+
+// GET_DASHBOARD_COUNT
+
+export const GET_DASHBOARD_COUNT_API = async (id) => {
+  try {
+    const res = await dataservice.get(`${Api.GET_DASHBOARD_COUNT}${id}`);
+    return res?.data
+  } catch (error) {
+    return error
+  }
+};
+
+// -------------------------- DASHBOARD_COUNT ------------------------

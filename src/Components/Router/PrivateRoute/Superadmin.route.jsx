@@ -40,6 +40,7 @@ import WithdrawRequest from "../../Pages/Superadmin/Wallet/WithdrawRequest";
 import CreditRequest from "../../Pages/Superadmin/CreditRequest/CreditRequest";
 import UsersIdeas from "../../Pages/Superadmin/Users/UsersIdeas";
 import DeleteUsers from "../../Pages/Superadmin/Users/DeleteUsers";
+import AppVersion from "../../Pages/Superadmin/AppSettings/AppVersion";
 
 
 // Mock authentication status
@@ -180,6 +181,10 @@ const adminRoutes = [
       {
         path: "creditUPI",
         element: <PrivateRoute element={CreditRequest} />,
+      },
+      {
+        path: "appSettings/versionSetting",
+        element: <PrivateRoute element={AppVersion} />,
       },
       
       

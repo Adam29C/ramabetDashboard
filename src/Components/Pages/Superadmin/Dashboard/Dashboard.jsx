@@ -1,8 +1,20 @@
 import React from "react";
 import Dashboard from "../../../Helpers/Dashboard";
 import Main_Containt from "../../../Layout/Main/Main_Containt";
+import PagesIndex from "../../PagesIndex";
 
 const Dashboard_Component = () => {
+const userId = localStorage.getItem("userId")
+const [data,setData]= PagesIndex.useState()
+
+  const getDashboardCount = async()=>{
+    const res = await PagesIndex.admin_services.GET_DASHBOARD_COUNT_API(userId)
+    setData(res?.data)
+  }
+
+  PagesIndex.useEffect(()=>{
+    getDashboardCount()
+  },[])
   return (
     <div>
       <div className="content-body">
@@ -11,13 +23,13 @@ const Dashboard_Component = () => {
             <div className="col-lg-3 col-sm-6">
               <div className="card gradient-1">
                 <div className="card-body custom-card-body">
-                  <h3 className="card-title text-white">Products Sold</h3>
+                  <h3 className="card-title text-white">All Users</h3>
                   <div className="d-inline-block">
-                    <h2 className="text-white">4565</h2>
-                    <p className="text-white mb-0">Jan - March 2019</p>
+                    <h2 className="text-white">{data?.allUsers}</h2>
+                    {/* <p className="text-white mb-0">Jan - March 2019</p> */}
                   </div>
                   <span className="float-right display-5 opacity-5">
-                    <i className="fa fa-shopping-cart" />
+                  <i className="fa fa-users" />
                   </span>
                 </div>
               </div>
@@ -25,13 +37,14 @@ const Dashboard_Component = () => {
             <div className="col-lg-3 col-sm-6">
               <div className="card gradient-2">
                 <div className="card-body  custom-card-body">
-                  <h3 className="card-title text-white">Net Profit</h3>
+                  <h3 className="card-title text-white">Active Users</h3>
                   <div className="d-inline-block">
-                    <h2 className="text-white">$ 8541</h2>
-                    <p className="text-white mb-0">Jan - March 2019</p>
+                    <h2 className="text-white">{data?.activeUsers}</h2>
+                    {/* <p className="text-white mb-0">Jan - March 2019</p> */}
                   </div>
                   <span className="float-right display-5 opacity-5">
-                    <i className="fa fa-money" />
+                    {/* <i className="fa fa-money" /> */}
+                    <i className="fa fa-users" />
                   </span>
                 </div>
               </div>
@@ -39,10 +52,10 @@ const Dashboard_Component = () => {
             <div className="col-lg-3 col-sm-6">
               <div className="card gradient-3">
                 <div className="card-body  custom-card-body">
-                  <h3 className="card-title text-white">New Customers</h3>
+                  <h3 className="card-title text-white">Login Users</h3>
                   <div className="d-inline-block">
-                    <h2 className="text-white">4565</h2>
-                    <p className="text-white mb-0">Jan - March 2019</p>
+                    <h2 className="text-white">{data?.loginUsers}</h2>
+                    {/* <p className="text-white mb-0">Jan - March 2019</p> */}
                   </div>
                   <span className="float-right display-5 opacity-5">
                     <i className="fa fa-users" />
@@ -54,14 +67,16 @@ const Dashboard_Component = () => {
               <div className="card gradient-4">
                 <div className="card-body  custom-card-body">
                   <h3 className="card-title text-white">
-                    Customer Satisfaction
+                    Banned Users
                   </h3>
                   <div className="d-inline-block">
-                    <h2 className="text-white">99%</h2>
-                    <p className="text-white mb-0">Jan - March 2019</p>
+                    <h2 className="text-white">{data?.bannedUsers}</h2>
+                    {/* <p className="text-white mb-0">Jan - March 2019</p> */}
                   </div>
                   <span className="float-right display-5 opacity-5">
-                    <i className="fa fa-heart" />
+                    {/* <i className="fa fa-heart" /> */}
+                    <i class="fa fa-ban" aria-hidden="true"></i>
+
                   </span>
                 </div>
               </div>

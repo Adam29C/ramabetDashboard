@@ -34,7 +34,10 @@ const Api = {
   //users
   USERS_LIST: "/admin/users",
   DELETED_USERS:"/admin/getDeleteUser",
-  USERS_IDEAS:"/admin/UserIdea"
+  USERS_IDEAS:"/admin/UserIdea",
+  GET_VERSION:"/admin/appSetting/listVersionSetting",
+  UPDATE_VERSION:"/admin/appSetting/updateVersionSetting",
+  GET_DASHBOARD_COUNT:"/admin/countDashboard/"
 };
 
 export { Api };

@@ -56,10 +56,18 @@ export const Remove_Special_Character = (values)=>{
 
 
 export const Remove_Space_Character = (values)=>{
-
 let modifiedString = values.replace(/\s+/g, '');
 let resultArray = modifiedString.split(''); 
-
-  return resultArray[0]
+return resultArray[0]
 }
 
+export const validApkFile = (file)=>{
+  console.log(file, "check file");
+  if (file instanceof File) {
+    return /\.apk$/i.test(file.name);
+  }
+  if (typeof file === 'string') {
+    return /\.apk$/i.test(file);
+  }
+  return false;
+}
