@@ -222,82 +222,6 @@ const ReusableForm = ({
                           ))}
                       </div>
                     </div>
-<<<<<<< HEAD
-                  </div>
-                </>
-              ) : field.type === "date" ? (
-                <div className={`col-lg-${field.col_size} mb-3`}>
-               
-
-                  <label
-                    className={`custom-label col-lg-${field.label_size}`}
-                    htmlFor={field.name}
-                  >
-                    {field.label}
-                    <span className="text-danger">*</span>
-                  </label>
-                  <input
-                    type={field.type}
-                    name={field.name}
-                    className="form-control"
-                    value={getActualDateFormate(field.name)}
-                    id={field.name}
-                    {...formik.getFieldProps(field.name)}
-                    min={field.min && field.min.actual_date_formet}
-                    max={field.max && field.max.actual_date_formet}
-                  />
-                </div>
-              ) : field.type === "time" ? (
-                <>
-                 <div className={`col-lg-${field.col_size} mb-3`}>
-               
-
-               <label
-                 className={`custom-label col-lg-${field.label_size}`}
-                 htmlFor={field.name}
-               >
-                 {field.label}
-                 <span className="text-danger">*</span>
-               </label>
-               <input
-                 type={field.type}
-                 name={field.name}
-                 className="form-control"
-                 value={getActualDateFormate(field.name)}
-                 id={field.name}
-                 {...formik.getFieldProps(field.name)}
-                 min={field.min && field.min.actual_date_formet}
-                 max={field.max && field.max.actual_date_formet}
-               />
-             </div>
-                  {/* <div className={`col-lg-${field.col_size}`}>
-                    <div className=" row flex-column">
-                      <label
-                        className={`custom-label col-lg-${field.label_size}`}
-                        htmlFor={field.name}
-                      >
-                        {field.label}
-                        <span className="text-danger">*</span>
-                      </label>
-                      <div className={`d-flex`}>
-                        <DatePicker
-                          className={`col-lg-${field.col_size} form-control Date-picker-control`}
-                          name={field.name}
-                          selected={dateStates[field.name]}
-                          onChange={(date) =>
-                            handleDateChange(date, field.name)
-                          }
-                          {...formik.getFieldProps(field.name)}
-                          //   value={dateStates[field.name]}
-                          showTimeSelect
-                          showTimeSelectOnly
-                          timeIntervals={5}
-                          timeCaption="Time"
-                          dateFormat="h:mm aa"
-                        />
-                        <div className="invalid-feedback">
-                          Please enter {field.label}
-=======
                   </>
                 ) : field.type === "password" ? (
                   <>
@@ -446,32 +370,9 @@ const ReusableForm = ({
                               </div>
                             )}
                           </div>
->>>>>>> 18eca1a04becb9d311c7c6d1c9326f660db43ce0
                         </div>
                       </div>
                     </div>
-<<<<<<< HEAD
-                  </div> */}
-                </>
-              ) : field.type === "msgbox" ? (
-                <>
-                  <div className={`col-lg-${field.col_size}`}>
-                    <div className="row d-flex">
-                      <div
-                      // className={`col-lg-${field.col_size}`}
-                      >
-                        <div class="mb-3">
-                          <label
-                            className={`custom-label col-lg-${field.label_size}`}
-                            for={field.name}
-                          >
-                            {field.label}
-                          </label>
-                          <textarea
-                            class="form-control"
-                            rows={field.row_size}
-                            id={field.name}
-=======
                   </>
                 ) : field.type === "file" ? (
                   <>
@@ -541,7 +442,6 @@ const ReusableForm = ({
                                     .value ||
                                   formik.getFieldProps(field.name).value
                             }
->>>>>>> 18eca1a04becb9d311c7c6d1c9326f660db43ce0
                             name={field.name}
                             id={field.name}
                             alt={show_preview ? "" : `Preview ${index}`}
