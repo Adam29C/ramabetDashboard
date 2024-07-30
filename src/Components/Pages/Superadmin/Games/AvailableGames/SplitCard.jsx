@@ -66,11 +66,10 @@ const ExamplePage = () => {
         gameType: "MainGame",
       };
 
-      console.log("resresres", req);
 
       // return
       const res = await PagesIndex.admin_services.ADD_GAME_RESULT(req);
-      console.log("resresres", req);
+  
 
       // if (response.status === 409) {
       //   toast.error(response.data.msg);
@@ -157,7 +156,7 @@ const ExamplePage = () => {
     },
   ];
 
-  // console.log("test13", today(formik1.values));
+
 
   const SearchResult = async () => {
     // const req = today(formik1.values.date);
@@ -251,7 +250,7 @@ const ExamplePage = () => {
       body: (
         <div>
           <PagesIndex.Data_Table
-            // isLoading={loading}
+         
             columns={columns}
             data={Data.gameResult}
           />
@@ -260,7 +259,7 @@ const ExamplePage = () => {
     },
   ];
 
-  // console.log("Data", Data);
+
   return (
     <>
       <Split_Main_Containt

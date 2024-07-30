@@ -18,6 +18,7 @@ export const getGenerateToken = createAsyncThunk(
 export const Games_Provider_List = createAsyncThunk(
   "common/game_provider",
   async (data) => {
+   
     try {
       const res = await admin_service.GAME_PROVIDER_GET_LIST_API(data);
 

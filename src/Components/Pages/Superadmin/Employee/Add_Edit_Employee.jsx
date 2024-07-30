@@ -222,7 +222,7 @@ function AddEmployee() {
     var combinedObject;
     if (location?.state) {
       const combineObjects = (obj1, obj2) => {
-        console.log("formik1.values ", obj2);
+
         const result = {};
         for (const key in obj1) {
           // If obj1's value is true, use true
@@ -249,8 +249,8 @@ function AddEmployee() {
       ...(location?.state ? { empId: location?.state?._id } : {}),
     };
 
-    // console.log("updatedABC", updatedABC);
-    console.log("req", req);
+   
+    
     // return;
     const res = location?.state
       ? await PagesIndex.admin_services.UPDATE_EMPLOYEE(req)

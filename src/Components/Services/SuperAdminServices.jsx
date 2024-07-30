@@ -48,7 +48,7 @@ export const EMPLOYEE_GET_LIST_API = async (id) => {
 };
 
 export const BLOCK_EMPLOYEE_API = async (data) => {
-  console.log(data);
+ 
   try {
     const res = await dataservice.patch(Api.BLOCK_EMPLOYEE, data);
     return res?.data;
@@ -75,10 +75,12 @@ export const DELETE_EMPLOYEE = async (ID) => {
 
 // --------------------------  game provider api ------------------------
 
-export const GAME_PROVIDER_GET_LIST_API = async (id) => {
+export const GAME_PROVIDER_GET_LIST_API = async (data) => {
+
   try {
+    const {userId,gameType}=data
     const res = await dataservice.get(
-      `${Api.ADMIN_GAME_PROVIDER}?adminId=${id}`
+      `${Api.ADMIN_GAME_PROVIDER}?adminId=${userId}&gameType=${gameType}`
     );
     return res?.data;
   } catch (error) {
@@ -251,7 +253,7 @@ export const BLOCK_USER = async (ID) => {
   }
 };
 export const DELETE_USER = async (ID) => {
-  console.log(ID, "check");
+
   let apiData = {
     adminId: ID.adminId,
     userId: ID.deleteId,

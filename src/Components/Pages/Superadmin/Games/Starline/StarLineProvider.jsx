@@ -1,18 +1,19 @@
+
 import React from "react";
 import GameProvider from "../../../../Helpers/GameProvider/GameCrud/GameProvider";
 import PagesIndex from "../../../PagesIndex";
-const List = () => {
+const StarLineProvider = () => {
 
 
   return (
     <div>
       <GameProvider
-       path={"/admin/game/add"}
-       title="Game Provider"
-       gametype="MainGame"
+       path="/admin/games/starlineProvider/add"
+       title="StarLine Provider"
+       gametype="StarLine"
       />
     </div>
   );
 };
 
-export default List;
+export default StarLineProvider;

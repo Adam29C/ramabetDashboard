@@ -6,7 +6,6 @@ const DeleteSweetAlert = async (
   getGameProviderList,
   userDeleteReason
 ) => {
-  console.log(userDeleteReason);
   const userId = localStorage.getItem("userId");
   const swailConfig = userDeleteReason
     ? {

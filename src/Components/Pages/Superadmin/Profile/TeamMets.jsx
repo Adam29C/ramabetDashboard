@@ -5,7 +5,7 @@ const TeamMets = () => {
   const { getEmployeeListState } = PagesIndex.useSelector(
     (state) => state.SuperAdminSlice
   );
-  console.log(getEmployeeListState);
+
   const dispatch = PagesIndex.useDispatch();
   const userId = localStorage.getItem("userId");
 
@@ -21,7 +21,7 @@ const TeamMets = () => {
       };
 
       const res = await PagesIndex.admin_services.BLOCK_EMPLOYEE_API(data);
-      console.log(res);
+   
       if (res?.status === 200) {
         PagesIndex.toast.success(res?.message);
         dispatch(PagesIndex.getEmployeeList(userId));

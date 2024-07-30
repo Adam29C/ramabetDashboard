@@ -5,9 +5,29 @@ import Toggle from "../../Toggle";
 import Swal from "sweetalert2";
 import { GAME_PROVIDER_DELETE_API } from "../../../Services/SuperAdminServices";
 import DeleteSweetAlert from "../../DeleteSweetAlert";
-const GameProvider = ({ data, path, getGameProviderList, title }) => {
+import { Games_Provider_List } from "../../../Redux/slice/CommonSlice";
+const GameProvider = ({ data, path, title,gametype }) => {
+
   const userId = localStorage.getItem("userId");
   const navigate = PagesIndex.useNavigate();
+
+  const dispatch = PagesIndex.useDispatch();
+  let userDeleteReason = false
+  const { gameProviders } = PagesIndex.useSelector(
+    (state) => state.CommonSlice
+  );
+
+  const getGameProviderList =  () => {
+    let apiData = {
+      userId: userId,
+      gameType: gametype,
+    };
+     dispatch(Games_Provider_List(apiData));
+  };
+
+  PagesIndex.useEffect(() => {
+    getGameProviderList();
+  }, []);
 
   const updateStatusApi = () => {};
 
@@ -37,7 +57,7 @@ const GameProvider = ({ data, path, getGameProviderList, title }) => {
       selector: (cell, row) => (
         <div style={{ width: "120px" }}>
           <div>
-            <Link to={"/admin/game/edit"} state={cell}>
+            <Link to={path} state={cell}>
               <span data-toggle="tooltip" data-placement="top" title="Edit">
                 <i class="ti-marker-alt fs-5 mx-1 "></i>
               </span>
@@ -49,8 +69,8 @@ const GameProvider = ({ data, path, getGameProviderList, title }) => {
                 DeleteSweetAlert(
                   PagesIndex.admin_services.GAME_PROVIDER_DELETE_API,
                   cell?._id,
-                  userId,
-                  getGameProviderList
+                getGameProviderList,
+            userDeleteReason
                 )
               }
             >
@@ -69,11 +89,11 @@ const GameProvider = ({ data, path, getGameProviderList, title }) => {
       <div>
         <PagesIndex.Main_Containt
           add_button={true}
-          route={"/admin/game/add"}
-          title={"Games"}
+          route={path}
+          title={title}
           btnTitle="Add"
         >
-          <PagesIndex.Data_Table columns={columns} data={data} />
+          <PagesIndex.Data_Table columns={columns} data={gameProviders} />
         </PagesIndex.Main_Containt>
       </div>
     </>

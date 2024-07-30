@@ -68,7 +68,7 @@ const AppVersion = () => {
       } else if (!apkValidation(values.apkfile)) {
         errors.apkfile = PagesIndex.valid_err.APK_FILE_VALID;
       }
-console.log(errors)
+
       return errors;
     },
     onSubmit: async (values) => {
@@ -86,7 +86,7 @@ console.log(errors)
     },
   });
 
-  console.log(formik.values)
+
   const fields = [
     {
       name: "version",

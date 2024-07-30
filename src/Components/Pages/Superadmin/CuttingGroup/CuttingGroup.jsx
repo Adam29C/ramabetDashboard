@@ -43,7 +43,7 @@ const CuttingGroup = () => {
     validate: (values) => {},
 
     onSubmit: async (values) => {
-      console.log(values);
+
     },
   });
 

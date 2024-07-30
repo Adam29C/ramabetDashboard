@@ -41,6 +41,8 @@ import CreditRequest from "../../Pages/Superadmin/CreditRequest/CreditRequest";
 import UsersIdeas from "../../Pages/Superadmin/Users/UsersIdeas";
 import DeleteUsers from "../../Pages/Superadmin/Users/DeleteUsers";
 import AppVersion from "../../Pages/Superadmin/AppSettings/AppVersion";
+import StarLineProvider from "../../Pages/Superadmin/Games/Starline/StarLineProvider";
+import StarLineAddEdit from "../../Pages/Superadmin/Games/Starline/StarLineAddEdit";
 
 
 // Mock authentication status
@@ -136,7 +138,16 @@ const adminRoutes = [
         path: "game/results",
         element: <PrivateRoute element={GameResult} />,
       },
-
+      
+      {
+        path: "games/starlineProvider",
+        element: <PrivateRoute element={StarLineProvider} />,
+      },
+      {
+        path: "games/starlineProvider/add",
+        element: <PrivateRoute element={StarLineAddEdit} />,
+      },
+      
       {
         path: "cuttinggroup",
         element: <PrivateRoute element={CuttingGroup} />,
