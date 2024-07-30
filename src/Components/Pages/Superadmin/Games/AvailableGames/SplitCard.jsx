@@ -1,14 +1,15 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Split_Main_Containt from "../../../../Layout/Main/Split_Main_Content";
 import PagesIndex from "../../../PagesIndex";
-import { today } from "../../../../Utils/Common_Date";
+import { getActualDateFormate, today } from "../../../../Utils/Common_Date";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 
 const ExamplePage = () => {
   const userId = localStorage.getItem("userId");
-  const [startDate, setStartDate] = useState(new Date());
+  const actual_date_formet = getActualDateFormate(new Date());
+
   const [Data, setData] = PagesIndex.useState([]);
 
   const dispatch = PagesIndex.useDispatch();
@@ -28,132 +29,80 @@ const ExamplePage = () => {
 
   const formik = PagesIndex.useFormik({
     initialValues: {
-      panel_name: "",
-      domain: "",
+      winningDigit: "",
+      resultDate: actual_date_formet,
+      session: "",
+      providerId: "",
     },
 
     validate: (values) => {
       const errors = {};
 
-      // if (!values.panel_name && formik.touched.panel_name) {
-      //   errors.panel_name = valid_err.PANEL_NAME_ERROR;
-      // }
+      if (!values.providerId) {
+        errors.providerId = PagesIndex.valid_err.GAME_PROVIDER_ERROR;
+      }
 
-      // if (!values.domain) {
-      //   errors.domain = valid_err.DOMAIN_ERROR;
-      // }
+      if (!values.session) {
+        errors.session = PagesIndex.valid_err.GAME_SESSION_ERROR;
+      }
 
-      // if (!values.port) {
-      //   errors.port = valid_err.PORT_ERROR;
-      // }
+      if (!values.resultDate) {
+        errors.resultDate = PagesIndex.valid_err.DOMAIN_ERROR;
+      }
 
-      // if (!values.key) {
-      //   errors.key = valid_err.KEY_ERROR;
-      // }
-
-      // if (!values.db_url) {
-      //   errors.db_url = valid_err.DBURL_ERROR;
-      // }
-
-      // if (!values.db_name) {
-      //   errors.db_name = valid_err.DBNAME_ERROR;
-      // }
-
-      // if (!values.backend_rul) {
-      //   errors.backend_rul = valid_err.DBNAME_ERROR;
-      // }
+      if (!values.winningDigit) {
+        errors.winningDigit = PagesIndex.valid_err.GAME_WINING_DIGIT_ERROR;
+      }
 
       return errors;
     },
     onSubmit: async (values) => {
       const req = {
-        // panel_name: values.panel_name,
-        // domain: values.domain,
-        // port: values.port,
-        // key: values.key,
+        winningDigit: values.winningDigit,
+        resultDate: today(values.resultDate),
+        session: values.session,
+        providerId: values.providerId,
+        adminId: userId,
+        gameType: "MainGame",
       };
 
-      // await dispatch(Add_Panel_data({ req: req, token: user_token }))
-      //   .unwrap()
-      //   .then((response) => {
-      //     if (response.status === 409) {
-      //       toast.error(response.data.msg);
-      //     } else if (response.status) {
-      //       toast.success(response.msg);
+      console.log("resresres", req);
 
-      //       setTimeout(() => {
-      //         navigate("/super/alladmins");
-      //       }, 1000);
-      //     } else if (!response.status) {
-      //       toast.error(response.msg);
-      //     }
-      //   });
+      // return
+      const res = await PagesIndex.admin_services.ADD_GAME_RESULT(req);
+      console.log("resresres", req);
+
+      // if (response.status === 409) {
+      //   toast.error(response.data.msg);
+      // } else if (response.status) {
+      //   toast.success(response.msg);
+      //   setTimeout(() => {
+      //     navigate("/super/alladmins");
+      //   }, 1000);
+      // } else if (!response.status) {
+      //   toast.error(response.msg);
+      // }
     },
   });
 
   const formik1 = PagesIndex.useFormik({
     initialValues: {
-      date: today(),
+      date: getActualDateFormate(new Date()),
     },
 
     validate: (values) => {
       const errors = {};
-
-      // if (!values.panel_name && formik.touched.panel_name) {
-      //   errors.panel_name = valid_err.PANEL_NAME_ERROR;
-      // }
-
-      // if (!values.domain) {
-      //   errors.domain = valid_err.DOMAIN_ERROR;
-      // }
-
-      // if (!values.port) {
-      //   errors.port = valid_err.PORT_ERROR;
-      // }
-
-      // if (!values.key) {
-      //   errors.key = valid_err.KEY_ERROR;
-      // }
-
-      // if (!values.db_url) {
-      //   errors.db_url = valid_err.DBURL_ERROR;
-      // }
-
-      // if (!values.db_name) {
-      //   errors.db_name = valid_err.DBNAME_ERROR;
-      // }
-
-      // if (!values.backend_rul) {
-      //   errors.backend_rul = valid_err.DBNAME_ERROR;
-      // }
-
       return errors;
     },
     onSubmit: async (values) => {
-      const req = {
-        // panel_name: values.panel_name,
-        // domain: values.domain,
-        // port: values.port,
-        // key: values.key,
-      };
-
-      // await dispatch(Add_Panel_data({ req: req, token: user_token }))
-      //   .unwrap()
-      //   .then((response) => {
-      //     if (response.status === 409) {
-      //       toast.error(response.data.msg);
-      //     } else if (response.status) {
-      //       toast.success(response.msg);
-
-      //       setTimeout(() => {
-      //         navigate("/super/alladmins");
-      //       }, 1000);
-      //     } else if (!response.status) {
-      //       toast.error(response.msg);
-      //     }
-      //   });
+      // const req = today(values.date);
+      // const res = await PagesIndex.admin_services.GAME_RESULT(req);
+      // if (res.status === 200) {
+      //   setData(res.data);
+      // }
     },
   });
+
   const fields = [
     {
       name: "providerId",
@@ -185,6 +134,8 @@ const ExamplePage = () => {
       type: "date",
       label_size: 12,
       col_size: 3,
+      // min: { actual_date_formet },
+      max: { actual_date_formet },
     },
     {
       name: "winningDigit",
@@ -202,22 +153,22 @@ const ExamplePage = () => {
       type: "date",
       label_size: 12,
       col_size: 12,
+      max: { actual_date_formet },
     },
   ];
 
+  // console.log("test13", today(formik1.values));
 
-  const GetResult = async () => {
-    const req = "07/11/2024";
-    const res = await PagesIndex.admin_services.GAME_RESULT(req);
-    console.log("setData", res);
-
-    if (res.status === 200) {
-      setData(res.data);
-    }
+  const SearchResult = async () => {
+    // const req = today(formik1.values.date);
+    // const res = await PagesIndex.admin_services.GAME_RESULT(req);
+    // if (res.status === 200) {
+    //   setData(res.data);
+    // }
   };
 
   PagesIndex.useEffect(() => {
-    GetResult();
+    SearchResult();
   }, []);
 
   const columns = [
@@ -244,21 +195,16 @@ const ExamplePage = () => {
         <div style={{ width: "120px" }}>
           <div>
             <PagesIndex.Link to={"/admin/employee/edit"} state={cell}>
-              <span data-toggle="tooltip" data-placement="top" title="Winners List">
-              <i class="icon-user-follow icon-size"></i>
+              <span
+                data-toggle="tooltip"
+                data-placement="top"
+                title="Winners List"
+              >
+                <i class="icon-user-follow icon-size"></i>
               </span>
             </PagesIndex.Link>
 
-            <PagesIndex.Link
-              href="#"
-              onClick={() =>
-                DeleteSweetAlert(
-                  PagesIndex.admin_services.DELETE_USER,
-                  cell?._id,
-                  getList
-                )
-              }
-            >
+            <PagesIndex.Link href="#" onClick={SearchResult}>
               <span data-toggle="tooltip" data-placement="top" title="Delete">
                 <i class="ti-trash fs-5 mx-1 "></i>
                 {/* <PagesIndex.Icon icon="line-md:account-delete" width="24" height="24" /> */}
@@ -276,8 +222,10 @@ const ExamplePage = () => {
         <div>
           <PagesIndex.Formikform
             fieldtype={fields.filter((field) => !field.showWhen)}
+            show_submit={true}
+            // form_responsive={}
             formik={formik}
-            btn_name="Add Panel"
+            btn_name="Add Game Result"
           />
         </div>
       ),
@@ -290,10 +238,11 @@ const ExamplePage = () => {
             <PagesIndex.Formikform
               fieldtype={fields1.filter((field) => !field.showWhen)}
               formik={formik1}
-              btn_name="Add Panel"
+              show_submit={true}
+              btn_name="Search Result"
             />
           </div>
-          <button className="btn-primary">click</button>
+          {/* <button className=" btn btn-primary my-1" onClick={SearchResult}>Search </button> */}
         </div>
       ),
     },
@@ -306,26 +255,22 @@ const ExamplePage = () => {
             columns={columns}
             data={Data.gameResult}
           />
-     <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
-
         </div>
       ),
     },
   ];
 
-  console.log("Data", Data);
+  // console.log("Data", Data);
   return (
     <>
-    <Split_Main_Containt
-      title="Game Results"
-      add_button={false}
-      btnTitle="Add"
-      route="/add"
-      cardLayouts={cardLayouts}
-    />
-
+      <Split_Main_Containt
+        title="Game Results"
+        add_button={false}
+        btnTitle="Add"
+        route="/add"
+        cardLayouts={cardLayouts}
+      />
     </>
-
   );
 };
 

@@ -85,11 +85,11 @@ let userDeleteReason = true
       selector: (cell, row) => (
         <div style={{ width: "120px" }}>
           <div>
-            <PagesIndex.Link to={"/admin/employee/edit"} state={cell}>
+            {/* <PagesIndex.Link to={"/admin/employee/edit"} state={cell}>
               <span data-toggle="tooltip" data-placement="top" title="Edit">
                 <i class="ti-marker-alt fs-5 mx-1 "></i>
               </span>
-            </PagesIndex.Link>
+            </PagesIndex.Link> */}
 
             <PagesIndex.Link
               href="#"

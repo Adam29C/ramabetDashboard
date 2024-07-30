@@ -7,10 +7,9 @@ const GameProviderAdd = () => {
   const location = PagesIndex.useLocation();
   const dispatch = PagesIndex.useDispatch();
 
-  
-
-
-
+  const data = PagesIndex.useSelector((state) => {
+    return state.CommonSlice.gameProviders;
+  });
 
   const getGameRatesList = async () => {
     const res = await dispatch(
@@ -22,13 +21,13 @@ const GameProviderAdd = () => {
     getGameRatesList();
   }, []);
 
-
-
-  
   const formik = PagesIndex.useFormik({
     initialValues: {
-      providerName: location?.state?.row ? location?.state?.row.providerName : "",
-      gameDay: location?.state?.rowData ? location?.state?.rowData.gameDay : "",
+      providerId: location?.state?.row ? location?.state?.row.providerId : "",
+      gameDay:
+        location?.state?.edit === "single"
+          ? location?.state?.rowData.gameDay
+          : "all",
       OBT: location?.state?.rowData ? location?.state?.rowData.OBT : "",
       CBT: location?.state?.rowData ? location?.state?.rowData.CBT : "",
       OBRT: location?.state?.rowData ? location?.state?.rowData.OBRT : "",
@@ -40,63 +39,58 @@ const GameProviderAdd = () => {
     validate: (values) => {
       const errors = {};
 
-      // if (!values.providerName) {
-      //   errors.providerName = PagesIndex.valid_err.PROVIDER_NAME_ERROR;
-      // }
-
-      // if (!values.providerResult) {
-      //   errors.providerResult = PagesIndex.valid_err.PROVIDER_RESULT_ERROR;
-      // }
-
       return errors;
     },
 
     onSubmit: async (values) => {
-      try {
-        let data = {
-          adminId: userId,
-          providerName: values.providerName,
-          providerResult: values.providerResult,
+      let data = {
+        adminId: userId,
+        providerId: values.providerId,
+        OBT: values.OBT,
+        CBT: values.CBT,
+        OBRT: values.OBRT,
+        CBRT: values.CBRT,
+        isClosed: values.isClosed.toString(),
+        gameType: "Main game",
+      };
 
-          activeStatus: values.activeStatus,
-          mobile: values.mobile.toString(),
-          activeStatus: values.activeStatus,
-          ...(location?.state?._id
-            ? { gameProviderId: location?.state?._id }
-            : ""),
-        };
-        // if (!location?.state?._id) {
-        //   data.resultStatus = values.resultStatus;
-        // }
+      if (location?.state.rowData?._id) {
+        data.gameSettingId = location?.state.rowData?._id;
+      }
 
-        // const res = location?.state?._id
-        //   ? await PagesIndex.admin_services.GAME_PROVIDER_UPDATE_API(data)
-        //   :
-        await PagesIndex.admin_services.GAME_SETTING_ADD(data);
+      if (location?.state.edit === "multiple") {
+        data.providerId = values.providerId;
+      } else {
+        data.providerId = values.providerId;
+        data.gameDay = values.gameDay;
+      }
 
-        if (res?.status === 200) {
-          PagesIndex.toast.success(res?.message);
-          setTimeout(() => {
-            navigate("/admin/games");
-          }, 1000);
-        } else {
-          PagesIndex.toast.error(res.response.data.message);
-        }
-      } catch (error) {
-        PagesIndex.toast.error(error);
+      const res = location?.state.rowData?._id
+        ? await PagesIndex.admin_services.GAME_SETTING_UPDATE_API(data)
+        : await PagesIndex.admin_services.GAME_SETTING_ADD(data);
+
+      if (res?.status === 200) {
+        PagesIndex.toast.success(res?.message);
+        setTimeout(() => {
+          navigate("/admin/game/settings");
+        }, 1000);
+      } else {
+        PagesIndex.toast.error(res.response.data.message);
       }
     },
   });
 
-
-  console.log("location?.state?.row" ,formik.values);
-
   const fields = [
     {
-      name: "providerName",
-      label: "Game Name",
-      type: "text",
-      label_size: 6,
+      name: "providerId",
+      label: "Provider Name",
+      type: "select",
+      options:
+        data?.map((item) => ({
+          label: item.providerName,
+          value: item._id,
+        })) || [],
+      label_size: 12,
       col_size: 6,
     },
     {
@@ -104,6 +98,7 @@ const GameProviderAdd = () => {
       label: "Game Day",
       type: "select",
       label_size: 6,
+      disable: location?.state ? true : false,
       col_size: 6,
       options: [
         { label: "Full Week", value: "all" },

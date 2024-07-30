@@ -35,16 +35,14 @@ const GameProviderAdd = () => {
       try {
         let data = {
           adminId: userId,
-
+          gameType: "MainGame",
           providerName: values.providerName,
           providerResult: values.providerResult,
 
           activeStatus: values.activeStatus,
           mobile: values.mobile.toString(),
           activeStatus: values.activeStatus,
-          ...(location?.state?._id
-            ? { gameProviderId: location?.state?._id }
-            : ""),
+          ...(location?.state?._id ? { providerId: location?.state?._id } : ""),
         };
         if (!location?.state?._id) {
           data.resultStatus = values.resultStatus;

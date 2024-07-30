@@ -10,23 +10,25 @@ const GameProvider = ({ data, path, getGameProviderList, title }) => {
   const userId = localStorage.getItem("userId");
   const navigate = PagesIndex.useNavigate();
 
-  const updateStatusApi = () => {};
 
   const columns = [
     {
       name: "Game Name",
-      selector: (row, cell) => (
-        <>
-          <div className="break-text py-">{row.providerName}</div>
-          <PagesIndex.Link 
-            to={"/admin/game/setting/edit"}
-            // state={{ row: row, rowData: rowData }}
-            className="update-button"
-          >
-            update
-          </PagesIndex.Link>
-        </>
-      ),
+      selector: (row, cell) => {
+        const rowData = row.gameSatingInfo && row.gameSatingInfo[0];
+        return (
+          <div className="">
+            <div className="break-text">{row.providerName}</div>
+            <PagesIndex.Link
+              to={"/admin/game/setting/edit"}
+              state={{ row: row, rowData: rowData, edit: "multiple" }}
+              className="update-button"
+            >
+              update
+            </PagesIndex.Link>
+          </div>
+        );
+      },
     },
     {
       name: "Monday",
@@ -61,7 +63,7 @@ const GameProvider = ({ data, path, getGameProviderList, title }) => {
 
                 <PagesIndex.Link
                   to={"/admin/game/setting/edit"}
-                  state={{ row: row, rowData: rowData }}
+                  state={{ row: row, rowData: rowData, edit: "single" }}
                   className="update-button"
                 >
                   update
@@ -108,7 +110,7 @@ const GameProvider = ({ data, path, getGameProviderList, title }) => {
 
                   <PagesIndex.Link
                     to={"/admin/game/setting/edit"}
-                    state={{ row: row, rowData: rowData }}
+                    state={{ row: row, rowData: rowData, edit: "single" }}
                     className="update-button"
                   >
                     update
@@ -156,7 +158,7 @@ const GameProvider = ({ data, path, getGameProviderList, title }) => {
 
                   <PagesIndex.Link
                     to={"/admin/game/setting/edit"}
-                    state={{ row: row, rowData: rowData }}
+                    state={{ row: row, rowData: rowData, edit: "single" }}
                     className="update-button"
                   >
                     update
@@ -204,7 +206,7 @@ const GameProvider = ({ data, path, getGameProviderList, title }) => {
 
                   <PagesIndex.Link
                     to={"/admin/game/setting/edit"}
-                    state={{ row: row, rowData: rowData }}
+                    state={{ row: row, rowData: rowData, edit: "single" }}
                     className="update-button"
                   >
                     update
@@ -252,7 +254,7 @@ const GameProvider = ({ data, path, getGameProviderList, title }) => {
 
                   <PagesIndex.Link
                     to={"/admin/game/setting/edit"}
-                    state={{ row: row, rowData: rowData }}
+                    state={{ row: row, rowData: rowData, edit: "single" }}
                     className="update-button"
                   >
                     update
@@ -300,7 +302,7 @@ const GameProvider = ({ data, path, getGameProviderList, title }) => {
 
                   <PagesIndex.Link
                     to={"/admin/game/setting/edit"}
-                    state={{ row: row, rowData: rowData }}
+                    state={{ row: row, rowData: rowData, edit: "single" }}
                     className="update-button"
                   >
                     update
@@ -348,7 +350,7 @@ const GameProvider = ({ data, path, getGameProviderList, title }) => {
 
                   <PagesIndex.Link
                     to={"/admin/game/setting/edit"}
-                    state={{ row: row, rowData: rowData }}
+                    state={{ row: row, rowData: rowData, edit: "single" }}
                     className="update-button"
                   >
                     update

@@ -46,21 +46,30 @@ export function fToNow(date) {
   });
 }
 
-export const getActualDateFormate = (date) => {
-  const dateParts = date.split("-");
-  const formattedDate = `${dateParts[0]}/${parseInt(
-    dateParts[1],
-    10
-  )}/${parseInt(dateParts[2], 10)}`;
-  return formattedDate;
+export const getActualDateFormate = (d) => {
+  const today = new Date(d);
+  const year = today.getFullYear();
+  let month = today.getMonth() + 1;
+  let day = today.getDate();
+
+  if (month < 10) {
+    month = `0${month}`;
+  }
+  if (day < 10) {
+    day = `0${day}`;
+  }
+
+  return `${year}-${month}-${day}`;
 };
 
-export const today = () => {
-  let abc = new Date();
+export const today = (d) => {
+  let abc = new Date(d);
   let month = abc.getMonth() + 1;
   let date = abc.getDate();
   let year = abc.getFullYear();
-  let full = `${parseInt(month) < 10 ? "0" + month : month}/${parseInt(date) < 10 ? "0" + date : date}/${year}`;
+  let full = `${parseInt(month) < 10 ? "0" + month : month}/${
+    parseInt(date) < 10 ? "0" + date : date
+  }/${year}`;
   return full;
 };
 

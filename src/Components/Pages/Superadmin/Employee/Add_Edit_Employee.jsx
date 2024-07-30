@@ -219,38 +219,39 @@ function AddEmployee() {
     //   updatedABC,
     //   location.state.permission
     // );
-
-    const combineObjects = (obj1, obj2) => {
-      const result = {};
-      for (const key in obj1) {
-        // If obj1's value is true, use true
-        if (obj1[key] === true) {
+    var combinedObject;
+    if (location?.state) {
+      const combineObjects = (obj1, obj2) => {
+        console.log("formik1.values ", obj2);
+        const result = {};
+        for (const key in obj1) {
+          // If obj1's value is true, use true
+          if (obj1[key] === true) {
             result[key] = true;
-        } else {
+          } else {
             // Otherwise, use obj2's value or default to obj1's value
             result[key] = obj2[key] !== undefined ? obj2[key] : obj1[key];
+          }
         }
+
+        return result;
+      };
+
+      combinedObject = combineObjects(updatedABC, location?.state?.permission);
     }
-
-    return result;
-    };
-
-    const combinedObject = combineObjects(
-      updatedABC,
-      location.state.permission
-    );
-
-
 
     const req = {
       adminId: userId,
       username: formik.values.username,
       employeeName: formik.values.employeeName,
       loginPermission: formik.values.loginPermission,
-      permission: combinedObject,
+      permission: location?.state ? combinedObject : updatedABC,
       ...(location?.state ? { empId: location?.state?._id } : {}),
     };
 
+    // console.log("updatedABC", updatedABC);
+    console.log("req", req);
+    // return;
     const res = location?.state
       ? await PagesIndex.admin_services.UPDATE_EMPLOYEE(req)
       : await PagesIndex.admin_services.CREATE_EMPLOYEE({
@@ -261,12 +262,12 @@ function AddEmployee() {
         });
 
     if (res.status === 200) {
-      toast.success(res.message);
+      PagesIndex.toast.success(res.message);
       setTimeout(() => {
         navigate("/admin/employees");
       }, 1500);
     } else {
-      toast.error(res.message);
+      PagesIndex.toast.error(res.message);
     }
   };
 
@@ -298,7 +299,7 @@ function AddEmployee() {
 
   return (
     <Main_Containt
-      title={location.state ? "Edit Employee" :"Add Employee"}
+      title={location.state ? "Edit Employee" : "Add Employee"}
       col_size={12}
       add_button={true}
       route="/admin/employees"
@@ -311,6 +312,7 @@ function AddEmployee() {
         onComplete={handleComplete}
         tabs={tabs}
       />
+      <PagesIndex.Toast />
     </Main_Containt>
   );
 }

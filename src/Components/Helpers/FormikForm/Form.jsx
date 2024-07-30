@@ -46,25 +46,8 @@ const ReusableForm = ({
         formik.setFieldValue(`${name}_base64`, reader.result);
       };
       reader.readAsDataURL(file);
-
       formik.setFieldValue(name, file);
     }
-  };
-
-  const getCurrentDate = () => {
-    const today = new Date();
-    const year = today.getFullYear();
-    let month = today.getMonth() + 1;
-    let day = today.getDate();
-
-    if (month < 10) {
-      month = `0${month}`;
-    }
-    if (day < 10) {
-      day = `0${day}`;
-    }
-
-    return `${year}-${month}-${day}`;
   };
 
   const handleDateChange = (date, name) => {
@@ -294,17 +277,51 @@ const ReusableForm = ({
                   </div>
                 </>
               ) : field.type === "date" ? (
-                <>
-                  <CustomDatePicker
-                    field={field}
-                    formik={formik}
-                    setDateStates={setDateStates}
-                    dateStates={dateStates}
+                <div className={`col-lg-${field.col_size} mb-3`}>
+               
+
+                  <label
+                    className={`custom-label col-lg-${field.label_size}`}
+                    htmlFor={field.name}
+                  >
+                    {field.label}
+                    <span className="text-danger">*</span>
+                  </label>
+                  <input
+                    type={field.type}
+                    name={field.name}
+                    className="form-control"
+                    value={getActualDateFormate(field.name)}
+                    id={field.name}
+                    {...formik.getFieldProps(field.name)}
+                    min={field.min && field.min.actual_date_formet}
+                    max={field.max && field.max.actual_date_formet}
                   />
-                </>
+                </div>
               ) : field.type === "time" ? (
                 <>
-                  <div className={`col-lg-${field.col_size}`}>
+                 <div className={`col-lg-${field.col_size} mb-3`}>
+               
+
+               <label
+                 className={`custom-label col-lg-${field.label_size}`}
+                 htmlFor={field.name}
+               >
+                 {field.label}
+                 <span className="text-danger">*</span>
+               </label>
+               <input
+                 type={field.type}
+                 name={field.name}
+                 className="form-control"
+                 value={getActualDateFormate(field.name)}
+                 id={field.name}
+                 {...formik.getFieldProps(field.name)}
+                 min={field.min && field.min.actual_date_formet}
+                 max={field.max && field.max.actual_date_formet}
+               />
+             </div>
+                  {/* <div className={`col-lg-${field.col_size}`}>
                     <div className=" row flex-column">
                       <label
                         className={`custom-label col-lg-${field.label_size}`}
@@ -329,19 +346,6 @@ const ReusableForm = ({
                           timeCaption="Time"
                           dateFormat="h:mm aa"
                         />
-                        {/* <input
-                          type={field.type}
-                          name={field.name}
-                          className="form-control"
-                          id={field.name}
-                          {...formik.getFieldProps(field.name)}
-                          min={
-                            field.name === "todate"
-                              ? fromDate
-                              : getCurrentDate()
-                          }
-                        /> */}
-
                         <div className="invalid-feedback">
                           Please enter {field.label}
                         </div>
@@ -352,7 +356,7 @@ const ReusableForm = ({
                         </div>
                       )}
                     </div>
-                  </div>
+                  </div> */}
                 </>
               ) : field.type === "msgbox" ? (
                 <>

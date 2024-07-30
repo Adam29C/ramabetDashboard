@@ -1,14 +1,13 @@
-import React from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+// src/components/CustomDatePicker.js
+import React from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const CustomDatePicker = ({ field, formik, setDateStates, dateStates }) => {
   const handleDateChange = (date, name) => {
     const formattedTime = date
       ? date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
       : "";
-
-      console.log("formattedTime" ,formattedTime);
     setDateStates((prevStates) => ({
       ...prevStates,
       [name]: formattedTime,
@@ -39,10 +38,14 @@ const CustomDatePicker = ({ field, formik, setDateStates, dateStates }) => {
             timeCaption="Time"
             dateFormat="h:mm aa"
           />
-          <div className="invalid-feedback">Please enter {field.label}</div>
+          <div className="invalid-feedback">
+            Please enter {field.label}
+          </div>
         </div>
         {formik.errors[field.name] && (
-          <div className="error-text">{formik.errors[field.name]}</div>
+          <div className="error-text">
+            {formik.errors[field.name]}
+          </div>
         )}
       </div>
     </div>

@@ -182,7 +182,17 @@ export const GAME_SEETING_LIST_API = async (id) => {
 
 export const GAME_SETTING_ADD = async (id) => {
   try {
-    const res = await dataservice.post(`${Api.ADMIN_GAME_SETTING}`);
+    const res = await dataservice.post(`${Api.ADMIN_GAME_SETTING}`, id);
+    return res?.data;
+  } catch (error) {
+    return error;
+  }
+};
+
+
+export const GAME_SETTING_UPDATE_API = async (data) => {
+  try {
+    const res = await dataservice.put(Api.ADMIN_GAME_SETTING, data);
     return res?.data;
   } catch (error) {
     return error;
@@ -191,11 +201,9 @@ export const GAME_SETTING_ADD = async (id) => {
 
 // --------------------------   GAME SETTING CRUD ------------------------
 
-// --------------------------   GAME SETTING CRUD ------------------------
-
+// --------------------------   GAME RESULT CRUD ------------------------
 
 export const GAME_RESULT = async (id) => {
-  console.log();
   try {
     const res = await dataservice.get(`${Api.ADMIN_GAME_RESULT}?date=${id}`);
     return res?.data;
@@ -204,9 +212,17 @@ export const GAME_RESULT = async (id) => {
   }
 };
 
+export const ADD_GAME_RESULT = async (data) => {
 
+  try {
+    const res = await dataservice.post(`${Api.ADMIN_GAME_RESULT}`, data);
+    return res?.data;
+  } catch (error) {
+    return error;
+  }
+};
 
-// --------------------------   GAME SETTING CRUD ------------------------
+// --------------------------   GAME RESULT CRUD ------------------------
 
 // --------------------------   USERS CRUD ------------------------
 
@@ -228,11 +244,11 @@ export const BLOCK_USER = async (ID) => {
   }
 };
 export const DELETE_USER = async (ID) => {
-  console.log(ID,"check")
+  console.log(ID, "check");
   let apiData = {
     adminId: ID.adminId,
     userId: ID.deleteId,
-    reason: ID.reason
+    reason: ID.reason,
   };
   try {
     const res = await dataservice.delete(Api.USERS_LIST, { data: apiData });
@@ -240,23 +256,22 @@ export const DELETE_USER = async (ID) => {
   } catch (error) {
     return error;
   }
-
 };
 
-export const GET_DELETED_USERS = async(id)=>{
+export const GET_DELETED_USERS = async (id) => {
   try {
-    const res = await dataservice.get(`${Api.DELETED_USERS}?adminId=${id}`)
-    return res?.data
+    const res = await dataservice.get(`${Api.DELETED_USERS}?adminId=${id}`);
+    return res?.data;
   } catch (error) {
-    return error
+    return error;
   }
-}
-export const GET_USERS_IDEAS  = async(id)=>{
+};
+export const GET_USERS_IDEAS = async (id) => {
   try {
-    const res = await dataservice.get(`${Api.USERS_IDEAS}?adminId=${id}`)
-    return res?.data
+    const res = await dataservice.get(`${Api.USERS_IDEAS}?adminId=${id}`);
+    return res?.data;
   } catch (error) {
-    return error
+    return error;
   }
-}
+};
 // --------------------------   USERS CRUD ------------------------
