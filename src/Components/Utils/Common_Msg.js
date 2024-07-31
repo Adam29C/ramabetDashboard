@@ -62,5 +62,6 @@ export const PLEASE_ENTER_APK_FILE="Please Enter Apk File"
 export const APK_FILE_VALID="Please Enter Valid Apk File";
 export const VERSION_VALIDATION="Entered Version cannot be Less than Current Version."
 export const PLEASER_ENTER_VERSION = "Please Enter Version"
+export const PLEASER_ENTER_HEADLINE = "Please Enter Application Headline"
 
 

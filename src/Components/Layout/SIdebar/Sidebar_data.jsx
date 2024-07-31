@@ -121,7 +121,7 @@ export const admin_Sidebar = [
       {
         id: 2,
         title: "Star Games Setting",
-        route: "#",
+        route: "games/starlinegamesetting",
       },
       {
         id: 3,
@@ -145,43 +145,43 @@ export const admin_Sidebar = [
       },
     ],
   },
-  {
-    id: 7,
-    title: "Jackpot",
-    Icon: "fa-regular fa-heart",
-    NestedElement: [
-      {
-        id: 1,
-        title: "Jackpot Game Provider",
-        route: "#",
-      },
-      {
-        id: 2,
-        title: "Jackpot Games Setting",
-        route: "#",
-      },
-      {
-        id: 3,
-        title: "Jackpot Game Rates",
-        route: "#",
-      },
-      {
-        id: 4,
-        title: "Jackpot Game Result",
-        route: "#",
-      },
-      {
-        id: 5,
-        title: "Jackpot Revert Result Payment",
-        route: "#",
-      },
-      {
-        id: 6,
-        title: "Refund User Points",
-        route: "#",
-      },
-    ],
-  },
+  // {
+  //   id: 7,
+  //   title: "Jackpot",
+  //   Icon: "fa-regular fa-heart",
+  //   NestedElement: [
+  //     {
+  //       id: 1,
+  //       title: "Jackpot Game Provider",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 2,
+  //       title: "Jackpot Games Setting",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 3,
+  //       title: "Jackpot Game Rates",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 4,
+  //       title: "Jackpot Game Result",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 5,
+  //       title: "Jackpot Revert Result Payment",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 6,
+  //       title: "Refund User Points",
+  //       route: "#",
+  //     },
+  //   ],
+  // },
 
   // {
   //   id: 8,
@@ -423,44 +423,44 @@ export const admin_Sidebar = [
   //   Icon: "fa-solid fa-television",
   //   NestedElement: [],
   // },
-  {
-    id: 20,
-    headerTitle: "Masters",
-    title: "App Settings",
-    Icon: "fa-solid fa-cog",
-    NestedElement: [
-      // {
-      //   id: 1,
-      //   title: "How To Play",
-      //   route: "#",
-      // },
-      // {
-      //   id: 2,
-      //   title: "Withdraw Screen",
-      //   route: "#",
-      // },
-      // {
-      //   id: 3,
-      //   title: "Notice Board",
-      //   route: "#",
-      // },
-      // {
-      //   id: 4,
-      //   title: "Profile Note",
-      //   route: "#",
-      // },
-      // {
-      //   id: 5,
-      //   title: "Wallet Contact",
-      //   route: "#",
-      // },
-      {
-        id: 1,
-        title: "App Version",
-        route: "appSettings/versionSetting",
-      },
-    ],
-  },
+  // {
+  //   id: 20,
+  //   headerTitle: "Masters",
+  //   title: "App Settings",
+  //   Icon: "fa-solid fa-cog",
+  //   NestedElement: [
+  //     {
+  //       id: 1,
+  //       title: "How To Play",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 2,
+  //       title: "Withdraw Screen",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 3,
+  //       title: "Notice Board",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 4,
+  //       title: "Profile Note",
+  //       route: "#",
+  //     },
+  //     {
+  //       id: 1,
+  //       title: "Wallet Contact",
+  //       route: "appSettings/walletContact",
+  //     },
+  //     {
+  //       id: 2,
+  //       title: "App Version",
+  //       route: "appSettings/versionSetting",
+  //     },
+  //   ],
+  // },
   // {
   //   id: 21,
   //   headerTitle: "Masters",

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { v4 } from "uuid";
-import { Remove_Special_Character, Password_Rejex } from "../Utils/Valid_Rejex";
+import { Remove_Special_Character, Password_Rejex,validApkFile,Mobile_regex } from "../Utils/Valid_Rejex";
 import { LOGIN_API } from "../Services/AuthServices";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
@@ -79,6 +79,8 @@ const PagesIndex = {
   MultiTabs,
   WalletMain,
   ChangeStatus,
+  validApkFile,
+  Mobile_regex
 };
 
 export default PagesIndex;

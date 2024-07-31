@@ -1,7 +1,7 @@
 import React from "react";
 import PagesIndex from "../../../Pages/PagesIndex";
 
-const GameProviderAdd = () => {
+const ForStarlineJackpotAdd = ({ gameType, path }) => {
   const userId = localStorage.getItem("userId");
   const navigate = PagesIndex.useNavigate();
   const location = PagesIndex.useLocation();
@@ -11,15 +11,13 @@ const GameProviderAdd = () => {
     return state.CommonSlice.gameProviders;
   });
 
-  const getGameProviderList = async () => {
+  const getGameProviderList = () => {
     let providerapidata = {
-      userId:userId,
-      gameType:"MainGame"
-    }
-    console.log(providerapidata)
-    const res = await dispatch(
-      PagesIndex.commonSlice.Games_Provider_List(providerapidata)
-    );
+      userId: userId,
+      gameType: gameType,
+    };
+
+    dispatch(PagesIndex.commonSlice.Games_Provider_List(providerapidata));
   };
 
   PagesIndex.useEffect(() => {
@@ -36,7 +34,8 @@ const GameProviderAdd = () => {
       OBT: location?.state?.rowData ? location?.state?.rowData.OBT : "",
       CBT: location?.state?.rowData ? location?.state?.rowData.CBT : "",
       OBRT: location?.state?.rowData ? location?.state?.rowData.OBRT : "",
-      CBRT: location?.state?.rowData ? location?.state?.rowData.CBRT : "",
+      // CBRT: location?.state?.rowData ? location?.state?.rowData.CBRT : "",
+      CBRT: "null",
       isClosed: location?.state?.rowData
         ? location?.state?.rowData.isClosed
         : "1",
@@ -50,13 +49,15 @@ const GameProviderAdd = () => {
     onSubmit: async (values) => {
       let data = {
         adminId: userId,
+        gameType: gameType,
         providerId: values.providerId,
         OBT: values.OBT,
         CBT: values.CBT,
         OBRT: values.OBRT,
-        CBRT: values.CBRT,
+        // CBRT: values.CBRT,
+        CBRT: "null",
         isClosed: values.isClosed.toString(),
-        gameType: "Main game",
+        // gameType: "Main game",
       };
 
       if (location?.state.rowData?._id) {
@@ -77,7 +78,7 @@ const GameProviderAdd = () => {
       if (res?.status === 200) {
         PagesIndex.toast.success(res?.message);
         setTimeout(() => {
-          navigate("/admin/game/settings");
+          navigate(path);
         }, 1000);
       } else {
         PagesIndex.toast.error(res.response.data.message);
@@ -139,13 +140,13 @@ const GameProviderAdd = () => {
       col_size: 6,
     },
 
-    {
-      name: "CBRT",
-      label: "Close Bid Result Time",
-      type: "time",
-      title_size: 6,
-      col_size: 6,
-    },
+    // {
+    //   name: "CBRT",
+    //   label: "Close Bid Result Time",
+    //   type: "time",
+    //   title_size: 6,
+    //   col_size: 6,
+    // },
     {
       name: "isClosed",
       label: "Is Closed",
@@ -178,4 +179,4 @@ const GameProviderAdd = () => {
   );
 };
 
-export default GameProviderAdd;
+export default ForStarlineJackpotAdd;

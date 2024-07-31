@@ -260,14 +260,14 @@ function AddEmployee() {
           designation: formik.values.designation,
           loginPermission: 1,
         });
-
+console.log(res)
     if (res.status === 200) {
       PagesIndex.toast.success(res.message);
       setTimeout(() => {
         navigate("/admin/employees");
       }, 1500);
     } else {
-      PagesIndex.toast.error(res.message);
+      PagesIndex.toast.error(res?.response?.data?.message);
     }
   };
 

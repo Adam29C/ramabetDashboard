@@ -1,24 +1,18 @@
-import React, { version } from "react";
-import Main_Containt from "../../../Layout/Main/Main_Containt";
-import Formikform from "../../../Helpers/FormikForm/Form";
-import { useFormik } from "formik";
-import { validApkFile } from "../../../Utils/Valid_Rejex";
+import React from "react";
 import PagesIndex from "../../PagesIndex";
-import {
-  UPDATE_VERSION_API,
-  GET_VERSION_API,
-} from "../../../Services/SuperAdminServices";
-import Loader from "../../../Helpers/Loader";
-import { toast } from "react-toastify";
 
 const AppVersion = () => {
+  const userId = localStorage.getItem("userId");
+
+  //all states
   const [versionData, setVersionData] = PagesIndex.useState();
   const [loading, setLoading] = PagesIndex.useState(true);
   const [isMaintanance, setIsMaintanance] = PagesIndex.useState();
   const [isForceUpdate, setIsForceUpdate] = PagesIndex.useState();
-  const userId = localStorage.getItem("userId");
+
+  //get version list api
   const getVersionData = async () => {
-    const res = await GET_VERSION_API(userId);
+    const res = await PagesIndex.admin_services.GET_VERSION_API(userId);
 
     if (res?.status === 200) {
       setVersionData(res?.data?.[0]);
@@ -26,6 +20,7 @@ const AppVersion = () => {
     }
   };
 
+  //function call with useeffect
   PagesIndex.useEffect(() => {
     getVersionData();
   }, []);
@@ -36,23 +31,26 @@ const AppVersion = () => {
         showType: 3,
         version: versionData.appVersion,
         apkfile: versionData?.apkFileName || "",
-        
       });
       setIsMaintanance(versionData.maintainence ? "On" : "Off");
       setIsForceUpdate(versionData.forceUpdate ? "On" : "Off");
     }
   }, [versionData]);
 
+
+  //validation regex for apkfile
   const apkValidation = (value) => {
-    return validApkFile(value);
+    return PagesIndex.validApkFile(value);
   };
 
-  const formik = useFormik({
+
+  
+  //formik form submit
+  const formik = PagesIndex.useFormik({
     initialValues: {
       showType: 3,
       version: "",
-      apkfile:versionData?.apkFileName || "",
-      // apkfile_base64: versionData?.apkFileName,
+      apkfile: versionData?.apkFileName || "",
     },
 
     validate: (values) => {
@@ -62,7 +60,7 @@ const AppVersion = () => {
       } else if (values.version < versionData.appVersion) {
         errors.version = PagesIndex.valid_err.VERSION_VALIDATION;
       }
-      
+
       if (!values.apkfile) {
         errors.apkfile = PagesIndex.valid_err.PLEASE_ENTER_APK_FILE;
       } else if (!apkValidation(values.apkfile)) {
@@ -73,19 +71,18 @@ const AppVersion = () => {
     },
     onSubmit: async (values) => {
       const formData = new FormData();
+      formData.append("appVer", values.version);
+      formData.append("type", values.showType);
       formData.append("adminId", userId);
       formData.append("versionId", versionData?._id);
       formData.append("apk", values.apkfile);
-      formData.append("appVer", values.version);
-      formData.append("type", values.showType);
-      const res = await UPDATE_VERSION_API(formData);
+     const res = await PagesIndex.admin_services.UPDATE_VERSION_API(formData);
       if (res.status === 200) {
-        toast.success(res.message);
+        PagesIndex.toast.success(res.message);
         getVersionData();
       }
     },
   });
-
 
   const fields = [
     {
@@ -112,9 +109,9 @@ const AppVersion = () => {
     formData.append("versionId", versionData?._id);
     formData.append("type", 2);
     formData.append("status", isMaintanance === "On" ? "false" : "true");
-    const res = await UPDATE_VERSION_API(formData);
+    const res = await PagesIndex.admin_services.UPDATE_VERSION_API(formData);
     if (res.status === 200) {
-      toast.success(res.message);
+      PagesIndex.toast.success(res.message);
       getVersionData();
     }
   };
@@ -126,18 +123,21 @@ const AppVersion = () => {
     formData.append("versionId", versionData?._id);
     formData.append("type", 1);
     formData.append("status", isForceUpdate === "On" ? "false" : "true");
-    const res = await UPDATE_VERSION_API(formData);
+    const res = await PagesIndex.admin_services.UPDATE_VERSION_API(formData);
     if (res.status === 200) {
-      toast.success(res.message);
+      PagesIndex.toast.success(res.message);
       getVersionData();
     }
   };
   return (
-    <Main_Containt title="Application Version & Other Settings" col_size={12}>
+    <PagesIndex.Main_Containt
+      title="Application Version & Other Settings"
+      col_size={12}
+    >
       {loading ? (
-        <Loader lodersize={20} />
+        <PagesIndex.Loader lodersize={20} />
       ) : (
-        <Formikform
+        <PagesIndex.Formikform
           fieldtype={fields.filter((field) => !field.showWhen)}
           formik={formik}
           show_submit={true}
@@ -162,7 +162,7 @@ const AppVersion = () => {
         />
       )}
       <PagesIndex.Toast />
-    </Main_Containt>
+    </PagesIndex.Main_Containt>
   );
 };
 

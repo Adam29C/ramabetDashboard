@@ -125,6 +125,7 @@ export const GAME_PROVIDER_UPDATE_API = async (data) => {
 //GAME RATES API
 export const GAME_RATES_GET_LIST_API = async (id) => {
   try {
+    
     const res = await dataservice.get(`${Api.ADMIN_GAME_RATES}?adminId=${id}`);
     return res?.data;
   } catch (error) {
@@ -171,12 +172,12 @@ export const GAME_RATES_DELETE_API = async (data) => {
 
 // --------------------------   GAME SETTING CRUD ------------------------
 
-export const GAME_SEETING_LIST_API = async (id) => {
+export const GAME_SEETING_LIST_API = async (data) => {
   try {
-    const res = await dataservice.get(
-      `${Api.ADMIN_GAME_SETTING}?adminId=${id}`
+    const {userId,gameType}=data
+    const res = await dataservice.get( `${Api.ADMIN_GAME_SETTING}?adminId=${userId}&gameType=${gameType}`
     );
-    return res?.data;
+    return res.data;
   } catch (error) {
     return error;
   }
@@ -285,8 +286,27 @@ export const GET_USERS_IDEAS = async (id) => {
 };
 // --------------------------   USERS CRUD ------------------------
 
-// -------------------------- VERSION CONTROL  ------------------------
 
+
+// -------------------------- DASHBOARD_COUNT ------------------------
+
+// GET_DASHBOARD_COUNT
+
+export const GET_DASHBOARD_COUNT_API = async (id) => {
+  try {
+    const res = await dataservice.get(`${Api.GET_DASHBOARD_COUNT}${id}`);
+    return res?.data
+  } catch (error) {
+    return error
+  }
+};
+
+// -------------------------- DASHBOARD_COUNT ------------------------
+
+
+// -------------------------- APP_SETTINGS ------------------------
+
+//VERSION CONTROL API START
 export const GET_VERSION_API = async (id) => {
   try {
     const res = await dataservice.get(`${Api.GET_VERSION}?adminId=${id}`);
@@ -304,19 +324,28 @@ export const UPDATE_VERSION_API = async(data)=>{
     return error
   }
 }
-// -------------------------- VERSION CONTROL ------------------------
+//VERSION CONTROL API END
 
-// -------------------------- DASHBOARD_COUNT ------------------------
-
-// GET_DASHBOARD_COUNT
-
-export const GET_DASHBOARD_COUNT_API = async (id) => {
+//WALLET CONTACT API START
+export const GET_WALLET_CONTACT_API = async (id) => {
   try {
-    const res = await dataservice.get(`${Api.GET_DASHBOARD_COUNT}${id}`);
+    const res = await dataservice.get(`${Api.WALLET_CONTACT_LIST}?adminId=${id}`);
     return res?.data
   } catch (error) {
     return error
   }
 };
 
-// -------------------------- DASHBOARD_COUNT ------------------------
+export const UPDATE_WALLET_CONTACT_API = async(data)=>{
+  try {
+    const res = await dataservice.put(Api.UPDATE_WALLET_CONTACT,data);
+    return res?.data
+  } catch (error) {
+    return error
+  }
+}
+
+//WALLET CONTACT API END
+
+
+// -------------------------- APP_SETTINGS ------------------------

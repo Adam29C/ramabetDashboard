@@ -5,11 +5,34 @@ import Toggle from "../../Toggle";
 import Swal from "sweetalert2";
 import { GAME_PROVIDER_DELETE_API } from "../../../Services/SuperAdminServices";
 import DeleteSweetAlert from "../../DeleteSweetAlert";
+import { Games_Settings_List } from "../../../Redux/slice/CommonSlice";
 
-const GameProvider = ({ data, path, getGameProviderList, title }) => {
+const GameProvider = ({ path, title, gameType,foreditpath }) => {
   const userId = localStorage.getItem("userId");
   const navigate = PagesIndex.useNavigate();
 
+
+  const dispatch = PagesIndex.useDispatch()
+
+  const { gameSettings } = PagesIndex.useSelector(
+    (state) => state.CommonSlice
+  );
+
+
+
+  const getStarLineSettingList =  () => {
+    let apiData = {
+      userId: userId,
+      gameType: gameType,
+    };
+
+ dispatch(Games_Settings_List(apiData));
+
+  };
+
+  PagesIndex.useEffect(() => {
+    getStarLineSettingList();
+  }, []);
 
   const columns = [
     {
@@ -20,7 +43,7 @@ const GameProvider = ({ data, path, getGameProviderList, title }) => {
           <div className="">
             <div className="break-text">{row.providerName}</div>
             <PagesIndex.Link
-              to={"/admin/game/setting/edit"}
+              to={foreditpath}
               state={{ row: row, rowData: rowData, edit: "multiple" }}
               className="update-button"
             >
@@ -62,7 +85,7 @@ const GameProvider = ({ data, path, getGameProviderList, title }) => {
                 </p>
 
                 <PagesIndex.Link
-                  to={"/admin/game/setting/edit"}
+                  to={foreditpath}
                   state={{ row: row, rowData: rowData, edit: "single" }}
                   className="update-button"
                 >
@@ -109,7 +132,7 @@ const GameProvider = ({ data, path, getGameProviderList, title }) => {
                   </p>
 
                   <PagesIndex.Link
-                    to={"/admin/game/setting/edit"}
+                    to={foreditpath}
                     state={{ row: row, rowData: rowData, edit: "single" }}
                     className="update-button"
                   >
@@ -157,7 +180,7 @@ const GameProvider = ({ data, path, getGameProviderList, title }) => {
                   </p>
 
                   <PagesIndex.Link
-                    to={"/admin/game/setting/edit"}
+                    to={foreditpath}
                     state={{ row: row, rowData: rowData, edit: "single" }}
                     className="update-button"
                   >
@@ -205,7 +228,7 @@ const GameProvider = ({ data, path, getGameProviderList, title }) => {
                   </p>
 
                   <PagesIndex.Link
-                    to={"/admin/game/setting/edit"}
+                    to={foreditpath}
                     state={{ row: row, rowData: rowData, edit: "single" }}
                     className="update-button"
                   >
@@ -253,7 +276,7 @@ const GameProvider = ({ data, path, getGameProviderList, title }) => {
                   </p>
 
                   <PagesIndex.Link
-                    to={"/admin/game/setting/edit"}
+                    to={foreditpath}
                     state={{ row: row, rowData: rowData, edit: "single" }}
                     className="update-button"
                   >
@@ -301,7 +324,7 @@ const GameProvider = ({ data, path, getGameProviderList, title }) => {
                   </p>
 
                   <PagesIndex.Link
-                    to={"/admin/game/setting/edit"}
+                    to={foreditpath}
                     state={{ row: row, rowData: rowData, edit: "single" }}
                     className="update-button"
                   >
@@ -349,7 +372,7 @@ const GameProvider = ({ data, path, getGameProviderList, title }) => {
                   </p>
 
                   <PagesIndex.Link
-                    to={"/admin/game/setting/edit"}
+                    to={foreditpath}
                     state={{ row: row, rowData: rowData, edit: "single" }}
                     className="update-button"
                   >
@@ -374,7 +397,7 @@ const GameProvider = ({ data, path, getGameProviderList, title }) => {
         title={title}
         btnTitle="Add"
       >
-        <PagesIndex.Data_Table columns={columns} data={data} />
+        <PagesIndex.Data_Table columns={columns} data={gameSettings} />
       </PagesIndex.Main_Containt>
     </div>
   );

@@ -13,15 +13,16 @@ const TeamMets = () => {
     dispatch(PagesIndex.getEmployeeList(userId));
   }, []);
 
-  const handleBlockEmployee = async (id) => {
+  const handleBlockEmployee = async (id, isBlock) => {
     try {
-      let data = {
+      let apidata = {
         adminId: userId,
         empId: id,
+        isBlock: !isBlock,
       };
 
-      const res = await PagesIndex.admin_services.BLOCK_EMPLOYEE_API(data);
-   
+      const res = await PagesIndex.admin_services.BLOCK_EMPLOYEE_API(apidata);
+
       if (res?.status === 200) {
         PagesIndex.toast.success(res?.message);
         dispatch(PagesIndex.getEmployeeList(userId));
@@ -36,7 +37,9 @@ const TeamMets = () => {
   return (
     <div className="card">
       <div className="card-body">
-        <h3 className="card-title-text text-center">RamaBets Games Team Members</h3>
+        <h3 className="card-title-text text-center">
+          RamaBets Games Team Members
+        </h3>
         {getEmployeeListState &&
           getEmployeeListState?.map((row) => (
             <div>
@@ -56,7 +59,7 @@ const TeamMets = () => {
 
                 <button
                   type="button"
-                  onClick={() => handleBlockEmployee(row?._id)}
+                  onClick={() => handleBlockEmployee(row?._id, row?.isBlock)}
                   class={`btn ${row?.isBlock ? "btn-success" : "btn-danger"} `}
                 >
                   {row?.isBlock ? "Unblock" : "Block"}

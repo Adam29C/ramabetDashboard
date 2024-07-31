@@ -49,11 +49,11 @@ const GameProvider = ({ data, path, title,gametype }) => {
       ),
     },
     {
-      name: "created At",
+      name: "Created At",
       selector: (row) => Get_Year_Only(row.createdAt),
     },
     {
-      name: "actions",
+      name: "Actions",
       selector: (cell, row) => (
         <div style={{ width: "120px" }}>
           <div>

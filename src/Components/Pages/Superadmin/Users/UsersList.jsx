@@ -46,7 +46,7 @@ let userDeleteReason = true
       selector: (row) => row?.deviceName,
     },
     {
-      name: "isActive",
+      name: "Is Active",
       selector: (row) => (
         <span
           className={`badge fw-bold ${
@@ -58,7 +58,7 @@ let userDeleteReason = true
       ),
     },
     {
-      name: "isBlock",
+      name: "Is Block",
       selector: (row) => (
         <PagesIndex.ChangeStatus
           apiRoute={PagesIndex.admin_services.BLOCK_USER}
@@ -69,7 +69,7 @@ let userDeleteReason = true
       ),
     },
     {
-      name: "isLogin",
+      name: "Is Login",
       selector: (row) => (
         <span
           className={`badge fw-bold ${
@@ -81,7 +81,7 @@ let userDeleteReason = true
       ),
     },
     {
-      name: "actions",
+      name: "Actions",
       selector: (cell, row) => (
         <div style={{ width: "120px" }}>
           <div>

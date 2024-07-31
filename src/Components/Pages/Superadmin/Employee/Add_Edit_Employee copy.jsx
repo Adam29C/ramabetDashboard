@@ -11,8 +11,7 @@ function AddEmployee() {
   const location = PagesIndex.useLocation();
   const userData = location.state;
 
-  console.log("location", location.state);
-
+  
   const formik = PagesIndex.useFormik({
     initialValues: {
       employeeName: userData?.employeeName || "",
@@ -262,6 +261,7 @@ return
       };
       res = await PagesIndex.admin_services.CREATE_EMPLOYEE(req);
     }
+
 
     if (res.status === 200) {
       toast.success(res.message);

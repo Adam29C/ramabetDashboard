@@ -38,8 +38,7 @@ const GameProviderAdd = () => {
           gameType: "MainGame",
           providerName: values.providerName,
           providerResult: values.providerResult,
-
-          activeStatus: values.activeStatus,
+ activeStatus: values.activeStatus,
           mobile: values.mobile.toString(),
           activeStatus: values.activeStatus,
           ...(location?.state?._id ? { providerId: location?.state?._id } : ""),

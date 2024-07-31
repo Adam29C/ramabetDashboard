@@ -37,7 +37,9 @@ const Api = {
   USERS_IDEAS:"/admin/UserIdea",
   GET_VERSION:"/admin/appSetting/listVersionSetting",
   UPDATE_VERSION:"/admin/appSetting/updateVersionSetting",
-  GET_DASHBOARD_COUNT:"/admin/countDashboard/"
+  GET_DASHBOARD_COUNT:"/admin/countDashboard/",
+  WALLET_CONTACT_LIST:"/admin/appSetting/walledContestList",
+  UPDATE_WALLET_CONTACT:"/admin/appSetting/updateWalledContest",
 };
 
 export { Api };
