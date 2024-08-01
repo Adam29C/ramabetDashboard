@@ -87,7 +87,7 @@ const ForStarlineJackpotAdd = ({ gameType, path }) => {
         apidata.providerId = values.providerId;
         apidata.gameDay = values.gameDay;
       }
-      console.log(apidata,"apidata3");
+      // console.log(apidata,"apidata3");
       const res = location?.state.rowData?._id
         ? await PagesIndex.admin_services.GAME_SETTING_UPDATE_API(apidata)
         : await PagesIndex.admin_services.GAME_SETTING_ADD(apidata);
@@ -102,7 +102,7 @@ const ForStarlineJackpotAdd = ({ gameType, path }) => {
       }
     },
   });
-  console.log(formik.values,"formik.values");
+  // console.log(formik.values,"formik.values");
   const fields = [
     {
       name: "providerId",

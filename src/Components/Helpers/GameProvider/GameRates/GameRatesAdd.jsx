@@ -1,13 +1,11 @@
 import React from "react";
 import PagesIndex from "../../../Pages/PagesIndex";
 
-const GameRatesAdd = () => {
+const GameRatesAdd = ({ gameType, path }) => {
   const userId = localStorage.getItem("userId");
   const navigate = PagesIndex.useNavigate();
   const location = PagesIndex.useLocation();
-  console.log(location.state.gameType,"location")
-  let checkStarlinePath = (location.pathname === "/admin/games/starlinegamerates/add" || location.state.gameType === "StarLine")
-  console.log(checkStarlinePath,"checkStarlinePath")
+
   const formik = PagesIndex.useFormik({
     initialValues: {
       gameName: location?.state ? location?.state?.gameName : "",
@@ -29,12 +27,11 @@ const GameRatesAdd = () => {
     onSubmit: async (values) => {
       try {
         let apidata = {
-        
           adminId: userId,
           gameName: values.gameName,
           gamePrice: values.gamePrice,
           ...(location?.state?._id ? { gameRateId: location?.state?._id } : ""),
-          ...(location?.state?._id ? "" : { gameType:"StarLine",}),
+          ...(location?.state?._id ? "" : { gameType: gameType }),
         };
 
         const res = location?.state?._id
@@ -44,8 +41,7 @@ const GameRatesAdd = () => {
         if (res?.status === 200) {
           PagesIndex.toast.success(res?.message);
           setTimeout(() => {
-            if(location.pathname === "/admin/games/starlinegamerates/add" || location.pathname === "/admin/games/starlinegamerates/edit"){}
-            navigate("/admin/game/rates");
+            navigate(path);
           }, 1000);
         } else {
           PagesIndex.toast.error(res.response.data.message);
@@ -76,14 +72,13 @@ const GameRatesAdd = () => {
   return (
     <PagesIndex.Main_Containt
       add_button={true}
-      route={"/admin/game/rates"}
-      title={location?.state ? "Edit Game Rate" : "Add     Game Rate"}
+      route={path}
+      title={location?.state ? "Edit Game Rate" : "Add Game Rate"}
       btnTitle="Back"
     >
       <PagesIndex.Formikform
         fieldtype={fields.filter((field) => !field.showWhen)}
         formik={formik}
-        //   btn_name={loding ? <PagesIndex.Loader text="Submit"/> : "Login"}
         btn_name={location?.state ? "Update" : "Add"}
         button_Size={"w-10"}
         show_submit={true}

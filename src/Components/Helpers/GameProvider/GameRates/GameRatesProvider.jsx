@@ -1,14 +1,28 @@
 import PagesIndex from "../../../Pages/PagesIndex";
 import { Link } from "react-router-dom";
 import { Get_Year_Only } from "../../../Utils/Common_Date";
-import Toggle from "../../Toggle";
-import Swal from "sweetalert2";
+
 import DeleteSweetAlert from "../../DeleteSweetAlert";
-import { GAME_PROVIDER_DELETE_API } from "../../../Services/SuperAdminServices";
-const GameRatesProvider = ({ data, path, getGameRatesList, title }) => {
+
+const GameRatesProvider = ({ gameType, path, title }) => {
   const userId = localStorage.getItem("userId");
-  const navigate = PagesIndex.useNavigate();
-console.log(`${path}/edit`,"path")
+
+  const [data, getData] = PagesIndex.useState([]);
+  let userDeleteReason = false;
+  const getGameRatesList = async () => {
+    let data = {
+      userId: userId,
+      gameType: gameType,
+    };
+    const res = await PagesIndex.admin_services.GAME_RATES_GET_LIST_API(data);
+
+    getData(res?.data);
+  };
+
+  PagesIndex.useEffect(() => {
+    getGameRatesList();
+  }, []);
+
   const columns = [
     {
       name: "Game Name",
@@ -40,8 +54,8 @@ console.log(`${path}/edit`,"path")
                 DeleteSweetAlert(
                   PagesIndex.admin_services.GAME_RATES_DELETE_API,
                   cell?._id,
-                  userId,
-                  getGameRatesList
+                  getGameRatesList,
+                  userDeleteReason
                 )
               }
             >

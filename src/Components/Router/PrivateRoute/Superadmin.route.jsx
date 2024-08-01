@@ -18,7 +18,7 @@ import Add_Edit_Employee from "../../Pages/Superadmin/Employee/Add_Edit_Employee
 import System from "../../Pages/Superadmin/PenalInfo/System";
 import Games from "../../Pages/Superadmin/Games/AvailableGames/Games";
 import GameProviderAdd from "../../Helpers/GameProvider/GameCrud/GameProviderAdd";
-import GameRates from "../../Pages/Superadmin/Games/AvailableGames/GameRates";
+import GameRates from "../../Pages/Superadmin/Games/AvailableGames/GameRates/GameRates";
 import GameRatesAdd from "../../Helpers/GameProvider/GameRates/GameRatesAdd";
 import GameSetting from "../../Pages/Superadmin/Games/AvailableGames/GameSettingList";
 import GameSettingAdd from "../../Helpers/GameProvider/GameSetting/GameSettingAdd";
@@ -41,13 +41,15 @@ import CreditRequest from "../../Pages/Superadmin/CreditRequest/CreditRequest";
 import UsersIdeas from "../../Pages/Superadmin/Users/UsersIdeas";
 import DeleteUsers from "../../Pages/Superadmin/Users/DeleteUsers";
 import AppVersion from "../../Pages/Superadmin/AppSettings/AppVersion";
-import StarLineProvider from "../../Pages/Superadmin/Games/Starline/StarLineProvider";
-import StarLineAddEdit from "../../Pages/Superadmin/Games/Starline/StarLineAddEdit";
+import StarLineProvider from "../../Pages/Superadmin/Games/Starline/StarLineProvider/StarLineProvider";
+import StarLineAddEdit from "../../Pages/Superadmin/Games/Starline/StarLineProvider/StarLineAddEdit";
 import WalletContact from "../../Pages/Superadmin/AppSettings/WalletContact";
-import StarLineSettingsList from "../../Pages/Superadmin/Games/Starline/StarLineSettingsList";
+import StarLineSettingsList from "../../Pages/Superadmin/Games/Starline/StarLineSettings/StarLineSettingsList";
 import ForStarlineJackpotAdd from "../../Helpers/GameProvider/GameSetting/ForStarline&JackpotAdd";
-import StarLineSettingsAddEdit from "../../Pages/Superadmin/Games/Starline/StarLineSettingsAddEdit";
-import StarLineGameRate from "../../Pages/Superadmin/Games/Starline/StarLineGameRate";
+import StarLineSettingsAddEdit from "../../Pages/Superadmin/Games/Starline/StarLineSettings/StarLineSettingsAddEdit";
+import StarLineGameRate from "../../Pages/Superadmin/Games/Starline/StarLineRates/StarLineGameRate";
+import StarLineRatesAddEdit from "../../Pages/Superadmin/Games/Starline/StarLineRates/StarLineRatesAddEdit";
+import GameRatesAddEdit from "../../Pages/Superadmin/Games/AvailableGames/GameRates/GameRatesAddEdit";
 
 
 // Mock authentication status
@@ -116,11 +118,11 @@ const adminRoutes = [
       },
       {
         path: "game/rate/add",
-        element: <PrivateRoute element={GameRatesAdd} />,
+        element: <PrivateRoute element={GameRatesAddEdit} />,
       },
       {
         path: "game/rate/edit",
-        element: <PrivateRoute element={GameRatesAdd} />,
+        element: <PrivateRoute element={GameRatesAddEdit} />,
       },
       {
         path: "game/settings",
@@ -171,11 +173,11 @@ const adminRoutes = [
       },
       {
         path: "games/starlinegamerates/add",
-        element: <PrivateRoute element={GameRatesAdd} />,
+        element: <PrivateRoute element={StarLineRatesAddEdit} />,
       },
       {
         path: "games/starlinegamerates/edit",
-        element: <PrivateRoute element={GameRatesAdd} />,
+        element: <PrivateRoute element={StarLineRatesAddEdit} />,
       },
       {
         path: "cuttinggroup",

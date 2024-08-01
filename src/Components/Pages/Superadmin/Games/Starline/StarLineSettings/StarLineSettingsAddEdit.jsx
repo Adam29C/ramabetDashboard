@@ -1,5 +1,5 @@
 import React from 'react'
-import ForStarlineJackpotAdd from '../../../../Helpers/GameProvider/GameSetting/ForStarline&JackpotAdd'
+import ForStarlineJackpotAdd from '../../../../../Helpers/GameProvider/GameSetting/ForStarline&JackpotAdd'
 
 const StarLineSettingsAddEdit = () => {
   return (

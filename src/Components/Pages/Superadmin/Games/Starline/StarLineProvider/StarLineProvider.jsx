@@ -1,7 +1,7 @@
 
 import React from "react";
-import GameProvider from "../../../../Helpers/GameProvider/GameCrud/GameProvider";
-import PagesIndex from "../../../PagesIndex";
+import GameProvider from "../../../../../Helpers/GameProvider/GameCrud/GameProvider";
+import PagesIndex from "../../../../PagesIndex";
 const StarLineProvider = () => {
 
 
