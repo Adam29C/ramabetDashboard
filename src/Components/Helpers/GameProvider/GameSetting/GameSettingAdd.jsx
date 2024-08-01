@@ -53,21 +53,21 @@ const GameProviderAdd = () => {
         OBRT: values.OBRT,
         CBRT: values.CBRT,
         isClosed: values.isClosed.toString(),
-        gameType: "Main game",
+        gameType: "MainGame",
       };
 
-      if (location?.state.rowData?._id) {
-        data.gameSettingId = location?.state.rowData?._id;
+      if (location?.state?.rowData?._id) {
+        data.gameSettingId = location?.state?.rowData?._id;
       }
 
-      if (location?.state.edit === "multiple") {
+      if (location?.state?.edit === "multiple") {
         data.providerId = values.providerId;
       } else {
         data.providerId = values.providerId;
         data.gameDay = values.gameDay;
       }
 
-      const res = location?.state.rowData?._id
+      const res = location?.state?.rowData?._id
         ? await PagesIndex.admin_services.GAME_SETTING_UPDATE_API(data)
         : await PagesIndex.admin_services.GAME_SETTING_ADD(data);
 
