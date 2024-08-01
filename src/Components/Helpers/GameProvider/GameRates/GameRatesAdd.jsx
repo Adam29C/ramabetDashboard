@@ -5,6 +5,9 @@ const GameRatesAdd = () => {
   const userId = localStorage.getItem("userId");
   const navigate = PagesIndex.useNavigate();
   const location = PagesIndex.useLocation();
+  console.log(location.state.gameType,"location")
+  let checkStarlinePath = (location.pathname === "/admin/games/starlinegamerates/add" || location.state.gameType === "StarLine")
+  console.log(checkStarlinePath,"checkStarlinePath")
   const formik = PagesIndex.useFormik({
     initialValues: {
       gameName: location?.state ? location?.state?.gameName : "",
@@ -26,10 +29,12 @@ const GameRatesAdd = () => {
     onSubmit: async (values) => {
       try {
         let apidata = {
+        
           adminId: userId,
           gameName: values.gameName,
           gamePrice: values.gamePrice,
           ...(location?.state?._id ? { gameRateId: location?.state?._id } : ""),
+          ...(location?.state?._id ? "" : { gameType:"StarLine",}),
         };
 
         const res = location?.state?._id
@@ -39,6 +44,7 @@ const GameRatesAdd = () => {
         if (res?.status === 200) {
           PagesIndex.toast.success(res?.message);
           setTimeout(() => {
+            if(location.pathname === "/admin/games/starlinegamerates/add" || location.pathname === "/admin/games/starlinegamerates/edit"){}
             navigate("/admin/game/rates");
           }, 1000);
         } else {

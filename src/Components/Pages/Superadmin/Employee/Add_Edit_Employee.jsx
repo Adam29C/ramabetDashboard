@@ -260,7 +260,7 @@ function AddEmployee() {
           designation: formik.values.designation,
           loginPermission: 1,
         });
-console.log(res)
+
     if (res.status === 200) {
       PagesIndex.toast.success(res.message);
       setTimeout(() => {

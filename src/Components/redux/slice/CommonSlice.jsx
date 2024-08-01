@@ -100,9 +100,7 @@ const CommonSlice = createSlice({
         };
       })
       .addCase(Games_Settings_List.fulfilled, (state, action) => {
-        {
-          console.log(action.payload.data);
-        }
+   
         return {
           ...state,
           gameSettings: action.payload.data,

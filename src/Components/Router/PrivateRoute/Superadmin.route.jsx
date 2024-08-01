@@ -47,6 +47,7 @@ import WalletContact from "../../Pages/Superadmin/AppSettings/WalletContact";
 import StarLineSettingsList from "../../Pages/Superadmin/Games/Starline/StarLineSettingsList";
 import ForStarlineJackpotAdd from "../../Helpers/GameProvider/GameSetting/ForStarline&JackpotAdd";
 import StarLineSettingsAddEdit from "../../Pages/Superadmin/Games/Starline/StarLineSettingsAddEdit";
+import StarLineGameRate from "../../Pages/Superadmin/Games/Starline/StarLineGameRate";
 
 
 // Mock authentication status
@@ -153,16 +154,28 @@ const adminRoutes = [
         element: <PrivateRoute element={StarLineAddEdit} />,
       },
       {
-        path: "game/starline&jackpot/addSetting",
+        path: "game/starline/addSetting",
         element: <PrivateRoute element={StarLineSettingsAddEdit} />,
       },
       {
-        path: "game/starline&jackpot/updateSetting",
+        path: "game/starline/updateSetting",
         element: <PrivateRoute element={StarLineSettingsAddEdit} />,
       },
       {
         path: "games/starlinegamesetting",
         element: <PrivateRoute element={StarLineSettingsList} />,
+      },
+      {
+        path: "games/starlinegamerates",
+        element: <PrivateRoute element={StarLineGameRate} />,
+      },
+      {
+        path: "games/starlinegamerates/add",
+        element: <PrivateRoute element={GameRatesAdd} />,
+      },
+      {
+        path: "games/starlinegamerates/edit",
+        element: <PrivateRoute element={GameRatesAdd} />,
       },
       {
         path: "cuttinggroup",

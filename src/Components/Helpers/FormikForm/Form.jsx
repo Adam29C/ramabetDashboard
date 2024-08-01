@@ -314,7 +314,7 @@ const ReusableForm = ({
                  type={field.type}
                  name={field.name}
                  className="form-control"
-                 value={getActualDateFormate(field.name)}
+                //  value={getActualDateFormate(field.name)}
                  id={field.name}
                  {...formik.getFieldProps(field.name)}
                  min={field.min && field.min.actual_date_formet}

@@ -8,7 +8,7 @@ import { GAME_PROVIDER_DELETE_API } from "../../../Services/SuperAdminServices";
 const GameRatesProvider = ({ data, path, getGameRatesList, title }) => {
   const userId = localStorage.getItem("userId");
   const navigate = PagesIndex.useNavigate();
-
+console.log(`${path}/edit`,"path")
   const columns = [
     {
       name: "Game Name",

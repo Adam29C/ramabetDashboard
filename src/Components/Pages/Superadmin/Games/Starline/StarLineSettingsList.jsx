@@ -7,8 +7,8 @@ const StarLineSettingsList = () => {
   return (
     <>
       <GameSettings
-      path={"/admin/game/starline&jackpot/addSetting"}
-      foreditpath={"/admin/game/starline&jackpot/updateSetting"}
+      path={"/admin/game/starline/addSetting"}
+      foreditpath={"/admin/game/starline/updateSetting"}
        title="Starline Game Settings"
         gameType= "StarLine"
       />

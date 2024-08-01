@@ -123,10 +123,10 @@ export const GAME_PROVIDER_UPDATE_API = async (data) => {
 };
 
 //GAME RATES API
-export const GAME_RATES_GET_LIST_API = async (id) => {
+export const GAME_RATES_GET_LIST_API = async (data) => {
   try {
-    
-    const res = await dataservice.get(`${Api.ADMIN_GAME_RATES}?adminId=${id}`);
+    let {gameType,userId}=data
+    const res = await dataservice.get(`${Api.ADMIN_GAME_RATES}?adminId=${userId}&gameType=${gameType}`);
     return res?.data;
   } catch (error) {
     return error;
@@ -183,9 +183,10 @@ export const GAME_SEETING_LIST_API = async (data) => {
   }
 };
 
-export const GAME_SETTING_ADD = async (id) => {
+export const GAME_SETTING_ADD = async (data) => {
+  console.log(id,"check data onsubmit")
   try {
-    const res = await dataservice.post(`${Api.ADMIN_GAME_SETTING}`, id);
+    const res = await dataservice.post(`${Api.ADMIN_GAME_SETTING}`, data);
     return res?.data;
   } catch (error) {
     return error;

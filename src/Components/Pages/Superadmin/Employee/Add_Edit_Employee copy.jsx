@@ -196,7 +196,6 @@ function AddEmployee() {
   }
 
 
-  console.log("updateCheckedStatus(makePermissions, [location?.state?.permission])" ,updateCheckedStatus(makePermissions, [location?.state?.permission]));
   useEffect(() => {
     if (location?.state?.permission) {
       updateCheckedStatus(makePermissions, [location?.state?.permission]);
@@ -228,9 +227,6 @@ function AddEmployee() {
 
 
 
-    console.log('====================================' , formik1.values);
-    console.log("updatedABCupdatedABC" ,updatedABC);
-    console.log('====================================');
 
     const req = {
       adminId: userId,
@@ -241,7 +237,7 @@ function AddEmployee() {
       ...(location?.state ? { empId: location?.state?._id } : {}),
     };
 
-    console.log("reqreqreqreqreq" ,req);
+
 
 return
 

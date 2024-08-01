@@ -2,11 +2,12 @@ import React from "react";
 import PagesIndex from "../../../Pages/PagesIndex";
 
 const ForStarlineJackpotAdd = ({ gameType, path }) => {
+  // console.log("testinggggggggggggg");
   const userId = localStorage.getItem("userId");
   const navigate = PagesIndex.useNavigate();
   const location = PagesIndex.useLocation();
   const dispatch = PagesIndex.useDispatch();
-
+  // console.log(location.state, "location");
   const data = PagesIndex.useSelector((state) => {
     return state.CommonSlice.gameProviders;
   });
@@ -24,7 +25,24 @@ const ForStarlineJackpotAdd = ({ gameType, path }) => {
     getGameProviderList();
   }, []);
 
+  const convertTo24HourFormat = (time12h) => {
+    const [time, modifier] = time12h.split(' ');
+  
+    let [hours, minutes] = time.split(':');
+  
+    if (hours === '12') {
+      hours = '00';
+    }
+  
+    if (modifier === 'PM') {
+      hours = parseInt(hours, 10) + 12;
+    }
+  
+    return `${hours.toString().padStart(2, '0')}:${minutes}`;
+  };
+  const initialTime12h = '01:01 PM';
   const formik = PagesIndex.useFormik({
+   
     initialValues: {
       providerId: location?.state?.row ? location?.state?.row.providerId : "",
       gameDay:
@@ -41,39 +59,38 @@ const ForStarlineJackpotAdd = ({ gameType, path }) => {
         : "1",
     },
     validate: (values) => {
-      const errors = {};
-
-      return errors;
+      // const errors = {};
+      // return errors;
     },
 
     onSubmit: async (values) => {
-      let data = {
+      // console.log("values after submit", values);
+      // console.log(location, "check data onsubmit");
+      let apidata = {
         adminId: userId,
         gameType: gameType,
         providerId: values.providerId,
         OBT: values.OBT,
         CBT: values.CBT,
         OBRT: values.OBRT,
-        // CBRT: values.CBRT,
         CBRT: "null",
         isClosed: values.isClosed.toString(),
-        // gameType: "Main game",
       };
 
       if (location?.state.rowData?._id) {
-        data.gameSettingId = location?.state.rowData?._id;
+        apidata.gameSettingId = location?.state.rowData?._id;
       }
 
       if (location?.state.edit === "multiple") {
-        data.providerId = values.providerId;
+        apidata.providerId = values.providerId;
       } else {
-        data.providerId = values.providerId;
-        data.gameDay = values.gameDay;
+        apidata.providerId = values.providerId;
+        apidata.gameDay = values.gameDay;
       }
-
+      console.log(apidata,"apidata3");
       const res = location?.state.rowData?._id
-        ? await PagesIndex.admin_services.GAME_SETTING_UPDATE_API(data)
-        : await PagesIndex.admin_services.GAME_SETTING_ADD(data);
+        ? await PagesIndex.admin_services.GAME_SETTING_UPDATE_API(apidata)
+        : await PagesIndex.admin_services.GAME_SETTING_ADD(apidata);
 
       if (res?.status === 200) {
         PagesIndex.toast.success(res?.message);
@@ -85,7 +102,7 @@ const ForStarlineJackpotAdd = ({ gameType, path }) => {
       }
     },
   });
-
+  console.log(formik.values,"formik.values");
   const fields = [
     {
       name: "providerId",
@@ -163,8 +180,12 @@ const ForStarlineJackpotAdd = ({ gameType, path }) => {
   return (
     <PagesIndex.Main_Containt
       add_button={true}
-      route="/admin/game/settings"
-      title="Game Setting Add"
+      route={path}
+      title={
+        location?.state
+          ? `${gameType} Game Setting Update`
+          : `${gameType} Game Setting Add`
+      }
     >
       <PagesIndex.Formikform
         fieldtype={fields.filter((field) => !field.showWhen)}

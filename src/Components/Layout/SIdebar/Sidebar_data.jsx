@@ -90,6 +90,7 @@ export const admin_Sidebar = [
         title: "Game Rates",
         route: "game/rates",
       },
+      
       {
         id: 4,
         title: "Game Result",
@@ -126,7 +127,7 @@ export const admin_Sidebar = [
       {
         id: 3,
         title: "Star Game Rates",
-        route: "#",
+        route: "games/starlinegamerates",
       },
       {
         id: 4,

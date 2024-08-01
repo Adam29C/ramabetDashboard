@@ -11,15 +11,12 @@ const GameProviderAdd = () => {
     return state.CommonSlice.gameProviders;
   });
 
-  const getGameProviderList = async () => {
+  const getGameProviderList = () => {
     let providerapidata = {
-      userId:userId,
-      gameType:"MainGame"
-    }
-    console.log(providerapidata)
-    const res = await dispatch(
-      PagesIndex.commonSlice.Games_Provider_List(providerapidata)
-    );
+      userId: userId,
+      gameType: "MainGame",
+    };
+    dispatch(PagesIndex.commonSlice.Games_Provider_List(providerapidata));
   };
 
   PagesIndex.useEffect(() => {
