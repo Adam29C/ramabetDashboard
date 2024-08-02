@@ -57,7 +57,7 @@ const GameProvider = ({ data, path, title,gametype }) => {
       selector: (cell, row) => (
         <div style={{ width: "120px" }}>
           <div>
-            <Link to={path} state={cell}>
+            <Link to={`${path}/edit`} state={cell}>
               <span data-toggle="tooltip" data-placement="top" title="Edit">
                 <i class="ti-marker-alt fs-5 mx-1 "></i>
               </span>
@@ -89,7 +89,7 @@ const GameProvider = ({ data, path, title,gametype }) => {
       <div>
         <PagesIndex.Main_Containt
           add_button={true}
-          route={path}
+          route={`${path}/add`}
           title={title}
           btnTitle="Add"
         >

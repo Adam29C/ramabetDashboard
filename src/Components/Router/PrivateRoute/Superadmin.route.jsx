@@ -50,6 +50,11 @@ import StarLineSettingsAddEdit from "../../Pages/Superadmin/Games/Starline/StarL
 import StarLineGameRate from "../../Pages/Superadmin/Games/Starline/StarLineRates/StarLineGameRate";
 import StarLineRatesAddEdit from "../../Pages/Superadmin/Games/Starline/StarLineRates/StarLineRatesAddEdit";
 import GameRatesAddEdit from "../../Pages/Superadmin/Games/AvailableGames/GameRates/GameRatesAddEdit";
+import JackpotProvider from "../../Pages/Superadmin/Games/Jackpot/JackPotProvider/JackpotProvider";
+import JackPotProviderAddEdit from "../../Pages/Superadmin/Games/Jackpot/JackPotProvider/JackPotProviderAddEdit";
+import JackPotRates from "../../Pages/Superadmin/Games/Jackpot/JackPotRates/JackPotRates";
+import JackPotRatesAddEdit from "../../Pages/Superadmin/Games/Jackpot/JackPotRates/JackPotRatesAddEdit";
+import NoticeBoard from "../../Pages/Superadmin/AppSettings/NoticeBoard";
 
 
 // Mock authentication status
@@ -156,6 +161,10 @@ const adminRoutes = [
         element: <PrivateRoute element={StarLineAddEdit} />,
       },
       {
+        path: "games/starlineProvider/edit",
+        element: <PrivateRoute element={StarLineAddEdit} />,
+      },
+      {
         path: "game/starline/addSetting",
         element: <PrivateRoute element={StarLineSettingsAddEdit} />,
       },
@@ -180,6 +189,30 @@ const adminRoutes = [
         element: <PrivateRoute element={StarLineRatesAddEdit} />,
       },
       {
+        path: "games/jackpotProvider",
+        element: <PrivateRoute element={JackpotProvider} />,
+      },
+      {
+        path: "games/jackpotProvider/add",
+        element: <PrivateRoute element={JackPotProviderAddEdit} />,
+      },
+      {
+        path: "games/jackpotProvider/edit",
+        element: <PrivateRoute element={JackPotProviderAddEdit} />,
+      },
+      {
+        path: "games/jackpotRates",
+        element: <PrivateRoute element={JackPotRates} />,
+      },
+      {
+        path: "games/jackpotRates/add",
+        element: <PrivateRoute element={JackPotRatesAddEdit} />,
+      },
+      {
+        path: "games/jackpotRates/edit",
+        element: <PrivateRoute element={JackPotRatesAddEdit} />,
+      },
+      {
         path: "cuttinggroup",
         element: <PrivateRoute element={CuttingGroup} />,
       },
@@ -195,7 +228,6 @@ const adminRoutes = [
         path: "wallet/manualrequest",
         element: <PrivateRoute element={ManualRequest} />,
       },
-      
       {
         path: "wallet/debitreport",
         element: <PrivateRoute element={ExportDebitReport} />,
@@ -233,6 +265,12 @@ const adminRoutes = [
         path: "appSettings/walletContact",
         element: <PrivateRoute element={WalletContact} />,
       },
+      {
+        path: "appSettings/noticeBoard",
+        element: <PrivateRoute element={NoticeBoard} />,
+      },
+
+      
    
     ],
   },

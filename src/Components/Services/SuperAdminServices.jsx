@@ -348,5 +348,25 @@ export const UPDATE_WALLET_CONTACT_API = async(data)=>{
 
 //WALLET CONTACT API END
 
+//NOTICE BOARD API START
+export const GET_NOTICE_BOARD_API = async (id) => {
+  try {
+    const res = await dataservice.get(`${Api.NOTICE_BOARD_LIST}?adminId=${id}`);
+    return res?.data
+  } catch (error) {
+    return error
+  }
+};
+
+export const UPDATE_NOTICE_BOARD_API = async(data)=>{
+  try {
+    const res = await dataservice.put(Api.UPDATE_NOTICE_BOARD,data);
+    return res?.data
+  } catch (error) {
+    return error
+  }
+}
+//NOTICE BOARD API END
+
 
 // -------------------------- APP_SETTINGS ------------------------

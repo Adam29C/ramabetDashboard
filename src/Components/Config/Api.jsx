@@ -40,6 +40,10 @@ const Api = {
   GET_DASHBOARD_COUNT:"/admin/countDashboard/",
   WALLET_CONTACT_LIST:"/admin/appSetting/walledContestList",
   UPDATE_WALLET_CONTACT:"/admin/appSetting/updateWalledContest",
+
+  //NOTICE BOARD
+  NOTICE_BOARD_LIST:"/admin/appSetting/noticeBoardList",
+  UPDATE_NOTICE_BOARD:"/admin/appSetting/updateNoticeBoard",
 };
 
 export { Api };

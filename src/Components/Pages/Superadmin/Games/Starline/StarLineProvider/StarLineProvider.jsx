@@ -8,7 +8,7 @@ const StarLineProvider = () => {
   return (
     <div>
       <GameProvider
-       path="/admin/games/starlineProvider/add"
+       path="/admin/games/starlineProvider"
        title="StarLine Provider"
        gametype="StarLine"
       />

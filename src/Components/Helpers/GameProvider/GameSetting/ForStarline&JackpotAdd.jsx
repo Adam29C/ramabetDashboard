@@ -64,7 +64,7 @@ const ForStarlineJackpotAdd = ({ gameType, path }) => {
     },
 
     onSubmit: async (values) => {
-      console.log(values,"values");
+      // console.log(values,"values");
       
       let data = {
         adminId: userId,
@@ -87,8 +87,8 @@ const ForStarlineJackpotAdd = ({ gameType, path }) => {
         data.providerId = values.providerId;
         data.gameDay = values.gameDay;
       }
-      console.log(data,"apidata3");
-      console.log(location?.state?.rowData?._id ? "update" : "add","checkkkkkkkkkkkkk");
+      // console.log(data,"apidata3");
+      // console.log(location?.state?.rowData?._id ? "update" : "add","checkkkkkkkkkkkkk");
       const res = location?.state?.rowData?._id
         ? await PagesIndex.admin_services.GAME_SETTING_UPDATE_API(data)
         : await PagesIndex.admin_services.GAME_SETTING_ADD(data);
