@@ -45,6 +45,7 @@ const GameProviderAdd = () => {
     },
 
     onSubmit: async (values) => {
+      console.log(values,"values")
       let data = {
         adminId: userId,
         providerId: values.providerId,
@@ -66,7 +67,7 @@ const GameProviderAdd = () => {
         data.providerId = values.providerId;
         data.gameDay = values.gameDay;
       }
-
+console.log(data,"data")
       const res = location?.state?.rowData?._id
         ? await PagesIndex.admin_services.GAME_SETTING_UPDATE_API(data)
         : await PagesIndex.admin_services.GAME_SETTING_ADD(data);

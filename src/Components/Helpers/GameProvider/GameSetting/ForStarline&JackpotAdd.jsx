@@ -49,9 +49,9 @@ const ForStarlineJackpotAdd = ({ gameType, path }) => {
         location?.state?.edit === "single"
           ? location?.state?.rowData.gameDay
           : "all",
-      OBT: location?.state?.rowData ? location?.state?.rowData.OBT : "",
-      CBT: location?.state?.rowData ? location?.state?.rowData.CBT : "",
-      OBRT: location?.state?.rowData ? location?.state?.rowData.OBRT : "",
+      OBT: location?.state?.rowData ? convertTo24HourFormat(location?.state?.rowData.OBT ): "",
+      CBT: location?.state?.rowData ? convertTo24HourFormat(location?.state?.rowData.CBT) : "",
+      OBRT: location?.state?.rowData ? convertTo24HourFormat(location?.state?.rowData.OBRT) : "",
       // CBRT: location?.state?.rowData ? location?.state?.rowData.CBRT : "",
       CBRT: "null",
       isClosed: location?.state?.rowData
@@ -64,9 +64,9 @@ const ForStarlineJackpotAdd = ({ gameType, path }) => {
     },
 
     onSubmit: async (values) => {
-      // console.log("values after submit", values);
-      // console.log(location, "check data onsubmit");
-      let apidata = {
+      console.log(values,"values");
+      
+      let data = {
         adminId: userId,
         gameType: gameType,
         providerId: values.providerId,
@@ -77,20 +77,21 @@ const ForStarlineJackpotAdd = ({ gameType, path }) => {
         isClosed: values.isClosed.toString(),
       };
 
-      if (location?.state.rowData?._id) {
-        apidata.gameSettingId = location?.state.rowData?._id;
+      if (location?.state?.rowData?._id) {
+        data.gameSettingId = location?.state.rowData?._id;
       }
 
-      if (location?.state.edit === "multiple") {
-        apidata.providerId = values.providerId;
+      if (location?.state?.edit === "multiple") {
+        data.providerId = values.providerId;
       } else {
-        apidata.providerId = values.providerId;
-        apidata.gameDay = values.gameDay;
+        data.providerId = values.providerId;
+        data.gameDay = values.gameDay;
       }
-      // console.log(apidata,"apidata3");
-      const res = location?.state.rowData?._id
-        ? await PagesIndex.admin_services.GAME_SETTING_UPDATE_API(apidata)
-        : await PagesIndex.admin_services.GAME_SETTING_ADD(apidata);
+      console.log(data,"apidata3");
+      console.log(location?.state?.rowData?._id ? "update" : "add","checkkkkkkkkkkkkk");
+      const res = location?.state?.rowData?._id
+        ? await PagesIndex.admin_services.GAME_SETTING_UPDATE_API(data)
+        : await PagesIndex.admin_services.GAME_SETTING_ADD(data);
 
       if (res?.status === 200) {
         PagesIndex.toast.success(res?.message);

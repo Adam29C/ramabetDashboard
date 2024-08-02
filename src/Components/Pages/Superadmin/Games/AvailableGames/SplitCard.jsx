@@ -17,9 +17,13 @@ const ExamplePage = () => {
     return state.CommonSlice.gameProviders;
   });
 
-  const getGameRatesList = async () => {
-    const res = await dispatch(
-      PagesIndex.commonSlice.Games_Provider_List(userId)
+  const getGameRatesList =  () => {
+    let apidata = {
+      userId: userId,
+      gameType: "MainGame",
+    };
+   dispatch(
+      PagesIndex.commonSlice.Games_Provider_List(apidata)
     );
   };
 
