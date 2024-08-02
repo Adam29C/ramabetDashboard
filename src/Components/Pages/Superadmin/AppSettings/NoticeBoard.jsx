@@ -100,7 +100,7 @@ const contactRegex = (numbervalue) => {
         description1:values.description1,
         description2: values.description2,
         description3: values.description3,
-        contect: values.contect,
+        contact: values.contect,
       };
  
 

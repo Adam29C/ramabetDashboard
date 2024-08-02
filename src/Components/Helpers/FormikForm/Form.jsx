@@ -320,7 +320,13 @@ const ReusableForm = ({
                  min={field.min && field.min.actual_date_formet}
                  max={field.max && field.max.actual_date_formet}
                />
+                     {formik.errors[field.name] && (
+                        <div className="error-text">
+                          {formik.errors[field.name]}
+                        </div>
+                      )}
              </div>
+       
                   {/* <div className={`col-lg-${field.col_size}`}>
                     <div className=" row flex-column">
                       <label

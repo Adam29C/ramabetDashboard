@@ -7,7 +7,7 @@ const List = () => {
   return (
     <div>
       <GameProvider
-       path={"/admin/game/add"}
+       path={"/admin/game"}
        title="Game Provider"
        gametype="MainGame"
       />

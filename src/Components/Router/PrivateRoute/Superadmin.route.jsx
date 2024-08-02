@@ -55,6 +55,8 @@ import JackPotProviderAddEdit from "../../Pages/Superadmin/Games/Jackpot/JackPot
 import JackPotRates from "../../Pages/Superadmin/Games/Jackpot/JackPotRates/JackPotRates";
 import JackPotRatesAddEdit from "../../Pages/Superadmin/Games/Jackpot/JackPotRates/JackPotRatesAddEdit";
 import NoticeBoard from "../../Pages/Superadmin/AppSettings/NoticeBoard";
+import JackPotSettings from "../../Pages/Superadmin/Games/Jackpot/JackPotSettings/JackPotSettings";
+import JackPotAddEdit from "../../Pages/Superadmin/Games/Jackpot/JackPotSettings/JackPotAddEdit";
 
 
 // Mock authentication status
@@ -164,18 +166,20 @@ const adminRoutes = [
         path: "games/starlineProvider/edit",
         element: <PrivateRoute element={StarLineAddEdit} />,
       },
-      {
-        path: "game/starline/addSetting",
-        element: <PrivateRoute element={StarLineSettingsAddEdit} />,
-      },
-      {
-        path: "game/starline/updateSetting",
-        element: <PrivateRoute element={StarLineSettingsAddEdit} />,
-      },
+
       {
         path: "games/starlinegamesetting",
         element: <PrivateRoute element={StarLineSettingsList} />,
       },
+      {
+        path: "games/starlinegamesetting/add",
+        element: <PrivateRoute element={StarLineSettingsAddEdit} />,
+      },
+      {
+        path: "games/starlinegamesetting/edit",
+        element: <PrivateRoute element={StarLineSettingsAddEdit} />,
+      },
+      
       {
         path: "games/starlinegamerates",
         element: <PrivateRoute element={StarLineGameRate} />,
@@ -211,6 +215,18 @@ const adminRoutes = [
       {
         path: "games/jackpotRates/edit",
         element: <PrivateRoute element={JackPotRatesAddEdit} />,
+      },
+      {
+        path: "games/jackpotGameSetting",
+        element: <PrivateRoute element={JackPotSettings} />,
+      },
+      {
+        path: "games/jackpotGameSetting/add",
+        element: <PrivateRoute element={JackPotAddEdit} />,
+      },
+      {
+        path: "games/jackpotGameSetting/edit",
+        element: <PrivateRoute element={JackPotAddEdit} />,
       },
       {
         path: "cuttinggroup",

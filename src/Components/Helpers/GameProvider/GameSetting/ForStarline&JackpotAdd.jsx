@@ -25,21 +25,21 @@ const ForStarlineJackpotAdd = ({ gameType, path }) => {
     getGameProviderList();
   }, []);
 
-  const convertTo24HourFormat = (time12h) => {
-    const [time, modifier] = time12h.split(' ');
+  // const convertTo24HourFormat = (time12h) => {
+  //   const [time, modifier] = time12h.split(' ');
   
-    let [hours, minutes] = time.split(':');
+  //   let [hours, minutes] = time.split(':');
   
-    if (hours === '12') {
-      hours = '00';
-    }
+  //   if (hours === '12') {
+  //     hours = '00';
+  //   }
   
-    if (modifier === 'PM') {
-      hours = parseInt(hours, 10) + 12;
-    }
+  //   if (modifier === 'PM') {
+  //     hours = parseInt(hours, 10) + 12;
+  //   }
   
-    return `${hours.toString().padStart(2, '0')}:${minutes}`;
-  };
+  //   return `${hours.toString().padStart(2, '0')}:${minutes}`;
+  // };
   const initialTime12h = '01:01 PM';
   const formik = PagesIndex.useFormik({
    
@@ -49,9 +49,9 @@ const ForStarlineJackpotAdd = ({ gameType, path }) => {
         location?.state?.edit === "single"
           ? location?.state?.rowData.gameDay
           : "all",
-      OBT: location?.state?.rowData ? convertTo24HourFormat(location?.state?.rowData.OBT ): "",
-      CBT: location?.state?.rowData ? convertTo24HourFormat(location?.state?.rowData.CBT) : "",
-      OBRT: location?.state?.rowData ? convertTo24HourFormat(location?.state?.rowData.OBRT) : "",
+      OBT: location?.state?.rowData ?location?.state?.rowData.OBT : "",
+      CBT: location?.state?.rowData ?location?.state?.rowData.CBT : "",
+      OBRT: location?.state?.rowData ? location?.state?.rowData.OBRT : "",
       // CBRT: location?.state?.rowData ? location?.state?.rowData.CBRT : "",
       CBRT: "null",
       isClosed: location?.state?.rowData
@@ -59,8 +59,23 @@ const ForStarlineJackpotAdd = ({ gameType, path }) => {
         : "1",
     },
     validate: (values) => {
-      // const errors = {};
-      // return errors;
+      console.log(values)
+      const errors = {};
+      if(!values.providerId && formik.touched.providerId ){
+        errors.providerId= PagesIndex.valid_err.PROVIDER_NAME_REQUIRED
+      }
+      if(!values.OBT && formik.touched.OBT ){
+        errors.OBT= PagesIndex.valid_err.OPEN_BID_TIME_IS_REQUIRED
+      }
+      if(!values.CBT && formik.touched.CBT ){
+        errors.CBT= PagesIndex.valid_err.CLOSE_BID_TIME_IS_REQUIRED
+      }
+      if(!values.OBRT && formik.touched.OBRT ){
+        errors.OBRT= PagesIndex.valid_err.OPEN_BID_RESULT_TIME_IS_REQUIRED
+      }
+    
+    console.log(errors)
+      return errors;
     },
 
     onSubmit: async (values) => {

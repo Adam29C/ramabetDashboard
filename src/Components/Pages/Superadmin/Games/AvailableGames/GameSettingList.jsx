@@ -5,8 +5,8 @@ const GameSettingList = () => {
   return (
     <>
       <GameSettings
-        path={"/admin/game/setting/add"}
-        foreditpath={"/admin/game/setting/edit"}
+        path={"/admin/game/setting"}
+   
         title="Game Setting "
         gameType="MainGame"
       />

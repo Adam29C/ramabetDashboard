@@ -39,8 +39,24 @@ const GameProviderAdd = () => {
         : "1",
     },
     validate: (values) => {
+      console.log(values)
       const errors = {};
-
+      if(!values.providerId && formik.touched.providerId ){
+        errors.providerId= PagesIndex.valid_err.PROVIDER_NAME_REQUIRED
+      }
+      if(!values.OBT && formik.touched.OBT ){
+        errors.OBT= PagesIndex.valid_err.OPEN_BID_TIME_IS_REQUIRED
+      }
+      if(!values.CBT && formik.touched.CBT ){
+        errors.CBT= PagesIndex.valid_err.CLOSE_BID_TIME_IS_REQUIRED
+      }
+      if(!values.OBRT && formik.touched.OBRT ){
+        errors.OBRT= PagesIndex.valid_err.OPEN_BID_RESULT_TIME_IS_REQUIRED
+      }
+      if(!values.CBRT && formik.touched.CBRT ){
+        errors.CBRT= PagesIndex.valid_err.CLOSE_BID_RESULT_TIME_IS_REQUIRED
+      }
+    console.log(errors)
       return errors;
     },
 

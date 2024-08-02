@@ -6,28 +6,24 @@ import Swal from "sweetalert2";
 import { GAME_PROVIDER_DELETE_API } from "../../../Services/SuperAdminServices";
 import DeleteSweetAlert from "../../DeleteSweetAlert";
 import { Games_Settings_List } from "../../../Redux/slice/CommonSlice";
+import { convertTo12HourFormat } from "../../../Utils/Valid_Rejex";
 
-const GameProvider = ({ path, title, gameType,foreditpath }) => {
+const GameProvider = ({ path, title, gameType }) => {
+  console.log(gameType === "MainGame" ? "true" : "false");
   const userId = localStorage.getItem("userId");
   const navigate = PagesIndex.useNavigate();
 
+  const dispatch = PagesIndex.useDispatch();
 
-  const dispatch = PagesIndex.useDispatch()
+  const { gameSettings } = PagesIndex.useSelector((state) => state.CommonSlice);
 
-  const { gameSettings } = PagesIndex.useSelector(
-    (state) => state.CommonSlice
-  );
-
-
-
-  const getStarLineSettingList =  () => {
+  const getStarLineSettingList = () => {
     let apiData = {
       userId: userId,
       gameType: gameType,
     };
 
- dispatch(Games_Settings_List(apiData));
-
+    dispatch(Games_Settings_List(apiData));
   };
 
   PagesIndex.useEffect(() => {
@@ -43,7 +39,7 @@ const GameProvider = ({ path, title, gameType,foreditpath }) => {
           <div className="">
             <div className="break-text">{row.providerName}</div>
             <PagesIndex.Link
-              to={foreditpath}
+              to={`${path}/edit`}
               state={{ row: row, rowData: rowData, edit: "multiple" }}
               className="update-button"
             >
@@ -63,29 +59,34 @@ const GameProvider = ({ path, title, gameType,foreditpath }) => {
               <>
                 <p className="game-setting-font">
                   <span className="fw-bold"> OBT</span> :
-                  {rowData ? rowData.OBT : "N/A"}
+                  {rowData ? convertTo12HourFormat(rowData.OBT) : "N/A"}
                 </p>
                 <p className="game-setting-font">
                   <span className="fw-bold"> CBT</span> :
-                  {rowData ? rowData.CBT : "N/A"}
+                  {rowData ? convertTo12HourFormat(rowData.CBT) : "N/A"}
                 </p>
                 <p className="game-setting-font">
                   <span className="fw-bold"> OBRT</span> :
-                  {rowData ? rowData.OBRT : "N/A"}
+                  {rowData ? convertTo12HourFormat(rowData.OBRT) : "N/A"}
                 </p>
-                <p className="game-setting-font">
-                  <span className="fw-bold"> CBRT</span> :
-                  {rowData ? rowData.CBRT : "N/A"}
-                </p>
+                {gameType === "MainGame" ? (
+                  <p className="game-setting-font">
+                    <span className="fw-bold"> CBRT</span> :
+                    {rowData ? convertTo12HourFormat(rowData.CBRT): "N/A"}
+                  </p>
+                ) : (
+                  ""
+                )}
+
                 <p className="game-setting-font">
                   <span className="fw-bold">
                     IsClosed :
-                    {rowData ? (rowData.isClosed ? "Closed" : "Open") : "N/A"}
+                    {rowData ? (rowData.isClosed ? "Open" : "Closed") : "N/A"}
                   </span>
                 </p>
 
                 <PagesIndex.Link
-                  to={foreditpath}
+                  to={`${path}/edit`}
                   state={{ row: row, rowData: rowData, edit: "single" }}
                   className="update-button"
                 >
@@ -110,20 +111,25 @@ const GameProvider = ({ path, title, gameType,foreditpath }) => {
                 <>
                   <p className="game-setting-font">
                     <span className="fw-bold"> OBT</span> :
-                    {rowData ? rowData.OBT : "N/A"}
+                    {rowData ? convertTo12HourFormat(rowData.OBT) : "N/A"}
                   </p>
                   <p className="game-setting-font">
                     <span className="fw-bold"> CBT</span> :
-                    {rowData ? rowData.CBT : "N/A"}
+                    {rowData ? convertTo12HourFormat(rowData.CBT) : "N/A"}
                   </p>
                   <p className="game-setting-font">
                     <span className="fw-bold"> OBRT</span> :
-                    {rowData ? rowData.OBRT : "N/A"}
+                    {rowData ? convertTo12HourFormat(rowData.OBRT) : "N/A"}
                   </p>
-                  <p className="game-setting-font">
-                    <span className="fw-bold"> CBRT</span> :
-                    {rowData ? rowData.CBRT : "N/A"}
-                  </p>
+                  {gameType === "MainGame" ? (
+                    <p className="game-setting-font">
+                      <span className="fw-bold"> CBRT</span> :
+                      {rowData ? convertTo12HourFormat(rowData.CBRT) : "N/A"}
+                    </p>
+                  ) : (
+                    ""
+                  )}
+
                   <p className="game-setting-font">
                     <span className="fw-bold">
                       IsClosed :
@@ -132,7 +138,7 @@ const GameProvider = ({ path, title, gameType,foreditpath }) => {
                   </p>
 
                   <PagesIndex.Link
-                    to={foreditpath}
+                    to={`${path}/edit`}
                     state={{ row: row, rowData: rowData, edit: "single" }}
                     className="update-button"
                   >
@@ -158,20 +164,26 @@ const GameProvider = ({ path, title, gameType,foreditpath }) => {
                 <>
                   <p className="game-setting-font">
                     <span className="fw-bold"> OBT</span> :
-                    {rowData ? rowData.OBT : "N/A"}
+                    {rowData ? convertTo12HourFormat(rowData.OBT) : "N/A"}
                   </p>
                   <p className="game-setting-font">
                     <span className="fw-bold"> CBT</span> :
-                    {rowData ? rowData.CBT : "N/A"}
+                    {rowData ? convertTo12HourFormat(rowData.CBT) : "N/A"}
                   </p>
                   <p className="game-setting-font">
                     <span className="fw-bold"> OBRT</span> :
-                    {rowData ? rowData.OBRT : "N/A"}
+                    {rowData ? convertTo12HourFormat(rowData.OBRT) : "N/A"}
                   </p>
-                  <p className="game-setting-font">
-                    <span className="fw-bold"> CBRT</span> :
-                    {rowData ? rowData.CBRT : "N/A"}
-                  </p>
+
+                  {gameType === "MainGame" ? (
+                    <p className="game-setting-font">
+                      <span className="fw-bold"> CBRT</span> :
+                      {rowData ? convertTo12HourFormat(rowData.CBRT) : "N/A"}
+                    </p>
+                  ) : (
+                    ""
+                  )}
+
                   <p className="game-setting-font">
                     <span className="fw-bold">
                       IsClosed :
@@ -180,7 +192,7 @@ const GameProvider = ({ path, title, gameType,foreditpath }) => {
                   </p>
 
                   <PagesIndex.Link
-                    to={foreditpath}
+                    to={`${path}/edit`}
                     state={{ row: row, rowData: rowData, edit: "single" }}
                     className="update-button"
                   >
@@ -206,20 +218,26 @@ const GameProvider = ({ path, title, gameType,foreditpath }) => {
                 <>
                   <p className="game-setting-font">
                     <span className="fw-bold"> OBT</span> :
-                    {rowData ? rowData.OBT : "N/A"}
+                    {rowData ? convertTo12HourFormat(rowData.OBT) : "N/A"}
                   </p>
                   <p className="game-setting-font">
                     <span className="fw-bold"> CBT</span> :
-                    {rowData ? rowData.CBT : "N/A"}
+                    {rowData ? convertTo12HourFormat(rowData.CBT) : "N/A"}
                   </p>
                   <p className="game-setting-font">
                     <span className="fw-bold"> OBRT</span> :
-                    {rowData ? rowData.OBRT : "N/A"}
+                    {rowData ? convertTo12HourFormat(rowData.OBRT) : "N/A"}
                   </p>
-                  <p className="game-setting-font">
-                    <span className="fw-bold"> CBRT</span> :
-                    {rowData ? rowData.CBRT : "N/A"}
-                  </p>
+
+                  {gameType === "MainGame" ? (
+                    <p className="game-setting-font">
+                      <span className="fw-bold"> CBRT</span> :
+                      {rowData ? convertTo12HourFormat(rowData.CBRT) : "N/A"}
+                    </p>
+                  ) : (
+                    ""
+                  )}
+
                   <p className="game-setting-font">
                     <span className="fw-bold">
                       IsClosed :
@@ -228,7 +246,7 @@ const GameProvider = ({ path, title, gameType,foreditpath }) => {
                   </p>
 
                   <PagesIndex.Link
-                    to={foreditpath}
+                    to={`${path}/edit`}
                     state={{ row: row, rowData: rowData, edit: "single" }}
                     className="update-button"
                   >
@@ -254,20 +272,25 @@ const GameProvider = ({ path, title, gameType,foreditpath }) => {
                 <>
                   <p className="game-setting-font">
                     <span className="fw-bold"> OBT</span> :
-                    {rowData ? rowData.OBT : "N/A"}
+                    {rowData ? convertTo12HourFormat(rowData.OBT): "N/A"}
                   </p>
                   <p className="game-setting-font">
                     <span className="fw-bold"> CBT</span> :
-                    {rowData ? rowData.CBT : "N/A"}
+                    {rowData ? convertTo12HourFormat(rowData.CBT) : "N/A"}
                   </p>
                   <p className="game-setting-font">
                     <span className="fw-bold"> OBRT</span> :
-                    {rowData ? rowData.OBRT : "N/A"}
+                    {rowData ? convertTo12HourFormat(rowData.OBRT) : "N/A"}
                   </p>
-                  <p className="game-setting-font">
-                    <span className="fw-bold"> CBRT</span> :
-                    {rowData ? rowData.CBRT : "N/A"}
-                  </p>
+
+                  {gameType === "MainGame" ? (
+                    <p className="game-setting-font">
+                      <span className="fw-bold"> CBRT</span> :
+                      {rowData ? convertTo12HourFormat(rowData.CBRT) : "N/A"}
+                    </p>
+                  ) : (
+                    ""
+                  )}
                   <p className="game-setting-font">
                     <span className="fw-bold">
                       IsClosed :
@@ -276,7 +299,7 @@ const GameProvider = ({ path, title, gameType,foreditpath }) => {
                   </p>
 
                   <PagesIndex.Link
-                    to={foreditpath}
+                    to={`${path}/edit`}
                     state={{ row: row, rowData: rowData, edit: "single" }}
                     className="update-button"
                   >
@@ -302,20 +325,25 @@ const GameProvider = ({ path, title, gameType,foreditpath }) => {
                 <>
                   <p className="game-setting-font">
                     <span className="fw-bold"> OBT</span> :
-                    {rowData ? rowData.OBT : "N/A"}
+                    {rowData ? convertTo12HourFormat(rowData.OBT) : "N/A"}
                   </p>
                   <p className="game-setting-font">
                     <span className="fw-bold"> CBT</span> :
-                    {rowData ? rowData.CBT : "N/A"}
+                    {rowData ?convertTo12HourFormat(rowData.CBT) : "N/A"}
                   </p>
                   <p className="game-setting-font">
                     <span className="fw-bold"> OBRT</span> :
-                    {rowData ? rowData.OBRT : "N/A"}
+                    {rowData ? convertTo12HourFormat(rowData.OBRT) : "N/A"}
                   </p>
-                  <p className="game-setting-font">
-                    <span className="fw-bold"> CBRT</span> :
-                    {rowData ? rowData.CBRT : "N/A"}
-                  </p>
+
+                  {gameType === "MainGame" ? (
+                    <p className="game-setting-font">
+                      <span className="fw-bold"> CBRT</span> :
+                      {rowData ? convertTo12HourFormat(rowData.CBRT) : "N/A"}
+                    </p>
+                  ) : (
+                    ""
+                  )}
                   <p className="game-setting-font">
                     <span className="fw-bold">
                       IsClosed :
@@ -324,7 +352,7 @@ const GameProvider = ({ path, title, gameType,foreditpath }) => {
                   </p>
 
                   <PagesIndex.Link
-                    to={foreditpath}
+                    to={`${path}/edit`}
                     state={{ row: row, rowData: rowData, edit: "single" }}
                     className="update-button"
                   >
@@ -350,20 +378,25 @@ const GameProvider = ({ path, title, gameType,foreditpath }) => {
                 <>
                   <p className="game-setting-font">
                     <span className="fw-bold"> OBT</span> :
-                    {rowData ? rowData.OBT : "N/A"}
+                    {rowData ? convertTo12HourFormat(rowData.OBT) : "N/A"}
                   </p>
                   <p className="game-setting-font">
                     <span className="fw-bold"> CBT</span> :
-                    {rowData ? rowData.CBT : "N/A"}
+                    {rowData ? convertTo12HourFormat(rowData.CBT) : "N/A"}
                   </p>
                   <p className="game-setting-font">
                     <span className="fw-bold"> OBRT</span> :
-                    {rowData ? rowData.OBRT : "N/A"}
+                    {rowData ? convertTo12HourFormat(rowData.OBRT) : "N/A"}
                   </p>
-                  <p className="game-setting-font">
-                    <span className="fw-bold"> CBRT</span> :
-                    {rowData ? rowData.CBRT : "N/A"}
-                  </p>
+             
+                  {gameType === "MainGame" ? (
+                     <p className="game-setting-font">
+                     <span className="fw-bold"> CBRT</span> :
+                     {rowData ? convertTo12HourFormat(rowData.CBRT) : "N/A"}
+                   </p>
+                  ) : (
+                    ""
+                  )}
                   <p className="game-setting-font">
                     <span className="fw-bold">
                       IsClosed :
@@ -372,7 +405,7 @@ const GameProvider = ({ path, title, gameType,foreditpath }) => {
                   </p>
 
                   <PagesIndex.Link
-                    to={foreditpath}
+                    to={`${path}/edit`}
                     state={{ row: row, rowData: rowData, edit: "single" }}
                     className="update-button"
                   >
@@ -393,7 +426,7 @@ const GameProvider = ({ path, title, gameType,foreditpath }) => {
     <div>
       <PagesIndex.Main_Containt
         add_button={true}
-        route={path}
+        route={`${path}/add`}
         title={title}
         btnTitle="Add"
       >
