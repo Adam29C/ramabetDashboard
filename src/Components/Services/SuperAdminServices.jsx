@@ -368,5 +368,25 @@ export const UPDATE_NOTICE_BOARD_API = async(data)=>{
 }
 //NOTICE BOARD API END
 
+//APP WITHDRAW API START
+export const GET_APP_WITHDRAW_API = async (id) => {
+  try {
+    const res = await dataservice.get(`${Api.GET_WITHDRAW_SCREEN}?adminId=${id}`);
+    return res?.data
+  } catch (error) {
+    return error
+  }
+};
+
+export const UPDATE_APP_WITHDRAW_API = async(data)=>{
+  try {
+    const res = await dataservice.put(Api.UPDATE_WITHDRAW_SCREEN,data);
+    return res?.data
+  } catch (error) {
+    return error
+  }
+}
+//APP WITHDRAW API END
+
 
 // -------------------------- APP_SETTINGS ------------------------

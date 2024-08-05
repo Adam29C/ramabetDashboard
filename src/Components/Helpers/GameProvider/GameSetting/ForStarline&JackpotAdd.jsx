@@ -2,12 +2,10 @@ import React from "react";
 import PagesIndex from "../../../Pages/PagesIndex";
 
 const ForStarlineJackpotAdd = ({ gameType, path }) => {
-  // console.log("testinggggggggggggg");
   const userId = localStorage.getItem("userId");
   const navigate = PagesIndex.useNavigate();
   const location = PagesIndex.useLocation();
   const dispatch = PagesIndex.useDispatch();
-  // console.log(location.state, "location");
   const data = PagesIndex.useSelector((state) => {
     return state.CommonSlice.gameProviders;
   });

@@ -44,6 +44,8 @@ const Api = {
   //NOTICE BOARD
   NOTICE_BOARD_LIST:"/admin/appSetting/noticeBoardList",
   UPDATE_NOTICE_BOARD:"/admin/appSetting/updateNoticeBoard",
+  GET_WITHDRAW_SCREEN:"/admin/appSetting/withdrawMessageList",
+  UPDATE_WITHDRAW_SCREEN:"/admin/appSetting/updateWithdrawMessage"
 };
 
 export { Api };

@@ -433,30 +433,26 @@ export const admin_Sidebar = [
   //     {
   //       id: 1,
   //       title: "How To Play",
-  //       route: "#",
+  //       route: "appSettings/how-to-play",
   //     },
   //     {
   //       id: 2,
   //       title: "Withdraw Screen",
-  //       route: "#",
+  //       route: "appSettings/withDraw",
   //     },
   //     {
   //       id: 3,
   //       title: "Notice Board",
   //       route: "appSettings/noticeBoard",
   //     },
+
   //     {
   //       id: 4,
-  //       title: "Profile Note",
-  //       route: "#",
-  //     },
-  //     {
-  //       id: 1,
   //       title: "Wallet Contact",
   //       route: "appSettings/walletContact",
   //     },
   //     {
-  //       id: 2,
+  //       id: 5,
   //       title: "App Version",
   //       route: "appSettings/versionSetting",
   //     },

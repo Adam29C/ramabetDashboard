@@ -57,6 +57,8 @@ import JackPotRatesAddEdit from "../../Pages/Superadmin/Games/Jackpot/JackPotRat
 import NoticeBoard from "../../Pages/Superadmin/AppSettings/NoticeBoard";
 import JackPotSettings from "../../Pages/Superadmin/Games/Jackpot/JackPotSettings/JackPotSettings";
 import JackPotAddEdit from "../../Pages/Superadmin/Games/Jackpot/JackPotSettings/JackPotAddEdit";
+import WithdrawScreen from "../../Pages/Superadmin/AppSettings/WithdrawScreen";
+import HowToPlay from "../../Pages/Superadmin/AppSettings/HowToPlay";
 
 
 // Mock authentication status
@@ -285,9 +287,16 @@ const adminRoutes = [
         path: "appSettings/noticeBoard",
         element: <PrivateRoute element={NoticeBoard} />,
       },
-
       
-   
+      {
+        path: "appSettings/withDraw",
+        element: <PrivateRoute element={WithdrawScreen} />,
+      },
+      {
+        path: "appSettings/how-to-play",
+        element: <PrivateRoute element={HowToPlay} />,
+      },
+      
     ],
   },
 ];
