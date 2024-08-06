@@ -62,7 +62,7 @@ const contactRegex = (numbervalue) => {
     {
       name: "groupFields",
       label: "Section 1 Title",
-      type: "text",
+      type: "fieldarray",
       label_size: 12,
       col_size: 6,
     },

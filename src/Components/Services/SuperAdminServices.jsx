@@ -390,3 +390,47 @@ export const UPDATE_APP_WITHDRAW_API = async(data)=>{
 
 
 // -------------------------- APP_SETTINGS ------------------------
+
+
+// -------------------------- MASTERS ------------------------
+//UPI LIST START
+export const GET_UPI_LIST_API = async (id) => {
+  try {
+    const res = await dataservice.get(`${Api.GET_UPI_LIST}?adminId=${id}`);
+    return res?.data
+  } catch (error) {
+    return error
+  }
+};
+
+export const UPDATE_UPI_LIST_API= async(data)=>{
+  try {
+    const res = await dataservice.put(Api.UPDATE_UPI_LIST,data);
+    return res?.data
+  } catch (error) {
+    return error
+  }
+}
+export const ADD_UPI_LIST_API= async(data)=>{
+  try {
+    const res = await dataservice.post(Api.ADD_UPI_LIST,data);
+    return res?.data
+  } catch (error) {
+    return error
+  }
+}
+export const DELETE_UPI_LIST_API= async(data)=>{
+
+  let apiData = {
+    adminId: data.adminId,
+    upiId: data.deleteId,
+  };
+  try {
+    const res = await dataservice.delete(Api.DELETE_UPI_LIST,{data:apiData});
+    return res?.data
+  } catch (error) {
+    return error
+  }
+}
+//UPI LIST END
+// -------------------------- MASTERS ------------------------

@@ -45,7 +45,12 @@ const Api = {
   NOTICE_BOARD_LIST:"/admin/appSetting/noticeBoardList",
   UPDATE_NOTICE_BOARD:"/admin/appSetting/updateNoticeBoard",
   GET_WITHDRAW_SCREEN:"/admin/appSetting/withdrawMessageList",
-  UPDATE_WITHDRAW_SCREEN:"/admin/appSetting/updateWithdrawMessage"
+  UPDATE_WITHDRAW_SCREEN:"/admin/appSetting/updateWithdrawMessage",
+  //UPI LIST
+  GET_UPI_LIST:"/admin/master/upiList",
+  ADD_UPI_LIST:"/admin/master/addUpi",
+  UPDATE_UPI_LIST:"/admin/master/updateUpiStatus",
+  DELETE_UPI_LIST:"/admin/master/deleteUpi",
 };
 
 export { Api };

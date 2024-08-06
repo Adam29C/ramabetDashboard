@@ -6,7 +6,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { today, getActualDateFormate } from "../../Utils/Common_Date";
 import CustomDatePicker from "./DatePickers";
-import { useFormik, FieldArray, FormikProvider } from 'formik';
+import { useFormik, FieldArray, FormikProvider } from "formik";
 // col-form-label this class for input alignment apply on label
 const ReusableForm = ({
   fromDate,
@@ -28,6 +28,7 @@ const ReusableForm = ({
   show_preview,
 }) => {
   const location = useLocation();
+  console.log(formik.values.groupFields, "fieldtype");
 
   const [passwordVisible, setPasswordVisible] = useState({});
   let a = new Date();
@@ -292,7 +293,7 @@ const ReusableForm = ({
                   </>
                 ) : field.type === "time" ? (
                   <>
-                    <div className={`col-lg-${field.col_size}`}>
+                    {/* <div className={`col-lg-${field.col_size}`}>
                       <div className=" row flex-column">
                         <label
                           className={`custom-label col-lg-${field.label_size}`}
@@ -309,15 +310,15 @@ const ReusableForm = ({
                             onChange={(date) =>
                               handleDateChange(date, field.name)
                             }
-                            {...formik.getFieldProps(field.name)}
-                              // value={dateStates[field.name]}
+                            {...formik.getFieldProps(field.name)} */}
+                    {/* // value={dateStates[field.name]}
                             showTimeSelect
                             showTimeSelectOnly
                             timeIntervals={5}
                             timeCaption="Time"
                             dateFormat="h:mm aa"
-                          />
-                          {/* <input
+                          /> */}
+                    {/* <input
                           type={field.type}
                           name={field.name}
                           className="form-control"
@@ -330,7 +331,7 @@ const ReusableForm = ({
                           }
                         /> */}
 
-                          <div className="invalid-feedback">
+                    {/* <div className="invalid-feedback">
                             Please enter {field.label}
                           </div>
                         </div>
@@ -340,6 +341,25 @@ const ReusableForm = ({
                           </div>
                         )}
                       </div>
+                    </div> */}
+                    <div className={`col-lg-${field.col_size} mb-3`}>
+                      <label
+                        className={`custom-label col-lg-${field.label_size}`}
+                        htmlFor={field.name}
+                      >
+                        {field.label}
+                        <span className="text-danger">*</span>
+                      </label>
+                      <input
+                        type={field.type}
+                        name={field.name}
+                        className="form-control"
+                        //  value={getActualDateFormate(field.name)}
+                        id={field.name}
+                        {...formik.getFieldProps(field.name)}
+                        min={field.min && field.min.actual_date_formet}
+                        max={field.max && field.max.actual_date_formet}
+                      />
                     </div>
                   </>
                 ) : field.type === "msgbox" ? (
@@ -455,56 +475,66 @@ const ReusableForm = ({
                       </div>
                     </div>
                   </>
-                ) : 
-  //                field.type === "fieldArray" ? (
-  //                 <>
-  // <FieldArray name={field.name}>
-  //                   {({ push, remove, form }) => (
-  //                     <div>
-  //                       {form.values[field.name].map((arrayField, i) => (
-  //                         <div key={i} className="row mb-3">
-  //                           <div className="col-lg-5">
-  //                             <input
-  //                               type="text"
-  //                               name={`${field.name}.${i}.title`}
-  //                               placeholder="Title"
-  //                               className="form-control"
-  //                               value={arrayField.title}
-  //                               onChange={formik.handleChange}
-  //                             />
-  //                             {formik.errors[field.name] && formik.errors[field.name][i] && formik.errors[field.name][i].title && (
-  //                               <div className="error-text">{formik.errors[field.name][i].title}</div>
-  //                             )}
-  //                           </div>
-  //                           <div className="col-lg-5">
-  //                             <input
-  //                               type="text"
-  //                               name={`${field.name}.${i}.videoUrl`}
-  //                               placeholder="Video URL"
-  //                               className="form-control"
-  //                               value={arrayField.videoUrl}
-  //                               onChange={formik.handleChange}
-  //                             />
-  //                             {/* {formik.errors[field.name] && formik.errors[field.name][i] && formik.errors[field.name][i].videoUrl && (
-  //                               <div className="error-text">{formik.errors[field.name][i].videoUrl}</div>
-  //                             )} */}
-  //                           </div>
-  //                           <div className="col-lg-2">
-  //                             <button type="button" className="btn btn-danger" onClick={() => remove(i)}>
-  //                               Delete
-  //                             </button>
-  //                           </div>
-  //                         </div>
-  //                       ))}
-  //                       <button type="button" className="btn btn-primary" onClick={() => push({ title: '', videoUrl: '' })}>
-  //                         Add Row
-  //                       </button>
-  //                     </div>
-  //                   )}
-  //                 </FieldArray>
-  //                 </>
-  //               ) : 
-                (
+                ) : field.type === "fieldarray" ? (
+                  <>
+                    <FieldArray name={field.name}>
+                      {({ push, remove, form }) => (
+                        <div>
+                          {formik.values.groupFields.map((arrayField, i) => (
+                            <div key={i} className="row mb-3">
+                              <div className="col-lg-5">
+                                <input
+                                  type="text"
+                                  name={`${field.name}.${i}.title`}
+                                  placeholder="Title"
+                                  className="form-control"
+                                  value={arrayField.title}
+                                  onChange={formik.handleChange}
+                                />
+                                {/* {formik.errors[field.name] &&
+                                  formik.errors[field.name][i] &&
+                                  formik.errors[field.name][i].title && (
+                                    <div className="error-text">
+                                      {formik.errors[field.name][i].title}
+                                    </div>
+                                  )} */}
+                              </div>
+                              <div className="col-lg-5">
+                                <input
+                                  type="text"
+                                  name={`${field.name}.${i}.videoUrl`}
+                                  placeholder="Video URL"
+                                  className="form-control"
+                                  value={arrayField.videoUrl}
+                                  onChange={formik.handleChange}
+                                />
+                                {/* {formik.errors[field.name] && formik.errors[field.name][i] && formik.errors[field.name][i].videoUrl && (
+                                                <div className="error-text">{formik.errors[field.name][i].videoUrl}</div>
+                                              )} */}
+                              </div>
+                              <div className="col-lg-2">
+                                <button
+                                  type="button"
+                                  className="btn btn-danger"
+                                  onClick={() => remove(i)}
+                                >
+                                  Delete
+                                </button>
+                              </div>
+                            </div>
+                          ))}
+                          <button
+                            type="button"
+                            className="btn btn-primary"
+                            onClick={() => push({ title: "", videoUrl: "" })}
+                          >
+                            Add Row
+                          </button>
+                        </div>
+                      )}
+                    </FieldArray>
+                  </>
+                ) : (
                   <>
                     <div className={`col-lg-${field.col_size}`}>
                       <div className="mb-3 row flex-column">

@@ -21874,3 +21874,13 @@ a:hover {
   font-size: 19px;
 
 }
+
+.form-select-upi {
+  border: 1px solid rgb(197, 189, 189);
+  font-size: 0.7rem !important;
+  padding: 5px 10px;
+  border-radius: 15px;
+}
+.gjoprN{
+  padding-left: 10px !important;
+}
