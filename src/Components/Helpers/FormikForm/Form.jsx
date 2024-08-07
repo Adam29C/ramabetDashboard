@@ -477,62 +477,66 @@ const ReusableForm = ({
                   </>
                 ) : field.type === "fieldarray" ? (
                   <>
-                    <FieldArray name={field.name}>
-                      {({ push, remove, form }) => (
-                        <div>
-                          {formik.values.groupFields.map((arrayField, i) => (
-                            <div key={i} className="row mb-3">
-                              <div className="col-lg-5">
-                                <input
-                                  type="text"
-                                  name={`${field.name}.${i}.title`}
-                                  placeholder="Title"
-                                  className="form-control"
-                                  value={arrayField.title}
-                                  onChange={formik.handleChange}
-                                />
-                                {/* {formik.errors[field.name] &&
-                                  formik.errors[field.name][i] &&
-                                  formik.errors[field.name][i].title && (
-                                    <div className="error-text">
-                                      {formik.errors[field.name][i].title}
-                                    </div>
-                                  )} */}
-                              </div>
-                              <div className="col-lg-5">
-                                <input
-                                  type="text"
-                                  name={`${field.name}.${i}.videoUrl`}
-                                  placeholder="Video URL"
-                                  className="form-control"
-                                  value={arrayField.videoUrl}
-                                  onChange={formik.handleChange}
-                                />
-                                {/* {formik.errors[field.name] && formik.errors[field.name][i] && formik.errors[field.name][i].videoUrl && (
-                                                <div className="error-text">{formik.errors[field.name][i].videoUrl}</div>
-                                              )} */}
-                              </div>
-                              <div className="col-lg-2">
-                                <button
-                                  type="button"
-                                  className="btn btn-danger"
-                                  onClick={() => remove(i)}
-                                >
-                                  Delete
-                                </button>
-                              </div>
-                            </div>
-                          ))}
-                          <button
-                            type="button"
-                            className="btn btn-primary"
-                            onClick={() => push({ title: "", videoUrl: "" })}
-                          >
-                            Add Row
-                          </button>
-                        </div>
-                      )}
-                    </FieldArray>
+                 <FieldArray name={field.name}>
+      {({ push, remove }) => (
+        <div>
+          {formik.values[field.name].map((arrayField, i) => (
+            <div key={i} className="row mb-3">
+              <div className="col-lg-5">
+                <input
+                  type="text"
+                  name={`${field.name}.${i}.title`}
+                  placeholder="Title"
+                  className="form-control"
+                  value={arrayField.title}
+                  onChange={formik.handleChange}
+                />
+                {formik.errors[field.name] &&
+                  formik.errors[field.name][i] &&
+                  formik.errors[field.name][i].title && (
+                    <div className="error-text">
+                      {formik.errors[field.name][i].title}
+                    </div>
+                  )}
+              </div>
+              <div className="col-lg-5">
+                <input
+                  type="text"
+                  name={`${field.name}.${i}.videoUrl`}
+                  placeholder="Video URL"
+                  className="form-control"
+                  value={arrayField.videoUrl}
+                  onChange={formik.handleChange}
+                />
+                {formik.errors[field.name] &&
+                  formik.errors[field.name][i] &&
+                  formik.errors[field.name][i].videoUrl && (
+                    <div className="error-text">
+                      {formik.errors[field.name][i].videoUrl}
+                    </div>
+                  )}
+              </div>
+              <div className="col-lg-2">
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  onClick={() => remove(i)}
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          ))}
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => push({ title: "", videoUrl: "" })}
+          >
+            Add Row
+          </button>
+        </div>
+      )}
+    </FieldArray>
                   </>
                 ) : (
                   <>

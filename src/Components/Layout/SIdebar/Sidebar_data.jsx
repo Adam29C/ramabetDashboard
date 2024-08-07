@@ -464,36 +464,37 @@ export const admin_Sidebar = [
     title: "Masters",
     Icon: "ti-money",
     NestedElement: [
-      {
-        id: 1,
-        title: "Bank",
-        route: "#",
-      },
+      // {
+      //   id: 1,
+      //   title: "Bank",
+      //   route: "#",
+      // },
       {
         id: 2,
         title: "UPI Id",
         route: "masters/UPI",
       },
-      {
-        id: 3,
-        title: "Add Fund Mode",
-        route: "#",
-      },
-      {
-        id: 4,
-        title: "Manage Employee",
-        route: "#",
-      },
-      {
-        id: 5,
-        title: "Wallet Contact",
-        route: "#",
-      },
-      {
-        id: 6,
-        title: "Register New Employee",
-        route: "#",
-      },
+      // {
+      //   id: 3,
+      //   title: "Add Fund Mode",
+      //   route: "#",
+      // },
+      // {
+      //   id: 4,
+      //   title: "Manage Employee",
+      //   route: "#",
+      // },
+      // {
+      //   id: 5,
+      //   title: "Wallet Contact",
+      //   route: "#",
+      // },
+      // {
+      //   id: 6,
+      //   title: "Register New Employee",
+      //   route: "#",
+      // },
     ],
   },
 ];
+ 

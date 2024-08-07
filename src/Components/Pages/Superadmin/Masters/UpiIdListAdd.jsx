@@ -61,7 +61,7 @@ const UpiIdListAdd = () => {
         fieldtype={fields.filter((field) => !field.showWhen)}
         formik={formik}
         btn_name={"Add"}
-        button_Size={"w-25"}
+        button_Size={"w-10"}
         show_submit={true}
       />
 
