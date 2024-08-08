@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import Main_Containt from "../../../Layout/Main/Main_Containt";
 import ModalComponent from "../../../Helpers/ModalComponent";
@@ -7,13 +6,13 @@ import { DELETE_USER } from "../../../Services/SuperAdminServices";
 import DeleteSweetAlert from "../../../Helpers/DeleteSweetAlert";
 import { toast } from "react-toastify";
 
-
 const UpiIdList = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
-  const [updateData, setUpdateData] = useState();
   const userId = localStorage.getItem("userId");
-let userDeleteReason = false
+  const [visible, setVisible] = useState(false);
+
+  let userDeleteReason = false;
   const getList = async () => {
     setLoading(true);
     try {
@@ -34,20 +33,22 @@ let userDeleteReason = false
     try {
       let apidata = {
         adminId: userId,
-        upiId:value._id,
-        status: event
+        upiId: value._id,
+        status: event,
+      };
+
+      const response = await PagesIndex.admin_services.UPDATE_UPI_LIST_API(
+        apidata
+      );
+
+      if (response?.status === 200) {
+        toast.success(response.message);
+        getList();
+      } else {
+        alert(response.response.data.message);
       }
-      console.log(apidata,"chhhhhh")
-
-    const response = await PagesIndex.admin_services.UPDATE_UPI_LIST_API(apidata);
-    console.log(response,"response")
-    if (response?.status === 200) {
-      toast.success(response.message);
-      getList()
-    } 
-
     } catch (error) {
-      console.log(response,"responseddddddddddd")
+      PagesIndex.toast.error(error);
     }
   };
 
@@ -60,53 +61,42 @@ let userDeleteReason = false
     {
       name: "IsActive",
       selector: (row) => (
-             <span
+        <span
           className={`badge fw-bold ${
             row.status === "true" ? "bg-primary" : "bg-danger"
           }`}
         >
           {row.status === "true" ? "Active" : "Disable"}
         </span>
-      )
-    },
-
-
-
-    {
-        name: "Status",
-      selector: (row) => (
-   
-        <div>
-        <select
-        className="form-select-upi"
-        aria-label="Default select example"
-        onChange={(e) => {
-          handleStatusUpdate(e.target.value, row);
-          setUpdateData(row);
-        }}
-      >
-      
-
-            <option value="false" disbled selected>
-            {row.status === "true" ? "Active" : "Disable"}
-            </option>
-            <option value="true">Active</option>
-            <option value="false">Disable</option>
-        
-     
-      </select>
-      </div>
       ),
     },
 
+    {
+      name: "Status",
+      selector: (row) => (
+        <div>
+          <select
+            className="form-select-upi"
+            aria-label="Default select example"
+            onChange={(e) => {
+              handleStatusUpdate(e.target.value, row);
+            }}
+          >
+            <option value="false" disbled selected>
+              {row.status === "true" ? "Active" : "Disable"}
+            </option>
+            <option value="true">Active</option>
+            <option value="false">Disable</option>
+          </select>
+        </div>
+      ),
+    },
 
     {
       name: "Actions",
       selector: (cell, row) => (
-
         <div style={{ width: "120px" }}>
-          <div >
-         
+          <div>
             <PagesIndex.Link
               href="#"
               onClick={() =>
@@ -128,21 +118,71 @@ let userDeleteReason = false
     },
   ];
 
+  const formik = PagesIndex.useFormik({
+    initialValues: {
+      upiName: "",
+    },
+    validate: (values) => {
+      const errors = {};
+      if (!values.upiName) {
+        errors.upiName = PagesIndex.valid_err.EMPTY_UPI_ERROR;
+      }
+      return errors;
+    },
 
+    onSubmit: async (values) => {
+      try {
+        let apidata = {
+          adminId: userId,
+          upiName: values.upiName,
+        };
+
+        const res = await PagesIndex.admin_services.ADD_UPI_LIST_API(apidata);
+
+        if (res?.status === 200) {
+          PagesIndex.toast.success(res?.message);
+          getList();
+          setVisible(false);
+          formik.setFieldValue("upiName", "");
+        } else {
+          PagesIndex.toast.error(res.response.data.message);
+        }
+      } catch (error) {
+        PagesIndex.toast.error(error);
+      }
+    },
+  });
+
+  const fields = [
+    {
+      name: "upiName",
+      label: "Upi Id",
+      type: "text",
+      label_size: 12,
+      col_size: 12,
+    },
+  ];
 
   return (
-    <Main_Containt add_button={true}
-    route="/admin/masters/UPI/add"
-    btnTitle="Add"
-    title="UPI ID List">
-      {/* <ModalComponent /> */}
+    <Main_Containt
+      setVisible={setVisible}
+      add_button={false}
+      btn_modal={true}
+      title="UPI ID List"
+    >
       <PagesIndex.Data_Table
         isLoading={loading}
         columns={columns}
         data={data}
-
       />
-       <PagesIndex.Toast />
+      <ModalComponent
+        visible={visible}
+        setVisible={setVisible}
+        fields={fields}
+        form_title="Add Upi Id"
+        formik={formik}
+      />
+      <PagesIndex.Toast />
     </Main_Containt>
   );
 };

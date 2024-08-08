@@ -1,3 +1,4 @@
+import * as yup from "yup";
 
 export const Email_regex = (email) => {
   const emailRegex =

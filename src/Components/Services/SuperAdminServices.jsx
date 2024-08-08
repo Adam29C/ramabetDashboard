@@ -433,4 +433,26 @@ export const DELETE_UPI_LIST_API= async(data)=>{
   }
 }
 //UPI LIST END
+
+//HTP LIST START
+export const GET_HTP_LIST_API = async (id) => {
+  try {
+    const res = await dataservice.get(`${Api.HOW_TO_PLAY_GET_LIST}?adminId=${id}`);
+    return res?.data
+  } catch (error) {
+    return error
+  }
+};
+
+export const UPDATE_HTP_API= async(data)=>{
+  try {
+    const res = await dataservice.put(Api.UPDATE_HTP,data);
+    return res?.data
+  } catch (error) {
+    return error
+  }
+}
+
+//HTP LIST END
+
 // -------------------------- MASTERS ------------------------

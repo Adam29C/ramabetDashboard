@@ -5,6 +5,8 @@ const GameProviderAdd = () => {
   const userId = localStorage.getItem("userId");
   const navigate = PagesIndex.useNavigate();
   const location = PagesIndex.useLocation();
+
+  
   const formik = PagesIndex.useFormik({
     initialValues: {
       providerName: location?.state ? location?.state?.providerName : "",

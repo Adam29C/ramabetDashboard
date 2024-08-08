@@ -91,11 +91,11 @@ export const admin_Sidebar = [
         route: "game/rates",
       },
       
-      {
-        id: 4,
-        title: "Game Result",
-        route: "game/results",
-      },
+      // {
+      //   id: 4,
+      //   title: "Game Result",
+      //   route: "game/results",
+      // },
       // {
       //   id: 5,
       //   title: "Revert Result Payment",
@@ -430,27 +430,27 @@ export const admin_Sidebar = [
     title: "App Settings",
     Icon: "fa-solid fa-cog",
     NestedElement: [
-      {
-        id: 1,
-        title: "How To Play",
-        route: "appSettings/how-to-play",
-      },
-      {
-        id: 2,
-        title: "Withdraw Screen",
-        route: "appSettings/withDraw",
-      },
-      {
-        id: 3,
-        title: "Notice Board",
-        route: "appSettings/noticeBoard",
-      },
+      // {
+      //   id: 1,
+      //   title: "How To Play",
+      //   route: "appSettings/howToPlay",
+      // },
+      // {
+      //   id: 2,
+      //   title: "Withdraw Screen",
+      //   route: "appSettings/withDraw",
+      // },
+      // {
+      //   id: 3,
+      //   title: "Notice Board",
+      //   route: "appSettings/noticeBoard",
+      // },
 
-      {
-        id: 4,
-        title: "Wallet Contact",
-        route: "appSettings/walletContact",
-      },
+      // {
+      //   id: 4,
+      //   title: "Wallet Contact",
+      //   route: "appSettings/walletContact",
+      // },
       {
         id: 5,
         title: "App Version",

@@ -371,3 +371,9 @@ input:checked + .slider:before {
 }
 @media (min-width: 992px) {
 } */
+
+.htp-card{
+  border: 1px solid #e3e3e3;
+  padding: 20px;
+  margin-top: 10px;
+}

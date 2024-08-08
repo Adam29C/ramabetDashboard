@@ -60,7 +60,6 @@ import JackPotAddEdit from "../../Pages/Superadmin/Games/Jackpot/JackPotSettings
 import WithdrawScreen from "../../Pages/Superadmin/AppSettings/WithdrawScreen";
 import HowToPlay from "../../Pages/Superadmin/AppSettings/HowToPlay";
 import UpiIdList from "../../Pages/Superadmin/Masters/UpiIdList";
-import UpiIdListAdd from "../../Pages/Superadmin/Masters/UpiIdListAdd";
 
 
 // Mock authentication status
@@ -295,7 +294,7 @@ const adminRoutes = [
         element: <PrivateRoute element={WithdrawScreen} />,
       },
       {
-        path: "appSettings/how-to-play",
+        path: "appSettings/howToPlay",
         element: <PrivateRoute element={HowToPlay} />,
       },
      
@@ -303,10 +302,7 @@ const adminRoutes = [
         path: "masters/UPI",
         element: <PrivateRoute element={UpiIdList} />,
       },
-      {
-        path: "masters/UPI/add",
-        element: <PrivateRoute element={UpiIdListAdd} />,
-      },
+  
     ],
   },
 ];
