@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from "react";
+import PagesIndex from "../Pages/PagesIndex";
 
 const ChangeStatus = ({ rowData, apiRoute, checkboxStatus, req }) => {
   const userId = localStorage.getItem("userId");
@@ -12,7 +13,13 @@ const ChangeStatus = ({ rowData, apiRoute, checkboxStatus, req }) => {
 
   const updateStatus = async () => {
     setIsChecked(!isChecked);
-    await apiRoute({ adminId: userId, ...req, isBlock: !isChecked });
+    const res = await apiRoute({ adminId: userId, ...req, isBlock: !isChecked });
+    console.log(res)
+    if(res.status === 200){
+      PagesIndex.toast.success(res.message)
+    }else{
+      PagesIndex.toast.error(res.response.data.message)
+    }
   };
 
   return (

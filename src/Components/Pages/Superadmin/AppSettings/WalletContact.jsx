@@ -47,7 +47,6 @@ const contactRegex = (numbervalue) => {
     },
 
     validate: (values) => {
-      console.log(values);
       const errors = {};
       if (!values.number  && formik.touched.number ) {
         errors.number = PagesIndex.valid_err.CONTACT_ERROR;
@@ -62,7 +61,6 @@ const contactRegex = (numbervalue) => {
       if (!values.headline && formik.touched.headline) {
         errors.headline = PagesIndex.valid_err.PLEASER_ENTER_HEADLINE;
       }
-      console.log(errors);
       return errors;
     },
     onSubmit: async (values) => {

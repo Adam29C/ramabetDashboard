@@ -94,7 +94,6 @@ const HowToPlay = () => {
 
           return (
             <form onSubmit={handleSubmit}>
-              {console.log(errors)}
               <FieldArray name="howtoplay">
                 {({ insert, remove, push }) => (
                   <div className="">

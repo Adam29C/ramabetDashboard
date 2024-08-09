@@ -9,14 +9,12 @@ import { Games_Settings_List } from "../../../Redux/slice/CommonSlice";
 import { convertTo12HourFormat } from "../../../Utils/Valid_Rejex";
 
 const GameProvider = ({ path, title, gameType }) => {
-  console.log(gameType === "MainGame" ? "true" : "false");
   const userId = localStorage.getItem("userId");
   const navigate = PagesIndex.useNavigate();
 
   const dispatch = PagesIndex.useDispatch();
 
   const { gameSettings } = PagesIndex.useSelector((state) => state.CommonSlice);
-
   const getStarLineSettingList = () => {
     let apiData = {
       userId: userId,
@@ -81,7 +79,7 @@ const GameProvider = ({ path, title, gameType }) => {
                 <p className="game-setting-font">
                   <span className="fw-bold">
                     IsClosed :
-                    {rowData ? (rowData.isClosed ? "Open" : "Closed") : "N/A"}
+                    {rowData ? (rowData.isClosed ? "Closed" : "Open") : "N/A"}
                   </span>
                 </p>
 
@@ -358,6 +356,7 @@ const GameProvider = ({ path, title, gameType }) => {
                   >
                     update
                   </PagesIndex.Link>
+     
                 </>
               ) : (
                 " No Record"

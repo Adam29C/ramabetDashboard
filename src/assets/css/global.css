@@ -377,3 +377,7 @@ input:checked + .slider:before {
   padding: 20px;
   margin-top: 10px;
 }
+
+.bbb{
+  border: 1px solid black;
+}

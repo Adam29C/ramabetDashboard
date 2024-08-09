@@ -9,7 +9,7 @@ export const admin_Sidebar = [
   },
   {
     id: 2,
-    route: "Dashboard",
+    route: "system",
     headerTitle: "Penal Info",
     title: "Penal Info",
     Icon: "icon-globe-alt",
@@ -23,7 +23,7 @@ export const admin_Sidebar = [
   },
   {
     id: 3,
-    // route: "Dashboard",
+    route: "Users",
     headerTitle: "Users",
     title: "Users",
     Icon: "icon-globe-alt",
@@ -57,11 +57,11 @@ export const admin_Sidebar = [
     title: "Employee",
     Icon: "icon-globe-alt",
     NestedElement: [
-      {
-        id: 1,
-        title: "Add Employee",
-        route: "employee/add",
-      },
+      // {
+      //   id: 1,
+      //   title: "Add Employee",
+      //   route: "employee/add",
+      // },
       {
         id: 2,
         title: "Employee List",

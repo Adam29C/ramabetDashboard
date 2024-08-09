@@ -28,7 +28,6 @@ const ReusableForm = ({
   show_preview,
 }) => {
   const location = useLocation();
-  console.log(formik.values.groupFields, "fieldtype");
 
   const [passwordVisible, setPasswordVisible] = useState({});
   let a = new Date();
@@ -37,7 +36,6 @@ const ReusableForm = ({
   const [previews, setPreviews] = useState([]);
 
   const handleFileChange = (event, index, name) => {
-    console.log(event)
     const file = event.target.files[0];
     if (file) {
       const newPreviews = [...previews];

@@ -39,7 +39,6 @@ const GameProviderAdd = () => {
         : "1",
     },
     validate: (values) => {
-      console.log(values)
       const errors = {};
       if(!values.providerId && formik.touched.providerId ){
         errors.providerId= PagesIndex.valid_err.PROVIDER_NAME_REQUIRED
@@ -56,12 +55,11 @@ const GameProviderAdd = () => {
       if(!values.CBRT && formik.touched.CBRT ){
         errors.CBRT= PagesIndex.valid_err.CLOSE_BID_RESULT_TIME_IS_REQUIRED
       }
-    console.log(errors)
+  
       return errors;
     },
 
     onSubmit: async (values) => {
-      // console.log(values,"values")
       let data = {
         adminId: userId,
         providerId: values.providerId,
@@ -83,7 +81,6 @@ const GameProviderAdd = () => {
         data.providerId = values.providerId;
         data.gameDay = values.gameDay;
       }
-// console.log(data,"data")
       const res = location?.state?.rowData?._id
         ? await PagesIndex.admin_services.GAME_SETTING_UPDATE_API(data)
         : await PagesIndex.admin_services.GAME_SETTING_ADD(data);

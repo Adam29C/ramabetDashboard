@@ -8,7 +8,6 @@ const NoticeBoard = () => {
   const [loading, setLoading] = PagesIndex.useState(true);
   const [noticeData, setNoticeData] = PagesIndex.useState();
   
-console.log(noticeData)
   //get wallet api
   const getNoticeData = async () => {
     const res = await PagesIndex.admin_services.GET_NOTICE_BOARD_API(userId);
@@ -56,7 +55,6 @@ const contactRegex = (numbervalue) => {
     },
 
     validate: (values) => {
-      console.log(values);
       const errors = {};
       if (!values.contect  && formik.touched.contect ) {
         errors.contect = PagesIndex.valid_err.CONTACT_ERROR;
@@ -89,7 +87,6 @@ const contactRegex = (numbervalue) => {
       return errors;
     },
     onSubmit: async (values) => {
-      console.log("submit",values)
       const apidata = {
    
         adminId: userId,

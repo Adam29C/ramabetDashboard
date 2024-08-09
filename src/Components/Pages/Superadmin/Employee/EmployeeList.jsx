@@ -95,6 +95,7 @@ const EmployeeList = () => {
           columns={columns}
           data={data}
         />
+             <PagesIndex.Toast />
       </Main_Containt>
     </div>
   );

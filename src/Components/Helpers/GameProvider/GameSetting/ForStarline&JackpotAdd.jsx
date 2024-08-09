@@ -57,7 +57,6 @@ const ForStarlineJackpotAdd = ({ gameType, path }) => {
         : "1",
     },
     validate: (values) => {
-      console.log(values)
       const errors = {};
       if(!values.providerId && formik.touched.providerId ){
         errors.providerId= PagesIndex.valid_err.PROVIDER_NAME_REQUIRED
@@ -72,12 +71,10 @@ const ForStarlineJackpotAdd = ({ gameType, path }) => {
         errors.OBRT= PagesIndex.valid_err.OPEN_BID_RESULT_TIME_IS_REQUIRED
       }
     
-    console.log(errors)
       return errors;
     },
 
     onSubmit: async (values) => {
-      // console.log(values,"values");
       
       let data = {
         adminId: userId,
@@ -87,7 +84,7 @@ const ForStarlineJackpotAdd = ({ gameType, path }) => {
         CBT: values.CBT,
         OBRT: values.OBRT,
         CBRT: "null",
-        isClosed: values.isClosed.toString(),
+        isClosed:values.isClosed.toString(),
       };
 
       if (location?.state?.rowData?._id) {
@@ -100,8 +97,7 @@ const ForStarlineJackpotAdd = ({ gameType, path }) => {
         data.providerId = values.providerId;
         data.gameDay = values.gameDay;
       }
-      // console.log(data,"apidata3");
-      // console.log(location?.state?.rowData?._id ? "update" : "add","checkkkkkkkkkkkkk");
+
       const res = location?.state?.rowData?._id
         ? await PagesIndex.admin_services.GAME_SETTING_UPDATE_API(data)
         : await PagesIndex.admin_services.GAME_SETTING_ADD(data);
@@ -116,7 +112,7 @@ const ForStarlineJackpotAdd = ({ gameType, path }) => {
       }
     },
   });
-  // console.log(formik.values,"formik.values");
+  console.log(location?.state?.rowData.isClosed,"formik.values");
   const fields = [
     {
       name: "providerId",
