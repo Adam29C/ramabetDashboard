@@ -26,7 +26,6 @@ import GameSettingAdd from "../../Helpers/GameProvider/GameSetting/GameSettingAd
 import CuttingGroup from "../../Pages/Superadmin/CuttingGroup/CuttingGroup";
 import GameResult from "../../Pages/Superadmin/Games/AvailableGames/GameRasult";
 
-
 import MultiTabs from "../../Helpers/MultiTabs";
 import OcCuttingGroup from "../../Pages/Superadmin/BookieCorner/OcCuttingGroup";
 import FinalOcCuttingGroup from "../../Pages/Superadmin/BookieCorner/FinalOcCuttingGroup";
@@ -60,7 +59,6 @@ import JackPotAddEdit from "../../Pages/Superadmin/Games/Jackpot/JackPotSettings
 import WithdrawScreen from "../../Pages/Superadmin/AppSettings/WithdrawScreen";
 import HowToPlay from "../../Pages/Superadmin/AppSettings/HowToPlay";
 import UpiIdList from "../../Pages/Superadmin/Masters/UpiIdList";
-
 
 // Mock authentication status
 
@@ -147,7 +145,6 @@ const adminRoutes = [
         element: <PrivateRoute element={GameSettingAdd} />,
       },
 
-
       {
         path: "game-rates",
         element: <PrivateRoute element={GameRates} />,
@@ -156,7 +153,7 @@ const adminRoutes = [
         path: "game/results",
         element: <PrivateRoute element={GameResult} />,
       },
-      
+
       {
         path: "games/starlineProvider",
         element: <PrivateRoute element={StarLineProvider} />,
@@ -182,7 +179,7 @@ const adminRoutes = [
         path: "games/starlinegamesetting/edit",
         element: <PrivateRoute element={StarLineSettingsAddEdit} />,
       },
-      
+
       {
         path: "games/starlinegamerates",
         element: <PrivateRoute element={StarLineGameRate} />,
@@ -279,7 +276,7 @@ const adminRoutes = [
         path: "appSettings/versionSetting",
         element: <PrivateRoute element={AppVersion} />,
       },
-      
+
       {
         path: "appSettings/walletContact",
         element: <PrivateRoute element={WalletContact} />,
@@ -288,7 +285,7 @@ const adminRoutes = [
         path: "appSettings/noticeBoard",
         element: <PrivateRoute element={NoticeBoard} />,
       },
-      
+
       {
         path: "appSettings/withDraw",
         element: <PrivateRoute element={WithdrawScreen} />,
@@ -297,12 +294,11 @@ const adminRoutes = [
         path: "appSettings/howToPlay",
         element: <PrivateRoute element={HowToPlay} />,
       },
-     
+
       {
         path: "masters/UPI",
         element: <PrivateRoute element={UpiIdList} />,
       },
-  
     ],
   },
 ];
