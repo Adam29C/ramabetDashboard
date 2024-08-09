@@ -3,7 +3,6 @@
 // const ChangeStatus = ({ rowData, apiRoute, checkboxStatus, req }) => {
 //   const userId = localStorage.getItem("userId");
 
-//   console.log("rowData", rowData);
 
 //   const [isChecked, setIsChecked] = useState(checkboxStatus);
 

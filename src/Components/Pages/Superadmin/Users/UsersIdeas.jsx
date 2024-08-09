@@ -1,6 +1,5 @@
 import React from 'react'
 import PagesIndex from '../../PagesIndex'
-import DeleteSweetAlert from '../../../Helpers/DeleteSweetAlert';
 import { show } from '../../../Utils/Common_Date';
 
 const UsersIdeas = () => {

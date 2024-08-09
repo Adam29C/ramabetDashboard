@@ -14,7 +14,6 @@ const ChangeStatus = ({ rowData, apiRoute, checkboxStatus, req }) => {
   const updateStatus = async () => {
     setIsChecked(!isChecked);
     const res = await apiRoute({ adminId: userId, ...req, isBlock: !isChecked });
-    console.log(res)
     if(res.status === 200){
       PagesIndex.toast.success(res.message)
     }else{

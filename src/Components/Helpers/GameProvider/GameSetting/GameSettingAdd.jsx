@@ -131,7 +131,7 @@ const GameProviderAdd = () => {
       name: "OBT",
       label: "Open Bid Time",
       type: "time",
-      label_size: 6,
+      title_size: 6,
       col_size: 6,
     },
 
@@ -146,7 +146,7 @@ const GameProviderAdd = () => {
       name: "OBRT",
       label: "Open Bid Result Time",
       type: "time",
-      label_size: 6,
+      title_size: 6,
       col_size: 6,
     },
 

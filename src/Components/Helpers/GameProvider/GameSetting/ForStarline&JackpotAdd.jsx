@@ -23,22 +23,8 @@ const ForStarlineJackpotAdd = ({ gameType, path }) => {
     getGameProviderList();
   }, []);
 
-  // const convertTo24HourFormat = (time12h) => {
-  //   const [time, modifier] = time12h.split(' ');
+
   
-  //   let [hours, minutes] = time.split(':');
-  
-  //   if (hours === '12') {
-  //     hours = '00';
-  //   }
-  
-  //   if (modifier === 'PM') {
-  //     hours = parseInt(hours, 10) + 12;
-  //   }
-  
-  //   return `${hours.toString().padStart(2, '0')}:${minutes}`;
-  // };
-  const initialTime12h = '01:01 PM';
   const formik = PagesIndex.useFormik({
    
     initialValues: {
@@ -112,7 +98,6 @@ const ForStarlineJackpotAdd = ({ gameType, path }) => {
       }
     },
   });
-  console.log(location?.state?.rowData.isClosed,"formik.values");
   const fields = [
     {
       name: "providerId",
@@ -148,7 +133,7 @@ const ForStarlineJackpotAdd = ({ gameType, path }) => {
       name: "OBT",
       label: "Open Bid Time",
       type: "time",
-      label_size: 6,
+      title_size: 6,
       col_size: 6,
     },
 
@@ -163,7 +148,7 @@ const ForStarlineJackpotAdd = ({ gameType, path }) => {
       name: "OBRT",
       label: "Open Bid Result Time",
       type: "time",
-      label_size: 6,
+      title_size: 6,
       col_size: 6,
     },
 

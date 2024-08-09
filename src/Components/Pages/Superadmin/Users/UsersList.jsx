@@ -1,17 +1,12 @@
-import React, { useState, useEffect } from "react";
-import Main_Containt from "../../../Layout/Main/Main_Containt";
-import ModalComponent from "../../../Helpers/ModalComponent";
 import PagesIndex from "../../PagesIndex";
-import { DELETE_USER } from "../../../Services/SuperAdminServices";
 import DeleteSweetAlert from "../../../Helpers/DeleteSweetAlert";
 
-
 const UsersList = () => {
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
+  const [loading, setLoading] = PagesIndex.useState(false);
+  const [data, setData] = PagesIndex.useState([]);
 
   const userId = localStorage.getItem("userId");
-let userDeleteReason = true
+  let userDeleteReason = true;
   const getList = async () => {
     setLoading(true);
     try {
@@ -24,7 +19,7 @@ let userDeleteReason = true
     }
   };
 
-  useEffect(() => {
+  PagesIndex.useEffect(() => {
     getList();
   }, []);
 
@@ -85,12 +80,6 @@ let userDeleteReason = true
       selector: (cell, row) => (
         <div style={{ width: "120px" }}>
           <div>
-            {/* <PagesIndex.Link to={"/admin/employee/edit"} state={cell}>
-              <span data-toggle="tooltip" data-placement="top" title="Edit">
-                <i class="ti-marker-alt fs-5 mx-1 "></i>
-              </span>
-            </PagesIndex.Link> */}
-
             <PagesIndex.Link
               href="#"
               onClick={() =>
@@ -112,19 +101,19 @@ let userDeleteReason = true
     },
   ];
 
-
-
   return (
-    <Main_Containt add_button={false} route="/admin/user/add" title="All Users">
-      {/* <ModalComponent /> */}
+    <PagesIndex.Main_Containt
+      add_button={false}
+      route="/admin/user/add"
+      title="All Users"
+    >
       <PagesIndex.Data_Table
         isLoading={loading}
         columns={columns}
         data={data}
-
       />
-     <PagesIndex.Toast />
-    </Main_Containt>
+      <PagesIndex.Toast />
+    </PagesIndex.Main_Containt>
   );
 };
 

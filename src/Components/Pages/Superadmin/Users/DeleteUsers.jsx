@@ -1,6 +1,5 @@
 import React from "react";
 import PagesIndex from "../../PagesIndex";
-import DeleteSweetAlert from "../../../Helpers/DeleteSweetAlert";
 
 const DeleteUsers = () => {
   const [loading, setLoading] = PagesIndex.useState(false);
