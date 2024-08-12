@@ -58,3 +58,13 @@ export const UPDATE_SYSTEM_INFO_API = async(data)=>{
     return error
   }
 }
+
+//PERMISSION API
+export const PERMISSION_GET_API = async(id)=>{
+  try {
+    const res = await dataservice.get(`${Api.PERMISSION_API}${id}`)
+    return res.data
+  } catch (error) {
+    return error
+  }
+}

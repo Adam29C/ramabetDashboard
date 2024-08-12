@@ -430,11 +430,11 @@ export const admin_Sidebar = [
     title: "App Settings",
     Icon: "fa-solid fa-cog",
     NestedElement: [
-      // {
-      //   id: 1,
-      //   title: "How To Play",
-      //   route: "appSettings/howToPlay",
-      // },
+      {
+        id: 1,
+        title: "How To Play",
+        route: "appSettings/howToPlay",
+      },
       // {
       //   id: 2,
       //   title: "Withdraw Screen",

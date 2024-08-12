@@ -42,12 +42,27 @@ export const Games_Settings_List = createAsyncThunk(
   }
 );
 
+//PERMISSION_GET_API
+
+export const Get_permissions = createAsyncThunk(
+  "common/PERMISSION_GET_API",
+  async (id) => {
+    try {
+      const res = await Common_service.PERMISSION_GET_API(id);
+      return await res;
+    } catch (error) {
+      return error;
+    }
+  }
+);
+
 const CommonSlice = createSlice({
   name: "CommonSlice",
   initialState: {
     getGenrateTokenState: "",
     gameProviders: [],
     gameSettings: [],
+    getPermissions: {},
     isLoading: false,
   },
   reducers: {},
@@ -100,7 +115,6 @@ const CommonSlice = createSlice({
         };
       })
       .addCase(Games_Settings_List.fulfilled, (state, action) => {
-   
         return {
           ...state,
           gameSettings: action.payload.data,
@@ -112,6 +126,28 @@ const CommonSlice = createSlice({
           ...state,
           gameSettings: [],
           isLoading: false,
+        };
+      })
+      .addCase(Get_permissions.pending, (state, action) => {
+        return {
+          ...state,
+          getPermissions: {},
+          isLoading: true,
+        };
+      })
+      .addCase(Get_permissions.fulfilled, (state, action) => {
+      
+        return {
+          ...state,
+          getPermissions: action.payload?.data,
+          isLoading: true,
+        };
+      })
+      .addCase(Get_permissions.rejected, (state, action) => {
+        return {
+          ...state,
+          getPermissions: {},
+          isLoading: true,
         };
       });
   },

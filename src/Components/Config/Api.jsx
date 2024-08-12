@@ -52,9 +52,12 @@ const Api = {
   UPDATE_UPI_LIST:"/admin/master/updateUpiStatus",
   DELETE_UPI_LIST:"/admin/master/deleteUpi",
 
-  //how to play
+  //HOW TO PLAY
   HOW_TO_PLAY_GET_LIST:"/admin/appSetting/htpList",
-  UPDATE_HTP:"/admin/appSetting/updateHtp"
+  UPDATE_HTP:"/admin/appSetting/updateHtp",
+
+//PERMISSION API
+PERMISSION_API:"/admin/getPermission/"
 };
 
 export { Api };

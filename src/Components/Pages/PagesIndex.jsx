@@ -18,6 +18,7 @@ import { getGenerateToken } from "../Redux/slice/CommonSlice";
 import { Link } from "react-router-dom";
 import * as valid_err from "../Utils/Common_Msg";
 import * as admin_services from "../Services/SuperAdminServices";
+import * as common_services from "../Services/CommonServices";
 // import { getGenerateToken } from "../redux/slice/CommonSlice";
 import {
   ADD_SYSTEM_INFO_API,
@@ -80,7 +81,8 @@ const PagesIndex = {
   WalletMain,
   ChangeStatus,
   validApkFile,
-  Mobile_regex
+  Mobile_regex,
+  common_services
 };
 
 export default PagesIndex;

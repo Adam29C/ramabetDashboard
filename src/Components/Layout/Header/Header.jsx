@@ -41,7 +41,7 @@ PagesIndex.useEffect(() => {
     localStorage.removeItem("userId")
     PagesIndex.toast.success("Logged Out Successfully")
    setTimeout(() => {
-    navigate("/")
+    navigate("/login")
     
    }, 2000);
   }
