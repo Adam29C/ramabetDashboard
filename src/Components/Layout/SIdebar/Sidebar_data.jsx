@@ -52,7 +52,7 @@ export const admin_Sidebar = [
   },
   {
     id: 4,
-    route: "employee/add",
+    route: "employees",
     headerTitle: "Employee",
     title: "Employee",
     Icon: "icon-globe-alt",
@@ -72,6 +72,7 @@ export const admin_Sidebar = [
   {
     id: 5,
     headerTitle: "Games",
+    route: "games",
     title: "Available Games",
     Icon: "fa-solid fa-gamepad",
     NestedElement: [
@@ -110,7 +111,7 @@ export const admin_Sidebar = [
   },
   {
     id: 6,
-
+    route: "games/starlineProvider",
     title: "Starline",
     Icon: "fa-regular fa-star",
     NestedElement: [
@@ -148,6 +149,7 @@ export const admin_Sidebar = [
   },
   {
     id: 7,
+    route: "games/jackpotProvider",
     title: "Jackpot",
     Icon: "fa-regular fa-heart",
     NestedElement: [
@@ -426,6 +428,7 @@ export const admin_Sidebar = [
   // },
   {
     id: 20,
+    route: "appSettings/howToPlay",
     headerTitle: "App Settings",
     title: "App Settings",
     Icon: "fa-solid fa-cog",
@@ -460,6 +463,7 @@ export const admin_Sidebar = [
   },
   {
     id: 21,
+    route: "masters/UPI",
     headerTitle: "Masters",
     title: "Masters",
     Icon: "ti-money",

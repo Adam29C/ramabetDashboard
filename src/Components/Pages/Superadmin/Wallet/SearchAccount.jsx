@@ -46,11 +46,9 @@ const SearchAccount = () => {
           
         },
         validate: (values) => {
-          console.log(values);
         },
     
         onSubmit: async (values) => {
-          console.log(values);
         },
       });
     

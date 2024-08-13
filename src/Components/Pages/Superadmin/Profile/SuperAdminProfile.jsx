@@ -1,14 +1,15 @@
 import React from 'react'
 import PagesIndex from '../../PagesIndex'
+import { Link } from 'react-router-dom';
 const SuperAdminProfile = () => {
   const userId = localStorage.getItem("userId")
+  let role = localStorage.getItem("role");
   const [data, setData] = PagesIndex.useState("")
 
   const getProfile = async()=>{
     const res = await PagesIndex.admin_services.ADMIN_PROFILE_GET_API(userId)
     setData(res?.data?.details)
   }
-
 PagesIndex.useEffect(()=>{
   getProfile()
 },[])
@@ -21,17 +22,21 @@ PagesIndex.useEffect(()=>{
       <div className="col p-md-0">
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
-            <a href="javascript:void(0)">Dashboard</a>
+          <Link to="/admin">Dashboard</Link>
+           
           </li>
           <li className="breadcrumb-item active">
-            <a href="javascript:void(0)">Home</a>
+            <Link to="/admin">Home</Link>
           </li>
         </ol>
       </div>
     </div>
     <div className="container-fluid">
-      <div className="row">
-        <div className="col-lg-6 col-xl-6">
+      <div 
+      // className="row justify-content-center"
+      className={role === "ADMIN" ? "row" : "row justify-content-center"}
+      >
+        <div className="col-lg-6 col-xl-6 ">
           <div className="card">
             <div className="card-body">
               <div className="media align-items-center mb-4">
@@ -64,13 +69,15 @@ PagesIndex.useEffect(()=>{
             
             </div>
           </div>
-          <PagesIndex.SuperAdminChangePassword/>
+          {role === "ADMIN" ? (<PagesIndex.SuperAdminChangePassword/>) : ""}
+          
         </div>
-        <div className="col-lg-6 col-xl-6">
-        <PagesIndex.TeamMets/>
+       
+                  {role === "ADMIN" ? ( <div className="col-lg-6 col-xl-6"> <PagesIndex.TeamMets/> </div>) : ""}
+  
 
    
-        </div>
+       
       </div>
     </div>
     <PagesIndex.Toast/>
